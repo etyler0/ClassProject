@@ -1,0 +1,31 @@
+Project notes:
+
+- use linux version of qt
+
+- read in info from file and display shapes in rendering windows
+
+- alot of detail regarding shapes coming fromqt 2d rendering library
+
+- basic drawing example is a tutorial under qt examples that includes documentation for 2d rendering library
+
+- able to load basic drawing example into qt project
+
+- The idea is to have a rendering window that will render all shapes in thw window
+
+- should have a menu where we can add/remove shape
+
+- posted in blackboard, our own custom vector implementation, modify the vector of doubles into a templated class
+
+- we have shapes abstract base class, includes pure virtual functions draw, move and update
+
+- base class shapes includes enum class shapetype that tells me what type of shape do i have, lists the shapes
+
+- include protected qpainter& get_qpainter() in the base class
+
+- each shape is a class that derive from the base class shapes, example. rectangle class derrives from shapes class
+
+- indicate selected by drawing a bounding rectangle with a light neutral color
+
+- update the hours tab in the sprint backlog
+
+
