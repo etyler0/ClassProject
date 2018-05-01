@@ -27,16 +27,19 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     shape.cpp \
-    rectangle.cpp
+    rectangle.cpp \
+    testimonials.cpp
 
 HEADERS += \
         mainwindow.h \
     shape.h \
-    rectangle.h
+    rectangle.h \
+    testimonials.h
 
 FORMS += \
         mainwindow.ui \
     about.ui \
     testimonials.ui \
     contact.ui \
-    reports.ui
+    reports.ui \
+    testimonials.ui

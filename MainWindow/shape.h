@@ -53,8 +53,8 @@ public:
           shapeType s = Shape::shapeType::Line,
           QPen xPen=Qt::NoPen,
           QBrush xBrush=Qt::NoBrush):
-          painter(device),
-          id(xId),
+          painter(pDevice),
+          shapeId(xId),
           typeShape(s),
           pen(xPen),
           brush(xBrush){}
@@ -63,7 +63,7 @@ public:
     // Mutator methods
     void setId(int xId)
     {
-        shaoeId = xId;
+        shapeId = xId;
     }
 
     void setShapeType(shapeType xShape)

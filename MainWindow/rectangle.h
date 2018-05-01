@@ -15,6 +15,7 @@
 // Standard directives
 #include <iostream>
 #include <math.h>
+#include "shape.h"
 using namespace std;
 
 // Qt libraries/directives that will be utilized
@@ -42,7 +43,7 @@ public:
     // Default constructor
     Rectangle(QPaintDevice* device,
               int xId = -1,
-              shape sRec = shape::Rectangle,
+              shapeType sRec = shapeType::Rectangle,
               QPen xPen = Qt::NoPen,
               QBrush xBrush = Qt::NoBrush,
               QPoint xUL = QPoint(0,0),
@@ -52,10 +53,10 @@ public:
     // draw() function from shape base class
     void draw(QPaintDevice* device)
     {
-        QPainter& paint = getPainter();
+        QPainter& paint = get_qPainter();
         paint.begin(device);
-        paint.setPen(this->getPen());
-        paint.setBrush(this->getBrush());
+        paint.setPen(this->getQPen());
+        paint.setBrush(this->getQBrush());
         paint.drawRect((getUpperLeft()).x(),(getUpperLeft()).y(),getWidth(),getHeight());
         paint.setPen(QPen());
         paint.drawText(getUpperLeft().x()-5,getUpperLeft().y()-5,QString::number(this->getId()));
