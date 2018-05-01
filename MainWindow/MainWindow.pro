@@ -25,12 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    shape.cpp \
+    rectangle.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    shape.h \
+    rectangle.h
 
 FORMS += \
         mainwindow.ui \
     about.ui \
-    testimonials.ui
+    testimonials.ui \
+    contact.ui \
+    reports.ui
