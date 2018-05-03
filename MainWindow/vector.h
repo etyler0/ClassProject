@@ -8,6 +8,8 @@
 #ifndef ERKK_VECTOR_H
 #define ERKK_VECTOR_H
 
+// simple vector implentation - NOT STL compliant
+
 #include <iostream>
 #include <exception>
 using namespace std;
