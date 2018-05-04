@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "testimonials.h"
+#include "about.h"
+#include "contact.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,9 +21,15 @@ public:
 private slots:
     void on_actionFeedback_triggered();
 
+    void on_actionAbout_triggered();
+
+    void on_actionContact_Us_triggered();
+
 private:
     Ui::MainWindow *ui;
-    testimonials *report;
+    testimonials *Testimonials;
+    about *About;
+    contact *Contact;
 };
 
 #endif // MAINWINDOW_H

@@ -18,6 +18,8 @@ public:
 private slots:
     void on_submit_button_clicked();
 
+    void on_verticalScrollBar_valueChanged(int value);
+
 private:
     Ui::testimonials *ui;
 };

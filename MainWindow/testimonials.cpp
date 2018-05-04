@@ -36,3 +36,8 @@ void testimonials::on_submit_button_clicked()
     file.close();
 }
 
+
+void testimonials::on_verticalScrollBar_valueChanged(int value)
+{
+    ui->scrollArea->move(QPoint(0, value * 2));
+}
