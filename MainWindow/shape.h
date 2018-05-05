@@ -52,12 +52,12 @@ public:
           int xId=-1,
           shapeType s = Shape::shapeType::Line,
           QPen xPen=Qt::NoPen,
-          QBrush xBrush=Qt::NoBrush):
-          painter(pDevice),
-          shapeId(xId),
-          typeShape(s),
-          pen(xPen),
-          brush(xBrush){}
+          QBrush xBrush=Qt::NoBrush)
+           :painter(pDevice),
+            shapeId(xId),
+            typeShape(s),
+            brush(xBrush),
+            pen(xPen) {}
 
     // Normal functions
     // Mutator methods
@@ -115,15 +115,17 @@ public:
     // Operations for rendering and other
     //
 
+#if 0
+    // NOTE: The following definitions should be deleted - only need to be in derived class
     // For the line, functions that will get the start and endpoints of a line
-    virtual QPoint getStartPoint(){}
-    virtual QPoint getEndPoint(){}
+    //virtual QPoint getStartPoint(){}
+    //virtual QPoint getEndPoint(){}
 
     // Functions that pertain to the rectangle shape
-    virtual int getWidth(){}        // Function that gets the width of the rectangle
-    virtual int getHeight(){}       // Function that gets the height of the rectangle
-    virtual QPoint getUpperLeft(){} // Function that gets the upper left most point of the rectangle
-
+    //virtual int getWidth(){}        // Function that gets the width of the rectangle
+    //virtual int getHeight(){}       // Function that gets the height of the rectangle
+    //virtual QPoint getUpperLeft(){} // Function that gets the upper left most point of the rectangle
+#endif
 
 
 

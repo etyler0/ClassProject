@@ -124,7 +124,7 @@ public:
 
     MyVector() : m_nCurSize{0}, m_nAllocated{0}, m_pElem{nullptr} {}  // default constructor
 
-    explicit MyVector(int alloc_size, T &fillElem) // = T())             // alternate constructor
+    explicit MyVector(int alloc_size, T &fillElem = T())             // alternate constructor
         : m_nCurSize{alloc_size}, m_nAllocated{alloc_size}
     {
         if (alloc_size <= 0)
@@ -248,12 +248,15 @@ public:
         {
             cout << endl;
         }
-        for (int i = 0; i < m_nCurSize; i++)
+        if (printcontent)
         {
-            cout << " E#" << i << ":" <<m_pElem[i];
-            if (printeol)
+            for (int i = 0; i < m_nCurSize; i++)
             {
-                cout << endl;
+                cout << " E#" << i << ":" <<m_pElem[i];
+                if (printeol)
+                {
+                    cout << endl;
+                }
             }
         }
     }

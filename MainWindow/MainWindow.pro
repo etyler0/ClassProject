@@ -26,7 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    rectangle.cpp \
     renderarea.cpp \
     testimonials.cpp \
     about.cpp \
