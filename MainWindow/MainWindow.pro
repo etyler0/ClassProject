@@ -29,7 +29,8 @@ SOURCES += \
     renderarea.cpp \
     testimonials.cpp \
     about.cpp \
-    contact.cpp
+    contact.cpp \
+    login.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -45,11 +46,14 @@ HEADERS += \
     square.h \
     ellipse.h \
     circle.h \
-    text.h
+    text.h \
+    login.h \
+    privilege.h
 
 FORMS += \
         mainwindow.ui \
     about.ui \
     testimonials.ui \
     reports.ui \
-    contact.ui
+    contact.ui \
+    login.ui

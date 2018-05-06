@@ -20,6 +20,8 @@ private slots:
 
     void on_verticalScrollBar_valueChanged(int value);
 
+    void on_pushButton_exit_clicked();
+
 private:
     Ui::testimonials *ui;
 };

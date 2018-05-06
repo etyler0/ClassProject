@@ -20,10 +20,12 @@ testimonials::~testimonials()
 void testimonials::on_submit_button_clicked()
 {
     QString homePath = QFileInfo(".").absolutePath();
+    QString textPath = "/MainWindow/TextFiles/testimonials";
 
     //  Uncomment for debugging purposes
     //  QMessageBox::information(this, "File Path", homePath + "/ClassProject-master_2.0/TextFiles/testimonials.txt");
-    QFile file(homePath + "/ClassProject-master_2.0/TextFiles/testimonials.txt");
+
+    QFile file(homePath + textPath);
     if(!file.open(QFile::WriteOnly | QFile::Append)){
         QMessageBox::warning(this, "Error!", "Failed to open testimonials!");
     }
@@ -40,4 +42,9 @@ void testimonials::on_submit_button_clicked()
 void testimonials::on_verticalScrollBar_valueChanged(int value)
 {
     ui->scrollArea->move(QPoint(0, value * 2));
+}
+
+void testimonials::on_pushButton_exit_clicked()
+{
+    this->close();
 }

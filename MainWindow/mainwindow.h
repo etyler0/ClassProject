@@ -5,6 +5,7 @@
 #include "testimonials.h"
 #include "about.h"
 #include "contact.h"
+#include "privilege.h"
 
 namespace Ui {
 class MainWindow;
@@ -15,7 +16,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(privilege& user, QWidget *parent = 0);
     ~MainWindow();
 
 private slots:

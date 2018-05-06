@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(privilege& user, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
@@ -29,19 +29,4 @@ void MainWindow::on_actionContact_Us_triggered()
 {
     Contact = new contact(this);
     Contact->show();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
