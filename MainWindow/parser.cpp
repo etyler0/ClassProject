@@ -531,6 +531,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
                 int tlx, tly, w, h;  // Note - these need to be parsed
                 Rectangle rect1(device, shapeId, PenColor, penWidth, PenStyle,
                                 PenCapStyle, PenJoinStyle, BrushColor, BrushStyle, tlx, tly, w, h );
+                pShapeVector->push_back((Shape *)&rect1);
             }
         }
         else if(shapeName == "Text")
