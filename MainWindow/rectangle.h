@@ -27,12 +27,8 @@ using namespace std;
 #include <QPainter>// This gives access to the QPainter class, which preforms the painting on widgets and other paint devices
 #include <QPoint>  // This gives access to the QPoint class, which defines points on a plane
 
-// Custom libraries/directives
-//!!!!    Custom vector class goes here   !!!!
-
-
  /*************************************************************************************************************
-  * Rectangle Base Class (Inherits from Shape.h)
+  * Rectangle Base Class (Inherits from Shape2D.h)
   *
   * Basic 2D drawing example link - http://doc.qt.io/qt-5/qtwidgets-painting-basicdrawing-example.html
   *************************************************************************************************************/
@@ -41,20 +37,9 @@ using namespace std;
 class Rectangle : public Shape2D
 {
 private:
-    // Default constructor - never used - all fields must be explictly set
-    //Rectangle() {};
-#if 0
-    Rectangle(QPaintDevice* device,
-              int xId = -1,
-              QPen xPen = Qt::NoPen,
-              QBrush xBrush = Qt::NoBrush,
-              QPoint xUL = QPoint(0,0),
-              int xWidth = 0,int xheight = 0):
-              Shape2D(device, xId, shapeType::Rectangle, xPen, xBrush), upperLeft(xUL), width(xWidth), height(xheight){}
-#endif
+    Rectangle() {}; // Default constructor - never used - all fields must be explictly set
     
 public:
-    Rectangle() {};
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
     //       accessors and mutators adds no value.
@@ -77,6 +62,7 @@ public:
                       xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle,
                       xBrushColor, xBrushStyle)
     {
+        // object specific transform from points supplied to bounding points
         QPoint ul(xTopLeftX,xTopLeftY);
         upperleft = ul;
         QPoint lr(xTopLeftX+xWidth, xTopLeftY+xHeight);
