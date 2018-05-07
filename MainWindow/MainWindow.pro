@@ -30,7 +30,8 @@ SOURCES += \
     testimonials.cpp \
     about.cpp \
     contact.cpp \
-    login.cpp
+    login.cpp \
+    parser.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -47,8 +48,10 @@ HEADERS += \
     ellipse.h \
     circle.h \
     text.h \
+    shape2d.h \
     login.h \
-    privilege.h
+    privilege.h \
+    parser.h
 
 FORMS += \
         mainwindow.ui \

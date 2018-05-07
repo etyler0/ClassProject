@@ -16,6 +16,7 @@
 #include <iostream>
 #include <math.h>
 #include "shape.h"
+#include "shape2d.h"
 using namespace std;
 
 // Qt libraries/directives that will be utilized
@@ -37,96 +38,92 @@ using namespace std;
   *************************************************************************************************************/
 
 
-class Rectangle : public Shape
+class Rectangle : public Shape2D
 {
-public:
-    // Default constructor
+private:
+    // Default constructor - never used - all fields must be explictly set
+    //Rectangle() {};
+#if 0
     Rectangle(QPaintDevice* device,
               int xId = -1,
-              shapeType sRec = shapeType::Rectangle,
               QPen xPen = Qt::NoPen,
               QBrush xBrush = Qt::NoBrush,
               QPoint xUL = QPoint(0,0),
               int xWidth = 0,int xheight = 0):
-              Shape(device, xId, sRec, xPen, xBrush), upperLeft(xUL), width(xWidth), height(xheight){}
+              Shape2D(device, xId, shapeType::Rectangle, xPen, xBrush), upperLeft(xUL), width(xWidth), height(xheight){}
+#endif
+    
+public:
+    Rectangle() {};
+    // Note: the data members are public, because we need non class memebers to 
+    //       access and modify them without restrictions and so creating 
+    //       accessors and mutators adds no value.
+
+    // Constructor used in class project
+    Rectangle(QPaintDevice* device,
+             int                xId,
+             QColor             xPenColor,
+             qreal              xPenWidth,
+             Qt::PenStyle       xPenStyle,
+             Qt::PenCapStyle    xPenCapStyle,
+             Qt::PenJoinStyle   xPenJoinStyle,
+             QColor             xBrushColor,
+             Qt::BrushStyle     xBrushStyle,
+             int                xTopLeftX,
+             int                xTopLeftY,
+             int                xWidth,
+             int                xHeight)
+       : Shape2D(device, xId, shapeType::Rectangle,
+                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle,
+                      xBrushColor, xBrushStyle)
+    {
+        QPoint ul(xTopLeftX,xTopLeftY);
+        upperleft = ul;
+        QPoint lr(xTopLeftX+xWidth, xTopLeftY+xHeight);
+        lowerright = lr;
+    }
+    
+    ~Rectangle() {};
 
     // draw() function from shape base class
     void draw(QPaintDevice* device)
     {
+        QRect rect1(upperleft, lowerright);
         QPainter& paint = get_qPainter();
         paint.begin(device);
-        paint.setPen(this->getQPen());
-        paint.setBrush(this->getQBrush());
-        paint.drawRect((getUpperLeft()).x(),(getUpperLeft()).y(),getWidth(),getHeight());
+        paint.setPen(pen);
+        paint.setBrush(brush);
+        paint.drawRect(rect1);
         paint.setPen(QPen());
-        paint.drawText(getUpperLeft().x()-5,getUpperLeft().y()-5,QString::number(this->getId()));
+        paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
         paint.end();
     }
 
     // move() function from shape base class
     void move(Shape* source)
     {
-        this->setUpperLeft(source->getUpperLeft());
-        this->setWidth(source->getWidth());
-        this->setHeight(source->getHeight());
+        //this->setUpperLeft(source->getUpperLeft());
+        //this->setWidth(source->getWidth());
+        //this->setHeight(source->getHeight());
+    }
+
+    void update(void)
+    {
+        draw((get_qPaintDevice()));
+        return;
     }
 
     // calcPerimeter() function from shape base class
     double calcPerimeter()
     {
-        return ((getWidth()*2)+(getHeight()*2));
+        return 0; //((getWidth()*2)+(getHeight()*2));
     }
 
     // calcArea() function from shape base class
     double calcArea()
     {
-        return (getWidth()*getHeight());
+        return 0;//(getWidth()*getHeight());
     }
-
-
-    void setUpperLeft(QPoint xRecUL)
-    {
-        upperLeft = xRecUL;
-    }
-    //Mutator: sets the upperleft coordinate
-
-    void setWidth(int recW)
-    {
-        width = recW;
-    }
-    //Mutator: sets the width of the rectangle
-
-    void setHeight(int recH)
-    {
-        height = recH;
-    }
-    //Mutator: sets the height of the rectangle
-
-    QPoint getUpperLeft()
-    {
-        return upperLeft;
-    }
-    //Accessor: reutrns the upper left coordinate
-
-    int getWidth()
-    {
-        return width;
-    }
-    //Accessor: returns the rectangle's width
-
-    int getHeight()
-    {
-        return height;
-    }
-    //Accessor: returns the rectangl's height
-
-private:
-    QPoint upperLeft;
-    //Holds the rectangle's upper left coordinate
-
-    int width, height;
-    //Holds the rectangle's width and height
-
 
 };
 
