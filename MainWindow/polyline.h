@@ -6,6 +6,7 @@
 // Standard directives
 #include <iostream>
 #include <math.h>
+#include "shape1d.h"
 using namespace std;
 
 // Qt libraries/directives that will be utilized
@@ -16,50 +17,114 @@ using namespace std;
 #include <QPainter>// This gives access to the QPainter class, which preforms the painting on widgets and other paint devices
 #include <QPoint>  // This gives access to the QPoint class, which defines points on a plane
 
-class Polyline : public Shape
+class PolyLine : public Shape1D
 {
-public:
-    Polyline(QPaintDevice* device=nullptr,
-             int xId = -1,
-             QPen xPen = Qt::NoPen,
-             QBrush xBrush = Qt::NoBrush,
-             const vector<QPoint> &pSource = vector<QPoint>()):
-             Shape(device,xId,Shape::shape::Polyline,xPen,xBrush){points = pSource;}
+private:
+    PolyLine() {}; // Default constructor - never used - all fields must be explictly set
 
+    vector<QPoint> points;
+    
+public:
+    // Note: the data members are public, because we need non class memebers to 
+    //       access and modify them without restrictions and so creating 
+    //       accessors and mutators adds no value.
+
+    // Constructor used in class project
+    PolyLine(QPaintDevice* device,
+             int                xId,
+             QColor             xPenColor,
+             qreal              xPenWidth,
+             Qt::PenStyle       xPenStyle,
+             Qt::PenCapStyle    xPenCapStyle,
+             Qt::PenJoinStyle   xPenJoinStyle,
+             const vector<QPoint> &source)
+       : Shape1D(device, xId, shapeType::Polyline,
+                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle),
+                      points{source}
+    {
+        // object specific transform from points supplied to bounding points
+
+        qreal minX = 0.0;
+        qreal maxX = 0.0;
+        qreal minY = 0.0;
+        qreal maxY = 0.0;
+
+        for(vector<QPoint>::iterator i=points.begin();i!=points.end()-1;++i)
+        {
+            if (i->x() < minX)
+            {
+                minX = i->x();
+            }
+            if (i->x() > maxX)
+            {
+                maxX = i->x();
+            }
+
+            if (i->y() < minY)
+            {
+                minY = i->y();
+            }
+            if (i->y() > maxY)
+            {
+                maxY = i->y();
+            }
+        }
+
+        upperleft.setX(minX);
+        upperleft.setY(minY);
+        lowerright.setX(maxX);
+        lowerright.setY(maxY);
+    }
+    
+    ~PolyLine() {};
+
+    // draw() function from shape base class
     void draw(QPaintDevice* device)
     {
-         QPainter& pPaint = getPainter();
-         pPaint.begin(device);
-         pPaint.setPen(this->getPen());
-         pPaint.drawPolyline(points.begin(),points.size());
-         pPaint.setPen(QPen());
-         pPaint.drawText(points.begin()->x()-5,points.begin()->y()-5,QString::number(this->getId()));
-         pPaint.end();
+        QPainter& paint = get_qPainter();
+        paint.begin(device);
+        paint.setPen(pen);
+        QPoint *qpptr = &(*points.begin());
+        paint.drawPolyline(qpptr,points.size());
+        paint.setPen(QPen());
+        paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
+        paint.end();
     }
 
-    vector<QPoint> &getPoints()
+    // move() function from shape base class
+    void move(QPoint &newUpperLeft)
     {
-        return points;
+        int deltaX = (newUpperLeft.x() - upperleft.x());
+        int deltaY = (newUpperLeft.y() - upperleft.y());
+
+        upperleft = newUpperLeft;
+        lowerright.setX(lowerright.x() + deltaX);
+        lowerright.setY(lowerright.y() + deltaY);
+
+        for(vector<QPoint>::iterator i=points.begin();i!=points.end()-1;++i)
+        {
+            i->setX(i->x() + deltaX);
+            i->setY(i->y() + deltaY);
+        }
     }
 
-    void move(Shape* source)
+    void update(void)
     {
-        this->points = source->getPoints();
+        draw((get_qPaintDevice()));
+        return;
     }
 
+    // calcPerimeter() function from shape base class
     double calcPerimeter()
     {
         return 0;
     }
 
+    // calcArea() function from shape base class
     double calcArea()
     {
         return 0;
     }
 
-
-private:
-    vector<QPoint> points;
 };
-
 #endif // POLYLINE_H

@@ -86,11 +86,14 @@ public:
     }
 
     // move() function from shape base class
-    void move(Shape* source)
+    void move(QPoint &newUpperLeft)
     {
-        //this->setUpperLeft(source->getUpperLeft());
-        //this->setWidth(source->getWidth());
-        //this->setHeight(source->getHeight());
+        int deltaX = (newUpperLeft.x() - upperleft.x());
+        int deltaY = (newUpperLeft.y() - upperleft.y());
+
+        upperleft = newUpperLeft;
+        lowerright.setX(lowerright.x() + deltaX);
+        lowerright.setY(lowerright.y() + deltaY);
     }
 
     void update(void)
@@ -102,13 +105,13 @@ public:
     // calcPerimeter() function from shape base class
     double calcPerimeter()
     {
-        return 0; //((getWidth()*2)+(getHeight()*2));
+        return ( ((upperleft.x()-lowerright.x()) * 2) + ((upperleft.y()-lowerright.y()) * 2));
     }
 
     // calcArea() function from shape base class
     double calcArea()
     {
-        return 0;//(getWidth()*getHeight());
+        return ( (upperleft.x()-lowerright.x()) * (upperleft.y()-lowerright.y()));
     }
 
 };

@@ -6,6 +6,7 @@
 // Standard directives
 #include <iostream>
 #include <math.h>
+#include "shape1d.h"
 using namespace std;
 
 // Qt libraries/directives that will be utilized
@@ -19,64 +20,82 @@ using namespace std;
 
 // Line class, derived form the shape base class
 
-class Line : public Shape
+class Line : public Shape1D
 {
-public:
-    Line(QPaintDevice* device = nullptr,
-         int xId=-1,
-         QPen xPen=Qt::NoPen,
-         QBrush xBrush=Qt::NoBrush,
-         QPoint startPt=QPoint(0,0), // Starting point
-         QPoint endPt=QPoint(0,0)):  // Ending point
-         Shape(device,xId,
-         Shape::shape::Line,xPen,xBrush),
-         start(startPt),
-         end(endPt){}
+private:
+    Line() {}; // Default constructor - never used - all fields must be explictly set
 
+    vector<QPoint> points;
+    
+public:
+    // Note: the data members are public, because we need non class memebers to 
+    //       access and modify them without restrictions and so creating 
+    //       accessors and mutators adds no value.
+
+    // Constructor used in class project
+    Line(QPaintDevice* device,
+             int                xId,
+             QColor             xPenColor,
+             qreal              xPenWidth,
+             Qt::PenStyle       xPenStyle,
+             Qt::PenCapStyle    xPenCapStyle,
+             Qt::PenJoinStyle   xPenJoinStyle,
+             int                xTopLeftX,
+             int                xTopLeftY,
+             int                xBotRightX,
+             int                xBotRightY)
+       : Shape1D(device, xId, shapeType::Line,
+                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle)
+    {
+        // object specific transform from points supplied to bounding points
+        QPoint ul(xTopLeftX,xTopLeftY);
+        upperleft = ul;
+        QPoint lr(xBotRightX, xBotRightY);
+        lowerright = lr;
+    }
+    
+    ~Line() {};
+
+    // draw() function from shape base class
     void draw(QPaintDevice* device)
     {
-        QPainter& lPaint = getPainter();
-        lPaint.begin(device);
-        lPaint.setPen(this->getPen());
-        lPaint.drawLine(start,end);
-        lPaint.setPen(QPen());
-        lPaint.drawText(start.x()-5,start.y()-5,QString::number(this->getId()));
-        lPaint.end();
+        QPainter& paint = get_qPainter();
+        paint.begin(device);
+        paint.setPen(pen);
+        paint.drawLine(upperleft, lowerright);
+        paint.setPen(QPen());
+        paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
+        paint.end();
     }
 
-    void move(Shape *shapeSource)
+    // move() function from shape base class
+    void move(QPoint &newUpperLeft)
     {
-        if(this != shapeSource)
-        {
-            this->start = shapeSource->getStart();
-            this->end   = shapeSource->getEnd();
-        }
+        int deltaX = (newUpperLeft.x() - upperleft.x());
+        int deltaY = (newUpperLeft.y() - upperleft.y());
+
+        upperleft = newUpperLeft;
+        lowerright.setX(lowerright.x() + deltaX);
+        lowerright.setY(lowerright.y() + deltaY);
     }
 
-    QPoint getStart()
+    void update(void)
     {
-        return start;
+        draw((get_qPaintDevice()));
+        return;
     }
 
-    QPoint getEnd()
-    {
-        return end;
-    }
-
+    // calcPerimeter() function from shape base class
     double calcPerimeter()
     {
         return 0;
     }
 
+    // calcArea() function from shape base class
     double calcArea()
     {
         return 0;
     }
 
-private:
-    QPoint start; // Start point
-    QPoint end;   // End point
 };
-
-
 #endif // LINE_H

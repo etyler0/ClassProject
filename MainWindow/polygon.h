@@ -6,6 +6,7 @@
 // Standard directives
 #include <iostream>
 #include <math.h>
+#include "shape2d.h"
 using namespace std;
 
 // Qt libraries/directives that will be utilized
@@ -16,43 +17,109 @@ using namespace std;
 #include <QPainter>// This gives access to the QPainter class, which preforms the painting on widgets and other paint devices
 #include <QPoint>  // This gives access to the QPoint class, which defines points on a plane
 
-
-
-class Polygon : public Shape
+class Polygon : public Shape2D
 {
-public:
-    Polygon(QPaintDevice* device,
-            int xId=-1,
-            QPen xPen=Qt::NoPen,
-            QBrush xBrush=Qt::NoBrush,
-            const vector<QPoint> &source=vector<QPoint>()):
-            Shape(device,xId,Shape::shape::Polygon,xPen,xBrush){points = source;}
+private:
+    Polygon() {}; // Default constructor - never used - all fields must be explictly set
 
+    vector<QPoint> points;
+    
+public:
+    // Note: the data members are public, because we need non class memebers to 
+    //       access and modify them without restrictions and so creating 
+    //       accessors and mutators adds no value.
+
+    // Constructor used in class project
+    Polygon(QPaintDevice* device,
+             int                xId,
+             QColor             xPenColor,
+             qreal              xPenWidth,
+             Qt::PenStyle       xPenStyle,
+             Qt::PenCapStyle    xPenCapStyle,
+             Qt::PenJoinStyle   xPenJoinStyle,
+             QColor             xBrushColor,
+             Qt::BrushStyle     xBrushStyle,
+             const vector<QPoint> &source)
+       : Shape2D(device, xId, shapeType::Polygon,
+                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle,
+                      xBrushColor, xBrushStyle), points{source}
+    {
+        // object specific transform from points supplied to bounding points
+
+        qreal minX = 0.0;
+        qreal maxX = 0.0;
+        qreal minY = 0.0;
+        qreal maxY = 0.0;
+
+        for(vector<QPoint>::iterator i=points.begin();i!=points.end()-1;++i)
+        {
+            if (i->x() < minX)
+            {
+                minX = i->x();
+            }
+            if (i->x() > maxX)
+            {
+                maxX = i->x();
+            }
+
+            if (i->y() < minY)
+            {
+                minY = i->y();
+            }
+            if (i->y() > maxY)
+            {
+                maxY = i->y();
+            }
+        }
+
+        upperleft.setX(minX);
+        upperleft.setY(minY);
+        lowerright.setX(maxX);
+        lowerright.setY(maxY);
+    }
+    
+    ~Polygon() {};
+
+    // draw() function from shape base class
     void draw(QPaintDevice* device)
     {
-        QPainter& plyPaint = getPainter();
-        plyPaint.begin(device);
-        plyPaint.setPen(this->getPen());
-        plyPaint.setBrush(this->getBrush());
-        plyPaint.drawPolygon(points.begin(),points.size());
-        plyPaint.setPen(QPen());
-        plyPaint.drawText(points.begin()->x()-5,points.begin()->y()-5,QString::number(this->getId()));
-        plyPaint.end();
+        QPainter& paint = get_qPainter();
+        paint.begin(device);
+        paint.setPen(pen);
+        paint.setBrush(brush);
+        QPoint *qpptr = &(*points.begin());
+        paint.drawPolygon(qpptr,points.size());
+        paint.setPen(QPen());
+        paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
+        paint.end();
     }
 
-    vector<QPoint> &getPoints()
+    // move() function from shape base class
+    void move(QPoint &newUpperLeft)
     {
-        return points;
+        int deltaX = (newUpperLeft.x() - upperleft.x());
+        int deltaY = (newUpperLeft.y() - upperleft.y());
+
+        upperleft = newUpperLeft;
+        lowerright.setX(lowerright.x() + deltaX);
+        lowerright.setY(lowerright.y() + deltaY);
+
+        for(vector<QPoint>::iterator i=points.begin();i!=points.end()-1;++i)
+        {
+            i->setX(i->x() + deltaX);
+            i->setY(i->y() + deltaY);
+        }
     }
 
-    void move(Shape* source)
+    void update(void)
     {
-        this->points = source->getPoints();
+        draw((get_qPaintDevice()));
+        return;
     }
 
+    // calcPerimeter() function from shape base class
     double calcPerimeter()
     {
-
         double perimeter = 0;
         for(vector<QPoint>::iterator i=points.begin();i<points.end()-1;++i)
         {
@@ -61,7 +128,7 @@ public:
         return perimeter;
     }
 
-
+    // calcArea() function from shape base class
     double calcArea()
     {
         vector<QPoint>::iterator i=points.begin();
@@ -73,8 +140,5 @@ public:
         return area;
     }
 
-private:
-    vector<QPoint> points;
 };
-
 #endif // POLYGON_H

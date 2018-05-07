@@ -62,7 +62,7 @@ public:
     // Pure Virtual functions
     virtual void draw(QPaintDevice* pDevice) = 0;
 
-    virtual void move(Shape *shapeSource) = 0;
+    virtual void move(QPoint &newUpperLeft) = 0;
 
     virtual void update(void) = 0;
 

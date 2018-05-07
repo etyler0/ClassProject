@@ -16,91 +16,90 @@ using namespace std;
 #include <QPainter>// This gives access to the QPainter class, which preforms the painting on widgets and other paint devices
 #include <QPoint>  // This gives access to the QPoint class, which defines points on a plane
 
-class Ellipse : public Shape
+class Ellipse : public Shape2D
 {
+private:
+    Ellipse() {}; // Default constructor - never used - all fields must be explictly set
+    
 public:
+    // Note: the data members are public, because we need non class memebers to 
+    //       access and modify them without restrictions and so creating 
+    //       accessors and mutators adds no value.
+
+    // Constructor used in class project
     Ellipse(QPaintDevice* device,
-            int xId=-1,
-            Shape::shape s=shape::Ellipse,
-            QPen xPen=Qt::NoPen,
-            QBrush xBrush=Qt::NoBrush,
-            QPoint xOrigin=QPoint(0,0),
-            int x_Rx=0,
-            int x_Ry=0):
-            Shape(device,xId,s,xPen,xBrush),origin(xOrigin),rx(x_Rx),ry(x_Ry){}
-
-    // Gets x radius value
-    int getRx()
+             int                xId,
+             QColor             xPenColor,
+             qreal              xPenWidth,
+             Qt::PenStyle       xPenStyle,
+             Qt::PenCapStyle    xPenCapStyle,
+             Qt::PenJoinStyle   xPenJoinStyle,
+             QColor             xBrushColor,
+             Qt::BrushStyle     xBrushStyle,
+             int                xTopLeftX,
+             int                xTopLeftY,
+             int                xWidth,
+             int                xHeight)
+       : Shape2D(device, xId, shapeType::Ellipse,
+                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle,
+                      xBrushColor, xBrushStyle)
     {
-        return rx;
+        // object specific transform from points supplied to bounding points
+        QPoint ul(xTopLeftX,xTopLeftY);
+        upperleft = ul;
+        QPoint lr(xTopLeftX+xWidth, xTopLeftY+xHeight);
+        lowerright = lr;
     }
+    
+    ~Ellipse() {};
 
-    // Gets y radius value
-    int getRy()
-    {
-        return ry;
-    }
-
-    QPoint getOrigin()
-    {
-        return origin;
-    }
-
-    void setOrigin(QPoint norigin)
-    {
-        origin = norigin;
-    }
-
-    void setRx(int xRx)
-    {
-        rx = xRx;
-    }
-
-    void setRy(int xRy)
-    {
-        ry = xRy;
-    }
-
+    // draw() function from shape base class
     void draw(QPaintDevice* device)
     {
-        QPainter& ePaint = getPainter();
-        ePaint.begin(device);
-        ePaint.setPen(this->getPen());
-        ePaint.setBrush(this->getBrush());
-        ePaint.drawEllipse(getOrigin(),rx,ry);
-        ePaint.setPen(QPen());
-        ePaint.drawText(getOrigin().x()-rx,getOrigin().y()-ry,QString::number(this->getId()));
-        ePaint.end();
+        QRect rect1(upperleft, lowerright);
+        QPainter& paint = get_qPainter();
+        paint.begin(device);
+        paint.setPen(pen);
+        paint.setBrush(brush);
+        paint.drawEllipse(rect1);
+        paint.setPen(QPen());
+        paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
+        paint.end();
     }
 
-    void move(Shape* source)
+    // move() function from shape base class
+    void move(QPoint &newUpperLeft)
     {
-        setOrigin(source->getOrigin());
-        setRx(source->getRx());
-        setRy(source->getRy());
+        int deltaX = (newUpperLeft.x() - upperleft.x());
+        int deltaY = (newUpperLeft.y() - upperleft.y());
+
+        upperleft = newUpperLeft;
+        lowerright.setX(lowerright.x() + deltaX);
+        lowerright.setY(lowerright.y() + deltaY);
     }
 
+    void update(void)
+    {
+        draw((get_qPaintDevice()));
+        return;
+    }
+
+    // calcPerimeter() function from shape base class
     double calcPerimeter()
     {
-        int a = getRx();
-        int b = getRy();
+        double len = ((upperleft.x()-lowerright.x()));
+        double ht = ((upperleft.y()-lowerright.y()));
 
-        return 2*M_PI*sqrt((pow(a,2) + pow(b,2))/2);
+        // Ramanujan Forumla #1
+        return ( (M_PI) * (3*(len-ht) ) - 
+                  (sqrt( ((3*len)+ht) * (len+(3*ht)) ) ) );
     }
 
+    // calcArea() function from shape base class
     double calcArea()
     {
-        int a = getRx();
-        int b = getRy();
-
-        return a*b*M_PI; // returns A * B * Pi
+        return ( (upperleft.x()-lowerright.x()) * (upperleft.y()-lowerright.y()) * M_PI);
     }
 
-private:
-    QPoint origin;
-
-    int rx; // X radius value
-    int ry; // Y radius value
 };
-
 #endif // ELLIPSE_H
