@@ -16,7 +16,7 @@ public:
     void setAccess(int acc){access = acc;}
 
     //  Optional debugging to see if values have passed
-    void showAccess()const{qDebug() << "MY ACCESS LEVEL IS: " << access << endl; }
+    //  void showAccess()const{qDebug() << "MY ACCESS LEVEL IS: " << access << endl; }
 };
 
 #endif // PRIVILEGE_H

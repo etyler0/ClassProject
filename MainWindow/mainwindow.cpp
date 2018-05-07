@@ -15,7 +15,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionFeedback_triggered()
 {
-    auth.showAccess();
     Testimonials = new testimonials(this);
     Testimonials->show();
 }
@@ -30,4 +29,10 @@ void MainWindow::on_actionContact_Us_triggered()
 {
     Contact = new contact(this);
     Contact->show();
+}
+
+void MainWindow::on_actionSort_by_ID_triggered()
+{
+    Reports = new reports(this);
+    Reports->show();
 }

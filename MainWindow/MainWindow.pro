@@ -31,7 +31,8 @@ SOURCES += \
     about.cpp \
     contact.cpp \
     login.cpp \
-    parser.cpp
+    parser.cpp \
+    reports.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -51,12 +52,13 @@ HEADERS += \
     shape2d.h \
     login.h \
     privilege.h \
-    parser.h
+    parser.h \
+    reports.h
 
 FORMS += \
         mainwindow.ui \
     about.ui \
     testimonials.ui \
-    reports.ui \
     contact.ui \
-    login.ui
+    login.ui \
+    reports.ui
