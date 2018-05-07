@@ -4,6 +4,8 @@
 #include <QDialog>
 #include "privilege.h"
 
+extern privilege auth;
+
 namespace Ui {
 class login;
 }
@@ -13,9 +15,9 @@ class login : public QDialog
     Q_OBJECT
 
 public:
-    explicit login(privilege& user, QWidget *parent = 0);
+    explicit login(QWidget *parent = 0);
     int confirmUser(QString username, QString password);
-    bool addUser(QString username, QString password, int accessLevel);
+    int addUser(QString username, QString password, int accessLevel);
     ~login();
 
 private slots:

@@ -20,7 +20,7 @@ testimonials::~testimonials()
 void testimonials::on_submit_button_clicked()
 {
     QString homePath = QFileInfo(".").absolutePath();
-    QString textPath = "/MainWindow/TextFiles/testimonials";
+    QString textPath = "/MainWindow/TextFiles/testimonials.txt";
 
     //  Uncomment for debugging purposes
     //  QMessageBox::information(this, "File Path", homePath + "/ClassProject-master_2.0/TextFiles/testimonials.txt");

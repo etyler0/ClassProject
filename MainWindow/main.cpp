@@ -5,18 +5,21 @@
 #include "login.h"
 #include "vector.h"
 
-
 using namespace nserkkvector;
+
+privilege auth;
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    privilege user;
-    MainWindow w(user);
-    login q(user);
+    MainWindow w;
+    login q;
+
 
     w.show();
     q.exec();
+
+
     MyVector<Shape*> *pShapeVector = new MyVector<Shape*>;
 
     // File Parser call goes here - pass a pointer to pShapeVector - allocate Shapes with new

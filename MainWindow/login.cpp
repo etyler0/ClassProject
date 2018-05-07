@@ -5,8 +5,9 @@
 #include <QString>
 #include <QMessageBox>
 #include <QDir>
+#include <QDebug>
 
-login::login(privilege& user, QWidget *parent) :
+login::login(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::login)
 {
@@ -18,22 +19,23 @@ login::~login()
     delete ui;
 }
 
-//  Confirms if user is valid:
-//      Returns 0 if invalid user
-//      Returns 1 if a guest
-//      Returns 2 if has admin privileges
+//  Helper Function "confirmUser"
+//      - Confirms if user and password is a matching pair in file
+//  Return 0: Invalid User
+//  Return 1: Guest User
+//  Return 2: Administrative User
 int login::confirmUser(QString username, QString password){
 
     //  HomePath allows access to the current folder on any computer
     QString homePath = QFileInfo(".").absolutePath();
-    QString textPath = "/TextFiles/users.txt";
+    QString textPath = "/MainWindow/TextFiles/users.txt";
 
     QFile file(homePath + textPath);
     if(!file.open(QFile::ReadOnly | QFile::Text)){
         QMessageBox::warning(this, ":C", "No File Found!!!");
     }
 
-    QTextStream in (&file);
+    QTextStream in(&file);
     QString user, pass;
     int level;
 
@@ -55,14 +57,20 @@ int login::confirmUser(QString username, QString password){
 }
 
 
-//  Helper Function
-bool login::addUser(QString username, QString password, int accessLevel){
+//  Helper Function "addUser"
+//     - Checks if there are any duplicate usernames in file
+//     - Appends user information into the file
+//  Return 0: No file found
+//  Return 1: Duplicate username, have user re-enter
+//  Return 2: Pass or Valid
+int login::addUser(QString username, QString password, int accessLevel){
 
     QString homePath = QFileInfo(".").absolutePath();
-    QString textPath = "/TextFiles/users.txt";
+    QString textPath = "/MainWindow/TextFiles/users.txt";
     QFile file(homePath + textPath);
     if(!file.open(QFile::ReadOnly | QFile::Text)){
-        QMessageBox::warning(this, ":C", "No File Found!!!");
+        QMessageBox::warning(this, "!!!", "Missing User Data");
+        return 0;
     }
 
     QTextStream in(&file);
@@ -76,24 +84,23 @@ bool login::addUser(QString username, QString password, int accessLevel){
 
         //  If duplicate username
         if(username == user){
-            return false;
+            return 1;
         }
     }
     file.close();
 
     //  If no duplicates, reopen to append new data to file
-    if(!file.open(QFile::WriteOnly | QFile::Append)){
-        QMessageBox::warning(this, ":C", "No File Found!!!");
-    }
+    file.open(QFile::WriteOnly | QFile::Append);
 
     QTextStream out(&file);
     out << username << " " << password << " " << accessLevel << endl;
     file.close();
-    return true;
+    return 2;
 }
 
-
-//  Pass param here
+//  Interface Function "pushButton_login_clicked"
+//      - Used to confirm if existing user inside users.txt
+//      - Passes privilege object auth to the primary class
 void login::on_pushButton_login_clicked()
 {
     QString username = ui->lineEdit_username->text();
@@ -108,11 +115,15 @@ void login::on_pushButton_login_clicked()
     //  Must pass a guest class
     case 1:
         QMessageBox::information(this, "Login", "Welcome guest user!");
+        auth.setAccess(access);
+        this->close();
         break;
 
     //  Must pass an admin class
     case 2:
         QMessageBox::information(this, "Login", "Welcome admin!");
+        auth.setAccess(access);
+        this->close();
         break;
 
     default:
@@ -126,6 +137,7 @@ void login::on_pushButton_addUser_clicked()
     QString username = ui->lineEdit_addUser->text();
     QString password = ui->lineEdit_addPass->text();
     int access = ui->checkBox_admin->isChecked() + 1;
+    int checkIn = addUser(username, password, access);
 
     if(password.length() < 8){
         QMessageBox::warning(this, "Error", "Password is too short!");
@@ -133,10 +145,11 @@ void login::on_pushButton_addUser_clicked()
     else if(username.length() < 1){
         QMessageBox::warning(this, "Error", "Enter a username!");
     }
-    else if(addUser(username, password, access)){
+    else if(checkIn == 2){
         QMessageBox::information(this, "Add User", "Log in with your user and pass!");
+        auth.setAccess(access);
     }
-    else{
+    else if(checkIn == 1){
         QMessageBox::warning(this, "Error", "Username is already taken!");
     }
 }

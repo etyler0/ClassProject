@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(privilege& user, QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
@@ -15,6 +15,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionFeedback_triggered()
 {
+    auth.showAccess();
     Testimonials = new testimonials(this);
     Testimonials->show();
 }
