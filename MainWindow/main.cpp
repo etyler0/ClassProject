@@ -4,6 +4,7 @@
 #include "shape.h"
 #include "shape2d.h"
 #include "rectangle.h"
+#include "square.h"
 #include "login.h"
 #include "vector.h"  // for MyVector
 #include "parser.h"
@@ -32,6 +33,8 @@ int main(int argc, char *argv[])
 
     Rectangle Rect1((QPaintDevice*)&w, 1, PenColor, 0, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin, BrushColor, Qt::VerPattern, 20, 200, 170, 100);
     pShapeVector->push_back(&Rect1);
+    Square Square1((QPaintDevice*)&w, 1, PenColor, 0, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin, BrushColor, Qt::VerPattern, 250, 150, 200);
+    pShapeVector->push_back(&Square1);
 
     // File Parser call goes here - pass a pointer to pShapeVector - allocate Shapes with new
 
