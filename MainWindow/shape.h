@@ -46,42 +46,17 @@ class Shape
 public:
     // Enum with all different shape types
     enum shapeType {Line, Polyline, Polygon, Rectangle, Square, Ellipse, Circle, Text};
-
+    Shape() {}
     // Shape Constructor - using BMI list
-    Shape(QPaintDevice *pDevice = nullptr,
-          int xId=-1,
-          shapeType s = Shape::shapeType::Line,
-          QPen xPen=Qt::NoPen,
-          QBrush xBrush=Qt::NoBrush)
-           :painter(pDevice),
-            shapeId(xId),
-            typeShape(s),
-            brush(xBrush),
-            pen(xPen) {}
+    Shape(QPaintDevice *pDevice,
+          int xId,
+          shapeType s)
+           : device{pDevice},
+             shapeId{xId},
+             typeShape{s},
+             painter{pDevice} {}
 
     // Normal functions
-    // Mutator methods
-    void setId(int xId)
-    {
-        shapeId = xId;
-    }
-
-    void setShapeType(shapeType xShape)
-    {
-        typeShape = xShape;
-    }
-
-    void setQBrush(QBrush xBrush)
-    {
-        brush = xBrush;
-    }
-
-    void setQPen(QPen xPen)
-    {
-        pen = xPen;
-    }
-
-    // Assesor Methods
     int getId()
     {
         return shapeId;
@@ -92,22 +67,16 @@ public:
         return typeShape;
     }
 
-    QBrush getQBrush()
-    {
-        return brush;
-    }
-
-    QPen getQPen()
-    {
-        return pen;
-    }
 
     // Pure Virtual functions
     virtual void draw(QPaintDevice* pDevice) = 0;
 
     virtual void move(Shape *shapeSource) = 0;
 
-    virtual void update() = 0;
+    virtual void update(void) = 0;
+
+    virtual double calcPerimeter(void) { return 0.0; };  // default to zero for text and line
+    virtual double calcArea(void)      { return 0.0; };  // default to zero for text and line
 
     // Qpoint class documentation: http://doc.qt.io/qt-5/qpoint.html
 
@@ -130,7 +99,7 @@ public:
 
 
     // Virtual Destructor
-    virtual ~Shape();
+    virtual ~Shape() {}
 
 protected:
     QPainter& get_qPainter()  // Function that returns the shape painter
@@ -138,12 +107,16 @@ protected:
         return painter;
     }
 
+    QPaintDevice *get_qPaintDevice(void)
+    {
+        return device;
+    }
+
 private:
-    QPainter painter;    // QPainter variable - responsible for the drawing of the shapes in the viewing area
+    QPaintDevice *device;    // QPainter variable - responsible for the drawing of the shapes in the viewing area
     int shapeId;         // A unique id number that will be attached to a shape
     shapeType typeShape; // The specific type of shape, from the enum shapeType
-    QBrush brush;        // The brush object for the shape
-    QPen pen;            // The pen object for the shape
+    QPainter painter;
 };
 
 #endif

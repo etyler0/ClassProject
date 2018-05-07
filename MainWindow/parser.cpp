@@ -8,17 +8,26 @@
 #include <string>
 #include <fstream>
 
+#include "vector.h"
+#include "rectangle.h"
+
 using namespace std;
 
-void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
-              vector<int> penColorVec, vector<int> penWidthVec,
-              vector<int> penStyleVec, vector<int> penCapStyleVec,
-              vector<int> penJoinStyleVec, vector<int> brushColorVec,
-              vector<int> brushStyleVec, vector<string> textStringVec,
-              vector<int> textColorVec, vector<int> textAlignmentVec,
-              vector<int> textPointSizeVec, vector<string> fontFamilyVec,
-              vector<int> fontStyleVec, vector<int> fontWeightVec);
+using namespace nserkkvector;
 
+#if 0
+//void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
+//              vector<int> penColorVec, vector<int> penWidthVec,
+//              vector<int> penStyleVec, vector<int> penCapStyleVec,
+//              vector<int> penJoinStyleVec, vector<int> brushColorVec,
+//              vector<int> brushStyleVec, vector<string> textStringVec,
+//              vector<int> textColorVec, vector<int> textAlignmentVec,
+//              vector<int> textPointSizeVec, vector<string> fontFamilyVec,
+//              vector<int> fontStyleVec, vector<int> fontWeightVec);
+
+void readFile(QPaintDevice *device);
+
+// testing only
 int main(int argc, char *argv[])
 {
 
@@ -42,10 +51,12 @@ int main(int argc, char *argv[])
 
         ifstream fin;
 
-        readFile(shapesVec, shapeIdVec, penColorVec, penWidthVec, penStyleVec,
-                 penCapStyleVec, penJoinStyleVec, brushColorVec, brushStyleVec,
-                 textStringVec, textColorVec, textAlignmentVec, textPointSizeVec,
-                 fontFamilyVec, fontStyleVec, fontWeightVec);
+//        readFile(shapesVec, shapeIdVec, penColorVec, penWidthVec, penStyleVec,
+//                penCapStyleVec, penJoinStyleVec, brushColorVec, brushStyleVec,
+//                 textStringVec, textColorVec, textAlignmentVec, textPointSizeVec,
+//                 fontFamilyVec, fontStyleVec, fontWeightVec);
+
+        readfile(device);
 
         QApplication a(argc, argv);
         MainWindow w;
@@ -56,16 +67,50 @@ int main(int argc, char *argv[])
     return a.exec();
 }
 
-void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
-              vector<int> penColorVec, vector<int> penWidthVec,
-              vector<int> penStyleVec, vector<int> penCapStyleVec,
-              vector<int> penJoinStyleVec, vector<int> brushColorVec,
-              vector<int> brushStyleVec, vector<string> textStringVec,
-              vector<int> textColorVec, vector<int> textAlignmentVec,
-              vector<int> textPointSizeVec, vector<string> fontFamilyVec,
-              vector<int> fontStyleVec, vector<int> fontWeightVec)
+//void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
+//              vector<int> penColorVec, vector<int> penWidthVec,
+//              vector<int> penStyleVec, vector<int> penCapStyleVec,
+//              vector<int> penJoinStyleVec, vector<int> brushColorVec,
+//              vector<int> brushStyleVec, vector<string> textStringVec,
+//              vector<int> textColorVec, vector<int> textAlignmentVec,
+//              vector<int> textPointSizeVec, vector<string> fontFamilyVec,
+//              vector<int> fontStyleVec, vector<int> fontWeightVec)
+//
+//{
+#endif
 
+
+// FIXME suggestions:
+//1) We need to parse the ShapeDimensions String.
+//See https://stackoverflow.com/questions/11719538/how-to-use-stringstream-to-separate-comma-separated-strings
+//2) No real need for vectors, just create the objects.
+//3) I provided an example for Rectangle, but did not capture all of the colors, etc
+//4) I will provide the rest of the object dfinitions shortly in Git
+//5) You might want to look for "ShapeId" in the file and use the id from that
+//6) I commented out your main and moded the vectors to readline - which can be removed (I think)
+//7) You will need a writeFile function that takes a pointer to MyVector<Shape *>, which you can the iterate through and write the same lines back to the file
+
+
+// QPiantDevice * will be passed in from main in Qt application
+void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
 {
+
+    vector<string> shapesVec;
+    vector<int> shapeIdVec;
+    vector<int> penColorVec;
+    vector<int> penWidthVec;
+    vector<int> penStyleVec;
+    vector<int> penCapStyleVec;
+    vector<int> penJoinStyleVec;
+    vector<int> brushColorVec;
+    vector<int> brushStyleVec;
+    vector<string> textStringVec;
+    vector<int> textColorVec;
+    vector<int> textAlignmentVec;
+    vector<int> textPointSizeVec;
+    vector<string> fontFamilyVec;
+    vector<int> fontStyleVec;
+    vector<int> fontWeightVec;
     ifstream fin;
     ofstream fout;
     string file;
@@ -104,10 +149,11 @@ void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
 //    cout << "What file would you like to load?" << endl;
 //    cin >> file;
     //Open File
-    fin.open("/home/cs1c/Desktop/shapes.txt");
+    fin.open("./shapes.txt");
 
     while(fin)
     {
+        //getline(fin, shapeID);
         fin >> shapeId;
         
         shapeIdVec.push_back(shapeId);
@@ -315,9 +361,11 @@ void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
             shapesVec.push_back(shapeName);
 
             getline(fin, penColor);
+            QColor PenColor;
             if(penColor == "blue")
             {
                 penColorVec.push_back(Qt::GlobalColor::blue); //Puts color of shape into Vector
+                PenColor = Qt::GlobalColor::blue;  // do this for the other colors
             }
             else if(penColor == "green")
             {
@@ -357,9 +405,11 @@ void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
 
             fin.ignore();
             getline(fin, penStyle);
+            Qt::PenStyle PenStyle;
             if(penStyle == "NoPen")
             {
                 penStyleVec.push_back(Qt::PenStyle::NoPen);
+                PenStyle = Qt::PenStyle::NoPen;
             }
             else if(penStyle == "SolidLine")
             {
@@ -379,9 +429,11 @@ void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
             }
 
             getline(fin, penCapStyle);
+            Qt::PenCapStyle PenCapStyle;
             if(penCapStyle == "FlatCap")
             {
                 penCapStyleVec.push_back(Qt::PenCapStyle::FlatCap);
+                PenCapStyle = Qt::PenCapStyle::FlatCap;
             }
             else if(penCapStyle == "SquareCap")
             {
@@ -394,9 +446,11 @@ void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
 
             
             getline(fin, penJoinStyle);
+            Qt::PenJoinStyle PenJoinStyle;
             if(penJoinStyle == "MiterJoin")
             {
                 penJoinStyleVec.push_back(Qt::PenJoinStyle::MiterJoin);
+                PenJoinStyle = Qt::PenJoinStyle::MiterJoin;
             }
             else if(penJoinStyle == "BevelJoin")
             {
@@ -410,9 +464,11 @@ void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
             
             //BrushColor
             getline(fin, brushColor);
+            QColor BrushColor;
             if(brushColor == "blue")
             {
                 brushColorVec.push_back(Qt::GlobalColor::blue); //Puts color of shape into Vector
+                BrushColor = Qt::GlobalColor::blue;
             }
             else if(brushColor == "green")
             {
@@ -449,9 +505,11 @@ void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
 
             
             getline(fin, brushStyle);
+            Qt::BrushStyle BrushStyle;
             if(brushStyle == "SolidPattern")
             {
                 brushStyleVec.push_back(Qt::BrushStyle::SolidPattern);
+                BrushStyle = Qt::BrushStyle::SolidPattern;
             }
             else if(brushStyle == "HorPattern")
             {
@@ -467,6 +525,13 @@ void readFile(vector<string> shapesVec, vector<int> shapeIdVec,
             }
 
 
+            // Actually construct the object
+            if (shapeName == "Rectangle")
+            {
+                int tlx, tly, w, h;  // Note - these need to be parsed
+                Rectangle rect1(device, shapeId, PenColor, penWidth, PenStyle,
+                                PenCapStyle, PenJoinStyle, BrushColor, BrushStyle, tlx, tly, w, h );
+            }
         }
         else if(shapeName == "Text")
         {
