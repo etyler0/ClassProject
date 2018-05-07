@@ -28,7 +28,7 @@ int login::confirmUser(QString username, QString password){
 
     //  HomePath allows access to the current folder on any computer
     QString homePath = QFileInfo(".").absolutePath();
-    QString textPath = "/MainWindow/TextFiles/users.txt";
+    QString textPath = "/MainWindow/users.txt";
 
     QFile file(homePath + textPath);
     if(!file.open(QFile::ReadOnly | QFile::Text)){
@@ -39,6 +39,7 @@ int login::confirmUser(QString username, QString password){
     QString user, pass;
     int level;
 
+    //  Traverse through the file and check for matches
     while(!in.atEnd()){
 
         //  Load input from the file
@@ -66,7 +67,8 @@ int login::confirmUser(QString username, QString password){
 int login::addUser(QString username, QString password, int accessLevel){
 
     QString homePath = QFileInfo(".").absolutePath();
-    QString textPath = "/MainWindow/TextFiles/users.txt";
+    QString textPath = "/MainWindow/users.txt";
+
     QFile file(homePath + textPath);
     if(!file.open(QFile::ReadOnly | QFile::Text)){
         QMessageBox::warning(this, "!!!", "Missing User Data");
@@ -77,6 +79,7 @@ int login::addUser(QString username, QString password, int accessLevel){
     QString user, pass;
     int level;
 
+    //  Checks for a duplicate username before adding
     while(!in.atEnd()){
 
         //  Load input from the file
@@ -132,6 +135,8 @@ void login::on_pushButton_login_clicked()
     }
 }
 
+//  Interface Function "pushButton_addUser_clicked"
+//      - Used to confirm if username and password added
 void login::on_pushButton_addUser_clicked()
 {
     QString username = ui->lineEdit_addUser->text();
@@ -139,6 +144,7 @@ void login::on_pushButton_addUser_clicked()
     int access = ui->checkBox_admin->isChecked() + 1;
     int checkIn = addUser(username, password, access);
 
+    ui->lineEdit_addPass->setText("");
     if(password.length() < 8){
         QMessageBox::warning(this, "Error", "Password is too short!");
     }
