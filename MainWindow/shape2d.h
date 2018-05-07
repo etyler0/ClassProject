@@ -1,0 +1,4 @@
+#ifndef NONTEXTSHAPE_H
+#define NONTEXTSHAPE_H
+
+#endif // NONTEXTSHAPE_H
