@@ -18,6 +18,13 @@ class renderArea: public QWidget
 public:
     // Default Constructor
     renderArea(QWidget* parentQ = 0);
+
+    void paintEvent(QPaintEvent *pEvent); // Used to draw the shapes
+
+private:
+
+
+    renderArea render_area;  // Render area object
 };
 
 
