@@ -36,12 +36,6 @@ int main(int argc, char *argv[])
 #else
 
     // temporary code to construct simple shapes for testing only
-    //QColor PenColor;
-    //PenColor.fromRgb(0,0,255);
-
-    //QColor BrushColor;
-    //BrushColor.fromRgb(255,0,0);
-
     Line *pLine1 = new Line((QPaintDevice*)&w, 1, Qt::GlobalColor::blue, 2, Qt::PenStyle::DashDotLine, Qt::PenCapStyle::FlatCap, Qt::PenJoinStyle::MiterJoin, 20, 90, 100, 20);
     pShapeVector->push_back(pLine1);
     pLine1->draw(&w);
@@ -95,5 +89,15 @@ int main(int argc, char *argv[])
     w.show();
     q.exec();
 
-    return a.exec();
+    int retcode = a.exec();
+
+    // clean up MyVector elemnets
+    MyVector<Shape *>::iterator ptr = pShapeVector->begin();
+    while (ptr != pShapeVector->end())
+    {
+        delete *ptr;
+        ptr++;
+    }
+
+    return retcode;
 }
