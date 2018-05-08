@@ -17,46 +17,81 @@ using namespace std;
 #include <QPoint>  // This gives access to the QPoint class, which defines points on a plane
 
 
-class Text : public Rectangle
+class Text : public Shape
 {
+private:
+    Text() {}  // Default constructor never used - all elements must be explictly set
 public:
+    // Note: the data members are public, because we need non class memebers to 
+    //       access and modify them without restrictions and so creating 
+    //       accessors and mutators adds no value.
+    QString            String;
+    QColor             Color;
+    Qt::AlignmentFlag  Alignment;
+    int                FontSize;
+    QString            FontFamily;
+    QFont::Style       FontStyle;
+    QFont::Weight      FontWeight;
+    QPoint             upperleft;
+    QPoint             lowerright;
+
     Text(QPaintDevice* device,
-         int xId=-1,
-         QPen xPen=Qt::NoPen,
-         QBrush xBrush=Qt::NoBrush,
-         QPoint xUpperLeft=QPoint(0,0),
-         int xWidth=0,
-         int xHeight=0,
-         QString qText=""):
-         Rectangle(device,xId,Shape::shape::Text,xPen,xBrush,xUpperLeft,xWidth,xHeight),objText(qText){}
+         int                xId,
+         const char        *xString,
+         QColor             xColor,
+         Qt::AlignmentFlag  xAlignment,
+         int                xFontSize,
+         const char        *xFontFamily,
+         QFont::Style       xFontStyle,
+         QFont::Weight      xFontWeight,
+         int                xTopLeftX,
+         int                xTopLeftY,
+         int                xWidth,
+         int                xHeight)
+        : Shape(device, xId, shapeType::Text), String{xString}, Color{xColor}, Alignment{xAlignment},
+          FontSize{xFontSize}, FontFamily{xFontFamily}, FontStyle{xFontStyle},
+          FontWeight{xFontWeight}
+    {
+        // object specific transform from points supplied to bounding points
+        QPoint ul(xTopLeftX,xTopLeftY);
+        upperleft = ul;
+        QPoint lr(xTopLeftX+xWidth, xTopLeftY+xHeight);
+        lowerright = lr;
+    }
 
     void draw(QPaintDevice* device)
     {
-        QPainter& tPaint = getPainter();
+        QPainter& tPaint = get_qPainter();
+        QFont tFont(FontFamily, FontSize);
+        QPen tPen(Color);
+        QRect tRect(upperleft, lowerright);
+        tFont.setStyle(FontStyle);
+        tFont.setWeight(FontWeight);
         tPaint.begin(device);
-        tPaint.setPen(this->getPen());
-        tPaint.setBrush(this->getBrush());
-        tPaint.drawText((getUpperLeft()).x(),getUpperLeft().y(),objText);
+        tPaint.setFont(tFont);
+        tPaint.setPen(tPen);
+        tPaint.drawText(tRect, Alignment, String);
         tPaint.setPen(QPen());
-        tPaint.drawText(getUpperLeft().x()-7,getUpperLeft().y()-7,QString::number(this->getId()));
+        tPaint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
         tPaint.end();
     }
 
-    void move(Shape* source)
+    void move(QPoint &newUpperLeft)
     {
-        this->Rectangle::move(source);
+        int deltaX = (newUpperLeft.x() - upperleft.x());
+        int deltaY = (newUpperLeft.y() - upperleft.y());
+
+        upperleft = newUpperLeft;
+        lowerright.setX(lowerright.x() + deltaX);
+        lowerright.setY(lowerright.y() + deltaY);
     }
 
-    QString getText()
+    void update(void)
     {
-        return objText;
+        draw((get_qPaintDevice()));
+        return;
     }
 
-    void setFont(QFont &source)
-    {
-        QPainter &paint = getPainter();
-        paint.setFont(source);
-    }
 
     double calcArea()
     {
@@ -67,14 +102,6 @@ public:
     {
         return 0;
     }
-
-    void setText(QString source)
-    {
-        objText = source;
-    }
-
-private:
-    QString objText;
 };
 
 #endif // TEXT_H

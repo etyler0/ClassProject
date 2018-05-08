@@ -10,6 +10,7 @@
 #include "polygon.h"
 #include "polyline.h"
 #include "line.h"
+#include "text.h"
 #include "login.h"
 #include "vector.h"  // for MyVector
 #include "parser.h"
@@ -84,6 +85,9 @@ int main(int argc, char *argv[])
 
     Circle *pCircle1 = new Circle((QPaintDevice*)&w, 7, Qt::GlobalColor::black, 12, Qt::PenStyle::SolidLine, Qt::PenCapStyle::FlatCap, Qt::PenJoinStyle::MiterJoin, Qt::GlobalColor::magenta, Qt::BrushStyle::SolidPattern, 750, 150, 200);
     pShapeVector->push_back(pCircle1);
+
+    Text *pText1 = new Text((QPaintDevice*)&w, 8, "Class Project 2- 2D Graphics Modeler", Qt::GlobalColor::blue, Qt::AlignmentFlag::AlignCenter, 10, "Comic Sans MS", QFont::Style::StyleNormal, QFont::Weight::Normal, 250, 425, 500, 50);
+    pShapeVector->push_back(pText1);
 #endif
 
     pShapeVector->printAsDebug(false,true);
