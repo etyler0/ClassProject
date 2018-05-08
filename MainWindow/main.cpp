@@ -24,9 +24,6 @@ privilege auth;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    login q;
-
     MyVector<Shape*> *pShapeVector = new MyVector<Shape*>;
 
 #undef READ_SHAPES_FROM_FILE
@@ -34,6 +31,9 @@ int main(int argc, char *argv[])
     // File Parser call goes here - pass a pointer to pShapeVector - allocate Shapes with new
     readFile((QPaintDevice*)&w, pShapeVector);
 #else
+
+    MainWindow w;
+    login q;
 
     // temporary code to construct simple shapes for testing only
     Line *pLine1 = new Line((QPaintDevice*)&w, 1, Qt::GlobalColor::blue, 2, Qt::PenStyle::DashDotLine, Qt::PenCapStyle::FlatCap, Qt::PenJoinStyle::MiterJoin, 20, 90, 100, 20);
@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
 #endif
 
     pShapeVector->printAsDebug(false,true);
-
+    w.setVector(pShapeVector);
     w.show();
     q.exec();
 

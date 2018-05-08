@@ -53,7 +53,8 @@ HEADERS += \
     login.h \
     privilege.h \
     parser.h \
-    reports.h
+    reports.h \
+    vector.h
 
 FORMS += \
         mainwindow.ui \

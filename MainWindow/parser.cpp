@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <QDebug>
 
 #include "vector.h"
 #include "rectangle.h"
