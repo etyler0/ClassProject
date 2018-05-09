@@ -18,6 +18,35 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::comboBoxBaseShape(int index, base &typeShape){
+    switch(index){
+    case 0:
+        typeShape = baseSelect;
+        break;
+
+    //  Line selection
+    case 1:
+    case 2:
+        typeShape = baseLine;
+        break;
+
+    //  2D shape selection
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+        typeShape = base2D;
+        break;
+
+    //  Text selection
+    case 7:
+        typeShape = baseText;
+        break;
+
+    default:
+        break;
+    }
+}
 void MainWindow::setVector(MyVector<Shape*> *temp){
     pShapeVector = temp;
     pShapeVector->printAsDebug(1, 1);
@@ -47,33 +76,39 @@ void MainWindow::on_actionSort_by_ID_triggered()
     Reports->show();
 }
 
-void MainWindow::on_combobox_add_shapetype_activated(int index)
+void MainWindow::on_combobox_add_shapeType_currentIndexChanged(int index)
 {
-    switch(index){
-    case 0:
-        addCurShape = baseSelect;
-        break;
+    comboBoxBaseShape(index, addCurShape);
 
-    //  Line selection
-    case 1:
-    case 2:
-        addCurShape = baseLine;
-        break;
+    //  Show Pen
+    if(addCurShape == baseLine || addCurShape == base2D){
+        ui->stackedWidget_add_interface->setCurrentIndex(0);
+        qDebug() << "SHOW" << endl;
+    }
 
-    //  2D shape selection
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-        addCurShape = base2D;
-        break;
+    //  Show Text
+    else{
+        ui->stackedWidget_add_interface->setCurrentIndex(1);
+        qDebug() << "HIDE" << endl;
+    }
 
-    //  Text selection
-    case 7:
-        addCurShape = baseText;
-        break;
+    //  Hide Counter
+    if(addCurShape == baseSelect){
+        ui->groupBox_add_shapeCounter->hide();
+    }
 
-    default:
-        break;
+    //  Show Counter
+    else{
+        ui->groupBox_add_shapeCounter->show();
+    }
+
+    //  Brush
+    if(addCurShape == base2D){
+        ui->widget_add_brush->show();
+    }
+
+    //  No Brush
+    else{
+        ui->widget_add_brush->hide();
     }
 }
