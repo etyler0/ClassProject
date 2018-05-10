@@ -11,7 +11,7 @@ private:
 public:
     privilege(int access = 0):access(access){}
     bool isAdmin()const{return access == 2;}
-    bool isGuest()const{return access > 0;}
+    bool isUser()const{return access > 0;}
     int getAccess()const{return access; }
     void setAccess(int acc){access = acc;}
 

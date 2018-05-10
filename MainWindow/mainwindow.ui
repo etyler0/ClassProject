@@ -54,175 +54,705 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="modifyTab">
       <attribute name="title">
        <string>Modify</string>
       </attribute>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QStackedWidget" name="stackedWidget_mod_interface">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>70</y>
-         <width>271</width>
-         <height>401</height>
+         <x>10</x>
+         <y>80</y>
+         <width>401</width>
+         <height>281</height>
         </rect>
        </property>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="page_3">
+        <widget class="QWidget" name="widget_add_pen_2" native="true">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>10</y>
+           <width>271</width>
+           <height>171</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="layout_add_pen_2">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
+           <layout class="QVBoxLayout" name="verticalLayout_12">
             <item>
-             <widget class="QLabel" name="Shape">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 0, 0);
-font: 12pt &quot;Noto Sans&quot;;</string>
+             <widget class="QLabel" name="label_mod_penColor">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="text">
-               <string>Shape by ID: </string>
+               <string>Pen Color</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="Dimensions">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 0, 0);
-font: 12pt &quot;Noto Sans&quot;;</string>
+             <widget class="QLabel" name="label_mod_penWidth">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="text">
-               <string>Dimensions:</string>
+               <string>Pen Width</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="Pen_Color">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 0, 0);
-font: 12pt &quot;Noto Sans&quot;;</string>
+             <widget class="QLabel" name="label_mod_penStyle">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="text">
-               <string>Pen Color:</string>
+               <string>Pen Style</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_5">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 0, 0);
-font: 12pt &quot;Noto Sans&quot;;</string>
+             <widget class="QLabel" name="label_mod_penCapStyle">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="text">
-               <string>Pen Width:</string>
+               <string>Pen Cap Style</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_6">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 0, 0);
-font: 12pt &quot;Noto Sans&quot;;</string>
+             <widget class="QLabel" name="label_mod_penJoinStyle">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
               </property>
               <property name="text">
-               <string>Pen Style:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_7">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 0, 0);
-font: 10pt &quot;Noto Sans&quot;;</string>
-              </property>
-              <property name="text">
-               <string>Pen Cap Style:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_8">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 0, 0);
-font: 12pt &quot;Noto Sans&quot;;</string>
-              </property>
-              <property name="text">
-               <string>Brush Style:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_9">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 0, 0);
-font: 12pt &quot;Noto Sans&quot;;</string>
-              </property>
-              <property name="text">
-               <string>Brush Color:</string>
+               <string>Pen Join Style</string>
               </property>
              </widget>
             </item>
            </layout>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout">
+           <layout class="QVBoxLayout" name="verticalLayout_13">
             <item>
-             <widget class="QComboBox" name="Shape_ComboBox">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(85, 87, 83);</string>
+             <widget class="QComboBox" name="comboBox_mod_penColor">
+              <item>
+               <property name="text">
+                <string>White</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Black</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Red</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Green</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Blue</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Cyan</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Magenta</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Yellow</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Gray</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox_mod_penWidth"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_mod_penStyle">
+              <item>
+               <property name="text">
+                <string>No Pen</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Solid Line</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Dash Line</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Dot Line</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Dash Dot Line</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Dash Dot Dot Line</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_mod_penCapStyle">
+              <item>
+               <property name="text">
+                <string>Flat Cap</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Square Cap</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Round Cap</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_mod_penJoinStyle">
+              <item>
+               <property name="text">
+                <string>Miter Join</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Bevel Join</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Round Join</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="widget_mod_brush" native="true">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>190</y>
+           <width>271</width>
+           <height>71</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_14">
+            <item>
+             <widget class="QLabel" name="label_mod_brushColor">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Brush Color</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="Dimenstions_ComboBox">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(85, 87, 83);</string>
+             <widget class="QLabel" name="label_mod_brushStyle">
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
               </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="PenColor_ComboBox">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(85, 87, 83);</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSpinBox" name="PenWidth_SpinBox">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(85, 87, 83);</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="PenColor_ComboBox_2">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(85, 87, 83);</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="PenColor_ComboBox_3">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(85, 87, 83);</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="PenColor_ComboBox_4">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(85, 87, 83);</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="PenColor_ComboBox_5">
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(85, 87, 83);</string>
+              <property name="text">
+               <string>Brush Style</string>
               </property>
              </widget>
             </item>
            </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_15">
+            <item>
+             <widget class="QComboBox" name="comboBox_mod_brushColor">
+              <item>
+               <property name="text">
+                <string>White</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Black</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Red</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Green</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Blue</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Cyan</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Magenta</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Yellow</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Gray</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_mod_brushStyle">
+              <item>
+               <property name="text">
+                <string>Solid Pattern</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Horizontal Pattern</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Vertical Pattern</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>No Brush</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="page_4">
+        <widget class="QWidget" name="layoutWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>381</width>
+           <height>261</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_16">
+            <item>
+             <widget class="QLabel" name="label_add_textString_2">
+              <property name="text">
+               <string>Text String</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_add_textColor_2">
+              <property name="text">
+               <string>Text Color</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_textAlignment_2">
+              <property name="text">
+               <string>Text Alignment</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_add_textPointSize_2">
+              <property name="text">
+               <string>Text Point Size</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_add_textFontFamily_2">
+              <property name="text">
+               <string>Text Font Family</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_add_textFontStyle_2">
+              <property name="text">
+               <string>Text Font Style</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_add_textFontWeight_2">
+              <property name="text">
+               <string>Text Font Weight</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_17">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_add_textString_2"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_add_textColor_2">
+              <item>
+               <property name="text">
+                <string>White</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Black</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Red</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Green</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Blue</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Cyan</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Magenta</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Yellow</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Gray</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_add_textAlignment_2">
+              <item>
+               <property name="text">
+                <string>Align Left</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Align Right</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Align Top</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Align Bottom</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Align Center</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox_add_textPointSize_2"/>
+            </item>
+            <item>
+             <widget class="QFontComboBox" name="fontComboBox_add_textFontFamily_2"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_add_textFontStyle_2">
+              <item>
+               <property name="text">
+                <string>Style Normal</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Style Italic</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Style Oblique</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_add_textFontWeight_2">
+              <item>
+               <property name="text">
+                <string>Thin</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Light</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Normal</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Bold</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QLabel" name="label_mod_anchor">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>370</y>
+         <width>59</width>
+         <height>14</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Anchor</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="widget_mod_location" native="true">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>390</y>
+         <width>201</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_13">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_18">
+          <item>
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>X coordinate</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>Y coordinate</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_19">
+          <item>
+           <widget class="QSpinBox" name="spinBox_X_mod"/>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="spinBox_Y_mod"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>10</y>
+         <width>311</width>
+         <height>54</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_20">
+          <item>
+           <widget class="QLabel" name="label_mod_ID">
+            <property name="text">
+             <string>Select Shape By ID</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_mod_shapeType">
+            <property name="text">
+             <string>Shape Type</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_21">
+          <item>
+           <widget class="QComboBox" name="comboBox_mod_ID">
+            <item>
+             <property name="text">
+              <string>Empty</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="combobox_mod_shapeType">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <item>
+             <property name="text">
+              <string>Select Shape</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Line</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>PolyLine</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Polygon</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Rectangle</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Square</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Ellipse</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Circle</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Text</string>
+             </property>
+            </item>
+           </widget>
           </item>
          </layout>
         </item>
@@ -233,36 +763,6 @@ font: 12pt &quot;Noto Sans&quot;;</string>
       <attribute name="title">
        <string>Delete</string>
       </attribute>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>10</y>
-         <width>201</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLabel" name="Shape_2">
-          <property name="styleSheet">
-           <string notr="true">color: rgb(0, 0, 0);
-font: 12pt &quot;Noto Sans&quot;;</string>
-          </property>
-          <property name="text">
-           <string>Shape: </string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="Shape_ComboBox_2">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(85, 87, 83);</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
       <widget class="QPushButton" name="pushButton">
        <property name="geometry">
         <rect>
@@ -320,6 +820,11 @@ font: 12pt &quot;Noto Sans&quot;;</string>
           </item>
           <item>
            <property name="text">
+            <string>Polygon</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>Rectangle</string>
            </property>
           </item>
@@ -366,7 +871,7 @@ font: 12pt &quot;Noto Sans&quot;;</string>
          <x>0</x>
          <y>50</y>
          <width>401</width>
-         <height>271</height>
+         <height>261</height>
         </rect>
        </property>
        <property name="currentIndex">
@@ -533,7 +1038,7 @@ font: 12pt &quot;Noto Sans&quot;;</string>
         </widget>
        </widget>
        <widget class="QWidget" name="page_2">
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -624,6 +1129,35 @@ font: 12pt &quot;Noto Sans&quot;;</string>
          </layout>
         </widget>
        </widget>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>410</y>
+         <width>82</width>
+         <height>73</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QLabel" name="label_add_shapeID">
+          <property name="text">
+           <string>Shape ID</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLCDNumber" name="lcdNumber_showID"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_add_confirm">
+          <property name="text">
+           <string>Add Shape</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
      <widget class="QWidget" name="renderTab">
@@ -834,8 +1368,8 @@ font: 12pt &quot;Noto Sans&quot;;</string>
    <widget class="QFrame" name="renderFrame">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>20</y>
+      <x>530</x>
+      <y>30</y>
       <width>1000</width>
       <height>500</height>
      </rect>
@@ -850,9 +1384,9 @@ font: 12pt &quot;Noto Sans&quot;;</string>
      <property name="geometry">
       <rect>
        <x>160</x>
-       <y>90</y>
-       <width>311</width>
-       <height>151</height>
+       <y>410</y>
+       <width>201</width>
+       <height>61</height>
       </rect>
      </property>
      <property name="font">
@@ -861,43 +1395,172 @@ font: 12pt &quot;Noto Sans&quot;;</string>
       </font>
      </property>
      <property name="text">
-      <string>500 X 1000 AREA</string>
+      <string>1000 x 500</string>
      </property>
     </widget>
-    <widget class="QGroupBox" name="groupBox_add_shapeCounter">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>300</y>
-       <width>161</width>
-       <height>51</height>
+       <x>120</x>
+       <y>10</y>
+       <width>269</width>
+       <height>399</height>
       </rect>
      </property>
-     <property name="title">
-      <string>Shape ID</string>
-     </property>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>0</y>
-        <width>82</width>
-        <height>53</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <widget class="QLCDNumber" name="lcdNumber_showID"/>
-       </item>
-       <item>
-        <widget class="QPushButton" name="button_add_confirm">
-         <property name="text">
-          <string>Add Shape</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="Shape">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+font: 12pt &quot;Noto Sans&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Shape by ID: </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="Dimensions">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+font: 12pt &quot;Noto Sans&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Dimensions:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="Pen_Color">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+font: 12pt &quot;Noto Sans&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Pen Color:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+font: 12pt &quot;Noto Sans&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Pen Width:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+font: 12pt &quot;Noto Sans&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Pen Style:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_7">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+font: 10pt &quot;Noto Sans&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Pen Cap Style:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+font: 12pt &quot;Noto Sans&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Brush Style:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_9">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(0, 0, 0);
+font: 12pt &quot;Noto Sans&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Brush Color:</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QComboBox" name="Shape_ComboBox">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(85, 87, 83);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="Dimenstions_ComboBox">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(85, 87, 83);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="PenColor_ComboBox">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(85, 87, 83);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="PenWidth_SpinBox">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(85, 87, 83);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="PenColor_ComboBox_2">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(85, 87, 83);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="PenColor_ComboBox_3">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(85, 87, 83);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="PenColor_ComboBox_4">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(85, 87, 83);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="PenColor_ComboBox_5">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(85, 87, 83);</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>

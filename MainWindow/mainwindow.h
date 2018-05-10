@@ -19,11 +19,35 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    enum base{baseSelect, baseLine, base2D, baseText}addCurShape;
+    enum base{baseSelect, baseLine, base2D, baseText}
+             modCurShape, addCurShape;
+
     explicit MainWindow(QWidget *parent = 0);
-    void comboBoxBaseShape(int index, base &typeShape);
+
+    //========== IMPORTANT FUNCTIONS ==========/
+    \
+    //  Passes vector from main into here
     void setVector(MyVector<Shape*> *temp);
-    //void updateAddTab();
+
+    //  Reloads the vector into comboBoxes in the mainwindow
+    void reloadVector();
+
+    //  Overloaded showEvent to load the window with menu prereqs
+    void showEvent(QShowEvent *event);
+
+    //============ PARSERS =======================//
+
+    //  Adjusts currently selected shape to adjust menus for later
+    void comboBoxBaseShape(int index, base &curShape);
+
+    int parsePenColor(int constant);
+
+    //=============== UPDATERS ==================//
+    //  Recreate menus in ADD TAB
+    void updateAddTab();
+
+    //  Recreate menus in MOD TAB
+    void updateModTab();
     ~MainWindow();
 
 private slots:
@@ -35,7 +59,10 @@ private slots:
 
     void on_actionSort_by_ID_triggered();
 
+    //  Change current menus in ADD TAB
     void on_combobox_add_shapeType_currentIndexChanged(int index);
+
+    void on_comboBox_mod_ID_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;
