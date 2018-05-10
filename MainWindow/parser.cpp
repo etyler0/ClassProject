@@ -1,13 +1,21 @@
 #include "mainwindow.h"
+#include "polyline.h"
+#include "line.h"
+#include "square.h"
+#include "ellipse.h"
+#include "text.h"
+#include "polygon.h"
+#include "circle.h"
 #include <QApplication>
 #include <QPainter>
 #include <Qt>
 #include <QFont>
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include <string>
 #include <fstream>
-#include <QDebug>
+#include <QPoint>
 
 #include "vector.h"
 #include "rectangle.h"
@@ -84,12 +92,13 @@ int main(int argc, char *argv[])
 // FIXME suggestions:
 //1) We need to parse the ShapeDimensions String.
 //See https://stackoverflow.com/questions/11719538/how-to-use-stringstream-to-separate-comma-separated-strings
-//2) No real need for vectors, just create the objects.
+//2) No real need for vectors, just create the objects. -Done FIX THE PARAMETERS FOR EACH SHAPE, but rectangle. -Note for self
 //3) I provided an example for Rectangle, but did not capture all of the colors, etc
 //4) I will provide the rest of the object dfinitions shortly in Git
 //5) You might want to look for "ShapeId" in the file and use the id from that
 //6) I commented out your main and moded the vectors to readline - which can be removed (I think)
-//7) You will need a writeFile function that takes a pointer to MyVector<Shape *>, which you can the iterate through and write the same lines back to the file
+//7) You will need a writeFile function that takes a pointer to MyVector<Shape *>,
+//     which you can the iterate through and write the same lines back to the file
 
 
 // QPiantDevice * will be passed in from main in Qt application
@@ -116,6 +125,17 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
     ofstream fout;
     string file;
     string fileSave;
+
+    //Dimensions
+    vector<string> dataDimensions;
+    int lineToplx,lineToply,lineBotrx,lineBotry;
+    string dimensions;
+    string token;
+    int tlx, tly, w, h;
+    int stlx,stly,xs;
+    int ellipseTlx,ellipseTly,ellipseW, ellipseH;
+    int circleTlx,circleTly,circleD;
+    int textTlx,textTly,textW,textH;
 
     //For Shapes: All
     int shapeId;
@@ -156,7 +176,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
     {
         //getline(fin, shapeID);
         fin >> shapeId;
-        
+
         shapeIdVec.push_back(shapeId);
         fin.ignore();
         getline(fin,shapeName);
@@ -165,42 +185,79 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
         {
             shapesVec.push_back(shapeName); //Puts name of shape into Vector
 
+//            vector<string> dataDimensions;
+//            int lineToplx,lineToply,lineBotrx,lineBotry;
+
+
+//            string dimensions;
+//            string token;
+
+            fin.open("shapes.txt");
+
+            getline(fin, dimensions);
+
+            stringstream ss(dimensions);
+            while(getline(ss, token, ','))
+            {
+                dataDimensions.push_back(token);
+            }
+
+            for(unsigned int i = 0; i < dataDimensions.size(); i++)
+            {
+                cout << dataDimensions[i] << " ";
+            }
+
+            lineToplx = stoi(dataDimensions[0]);
+            lineToply = stoi(dataDimensions[1]);
+            lineBotrx = stoi(dataDimensions[2]);
+            lineBotry = stoi(dataDimensions[3]);
+
+            QColor PenColor;
             getline(fin, penColor);         //Pulls pen color from file
             if(penColor == "blue")
             {
                 penColorVec.push_back(Qt::GlobalColor::blue); //Puts color of shape into Vector
+                PenColor = Qt::GlobalColor::blue;
             }
             else if(penColor == "green")
             {
                    penColorVec.push_back(Qt::GlobalColor::green); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::green;
             }
             else if(penColor == "cyan")
             {
                    penColorVec.push_back(Qt::GlobalColor::cyan); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::cyan;
             }
             else if(penColor == "red")
             {
                    penColorVec.push_back(Qt::GlobalColor::red); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::red;
             }
             else if(penColor == "black")
             {
                    penColorVec.push_back(Qt::GlobalColor::black); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::black;
             }
             else if(penColor == "white")
             {
                    penColorVec.push_back(Qt::GlobalColor::white); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::white;
             }
             else if(penColor == "magenta")
             {
                    penColorVec.push_back(Qt::GlobalColor::magenta); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::magenta;
             }
             else if(penColor == "yellow")
             {
                    penColorVec.push_back(Qt::GlobalColor::yellow); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::yellow;
             }
             else if(penColor == "gray")
             {
                    penColorVec.push_back(Qt::GlobalColor::gray); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::gray;
             }
 
             fin >> penWidth;
@@ -209,53 +266,68 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
 
 
             getline(fin, penStyle);
+            Qt::PenStyle PenStyle;
             if(penStyle == "NoPen")
             {
                 penStyleVec.push_back(Qt::PenStyle::NoPen);
+                PenStyle = Qt::PenStyle::NoPen;
             }
             else if(penStyle == "SolidLine")
             {
                 penStyleVec.push_back(Qt::PenStyle::SolidLine);
+                PenStyle = Qt::PenStyle::NoPen;
             }
             else if(penStyle == "DashLine")
             {
                 penStyleVec.push_back(Qt::PenStyle::DashLine);
+                PenStyle = Qt::PenStyle::DashLine;
             }
             else if(penStyle == "DotLine")
             {
                 penStyleVec.push_back(Qt::PenStyle::DotLine);
+                PenStyle = Qt::PenStyle::DotLine;
             }
             else if(penStyle == "DashDotLine")
             {
                 penStyleVec.push_back(Qt::PenStyle::DashDotLine);
+                PenStyle =  Qt::PenStyle::DashDotLine;
             }
 
             getline(fin, penCapStyle);
+            Qt::PenCapStyle PenCapStyle;
             if(penCapStyle == "FlatCap")
             {
                 penCapStyleVec.push_back(Qt::PenCapStyle::FlatCap);
+                PenCapStyle = Qt::PenCapStyle::FlatCap;
             }
             else if(penCapStyle == "SquareCap")
             {
                 penCapStyleVec.push_back(Qt::PenCapStyle::SquareCap);
+                PenCapStyle = Qt::PenCapStyle::SquareCap;
             }
             else if(penCapStyle == "RoundCap")
             {
                 penCapStyleVec.push_back(Qt::PenCapStyle::RoundCap);
+                PenCapStyle = Qt::PenCapStyle::RoundCap;
             }
 
+
             getline(fin, penJoinStyle);
+            Qt::PenJoinStyle PenJoinStyle;
             if(penJoinStyle == "MiterJoin")
             {
                 penJoinStyleVec.push_back(Qt::PenJoinStyle::MiterJoin);
+                PenJoinStyle = Qt::PenJoinStyle::MiterJoin;
             }
             else if(penJoinStyle == "BevelJoin")
             {
                 penJoinStyleVec.push_back(Qt::PenJoinStyle::BevelJoin);
+                PenJoinStyle = Qt::PenJoinStyle::BevelJoin;
             }
             else if(penJoinStyle == "RoundJoin")
             {
                 penJoinStyleVec.push_back(Qt::PenJoinStyle::RoundJoin);
+                PenJoinStyle = Qt::PenJoinStyle::RoundJoin;
             }
             fin.ignore();
         }
@@ -264,141 +336,51 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             shapesVec.push_back(shapeName);
 
             getline(fin, penColor);
-            if(penColor == "blue")
-            {
-                penColorVec.push_back(Qt::GlobalColor::blue); //Puts color of shape into Vector
-            }
-            else if(penColor == "green")
-            {
-                   penColorVec.push_back(Qt::GlobalColor::green); //Puts color of shape into Vector
-            }
-            else if(penColor == "cyan")
-            {
-                   penColorVec.push_back(Qt::GlobalColor::cyan); //Puts color of shape into Vector
-            }
-            else if(penColor == "red")
-            {
-                   penColorVec.push_back(Qt::GlobalColor::red); //Puts color of shape into Vector
-            }
-            else if(penColor == "black")
-            {
-                   penColorVec.push_back(Qt::GlobalColor::black); //Puts color of shape into Vector
-            }
-            else if(penColor == "white")
-            {
-                   penColorVec.push_back(Qt::GlobalColor::white); //Puts color of shape into Vector
-            }
-            else if(penColor == "magenta")
-            {
-                   penColorVec.push_back(Qt::GlobalColor::magenta); //Puts color of shape into Vector
-            }
-            else if(penColor == "yellow")
-            {
-                   penColorVec.push_back(Qt::GlobalColor::yellow); //Puts color of shape into Vector
-            }
-            else if(penColor == "gray")
-            {
-                   penColorVec.push_back(Qt::GlobalColor::gray); //Puts color of shape into Vector
-            }
-
-            fin >> penWidth;
-            penWidthVec.push_back(penWidth);
-
-            fin.ignore();
-            getline(fin, penStyle);
-            if(penStyle == "NoPen")
-            {
-                penStyleVec.push_back(Qt::PenStyle::NoPen);
-            }
-            else if(penStyle == "SolidLine")
-            {
-                penStyleVec.push_back(Qt::PenStyle::SolidLine);
-            }
-            else if(penStyle == "DashLine")
-            {
-                penStyleVec.push_back(Qt::PenStyle::DashLine);
-            }
-            else if(penStyle == "DotLine")
-            {
-                penStyleVec.push_back(Qt::PenStyle::DotLine);
-            }
-            else if(penStyle == "DashDotLine")
-            {
-                penStyleVec.push_back(Qt::PenStyle::DashDotLine);
-            }
-
-            getline(fin, penCapStyle);
-            if(penCapStyle == "FlatCap")
-            {
-                penCapStyleVec.push_back(Qt::PenCapStyle::FlatCap);
-            }
-            else if(penCapStyle == "SquareCap")
-            {
-                penCapStyleVec.push_back(Qt::PenCapStyle::SquareCap);
-            }
-            else if(penCapStyle == "RoundCap")
-            {
-                penCapStyleVec.push_back(Qt::PenCapStyle::RoundCap);
-            }
-
-            getline(fin, penJoinStyle);
-            if(penJoinStyle == "MiterJoin")
-            {
-                penJoinStyleVec.push_back(Qt::PenJoinStyle::MiterJoin);
-            }
-            else if(penJoinStyle == "BevelJoin")
-            {
-                penJoinStyleVec.push_back(Qt::PenJoinStyle::BevelJoin);
-            }
-            else if(penJoinStyle == "RoundJoin")
-            {
-                penJoinStyleVec.push_back(Qt::PenJoinStyle::RoundJoin);
-            }
-        }
-        else if(shapeName == "Polygon" || shapeName == "Rectangle"
-                || shapeName == "Square" || shapeName == "Ellipse"
-                || shapeName == "Circle") //Different shapes
-        {
-            shapesVec.push_back(shapeName);
-
-            getline(fin, penColor);
             QColor PenColor;
             if(penColor == "blue")
             {
                 penColorVec.push_back(Qt::GlobalColor::blue); //Puts color of shape into Vector
-                PenColor = Qt::GlobalColor::blue;  // do this for the other colors
+                PenColor = Qt::GlobalColor::blue;
             }
             else if(penColor == "green")
             {
                    penColorVec.push_back(Qt::GlobalColor::green); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::green;
             }
             else if(penColor == "cyan")
             {
                    penColorVec.push_back(Qt::GlobalColor::cyan); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::cyan;
             }
             else if(penColor == "red")
             {
                    penColorVec.push_back(Qt::GlobalColor::red); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::red;
             }
             else if(penColor == "black")
             {
                    penColorVec.push_back(Qt::GlobalColor::black); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::black;
             }
             else if(penColor == "white")
             {
                    penColorVec.push_back(Qt::GlobalColor::white); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::white;
             }
             else if(penColor == "magenta")
             {
                    penColorVec.push_back(Qt::GlobalColor::magenta); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::magenta;
             }
             else if(penColor == "yellow")
             {
                    penColorVec.push_back(Qt::GlobalColor::yellow); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::yellow;
             }
             else if(penColor == "gray")
             {
                    penColorVec.push_back(Qt::GlobalColor::gray); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::gray;
             }
 
             fin >> penWidth;
@@ -415,18 +397,22 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             else if(penStyle == "SolidLine")
             {
                 penStyleVec.push_back(Qt::PenStyle::SolidLine);
+                PenStyle = Qt::PenStyle::SolidLine;
             }
             else if(penStyle == "DashLine")
             {
                 penStyleVec.push_back(Qt::PenStyle::DashLine);
+                PenStyle = Qt::PenStyle::DashLine;
             }
             else if(penStyle == "DotLine")
             {
                 penStyleVec.push_back(Qt::PenStyle::DotLine);
+                PenStyle = Qt::PenStyle::DotLine;
             }
             else if(penStyle == "DashDotLine")
             {
                 penStyleVec.push_back(Qt::PenStyle::DashDotLine);
+                PenStyle = Qt::PenStyle::DashDotLine;
             }
 
             getline(fin, penCapStyle);
@@ -439,13 +425,14 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             else if(penCapStyle == "SquareCap")
             {
                 penCapStyleVec.push_back(Qt::PenCapStyle::SquareCap);
+                PenCapStyle = Qt::PenCapStyle::SquareCap;
             }
             else if(penCapStyle == "RoundCap")
             {
                 penCapStyleVec.push_back(Qt::PenCapStyle::RoundCap);
+                PenCapStyle = Qt::PenCapStyle::RoundCap;
             }
 
-            
             getline(fin, penJoinStyle);
             Qt::PenJoinStyle PenJoinStyle;
             if(penJoinStyle == "MiterJoin")
@@ -456,13 +443,244 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             else if(penJoinStyle == "BevelJoin")
             {
                 penJoinStyleVec.push_back(Qt::PenJoinStyle::BevelJoin);
+                PenJoinStyle = Qt::PenJoinStyle::BevelJoin;
             }
             else if(penJoinStyle == "RoundJoin")
             {
                 penJoinStyleVec.push_back(Qt::PenJoinStyle::RoundJoin);
+                PenJoinStyle = Qt::PenJoinStyle::RoundJoin;
             }
 
-            
+            //Constructs Objects
+            if(shapeName == "Line")
+            {
+                Line line1(device, shapeId, PenColor, penWidth, PenStyle,
+                           PenCapStyle, PenJoinStyle,lineToplx,lineToply,lineBotrx,lineBotry);
+                pShapeVector->push_back((Shape *)&line1);
+            }
+            else if(shapeName == "Polyline")
+            {
+                PolyLine polyline1(device, shapeId, PenColor, penWidth, PenStyle,
+                                   PenCapStyle, PenJoinStyle); //Add Dimensions
+                pShapeVector->push_back((Shape *)&polyline1);
+            }
+
+        }
+        else if(shapeName == "Polygon" || shapeName == "Rectangle"
+                || shapeName == "Square" || shapeName == "Ellipse"
+                || shapeName == "Circle") //Different shapes
+        {
+            shapesVec.push_back(shapeName);
+
+            if(shapeName == "Rectangle")
+            {
+//                int tlx, tly, w, h;
+
+                getline(fin, dimensions);
+
+                stringstream ss(dimensions);
+                while(getline(ss, token, ','))
+                {
+                    dataDimensions.push_back(token);
+                }
+
+                for(unsigned int i = 0; i < dataDimensions.size(); i++)
+                {
+                    cout << dataDimensions[i] << " ";
+                }
+
+                tlx = stoi(dataDimensions[0]);
+                tly = stoi(dataDimensions[1]);
+                w = stoi(dataDimensions[2]);
+                h = stoi(dataDimensions[3]);
+
+            }
+            else if(shapeName == "Square")
+            {
+//                int stlx,stly,xs; // Add
+                getline(fin, dimensions);
+
+                stringstream ss(dimensions);
+                while(getline(ss, token, ','))
+                {
+                    dataDimensions.push_back(token);
+                }
+
+                for(unsigned int i = 0; i < dataDimensions.size(); i++)
+                {
+                    cout << dataDimensions[i] << " ";
+                }
+
+                stlx = stoi(dataDimensions[0]);
+                stly = stoi(dataDimensions[1]);
+                xs = stoi(dataDimensions[2]);
+
+            }
+            else if(shapeName == "Ellipse")
+            {
+//                int ellipseTlx,ellipseTly,ellipseW, ellipseH; //ADD
+                getline(fin, dimensions);
+
+                stringstream ss(dimensions);
+                while(getline(ss, token, ','))
+                {
+                    dataDimensions.push_back(token);
+                }
+
+                for(unsigned int i = 0; i < dataDimensions.size(); i++)
+                {
+                    cout << dataDimensions[i] << " ";
+                }
+
+                ellipseTlx = stoi(dataDimensions[0]);
+                ellipseTly = stoi(dataDimensions[1]);
+                ellipseW = stoi(dataDimensions[2]);
+                ellipseH = stoi(dataDimensions[3]);
+
+            }
+            else if(shapeName == "Circle")
+            {
+//                int circleTlx,circleTly,circleD;
+                getline(fin, dimensions);
+
+                stringstream ss(dimensions);
+                while(getline(ss, token, ','))
+                {
+                    dataDimensions.push_back(token);
+                }
+
+                for(unsigned int i = 0; i < dataDimensions.size(); i++)
+                {
+                    cout << dataDimensions[i] << " ";
+                }
+
+                circleTlx = stoi(dataDimensions[0]);
+                circleTly = stoi(dataDimensions[1]);
+                circleD = stoi(dataDimensions[2]);
+            }
+            else if(shapeName == "Polygon")
+            {
+
+            }
+
+            getline(fin, penColor);
+            QColor PenColor;
+            if(penColor == "blue")
+            {
+                penColorVec.push_back(Qt::GlobalColor::blue); //Puts color of shape into Vector
+                PenColor = Qt::GlobalColor::blue;  // do this for the other colors
+            }
+            else if(penColor == "green")
+            {
+                   penColorVec.push_back(Qt::GlobalColor::green); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::green;
+            }
+            else if(penColor == "cyan")
+            {
+                   penColorVec.push_back(Qt::GlobalColor::cyan); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::cyan;
+            }
+            else if(penColor == "red")
+            {
+                   penColorVec.push_back(Qt::GlobalColor::red); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::red;
+            }
+            else if(penColor == "black")
+            {
+                   penColorVec.push_back(Qt::GlobalColor::black); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::black;
+            }
+            else if(penColor == "white")
+            {
+                   penColorVec.push_back(Qt::GlobalColor::white); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::white;
+            }
+            else if(penColor == "magenta")
+            {
+                   penColorVec.push_back(Qt::GlobalColor::magenta); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::magenta;
+            }
+            else if(penColor == "yellow")
+            {
+                   penColorVec.push_back(Qt::GlobalColor::yellow); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::yellow;
+            }
+            else if(penColor == "gray")
+            {
+                   penColorVec.push_back(Qt::GlobalColor::gray); //Puts color of shape into Vector
+                   PenColor = Qt::GlobalColor::gray;
+            }
+
+            fin >> penWidth;
+            penWidthVec.push_back(penWidth);
+
+            fin.ignore();
+            getline(fin, penStyle);
+            Qt::PenStyle PenStyle;
+            if(penStyle == "NoPen")
+            {
+                penStyleVec.push_back(Qt::PenStyle::NoPen);
+                PenStyle = Qt::PenStyle::NoPen;
+            }
+            else if(penStyle == "SolidLine")
+            {
+                penStyleVec.push_back(Qt::PenStyle::SolidLine);
+                PenStyle = Qt::PenStyle::SolidLine;
+            }
+            else if(penStyle == "DashLine")
+            {
+                penStyleVec.push_back(Qt::PenStyle::DashLine);
+                PenStyle = Qt::PenStyle::DashLine;
+            }
+            else if(penStyle == "DotLine")
+            {
+                penStyleVec.push_back(Qt::PenStyle::DotLine);
+                PenStyle = Qt::PenStyle::DotLine;
+            }
+            else if(penStyle == "DashDotLine")
+            {
+                penStyleVec.push_back(Qt::PenStyle::DashDotLine);
+                PenStyle = Qt::PenStyle::DashDotLine;
+            }
+
+            getline(fin, penCapStyle);
+            Qt::PenCapStyle PenCapStyle;
+            if(penCapStyle == "FlatCap")
+            {
+                penCapStyleVec.push_back(Qt::PenCapStyle::FlatCap);
+                PenCapStyle = Qt::PenCapStyle::FlatCap;
+            }
+            else if(penCapStyle == "SquareCap")
+            {
+                penCapStyleVec.push_back(Qt::PenCapStyle::SquareCap);
+                PenCapStyle = Qt::PenCapStyle::SquareCap;
+            }
+            else if(penCapStyle == "RoundCap")
+            {
+                penCapStyleVec.push_back(Qt::PenCapStyle::RoundCap);
+                PenCapStyle = Qt::PenCapStyle::RoundCap;
+            }
+
+
+            getline(fin, penJoinStyle);
+            Qt::PenJoinStyle PenJoinStyle;
+            if(penJoinStyle == "MiterJoin")
+            {
+                penJoinStyleVec.push_back(Qt::PenJoinStyle::MiterJoin);
+                PenJoinStyle = Qt::PenJoinStyle::MiterJoin;
+            }
+            else if(penJoinStyle == "BevelJoin")
+            {
+                penJoinStyleVec.push_back(Qt::PenJoinStyle::BevelJoin);
+                PenJoinStyle = Qt::PenJoinStyle::BevelJoin;
+            }
+            else if(penJoinStyle == "RoundJoin")
+            {
+                penJoinStyleVec.push_back(Qt::PenJoinStyle::RoundJoin);
+                PenJoinStyle = Qt::PenJoinStyle::RoundJoin;
+            }
+
+
             //BrushColor
             getline(fin, brushColor);
             QColor BrushColor;
@@ -474,37 +692,45 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             else if(brushColor == "green")
             {
                    brushColorVec.push_back(Qt::GlobalColor::green); //Puts color of shape into Vector
+                   BrushColor = Qt::GlobalColor::green;
             }
             else if(brushColor == "cyan")
             {
                    brushColorVec.push_back(Qt::GlobalColor::cyan); //Puts color of shape into Vector
+                   BrushColor = Qt::GlobalColor::cyan;
             }
             else if(brushColor == "red")
             {
                    brushColorVec.push_back(Qt::GlobalColor::red); //Puts color of shape into Vector
+                   BrushColor = Qt::GlobalColor::red;
             }
             else if(brushColor == "black")
             {
                    brushColorVec.push_back(Qt::GlobalColor::black); //Puts color of shape into Vector
+                   BrushColor = Qt::GlobalColor::black;
             }
             else if(brushColor == "white")
             {
                    brushColorVec.push_back(Qt::GlobalColor::white); //Puts color of shape into Vector
+                   BrushColor = Qt::GlobalColor::white;
             }
             else if(brushColor == "magenta")
             {
                    brushColorVec.push_back(Qt::GlobalColor::magenta); //Puts color of shape into Vector
+                   BrushColor = Qt::GlobalColor::magenta;
             }
             else if(brushColor == "yellow")
             {
                    brushColorVec.push_back(Qt::GlobalColor::yellow); //Puts color of shape into Vector
+                   BrushColor = Qt::GlobalColor::yellow;
             }
             else if(brushColor == "gray")
             {
                    brushColorVec.push_back(Qt::GlobalColor::gray); //Puts color of shape into Vector
+                   BrushColor = Qt::GlobalColor::gray;
             }
 
-            
+
             getline(fin, brushStyle);
             Qt::BrushStyle BrushStyle;
             if(brushStyle == "SolidPattern")
@@ -515,96 +741,143 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             else if(brushStyle == "HorPattern")
             {
                 brushStyleVec.push_back(Qt::BrushStyle::HorPattern);
+                BrushStyle = Qt::BrushStyle::HorPattern;
             }
             else if(brushStyle == "VerPattern")
             {
                 brushStyleVec.push_back(Qt::BrushStyle::VerPattern);
+                BrushStyle = Qt::BrushStyle::VerPattern;
             }
             else if(brushStyle == "NoBrush")
             {
                 brushStyleVec.push_back(Qt::BrushStyle::NoBrush);
+                BrushStyle = Qt::BrushStyle::NoBrush;
             }
 
 
             // Actually construct the object
-            if (shapeName == "Rectangle")
+            if(shapeName == "Polygon")
             {
-                int tlx, tly, w, h;  // Note - these need to be parsed
+
+               Polygon poly1(device, shapeId, PenColor, penWidth, PenStyle,
+                                PenCapStyle, PenJoinStyle, BrushColor, BrushStyle);//ADD DIMENSIONS
+                pShapeVector->push_back((Shape *)&poly1);
+            }
+            else if (shapeName == "Rectangle")
+            {
+                  // Note - these need to be parsed
                 Rectangle rect1(device, shapeId, PenColor, penWidth, PenStyle,
                                 PenCapStyle, PenJoinStyle, BrushColor, BrushStyle, tlx, tly, w, h );
                 pShapeVector->push_back((Shape *)&rect1);
+            }
+            else if(shapeName == "Square")
+            {
+
+                Square square1(device, shapeId, PenColor, penWidth, PenStyle,
+                                PenCapStyle, PenJoinStyle, BrushColor, BrushStyle, stlx, stly, xs);
+                pShapeVector->push_back((Shape *)&square1);
+            }
+            else if(shapeName == "Ellipse")
+            {
+
+                Ellipse ellipse1(device, shapeId, PenColor, penWidth, PenStyle,
+                                PenCapStyle, PenJoinStyle, BrushColor, BrushStyle,ellipseTlx,
+                                ellipseTly,ellipseW,ellipseH);
+                pShapeVector->push_back((Shape *)&ellipse1);
+            }
+            else if(shapeName == "Circle")
+            {
+                Circle circle1(device, shapeId, PenColor, penWidth, PenStyle,
+                                            PenCapStyle, PenJoinStyle, BrushColor, BrushStyle,circleTlx,
+                                            circleTly,circleD);
+                pShapeVector->push_back((Shape *)&circle1);
             }
         }
         else if(shapeName == "Text")
         {
             shapesVec.push_back(shapeName);
 
-            
+
             getline(fin, textString);
             textStringVec.push_back(textString);
 
-            
-            
+
             getline(fin, textColor);
+            QColor TextColor;
             if(textColor == "blue")
             {
                 textColorVec.push_back(Qt::GlobalColor::blue); //Puts color of shape into Vector
+                TextColor = Qt::GlobalColor::blue;
             }
             else if(textColor == "green")
             {
                    textColorVec.push_back(Qt::GlobalColor::green); //Puts color of shape into Vector
+                   TextColor = Qt::GlobalColor::green;
             }
             else if(textColor == "cyan")
             {
                    textColorVec.push_back(Qt::GlobalColor::cyan); //Puts color of shape into Vector
+                   TextColor = Qt::GlobalColor::cyan;
             }
             else if(textColor == "red")
             {
                    textColorVec.push_back(Qt::GlobalColor::red); //Puts color of shape into Vector
+                   TextColor = Qt::GlobalColor::red;
             }
             else if(textColor == "black")
             {
                    textColorVec.push_back(Qt::GlobalColor::black); //Puts color of shape into Vector
+                   TextColor = Qt::GlobalColor::black;
             }
             else if(textColor == "white")
             {
                    textColorVec.push_back(Qt::GlobalColor::white); //Puts color of shape into Vector
+                   TextColor = Qt::GlobalColor::white;
             }
             else if(textColor == "magenta")
             {
                    textColorVec.push_back(Qt::GlobalColor::magenta); //Puts color of shape into Vector
+                   TextColor = Qt::GlobalColor::magenta;
             }
             else if(textColor == "yellow")
             {
                    textColorVec.push_back(Qt::GlobalColor::yellow); //Puts color of shape into Vector
+                   TextColor = Qt::GlobalColor::yellow;
             }
             else if(textColor == "gray")
             {
                    textColorVec.push_back(Qt::GlobalColor::gray); //Puts color of shape into Vector
+                   TextColor = Qt::GlobalColor::gray;
             }
 
-            
-            
+
+
             getline(fin, textAlignment);
+            Qt::AlignmentFlag TextAlignment;
             if(textAlignment == "AlignLeft")
             {
                 textAlignmentVec.push_back(Qt::AlignmentFlag::AlignLeft);
+                TextAlignment = Qt::AlignmentFlag::AlignLeft;
             }
             else if(textAlignment == "AlignRight")
             {
                    textAlignmentVec.push_back(Qt::AlignmentFlag::AlignRight);
+                   TextAlignment = Qt::AlignmentFlag::AlignRight;
             }
             else if(textAlignment == "AlignTop")
             {
                    textAlignmentVec.push_back(Qt::AlignmentFlag::AlignTop);
+                   TextAlignment = Qt::AlignmentFlag::AlignTop;
             }
             else if(textAlignment == "AlignBottom")
             {
                    textAlignmentVec.push_back(Qt::AlignmentFlag::AlignBottom);
+                   TextAlignment = Qt::AlignmentFlag::AlignBottom;
             }
             else if(textAlignment == "AlignCenter")
             {
                    textAlignmentVec.push_back(Qt::AlignmentFlag::AlignCenter);
+                   TextAlignment = Qt::AlignmentFlag::AlignCenter;
             }
 
 
@@ -612,43 +885,60 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             textPointSizeVec.push_back(textPointSize);
             fin.ignore();
 
-            
+
             getline(fin, fontFamily);
             fontFamilyVec.push_back(fontFamily);
 
-            
-            
+
+
             getline(fin, fontStyle);
+            QFont::Style FontStyle;
             if(fontStyle == "StyleNormal")
             {
                 fontStyleVec.push_back(QFont::Style::StyleNormal);
+                FontStyle = QFont::Style::StyleNormal;
             }
             else if(fontStyle == "StyleItalic")
             {
                 fontStyleVec.push_back(QFont::Style::StyleItalic);
+                FontStyle = QFont::Style::StyleItalic;
             }
             else if(fontStyle == "StyleOblique")
             {
                 fontStyleVec.push_back(QFont::Style::StyleOblique);
+                FontStyle = QFont::Style::StyleOblique;
             }
 
 
             getline(fin, fontWeight);
+            QFont::Weight FontWeight;
             if(fontWeight == "Thin")
             {
                 fontWeightVec.push_back(QFont::Weight::Thin);
+                FontWeight = QFont::Weight::Thin;
             }
             else if(fontWeight == "Light")
             {
                 fontWeightVec.push_back(QFont::Weight::Light);
+                FontWeight = QFont::Weight::Light;
             }
             else if(fontWeight == "Normal")
             {
                 fontWeightVec.push_back(QFont::Weight::Normal);
+                FontWeight = QFont::Weight::Normal;
             }
             else if(fontWeight == "Bold")
             {
                 fontWeightVec.push_back(QFont::Weight::Bold);
+                FontWeight = QFont::Weight::Bold;
+            }
+
+            if(shapeName == "Text")
+            {
+//                int textTlx,textTly,textW,textH;
+                Text text1(device, shapeId, textString, TextColor, TextAlignment, textPointSize,
+                           fontFamily, FontStyle, FontWeight,textTlx,textTly,textW,textH);//Add the parameters
+                pShapeVector->push_back((Shape *)&text1);
             }
         }
         else
@@ -703,6 +993,162 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
         cout << endl;
     }
 
+    fin.close();
+}
+
+//void writeFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
+//{
+//    ofstream fout;
+
+////    fout.open("./shapes.txt");
+
+////    for(int i = 0; i < pShapeVector->size(); i++)
+////    {
+////        fout << pShapeVector
+////    }
+
+//    switch(PenColor)
+//    {
+//        case(Qt::GlobalColor::blue) : fout << "Blue" << endl;
+//                                      break;
+//        case(Qt::GlobalColor::green) : fout << "Green" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::cyan) : fout << "Cyan" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::red) : fout << "Red" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::black) : fout << "Red" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::white) : fout << "White" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::magenta) : fout << "Magenta" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::gray) : fout << "Gray" << endl;
+//                                  break;
+//    }
+
+//    fout << penWidth;
+
+//    switch(PenStyle)
+//    {
+//        case(Qt::PenStyle::NoPen) : fout << "NoPen" << endl;
+//                                      break;
+//        case(Qt::PenStyle::SolidLine) : fout << "SolidLine" << endl;
+//                                  break;
+//        case(Qt::PenStyle::DashLine) : fout << "DashLine" << endl;
+//                                  break;
+//        case(Qt::PenStyle::DotLine) : fout << "DotLine" << endl;
+//                                  break;
+//        case(Qt::PenStyle::DashDotLine) : fout << "DashDotLine" << endl;
+//                                  break;
+//        case(Qt::PenStyle::DashDotDotLine) : fout << "DashDotDotLine" << endl;
+//                                  break;
+//    }
+
+//    switch(PenCapStyle)
+//    {
+//        case(Qt::PenCapStyle::FlatCap) : fout << "FlatCap" << endl;
+//                                            break;
+//        case(Qt::PenCapStyle::SquareCap) : fout << "SquareCap" << endl;
+//                                            break;
+//        case(Qt::PenCapStyle::RoundCap) : fout << "RoundCap" << endl;
+//                                            break;
+//    }
+
+//    switch(PenJoinStyle)
+//    {
+//        case(Qt::PenJoinStyle::MiterJoin) : fout << "MiterJoin" << endl;
+//                                            break;
+//        case(Qt::PenJoinStyle::BevelJoin) : fout << "BevelJoin" << endl;
+//                                            break;
+//        case(Qt::PenJoinStyle::RoundJoin) : fout << "RoundJoin" << endl;
+//                                            break;
+//    }
+
+//    switch(BrushColor)
+//    {
+//        case(Qt::GlobalColor::blue) : fout << "Blue" << endl;
+//                                      break;
+//        case(Qt::GlobalColor::green) : fout << "Green" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::cyan) : fout << "Cyan" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::red) : fout << "Red" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::black) : fout << "Red" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::white) : fout << "White" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::magenta) : fout << "Magenta" << endl;
+//                                  break;
+//        case(Qt::GlobalColor::gray) : fout << "Gray" << endl;
+//                                  break;
+//    }
+
+//    switch(BrushStyle)
+//    {
+//        case(Qt::BrushStyle::SolidPattern) : fout << "SolidPattern" << endl;
+//                                      break;
+//        case(Qt::BrushStyle::HorPattern) : fout << "HorPattern" << endl;
+//                                  break;
+//        case(Qt::BrushStyle::VerPattern) : fout << "VerPattern" << endl;
+//                                  break;
+//        case(Qt::BrushStyle::NoBrush) : fout << "NoBrush" << endl;
+//                                  break;
+//    }
+
+//    fout << textString;
+
+//    switch(TextAlignment)
+//    {
+//        case(Qt::AlignmentFlag::AlignLeft) : fout << "AlignLeft" << endl;
+//                                  break;
+//        case(Qt::AlignmentFlag::AlignRight) : fout << "AlignRight" << endl;
+//                                  break;
+//        case(Qt::AlignmentFlag::AlignTop) : fout << "AlignTop" << endl;
+//                                  break;
+//        case(Qt::AlignmentFlag::AlignBottom) : fout << "AlignBottom" << endl;
+//                                  break;
+//        case(Qt::AlignmentFlag::AlignCenter) : fout << "AlignCenter" << endl;
+//                                  break;
+//    }
+
+//    fout << textPointSize << endl;
+
+//    fout << textFontfamily<< endl;
+
+//    switch(TextFontStyle)
+//    {
+//        case(QFont::Style::StyleNormal) : fout << "AlignCenter" << endl;
+//                                  break;
+//        case(QFont::Style::StyleItalic) : fout << "AlignCenter" << endl;
+//                                  break;
+//        case(QFont::Style::StyleOblique) : fout << "AlignCenter" << endl;
+//                                  break;
+//        case(QFont::Style::StyleNormal) : fout << "AlignCenter" << endl;
+//                                  break;
+//    }
+
+//    switch(TextFontWeight)
+//    {
+//        case(QFont::Weight::Thin) : fout << "Thin" << endl;
+//                            break;
+//        case(QFont::Weight::Light) : fout << "Light" << endl;
+//                            break;
+//        case(QFont::Weight::Normal) : fout << "Normal" << endl;
+//                            break;
+//        case(QFont::Weight::Bold) : fout << "Bold" << endl;
+//                            break;
+//    }
+
+
+
+
+
+
+
+
+}
 
 //    cout << "Which file do you want to save to?" << endl;
 //    cin  >> fileSave;
@@ -751,6 +1197,4 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
 //    }
 
 //        fout.close();
-          fin.close();
-}//End Function
 
