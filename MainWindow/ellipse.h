@@ -55,7 +55,7 @@ public:
 
     std::ostream& print(std::ostream& os) const
     {
-        return os << " Id:" << getId() << " P:" << calcPerimeter() << "A:" << calcArea();
+        return os << " Id:" << getId() << " P:" << calcPerimeter() << " A:" << calcArea();
     };
 
     // draw() function from shape base class
@@ -92,8 +92,8 @@ public:
     // calcPerimeter() function from shape base class
     double calcPerimeter() const
     {
-        double len = ((upperleft.x()-lowerright.x()));
-        double ht = ((upperleft.y()-lowerright.y()));
+        double len = ((lowerright.x()-upperleft.x()));
+        double ht = ((lowerright.y()-upperleft.y()));
 
         // Ramanujan Forumla #1
         return ( (M_PI) * (3*(len-ht) ) - 
@@ -103,7 +103,7 @@ public:
     // calcArea() function from shape base class
     double calcArea() const
     {
-        return ( (upperleft.x()-lowerright.x()) * (upperleft.y()-lowerright.y()) * M_PI);
+        return ( ( (lowerright.x()-upperleft.x()) / 2) * ( (lowerright.y()-upperleft.y()) / 2) * M_PI);
     }
 
 };

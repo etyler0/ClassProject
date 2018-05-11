@@ -58,7 +58,7 @@ public:
 
     std::ostream& print(std::ostream& os) const
     {
-        return os << " Id:" << getId() << " P:" << calcPerimeter() << "A:" << calcArea();
+        return os << " Id:" << getId() << " P:" << calcPerimeter() << " A:" << calcArea();
     };
 
     // draw() function from shape base class
@@ -95,13 +95,13 @@ public:
     // calcPerimeter() function from shape base class
     double calcPerimeter() const
     {
-        return ( ((upperleft.x()-lowerright.x()) * 2) + ((upperleft.y()-lowerright.y()) * 2));
+        return ( ((lowerright.x()-upperleft.x()) * 2) + ((lowerright.y()-upperleft.y()) * 2));
     }
 
     // calcArea() function from shape base class
     double calcArea() const
     {
-        return ( (upperleft.x()-lowerright.x()) * (upperleft.y()-lowerright.y()));
+        return ( (lowerright.x()-upperleft.x()) * (lowerright.y()-upperleft.y()));
     }
 
 };

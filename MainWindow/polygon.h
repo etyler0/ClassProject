@@ -81,7 +81,7 @@ public:
 
     std::ostream& print(std::ostream& os) const
     {
-        return os << " Id:" << getId() << " P:" << calcPerimeter() << "A:" << calcArea();
+        return os << " Id:" << getId() << " P:" << calcPerimeter() << " A:" << calcArea();
     };
 
     // draw() function from shape base class
