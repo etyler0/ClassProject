@@ -65,6 +65,7 @@ int main(int argc, char *argv[])
     newpts->push_back(qp2);
     QPoint qp3(980,80);
     newpts->push_back(qp3);
+
     Polygon *pPolygon1 = new Polygon((QPaintDevice*)&w, 3, Qt::GlobalColor::cyan, 6, Qt::PenStyle::DashDotLine, Qt::PenCapStyle::FlatCap, Qt::PenJoinStyle::MiterJoin, Qt::GlobalColor::yellow, Qt::BrushStyle::SolidPattern, *newpts);
     pShapeVector->push_back(pPolygon1);
 
@@ -98,6 +99,7 @@ int main(int argc, char *argv[])
         delete *ptr;
         ptr++;
     }
+    delete pShapeVector;
 
     return retcode;
 }

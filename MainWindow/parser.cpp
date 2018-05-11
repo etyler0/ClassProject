@@ -17,6 +17,8 @@
 #include <fstream>
 #include <QPoint>
 
+/*
+
 #include "vector.h"
 #include "rectangle.h"
 
@@ -1198,3 +1200,4 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
 
 //        fout.close();
 
+*/
