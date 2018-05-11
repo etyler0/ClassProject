@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "vector.h"
+#include "shape.h"
+#include "shape2d.h"
 #include <QComboBox>
 #include <QAbstractItemView>
 #include <QDebug>
@@ -9,6 +11,10 @@ using namespace nserkkvector;
 //=============== DEFAULT CLASS ===================//
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
+    Testimonials(nullptr),
+    About(nullptr),
+    Contact(nullptr),
+    Reports(nullptr),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -16,31 +22,35 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    if(Testimonials)    delete Testimonials;
+    if(About)           delete About;
+    if(Contact)         delete Contact;
+    if(Reports)         delete Reports;
     delete ui;
 }
 
 //================ WINDOW DISPLAYS ===================//
 void MainWindow::on_actionFeedback_triggered()
 {
-    Testimonials = new testimonials(this);
+    if(!Testimonials)   Testimonials = new testimonials(this);
     Testimonials->show();
 }
 
 void MainWindow::on_actionAbout_triggered()
 {
-    About = new about(this);
+    if(!About)  About = new about(this);
     About->show();
 }
 
 void MainWindow::on_actionContact_Us_triggered()
 {
-    Contact = new contact(this);
+    if(!Contact)    Contact = new contact(this);
     Contact->show();
 }
 
 void MainWindow::on_actionSort_by_ID_triggered()
 {
-    Reports = new reports(this);
+    if(!Reports)    Reports = new reports(this);
     Reports->show();
 }
 
@@ -105,30 +115,31 @@ void MainWindow::comboBoxBaseShape(int index, base& curShape){
     }
 }
 
-int parsePenColor(int constant){
-    switch(constant){
-    case Qt::white:
-        return 1;
-    case Qt::black:
-        return 2;
-    case Qt::red:
-        return 3;
-    case Qt::green:
-        return 4;
-    case Qt::blue:
-        return 5;
-    case Qt::cyan:
-        return 6;
-    case Qt::magenta:
-        return 7;
-    case Qt::yellow:
-        return 8;
-    case Qt::gray:
-        return 9;
-    default:
-        return 0;
-    }
+//  Transforms qt constant/enum for pen color to match combobox
+int MainWindow::parsePenColor(QColor color){
+    if(color.name() == "#ffffff") return 0;     //  WHITE
+    if(color.name() == "#000000") return 1;     //  BLACK
+    if(color.name() == "#ff0000") return 2;     //  RED
+    if(color.name() == "#008000") return 3;     //  GREEN
+    if(color.name() == "#0000ff") return 4;     //  BLUE
+    if(color.name() == "#00ffff") return 5;     //  CYAN
+    if(color.name() == "#ff00ff") return 6;     //  MAGENTA
+    if(color.name() == "#ffff00") return 7;     //  YELLOW
+    if(color.name() == "#808080") return 8;     //  GRAY
+    return 0;                                   //  DEFAULT IF NONE
 }
+
+int MainWindow::parsePenStyle(int counter){
+    if(counter == Qt::NoPen)            return 0;   //  NO PEN
+    if(counter == Qt::SolidLine)        return 1;   //  SOLID LINE
+    if(counter == Qt::DashLine)         return 2;   //  DASH LINE
+    if(counter == Qt::DotLine)          return 3;   //  DOT LINE
+    if(counter == Qt::DashDotLine)      return 4;   //  DASH DOT LINE
+    if(counter == Qt::DashDotDotLine)   return 5;   //  DASH DOT DOT LINE
+    return 0;                                       //  DEFAULT IF NONE
+}
+
+
 
 //================== ADD TAB =======================//
 
@@ -139,7 +150,6 @@ void MainWindow::updateAddTab(){
     if(addCurShape == baseSelect){
         ui->stackedWidget_add_interface->hide();
     }
-
 
     //  Display all interface
     else{
@@ -220,7 +230,9 @@ void MainWindow::updateModTab(){
 //  Change selected shape
 void MainWindow::on_comboBox_mod_ID_currentIndexChanged(int index)
 {
-    int val = 0, color = 0;
+    int val = 0;
+
+    //  Update current combobox of shape type
     if(index > 0){
         val = (*pShapeVector)[index - 1]->getShapeType();
         ui->combobox_mod_shapeType->setCurrentIndex(++val);
@@ -231,6 +243,26 @@ void MainWindow::on_comboBox_mod_ID_currentIndexChanged(int index)
     comboBoxBaseShape(val, modCurShape);
 
     //  ALL INTERNAL VALUE UPDATES
+
+    /*********** 2D Shape internal values ***************/
+    if(modCurShape == base2D){
+        Shape2D* temp = dynamic_cast<Shape2D*>((*pShapeVector)[index - 1]);
+
+        //  Parses pen color to the combobox
+        int penColor_index = parsePenColor(temp->pen.color());
+        ui->comboBox_mod_penColor->setCurrentIndex(penColor_index);
+
+        //  Sets pen width value
+        ui->spinBox_mod_penWidth->setValue(temp->pen.width());
+
+        //  Parses pen style to the combobox
+        int penStyle_index = parsePenStyle(temp->pen.style());
+        ui->comboBox_mod_penStyle->setCurrentIndex(penStyle_index);
+
+        //
+
+
+    }
 
     //  Update menu displays
     updateModTab();

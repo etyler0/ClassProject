@@ -6,6 +6,8 @@ reports::reports(QWidget *parent) :
     ui(new Ui::reports)
 {
     ui->setupUi(this);
+    setMouseTracking(true);
+    //  Implement drag and move
 }
 
 reports::~reports()

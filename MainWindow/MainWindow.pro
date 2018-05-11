@@ -52,6 +52,7 @@ HEADERS += \
     circle.h \
     text.h \
     shape2d.h \
+    shape1d.h \
     login.h \
     privilege.h \
     parser.h \
