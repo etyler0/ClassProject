@@ -17,8 +17,6 @@
 #include <fstream>
 #include <QPoint>
 
-/*
-
 #include "vector.h"
 #include "rectangle.h"
 
@@ -338,6 +336,30 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
         {
             shapesVec.push_back(shapeName);
 
+            dimensions.erase(0);
+            getline(fin, dimensions);
+
+            stringstream ss(dimensions);
+            while(getline(ss, token, ','))
+            {
+                dataDimensions.push_back(token);
+            }
+
+            for(unsigned int i = 0; i < dataDimensions.size(); i++)
+            {
+                cout << dataDimensions[i] << " ";
+            }
+
+            vector<QPoint> *newpts2 = new vector<QPoint>();
+            QPoint qp2(dataDimensions[0],dataDimensions[1]);
+            newpts1->push_back(qp2);
+            QPoint qp22(dataDimensions[2],dataDimensions[3]);
+            newpts1->push_back(qp22);
+            QPoint qp23(dataDimensions[4],dataDimensions[5]);
+            newpts1->push_back(qp23);
+            QPoint qp24(dataDimensions[6],dataDimensions[7]);
+            newpts1->push_back(qp24);
+
             getline(fin, penColor);
             QColor PenColor;
             if(penColor == "blue")
@@ -464,7 +486,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             else if(shapeName == "Polyline")
             {
                 PolyLine *polyline1 = new PolyLine(device, shapeId, PenColor, penWidth, PenStyle,
-                                   PenCapStyle, PenJoinStyle); //Add Dimensions
+                                   PenCapStyle, PenJoinStyle,*newpts2); //Add Dimensions
                 pShapeVector->push_back((Shape *)&polyline1);
             }
 
@@ -567,6 +589,28 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             }
             else if(shapeName == "Polygon")
             {
+                dimensions.erase(0);
+                getline(fin, dimensions);
+
+                stringstream ss(dimensions);
+                while(getline(ss, token, ','))
+                {
+                    dataDimensions.push_back(token);
+                }
+
+                for(unsigned int i = 0; i < dataDimensions.size(); i++)
+                {
+                    cout << dataDimensions[i] << " ";
+                }
+                    vector<QPoint> *newpts1 = new vector<QPoint>();
+                    QPoint qp1(dataDimensions[0],dataDimensions[1]);
+                    newpts1->push_back(qp1);
+                    QPoint qp12(dataDimensions[2],dataDimensions[3]);
+                    newpts1->push_back(qp12);
+                    QPoint qp13(dataDimensions[4],dataDimensions[5]);
+                    newpts1->push_back(qp13);
+                    QPoint qp14(dataDimensions[6],dataDimensions[7]);
+                    newpts1->push_back(qp14);
 
             }
 
@@ -767,7 +811,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             {
 
                Polygon *poly1 = new Polygon(device, shapeId, PenColor, penWidth, PenStyle,
-                                PenCapStyle, PenJoinStyle, BrushColor, BrushStyle);//ADD DIMENSIONS
+                                PenCapStyle, PenJoinStyle, BrushColor, BrushStyle,*newpts1);//ADD DIMENSIONS
                 pShapeVector->push_back((Shape *)&poly1);
             }
             else if (shapeName == "Rectangle")
@@ -1226,8 +1270,3 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
 //    }
 
 //        fout.close();
-<<<<<<< HEAD
-
-*/
-//=======
-//>>>>>>> d9709aadccf6d0ec6f635baa09f83bd248a40846
