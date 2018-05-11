@@ -13,9 +13,6 @@
 
 class Shape1D: public Shape
 {
-protected:
-    Shape1D() {} // Default constructor never used - all elements must be explictly set
-
 public:
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
@@ -23,6 +20,7 @@ public:
     QPen pen;
     QPoint upperleft;
     QPoint lowerright;
+    std::vector<QPoint> points;
 
     Shape1D(QPaintDevice* device,
                  int                xId,
@@ -41,7 +39,12 @@ public:
         pen.setJoinStyle(xPenJoinStyle);
     }
 
+    Shape1D() = delete;
+    Shape1D& operator=(const Shape1D&) = delete;  // Disallow copying
+    Shape1D(const Shape1D&) = delete;
     virtual ~Shape1D() {}
+
+    virtual std::ostream& print(std::ostream& os) const = 0;
 };
 
 #endif // SHAPE1D_H

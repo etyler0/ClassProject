@@ -14,9 +14,12 @@
 #include "login.h"
 #include "vector.h"  // for MyVector
 #include "parser.h"
+#include "selection_sort.h"
 
 
 using namespace nserkkvector;
+using namespace nserkkselsort;
+//using namespace nserkk::shapes;
 
 // global to pass authorization
 privilege auth;
@@ -26,14 +29,14 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MyVector<Shape*> *pShapeVector = new MyVector<Shape*>;
 
+    MainWindow w;
+    login q;
+
 #undef READ_SHAPES_FROM_FILE
 #ifdef READ_SHAPES_FROM_FILE
     // File Parser call goes here - pass a pointer to pShapeVector - allocate Shapes with new
     readFile((QPaintDevice*)&w, pShapeVector);
 #else
-
-    MainWindow w;
-    login q;
 
     // temporary code to construct simple shapes for testing only
     Line *pLine1 = new Line((QPaintDevice*)&w, 1, Qt::GlobalColor::blue, 2, Qt::PenStyle::DashDotLine, Qt::PenCapStyle::FlatCap, Qt::PenJoinStyle::MiterJoin, 20, 90, 100, 20);
@@ -84,6 +87,7 @@ int main(int argc, char *argv[])
     pShapeVector->push_back(pText1);
 #endif
 
+    nserkkselsort::selection_sort(pShapeVector->begin(), pShapeVector->end(), compare_shape_id());
     pShapeVector->printAsDebug(false,true);
     w.setVector(pShapeVector);
     w.show();

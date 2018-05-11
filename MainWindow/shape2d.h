@@ -14,7 +14,7 @@
 class Shape2D: public Shape
 {
 protected:
-    Shape2D() {} // Default constructor never used - all elements must be explictly set
+  //  Shape2D() {} // Default constructor never used - all elements must be explictly set
 
 public:
     // Note: the data members are public, because we need non class memebers to 
@@ -47,7 +47,12 @@ public:
         brush.setStyle(xBrushStyle);
     }
 
+    Shape2D() = delete;         // default constructor never used
+    Shape2D& operator=(const Shape&) = delete;  // Disallow copying
+    Shape2D(const Shape&) = delete;
     virtual ~Shape2D() {}
+
+    virtual std::ostream& print(std::ostream& os) const = 0;
 };
 
 #endif // SHAPE2D_H

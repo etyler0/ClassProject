@@ -19,9 +19,6 @@ using namespace std;
 
 class Circle : public Shape2D
 {
-private:
-    Circle() {}; // Default constructor - never used - all fields must be explictly set
-    
 public:
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
@@ -50,8 +47,16 @@ public:
         QPoint lr(xTopLeftX+xDiameter, xTopLeftY+xDiameter);
         lowerright = lr;
     }
-    
+
+    Circle() = delete;         // default constructor never used
+    Circle& operator=(const Circle&) = delete;  // Disallow copying
+    Circle(const Circle&) = delete;
     ~Circle() {};
+
+    std::ostream& print(std::ostream& os) const
+    {
+        return os << " Id:" << getId() << " P:" << calcPerimeter() << "A:" << calcArea();
+    };
 
     // draw() function from shape base class
     void draw(QPaintDevice* device)
@@ -85,13 +90,13 @@ public:
     }
 
     // calcPerimeter() function from shape base class
-    double calcPerimeter()
+    double calcPerimeter() const
     {
         return ( (M_PI) * (upperleft.x()-lowerright.x()) );
     }
 
     // calcArea() function from shape base class
-    double calcArea()
+    double calcArea() const
     {
         return ( pow((upperleft.x()-lowerright.x()),2 ) * M_PI);
     }

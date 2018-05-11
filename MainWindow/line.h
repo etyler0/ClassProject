@@ -22,11 +22,6 @@ using namespace std;
 
 class Line : public Shape1D
 {
-private:
-    Line() {}; // Default constructor - never used - all fields must be explictly set
-
-    vector<QPoint> points;
-    
 public:
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
@@ -50,11 +45,21 @@ public:
         // object specific transform from points supplied to bounding points
         QPoint ul(xTopLeftX,xTopLeftY);
         upperleft = ul;
+        points.push_back(ul);
         QPoint lr(xBotRightX, xBotRightY);
         lowerright = lr;
+        points.push_back(lr);
     }
     
+    Line() = delete;
+    Line& operator=(const Line&) = delete;  // Disallow copying
+    Line(const Line&) = delete;
     ~Line() {};
+
+    std::ostream& print(std::ostream& os) const
+    {
+        return os << " Id:" << getId() << " P:" << calcPerimeter() << "A:" << calcArea();
+    };
 
     // draw() function from shape base class
     void draw(QPaintDevice* device)
@@ -86,13 +91,13 @@ public:
     }
 
     // calcPerimeter() function from shape base class
-    double calcPerimeter()
+    double calcPerimeter() const
     {
         return 0;
     }
 
     // calcArea() function from shape base class
-    double calcArea()
+    double calcArea() const
     {
         return 0;
     }

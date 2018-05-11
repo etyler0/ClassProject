@@ -19,15 +19,11 @@ using namespace std;
 
 class Polygon : public Shape2D
 {
-private:
-    Polygon() {}; // Default constructor - never used - all fields must be explictly set
-
-    vector<QPoint> points;
-    
 public:
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
     //       accessors and mutators adds no value.
+    vector<QPoint> points;
 
     // Constructor used in class project
     Polygon(QPaintDevice* device,
@@ -39,10 +35,10 @@ public:
              Qt::PenJoinStyle   xPenJoinStyle,
              QColor             xBrushColor,
              Qt::BrushStyle     xBrushStyle,
-             const vector<QPoint> &source)
+             const std::vector<QPoint> &xPoints)
        : Shape2D(device, xId, shapeType::Polygon,
                       xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle,
-                      xBrushColor, xBrushStyle), points{source}
+                      xBrushColor, xBrushStyle), points{xPoints}
     {
         // object specific transform from points supplied to bounding points
 
@@ -78,7 +74,15 @@ public:
         lowerright.setY(maxY);
     }
     
+    Polygon() = delete;
+    Polygon& operator=(const Polygon&) = delete;  // Disallow copying
+    Polygon(const Polygon&) = delete;
     ~Polygon() {};
+
+    std::ostream& print(std::ostream& os) const
+    {
+        return os << " Id:" << getId() << " P:" << calcPerimeter() << "A:" << calcArea();
+    };
 
     // draw() function from shape base class
     void draw(QPaintDevice* device)
@@ -87,7 +91,7 @@ public:
         paint.begin(device);
         paint.setPen(pen);
         paint.setBrush(brush);
-        QPoint *qpptr = &(*points.begin());
+        const QPoint *qpptr = &(*points.begin());
         paint.drawPolygon(qpptr,points.size());
         paint.setPen(QPen());
         paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
@@ -118,20 +122,21 @@ public:
     }
 
     // calcPerimeter() function from shape base class
-    double calcPerimeter()
+    double calcPerimeter() const
     {
         double perimeter = 0;
-        for(vector<QPoint>::iterator i=points.begin();i<points.end()-1;++i)
+        for(std::vector<QPoint>::const_iterator i=points.begin();i<points.end()-1;++i)
         {
+
             perimeter += sqrt((pow((i->x()-((i+1)->x())),2)+pow((i->y()-(i+1)->y()),2)));
         }
         return perimeter;
     }
 
     // calcArea() function from shape base class
-    double calcArea()
+    double calcArea() const
     {
-        vector<QPoint>::iterator i=points.begin();
+        std::vector<QPoint>::const_iterator i=points.begin();
         double area = ((calcPerimeter())*
                        ((sqrt((pow((i->x()-((i+1)->x())),2)+
                                pow((i->y()-(i+1)->y()),2))))/

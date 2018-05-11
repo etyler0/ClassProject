@@ -18,9 +18,6 @@ using namespace std;
 
 class Ellipse : public Shape2D
 {
-private:
-    Ellipse() {}; // Default constructor - never used - all fields must be explictly set
-    
 public:
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
@@ -51,7 +48,15 @@ public:
         lowerright = lr;
     }
     
+    Ellipse() = delete;         // default constructor never used
+    Ellipse& operator=(const Ellipse&) = delete;  // Disallow copying
+    Ellipse(const Ellipse&) = delete;
     ~Ellipse() {};
+
+    std::ostream& print(std::ostream& os) const
+    {
+        return os << " Id:" << getId() << " P:" << calcPerimeter() << "A:" << calcArea();
+    };
 
     // draw() function from shape base class
     void draw(QPaintDevice* device)
@@ -85,7 +90,7 @@ public:
     }
 
     // calcPerimeter() function from shape base class
-    double calcPerimeter()
+    double calcPerimeter() const
     {
         double len = ((upperleft.x()-lowerright.x()));
         double ht = ((upperleft.y()-lowerright.y()));
@@ -96,7 +101,7 @@ public:
     }
 
     // calcArea() function from shape base class
-    double calcArea()
+    double calcArea() const
     {
         return ( (upperleft.x()-lowerright.x()) * (upperleft.y()-lowerright.y()) * M_PI);
     }
