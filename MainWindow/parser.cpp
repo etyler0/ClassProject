@@ -196,6 +196,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
 
             fin.open("shapes.txt");
 
+            dimensions.erase(0);
             getline(fin, dimensions);
 
             stringstream ss(dimensions);
@@ -456,13 +457,13 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             //Constructs Objects
             if(shapeName == "Line")
             {
-                Line line1(device, shapeId, PenColor, penWidth, PenStyle,
+                Line *line1 = new Line(device, shapeId, PenColor, penWidth, PenStyle,
                            PenCapStyle, PenJoinStyle,lineToplx,lineToply,lineBotrx,lineBotry);
                 pShapeVector->push_back((Shape *)&line1);
             }
             else if(shapeName == "Polyline")
             {
-                PolyLine polyline1(device, shapeId, PenColor, penWidth, PenStyle,
+                PolyLine *polyline1 = new PolyLine(device, shapeId, PenColor, penWidth, PenStyle,
                                    PenCapStyle, PenJoinStyle); //Add Dimensions
                 pShapeVector->push_back((Shape *)&polyline1);
             }
@@ -478,6 +479,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             {
 //                int tlx, tly, w, h;
 
+                dimensions.erase(0);
                 getline(fin, dimensions);
 
                 stringstream ss(dimensions);
@@ -500,6 +502,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             else if(shapeName == "Square")
             {
 //                int stlx,stly,xs; // Add
+                dimensions.erase(0);
                 getline(fin, dimensions);
 
                 stringstream ss(dimensions);
@@ -521,6 +524,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             else if(shapeName == "Ellipse")
             {
 //                int ellipseTlx,ellipseTly,ellipseW, ellipseH; //ADD
+                dimensions.erase(0);
                 getline(fin, dimensions);
 
                 stringstream ss(dimensions);
@@ -543,6 +547,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             else if(shapeName == "Circle")
             {
 //                int circleTlx,circleTly,circleD;
+                dimensions.erase(0);
                 getline(fin, dimensions);
 
                 stringstream ss(dimensions);
@@ -761,35 +766,35 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             if(shapeName == "Polygon")
             {
 
-               Polygon poly1(device, shapeId, PenColor, penWidth, PenStyle,
+               Polygon *poly1 = new Polygon(device, shapeId, PenColor, penWidth, PenStyle,
                                 PenCapStyle, PenJoinStyle, BrushColor, BrushStyle);//ADD DIMENSIONS
                 pShapeVector->push_back((Shape *)&poly1);
             }
             else if (shapeName == "Rectangle")
             {
                   // Note - these need to be parsed
-                Rectangle rect1(device, shapeId, PenColor, penWidth, PenStyle,
+                Rectangle *rect1 = new Rectangle(device, shapeId, PenColor, penWidth, PenStyle,
                                 PenCapStyle, PenJoinStyle, BrushColor, BrushStyle, tlx, tly, w, h );
                 pShapeVector->push_back((Shape *)&rect1);
             }
             else if(shapeName == "Square")
             {
 
-                Square square1(device, shapeId, PenColor, penWidth, PenStyle,
+                Square *square1 = new Square(device, shapeId, PenColor, penWidth, PenStyle,
                                 PenCapStyle, PenJoinStyle, BrushColor, BrushStyle, stlx, stly, xs);
                 pShapeVector->push_back((Shape *)&square1);
             }
             else if(shapeName == "Ellipse")
             {
 
-                Ellipse ellipse1(device, shapeId, PenColor, penWidth, PenStyle,
+                Ellipse *ellipse1 = new Ellipse(device, shapeId, PenColor, penWidth, PenStyle,
                                 PenCapStyle, PenJoinStyle, BrushColor, BrushStyle,ellipseTlx,
                                 ellipseTly,ellipseW,ellipseH);
                 pShapeVector->push_back((Shape *)&ellipse1);
             }
             else if(shapeName == "Circle")
             {
-                Circle circle1(device, shapeId, PenColor, penWidth, PenStyle,
+                Circle *circle1 = new Circle(device, shapeId, PenColor, penWidth, PenStyle,
                                             PenCapStyle, PenJoinStyle, BrushColor, BrushStyle,circleTlx,
                                             circleTly,circleD);
                 pShapeVector->push_back((Shape *)&circle1);
@@ -802,6 +807,24 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
 
             getline(fin, textString);
             textStringVec.push_back(textString);
+
+            dimensions.erase(0);
+            getline(fin, dimensions);
+
+            stringstream ss(dimensions);
+            while(getline(ss, token, ','))
+            {
+                dataDimensions.push_back(token);
+            }
+
+            for(unsigned int i = 0; i < dataDimensions.size(); i++)
+            {
+                cout << dataDimensions[i] << " ";
+            }
+
+            circleTlx = stoi(dataDimensions[0]);
+            circleTly = stoi(dataDimensions[1]);
+            circleD = stoi(dataDimensions[2]);
 
 
             getline(fin, textColor);
@@ -938,7 +961,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             if(shapeName == "Text")
             {
 //                int textTlx,textTly,textW,textH;
-                Text text1(device, shapeId, textString, TextColor, TextAlignment, textPointSize,
+                Text *text1 = Text(device, shapeId, textString, TextColor, TextAlignment, textPointSize,
                            fontFamily, FontStyle, FontWeight,textTlx,textTly,textW,textH);//Add the parameters
                 pShapeVector->push_back((Shape *)&text1);
             }
@@ -951,49 +974,49 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
     }
 
     //Prints what was read in to verify that it is working.
-    for(unsigned int i = 0; i < shapesVec.size() - 1; i++)
-    {
-            cout << "ShapeId: "      << shapeIdVec[i]      << endl;
-            cout << "ShapeType: "    << shapesVec[i]       << endl;
+//    for(unsigned int i = 0; i < shapesVec.size() - 1; i++)
+//    {
+//            cout << "ShapeId: "      << shapeIdVec[i]      << endl;
+//            cout << "ShapeType: "    << shapesVec[i]       << endl;
 
-            if(shapesVec[i] == "Line" || shapesVec[i] == "Polyline"
-                    || shapesVec[i]  == "Polygon" || shapesVec[i]  == "Rectangle"
-                    || shapesVec[i]  == "Square" || shapesVec[i]  == "Ellipse"
-                    || shapesVec[i]  == "Circle")
-            {
-                cout << "PenColor: "     << penColorVec[i]     << endl;
-                cout << "PenWidth: "     << penWidthVec[i]     << endl;
-                cout << "PenStyle: "     << penStyleVec[i]     << endl;
-                cout << "PenCapStyle: "  << penCapStyleVec[i]  << endl;
-                cout << "PenJoinStyle: " << penJoinStyleVec[i] << endl;
-            }
-
-
-        //If these given shapes are specified outputs their respective brush
-        //color and style
-        if(shapesVec[i]  == "Polygon" || shapesVec[i]  == "Rectangle"
-           || shapesVec[i]  == "Square" || shapesVec[i]  == "Ellipse"
-           || shapesVec[i]  == "Circle")
-        {
-                cout << "BrushColor: " << brushColorVec[brushIndex] << endl;
-                cout << "BrushStyle: " << brushStyleVec[brushIndex] << endl;
-                brushIndex++;
-        }
-        else if(shapesVec[i] == "Text")
-        {
-            cout << "TextString: "     << textStringVec[textIndex]    << endl;
-            cout << "textColor: "      << textColorVec[textIndex]     << endl;
-            cout << "textAlignment: "  << textAlignmentVec[textIndex] << endl;
-            cout << "textPointSize: "  << textPointSizeVec[textIndex] << endl;
-            cout << "fontFamily: "     << fontFamilyVec[textIndex]    << endl;
-            cout << "fontStyle: "      << fontStyleVec[textIndex]     << endl;
-            cout << "fontWeight: "     << fontWeightVec[textIndex]    << endl;
-            textIndex++;
-        }
+//            if(shapesVec[i] == "Line" || shapesVec[i] == "Polyline"
+//                    || shapesVec[i]  == "Polygon" || shapesVec[i]  == "Rectangle"
+//                    || shapesVec[i]  == "Square" || shapesVec[i]  == "Ellipse"
+//                    || shapesVec[i]  == "Circle")
+//            {
+//                cout << "PenColor: "     << penColorVec[i]     << endl;
+//                cout << "PenWidth: "     << penWidthVec[i]     << endl;
+//                cout << "PenStyle: "     << penStyleVec[i]     << endl;
+//                cout << "PenCapStyle: "  << penCapStyleVec[i]  << endl;
+//                cout << "PenJoinStyle: " << penJoinStyleVec[i] << endl;
+//            }
 
 
-        cout << endl;
-    }
+//        //If these given shapes are specified outputs their respective brush
+//        //color and style
+//        if(shapesVec[i]  == "Polygon" || shapesVec[i]  == "Rectangle"
+//           || shapesVec[i]  == "Square" || shapesVec[i]  == "Ellipse"
+//           || shapesVec[i]  == "Circle")
+//        {
+//                cout << "BrushColor: " << brushColorVec[brushIndex] << endl;
+//                cout << "BrushStyle: " << brushStyleVec[brushIndex] << endl;
+//                brushIndex++;
+//        }
+//        else if(shapesVec[i] == "Text")
+//        {
+//            cout << "TextString: "     << textStringVec[textIndex]    << endl;
+//            cout << "textColor: "      << textColorVec[textIndex]     << endl;
+//            cout << "textAlignment: "  << textAlignmentVec[textIndex] << endl;
+//            cout << "textPointSize: "  << textPointSizeVec[textIndex] << endl;
+//            cout << "fontFamily: "     << fontFamilyVec[textIndex]    << endl;
+//            cout << "fontStyle: "      << fontStyleVec[textIndex]     << endl;
+//            cout << "fontWeight: "     << fontWeightVec[textIndex]    << endl;
+//            textIndex++;
+//        }
+
+
+//        cout << endl;
+//    }
 
     fin.close();
 }
@@ -1002,17 +1025,21 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
 //{
 //    ofstream fout;
 
-////    fout.open("./shapes.txt");
+//    fout.open("./shapes.txt");
 
-////    for(int i = 0; i < pShapeVector->size(); i++)
-////    {
-////        fout << pShapeVector
-////    }
+//    while(pShapeVector.begin(), pShapeVector.end(),*first)
+//    {
+//          *first->getId()
+
+//    for(int i = 0; i < pShapeVector->size(); i++)
+//    {
+//        fout << pShapeVector
+//    }
 
 //    switch(PenColor)
 //    {
 //        case(Qt::GlobalColor::blue) : fout << "Blue" << endl;
-//                                      break;
+//                                  break;
 //        case(Qt::GlobalColor::green) : fout << "Green" << endl;
 //                                  break;
 //        case(Qt::GlobalColor::cyan) : fout << "Cyan" << endl;
@@ -1150,7 +1177,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
 
 
 
-}
+//}
 
 //    cout << "Which file do you want to save to?" << endl;
 //    cin  >> fileSave;
@@ -1199,5 +1226,8 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
 //    }
 
 //        fout.close();
+<<<<<<< HEAD
 
 */
+//=======
+//>>>>>>> d9709aadccf6d0ec6f635baa09f83bd248a40846

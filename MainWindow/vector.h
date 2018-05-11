@@ -252,7 +252,7 @@ public:
         {
             for (int i = 0; i < m_nCurSize; i++)
             {
-                cout << " E#" << i << ":" <<m_pElem[i];
+                cout << " E#" << i << ":" << m_pElem[i];
                 if (printeol)
                 {
                     cout << endl;

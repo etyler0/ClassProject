@@ -14,6 +14,7 @@
  *****************************************************/
 // Standard directives
 #include <iostream>
+#include <ostream>
 #include <math.h>
 #include "shape.h"
 #include "shape2d.h"
@@ -36,9 +37,6 @@ using namespace std;
 
 class Rectangle : public Shape2D
 {
-private:
-    Rectangle() {}; // Default constructor - never used - all fields must be explictly set
-    
 public:
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
@@ -69,7 +67,15 @@ public:
         lowerright = lr;
     }
     
+    Rectangle() = delete;
+    Rectangle& operator=(const Rectangle&) = delete;  // Disallow copying
+    Rectangle(const Rectangle&) = delete;
     ~Rectangle() {};
+
+    std::ostream& print(std::ostream& os) const
+    {
+        return os << " Id:" << getId() << " P:" << calcPerimeter() << "A:" << calcArea();
+    };
 
     // draw() function from shape base class
     void draw(QPaintDevice* device)
@@ -103,13 +109,13 @@ public:
     }
 
     // calcPerimeter() function from shape base class
-    double calcPerimeter()
+    double calcPerimeter() const
     {
         return ( ((upperleft.x()-lowerright.x()) * 2) + ((upperleft.y()-lowerright.y()) * 2));
     }
 
     // calcArea() function from shape base class
-    double calcArea()
+    double calcArea() const
     {
         return ( (upperleft.x()-lowerright.x()) * (upperleft.y()-lowerright.y()));
     }

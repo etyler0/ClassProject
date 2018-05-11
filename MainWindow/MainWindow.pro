@@ -32,7 +32,8 @@ SOURCES += \
     contact.cpp \
     login.cpp \
     parser.cpp \
-    reports.cpp
+    reports.cpp \
+    shape.cpp
 
 HEADERS += \
         mainwindow.h \

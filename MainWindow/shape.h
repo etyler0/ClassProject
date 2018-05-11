@@ -33,6 +33,8 @@ using namespace std;
   *
   * Basic 2D drawing example link - http://doc.qt.io/qt-5/qtwidgets-painting-basicdrawing-example.html
   *********************************************************************************************************/
+//namespace nserkk::shapes
+//{
 
 class Shape
 {
@@ -48,43 +50,29 @@ public:
              typeShape{s},
              painter{pDevice} {}
 
-    // Normal functions
-    int getId()
-    {
-        return shapeId;
-    }
-
-    shapeType getShapeType()
-    {
-        return typeShape;
-    }
-
-    // Pure Virtual functions
-    virtual void draw(QPaintDevice* pDevice) = 0;
-
-    virtual void move(QPoint &newUpperLeft) = 0;
-
-    virtual void update(void) = 0;
-
-    virtual double calcPerimeter(void) { return 0.0; };  // default to zero for text and line
-    virtual double calcArea(void)      { return 0.0; };  // default to zero for text and line
-
-
+    Shape() = delete;         // default constructor never used
+    Shape& operator=(const Shape&) = delete;  // Disallow copying
+    Shape(const Shape&) = delete;
     // Virtual Destructor
     virtual ~Shape() {}
 
+    // Normal functions
+    int getId() const;
+    shapeType getShapeType() const;
+    virtual double calcPerimeter(void) const;
+    virtual double calcArea(void) const;
+
+    // Pure Virtual functions
+    virtual void draw(QPaintDevice* pDevice) = 0;
+    virtual void move(QPoint &newUpperLeft) = 0;
+    virtual void update(void) = 0;
+    virtual std::ostream& print(std::ostream& os) const = 0;
+
 protected:
-    Shape() {} // default constructor never used
 
-    QPainter& get_qPainter()  // Function that returns the shape painter
-    {
-        return painter;
-    }
+    QPainter& get_qPainter();  // Function that returns the shape painter
 
-    QPaintDevice *get_qPaintDevice(void)
-    {
-        return device;
-    }
+    QPaintDevice *get_qPaintDevice(void) const;
 
 private:
     QPaintDevice *device;    // QPainter variable - responsible for the drawing of the shapes in the viewing area
@@ -93,4 +81,33 @@ private:
     QPainter painter;
 };
 
+std::ostream& operator<<(std::ostream& os, const Shape& s);
+std::ostream& operator<<(std::ostream& os, const Shape* s);
+struct compare_shape_id;
+struct compare_shape_perimeter;
+struct compare_shape_area;
+
+struct compare_shape_id {
+    bool operator()(const Shape* s1, const Shape* s2) const
+    {
+        return (s1->getId() < s2->getId()); // dereference pointer, compare ids
+    }
+};
+
+struct compare_shape_perimeter {
+    bool operator()(const Shape* s1, const Shape* s2) const
+    {
+        return (s1->calcPerimeter() < s2->calcPerimeter());
+    }
+};
+
+struct compare_shape_area {
+    bool operator()(const Shape* s1, const Shape* s2) const
+    {
+        return (s1->calcArea() < s2->calcArea());
+    }
+};
+
+
+//}
 #endif

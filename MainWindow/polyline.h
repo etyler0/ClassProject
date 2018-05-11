@@ -19,11 +19,6 @@ using namespace std;
 
 class PolyLine : public Shape1D
 {
-private:
-    PolyLine() {}; // Default constructor - never used - all fields must be explictly set
-
-    vector<QPoint> points;
-    
 public:
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
@@ -37,19 +32,19 @@ public:
              Qt::PenStyle       xPenStyle,
              Qt::PenCapStyle    xPenCapStyle,
              Qt::PenJoinStyle   xPenJoinStyle,
-             const vector<QPoint> &source)
+             const std::vector<QPoint> &xPoints)
        : Shape1D(device, xId, shapeType::Polyline,
-                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle),
-                      points{source}
-    {
-        // object specific transform from points supplied to bounding points
-
+                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle)
+{
+       // object specific transform from points supplied to bounding points
         qreal minX = 0.0;
         qreal maxX = 0.0;
         qreal minY = 0.0;
         qreal maxY = 0.0;
 
-        for(vector<QPoint>::iterator i=points.begin();i!=points.end()-1;++i)
+        points = xPoints;
+
+        for(std::vector<QPoint>::iterator i=points.begin();i!=points.end()-1;++i)
         {
             if (i->x() < minX)
             {
@@ -76,7 +71,15 @@ public:
         lowerright.setY(maxY);
     }
     
+    PolyLine() = delete;
+    PolyLine& operator=(const PolyLine&) = delete;  // Disallow copying
+    PolyLine(const PolyLine&) = delete;
     ~PolyLine() {};
+
+    std::ostream& print(std::ostream& os) const
+    {
+        return os << " Id:" << getId() << " P:" << calcPerimeter() << "A:" << calcArea();
+    };
 
     // draw() function from shape base class
     void draw(QPaintDevice* device)
@@ -84,7 +87,7 @@ public:
         QPainter& paint = get_qPainter();
         paint.begin(device);
         paint.setPen(pen);
-        QPoint *qpptr = &(*points.begin());
+        const QPoint *qpptr = &(*points.begin());
         paint.drawPolyline(qpptr,points.size());
         paint.setPen(QPen());
         paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
@@ -115,13 +118,13 @@ public:
     }
 
     // calcPerimeter() function from shape base class
-    double calcPerimeter()
+    double calcPerimeter() const
     {
         return 0;
     }
 
     // calcArea() function from shape base class
-    double calcArea()
+    double calcArea() const
     {
         return 0;
     }

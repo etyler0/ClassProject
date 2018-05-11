@@ -19,8 +19,6 @@ using namespace std;
 
 class Text : public Shape
 {
-private:
-    Text() {}  // Default constructor never used - all elements must be explictly set
 public:
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
@@ -37,11 +35,12 @@ public:
 
     Text(QPaintDevice* device,
          int                xId,
-         const char        *xString,
+         //const char        *xString,
+         QString            xString,
          QColor             xColor,
          Qt::AlignmentFlag  xAlignment,
          int                xFontSize,
-         const char        *xFontFamily,
+         QString            xFontFamily,
          QFont::Style       xFontStyle,
          QFont::Weight      xFontWeight,
          int                xTopLeftX,
@@ -58,6 +57,15 @@ public:
         QPoint lr(xTopLeftX+xWidth, xTopLeftY+xHeight);
         lowerright = lr;
     }
+    Text() = delete;
+    Text& operator=(const Text&) = delete;  // Disallow copying
+    Text(const Text&) = delete;
+    ~Text() {};               vector<QPoint> v;
+
+    std::ostream& print(std::ostream& os) const
+    {
+        return os << " Id:" << getId() << " P:" << calcPerimeter() << "A:" << calcArea();
+    };
 
     void draw(QPaintDevice* device)
     {
@@ -93,12 +101,12 @@ public:
     }
 
 
-    double calcArea()
+    double calcArea() const
     {
         return 0;
     }
 
-    double calcPerimeter()
+    double calcPerimeter() const
     {
         return 0;
     }
