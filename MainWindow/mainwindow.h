@@ -40,8 +40,12 @@ public:
     //  Adjusts currently selected shape to adjust menus for later
     void comboBoxBaseShape(int index, base &curShape);
 
-    int parsePenColor(QColor color);
+    int parseColor(QColor color);
     int parsePenStyle(int counter);
+    int parsePenCapStyle(int counter);
+    int parsePenJoinStyle(int counter);
+    int parseBrushStyle(int counter);
+
 
     //=============== UPDATERS ==================//
     //  Recreate menus in ADD TAB

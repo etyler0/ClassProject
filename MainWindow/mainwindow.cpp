@@ -115,8 +115,8 @@ void MainWindow::comboBoxBaseShape(int index, base& curShape){
     }
 }
 
-//  Transforms qt constant/enum for pen color to match combobox
-int MainWindow::parsePenColor(QColor color){
+//  Transforms qt constant/enum for colors to match combobox
+int MainWindow::parseColor(QColor color){
     if(color.name() == "#ffffff") return 0;     //  WHITE
     if(color.name() == "#000000") return 1;     //  BLACK
     if(color.name() == "#ff0000") return 2;     //  RED
@@ -139,6 +139,27 @@ int MainWindow::parsePenStyle(int counter){
     return 0;                                       //  DEFAULT IF NONE
 }
 
+int MainWindow::parsePenCapStyle(int counter){
+    if(counter == Qt::FlatCap)      return 0;   //  FLATCAP
+    if(counter == Qt::SquareCap)    return 1;   //  SQUARECAP
+    if(counter == Qt::RoundCap)     return 2;   //  ROUNDCAP
+    return 0;
+}
+
+int MainWindow::parsePenJoinStyle(int counter){
+    if(counter == Qt::MiterJoin)    return 0;   //  MITERJOIN
+    if(counter == Qt::BevelJoin)    return 1;   //  BEVELJOIN
+    if(counter == Qt::RoundJoin)    return 2;   //  ROUNDJOIN
+    return 0;
+}
+
+int MainWindow::parseBrushStyle(int counter){
+    if(counter == Qt::SolidPattern)     return 0;   //  SOLID PATTERN
+    if(counter == Qt::HorPattern)       return 1;   //  HORIZONTAL
+    if(counter == Qt::VerPattern)       return 2;   //  VERTICAL
+    if(counter == Qt::NoBrush)          return 3;   //  NO BRUSH
+    return 0;
+}
 
 
 //================== ADD TAB =======================//
@@ -231,12 +252,11 @@ void MainWindow::updateModTab(){
 void MainWindow::on_comboBox_mod_ID_currentIndexChanged(int index)
 {
     int val = 0;
-
     //  Update current combobox of shape type
+
     if(index > 0){
         val = (*pShapeVector)[index - 1]->getShapeType();
         ui->combobox_mod_shapeType->setCurrentIndex(++val);
-
     }
 
     //  Update shape type & menus
@@ -249,7 +269,7 @@ void MainWindow::on_comboBox_mod_ID_currentIndexChanged(int index)
         Shape2D* temp = dynamic_cast<Shape2D*>((*pShapeVector)[index - 1]);
 
         //  Parses pen color to the combobox
-        int penColor_index = parsePenColor(temp->pen.color());
+        int penColor_index = parseColor(temp->pen.color());
         ui->comboBox_mod_penColor->setCurrentIndex(penColor_index);
 
         //  Sets pen width value
@@ -259,9 +279,25 @@ void MainWindow::on_comboBox_mod_ID_currentIndexChanged(int index)
         int penStyle_index = parsePenStyle(temp->pen.style());
         ui->comboBox_mod_penStyle->setCurrentIndex(penStyle_index);
 
-        //
+        //  Parses pen cap style to the combobox
+        int penCapStyle_index = parsePenCapStyle(temp->pen.capStyle());
+        ui->comboBox_mod_penCapStyle->setCurrentIndex(penCapStyle_index);
 
+        //  Parses pen join style to the combo box
+        int penJoinStyle_index = parsePenJoinStyle(temp->pen.joinStyle());
+        ui->comboBox_mod_penJoinStyle->setCurrentIndex(penJoinStyle_index);
 
+        //  Parses brush color to the combobox
+        int brushColor_index = parseColor(temp->brush.color());
+        ui->comboBox_mod_brushColor->setCurrentIndex(brushColor_index);
+
+        //  Parses brush style to the combobox
+        int brushStyle_index = parseBrushStyle(temp->brush.style());
+        ui->comboBox_mod_brushStyle->setCurrentIndex(brushStyle_index);
+
+        //  Provides value for the anchor box
+        ui->spinBox_X_mod->setValue(temp->upperleft.x());
+        ui->spinBox_Y_mod->setValue(temp->upperleft.y());
     }
 
     //  Update menu displays
