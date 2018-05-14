@@ -33,8 +33,7 @@ SOURCES += \
     login.cpp \
     parser.cpp \
     reports.cpp \
-    shape.cpp \
-    selection_sort.cpp
+    shape.cpp
 
 HEADERS += \
         mainwindow.h \

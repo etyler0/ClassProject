@@ -17,30 +17,35 @@ namespace nserkkselsort
 //! \param complessfunc - functor/predicate that returns true if a<b
 //!
 //! \return None 
-template <typename TColl, typename TSort>
-void selection_sort(TColl first, TColl last, TSort complessfunc)
-    {
+template <typename iterator, typename LessCompare>
+void selection_sort(iterator first, iterator last, LessCompare complessfunc)
+{
     while (first != last)
     {
-        TColl curelem(first);
-        curelem++;  // no need to compare same element at start of inner loop
+        iterator minelem = first;
+        iterator compare = first;
+        ++compare;
+
         // inner loop scans from current position in collection to end
         // we casn ignore all elements in the collection prior to the
         // the current position are already sorted in ascending order
-        while (curelem != last)
+        while (compare != last)
         {
-            if (complessfunc(*curelem, *first))
+            if (complessfunc(*compare, *minelem))
             {
                 // element further into the collection content is less than 
                 // the element's content from the outer loop
-                TColl tmp(first);
-                first = curelem;
-                curelem = tmp;
-
+                minelem = compare;
             }
-            curelem++;
+            ++compare; // continue scanning to find lowest element
         }
-        first++;
+
+        // set lowest unsorted eleemnt to contain new minuimum value
+        if (first != minelem)
+        {
+            std::iter_swap(first, minelem);
+        }
+        ++first;
     }
 }
 

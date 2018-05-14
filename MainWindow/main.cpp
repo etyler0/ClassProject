@@ -88,8 +88,16 @@ int main(int argc, char *argv[])
     pShapeVector->push_back(pText1);
 #endif
 
+    cout << "By ID==============" << endl;
     nserkkselsort::selection_sort(pShapeVector->begin(), pShapeVector->end(), compare_shape_id());
     pShapeVector->printAsDebug(false,true);
+    cout << "By perimeter==============" << endl;
+    nserkkselsort::selection_sort(pShapeVector->begin(), pShapeVector->end(), compare_shape_perimeter());
+    pShapeVector->printAsDebug(false,true);
+    cout << "By area==============" << endl;
+    nserkkselsort::selection_sort(pShapeVector->begin(), pShapeVector->end(), compare_shape_area());
+    pShapeVector->printAsDebug(false,true);
+    cout << endl;
     w.setVector(pShapeVector);
     w.show();
     q.exec();
