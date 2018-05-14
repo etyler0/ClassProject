@@ -16,6 +16,7 @@
 #include <string>
 #include <fstream>
 #include <QPoint>
+#include <QString>
 
 #include "vector.h"
 #include "rectangle.h"
@@ -125,6 +126,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
     ofstream fout;
     string file;
     string fileSave;
+    vector<QPoint> *newpts1 = new vector<QPoint>();
 
     //Dimensions
     vector<string> dataDimensions;
@@ -152,11 +154,11 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
     int brushIndex;
 
     //For Shapes: Text
-    string textString;
+    QString textString;
     string textColor;
     string textAlignment;
     int textPointSize;
-    string fontFamily;
+    QString fontFamily;
     string fontStyle;
     string fontWeight;
     int textIndex;
@@ -350,15 +352,25 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
                 cout << dataDimensions[i] << " ";
             }
 
+            int polylineX1,polylineY1,polylineX2,polylineY2,polylineX3,polylineY3,polylineX4, polylineY4;
+            polylineX1 = stoi(dataDimensions[0]);
+            polylineY1 = stoi(dataDimensions[1]);
+            polylineX2 = stoi(dataDimensions[2]);
+            polylineY2 = stoi(dataDimensions[3]);
+            polylineX3  = stoi(dataDimensions[4]);
+            polylineY3 = stoi(dataDimensions[5]);
+            polylineX4 = stoi(dataDimensions[6]);
+            polylineY4 = stoi(dataDimensions[7]);
+
             vector<QPoint> *newpts2 = new vector<QPoint>();
 
-            QPoint qp2(dataDimensions[0],dataDimensions[1]);
+            QPoint qp2(polylineX1,polylineY1);
             newpts2->push_back(qp2);
-            QPoint qp22(dataDimensions[2],dataDimensions[3]);
+            QPoint qp22(polylineX2,polylineY2);
             newpts2->push_back(qp22);
-            QPoint qp23(dataDimensions[4],dataDimensions[5]);
+            QPoint qp23(polylineX3,polylineY3);
             newpts2->push_back(qp23);
-            QPoint qp24(dataDimensions[6],dataDimensions[7]);
+            QPoint qp24(polylineX4,polylineY4);
             newpts2->push_back(qp24);
 
             getline(fin, penColor);
@@ -603,14 +615,27 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
                 {
                     cout << dataDimensions[i] << " ";
                 }
-                    vector<QPoint> *newpts1 = new vector<QPoint>();
-                    QPoint qp1(dataDimensions[0],dataDimensions[1]);
+
+                int polygonX1,polygonY1,polygonX2,polygonY2,polygonX3,polygonY3,polygonX4,polygonY4;
+
+                polygonX1 = stoi(dataDimensions[0]);
+                polygonY1 = stoi(dataDimensions[1]);
+                polygonX2 = stoi(dataDimensions[2]);
+                polygonY2 = stoi(dataDimensions[3]);
+                polygonX3 = stoi(dataDimensions[4]);
+                polygonY3 = stoi(dataDimensions[5]);
+                polygonX4 = stoi(dataDimensions[6]);
+                polygonY4 = stoi(dataDimensions[7]);
+
+
+                    //vector<QPoint> *newpts1 = new vector<QPoint>();
+                    QPoint qp1(polygonX1,polygonY1);
                     newpts1->push_back(qp1);
-                    QPoint qp12(dataDimensions[2],dataDimensions[3]);
+                    QPoint qp12(polygonX2,polygonY2);
                     newpts1->push_back(qp12);
-                    QPoint qp13(dataDimensions[4],dataDimensions[5]);
+                    QPoint qp13(polygonX3,polygonY3);
                     newpts1->push_back(qp13);
-                    QPoint qp14(dataDimensions[6],dataDimensions[7]);
+                    QPoint qp14(polygonX4,polygonY4);
                     newpts1->push_back(qp14);
 
             }
@@ -850,8 +875,12 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             shapesVec.push_back(shapeName);
 
 
-            getline(fin, textString);
-            textStringVec.push_back(textString);
+            string tempString;
+            getline(fin, tempString);
+            textString = QString::fromStdString(tempString);
+
+
+            textStringVec.push_back(tempString);
 
             dimensions.erase(0);
             getline(fin, dimensions);
@@ -956,8 +985,11 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             fin.ignore();
 
 
-            getline(fin, fontFamily);
-            fontFamilyVec.push_back(fontFamily);
+            string tempFontfamily;
+            getline(fin, tempFontfamily);
+            fontFamily = QString::fromStdString(tempFontfamily);
+
+            fontFamilyVec.push_back(tempFontfamily);
 
 
 
@@ -1006,8 +1038,8 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             if(shapeName == "Text")
             {
 //                int textTlx,textTly,textW,textH;
-                Text *text1 = Text(device, shapeId, textString, TextColor, TextAlignment, textPointSize,
-                           fontFamily, FontStyle, FontWeight,textTlx,textTly,textW,textH);//Add the parameters
+                Text *text1 = new Text(device, shapeId, textString, TextColor, TextAlignment, textPointSize,
+                                       fontFamily, FontStyle, FontWeight,textTlx,textTly,textW,textH);//Add the parameters
                 pShapeVector->push_back((Shape *)&text1);
             }
         }
@@ -1066,110 +1098,169 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
     fin.close();
 }
 
-//void writeFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
+//void writeFile(MyVector<Shape *> *pShapeVector)
 //{
 //    ofstream fout;
-
+//    int shape;
+//    int index = 1;
+//    Shape2D* temp = dynamic_cast<Shape2D*>((*pShapeVector)[index - 1]);
 //    fout.open("./shapes.txt");
-
-//    while(pShapeVector.begin(), pShapeVector.end(),*first)
+//    MyVector<Shape *>::iterator i = pShapeVector->begin();
+//    while(i != pShapeVector->end())
 //    {
-//          *first->getId()
+//        shape = (*i)->getShapeType();
 
-//    for(int i = 0; i < pShapeVector->size(); i++)
-//    {
-//        fout << pShapeVector
+//        if(shape == 0 || shape == 1 || shape == 2 || shape == 3 ||
+//           shape == 3 || shape == 4 ||shape == 5 ||shape == 6)
+//        {
+//            switch(shape)
+//            {
+//                case 0 : fout << "Line" << endl;
+//                         break;
+//                case 1 : fout << "Polyline" << endl;
+//                         break;
+//                case 2 : fout << "Polygon" << endl;
+//                         break;
+//                case 3 : fout << "Rectangle" << endl;
+//                         break;
+//                case 4 : fout << "Square" << endl;
+//                         break;
+//                case 5 : fout << "Ellipse" << endl;
+//                         break;
+//                case 6 : fout << "Circle" << endl;
+//                         break;
+//            }
+
+//            fout << (*i)->getId();
+
+//            //Dimensions
+
+//            QColor PenColor = temp->pen.color();
+
+
+//            switch(PenColor)
+//            {
+//                case(Qt::GlobalColor::blue) : fout << "Blue" << endl;
+//                                          break;
+//                case(Qt::GlobalColor::green) : fout << "Green" << endl;
+//                                          break;
+//                case(Qt::GlobalColor::cyan) : fout << "Cyan" << endl;
+//                                          break;
+//                case(Qt::GlobalColor::red) : fout << "Red" << endl;
+//                                          break;
+//                case(Qt::GlobalColor::black) : fout << "Red" << endl;
+//                                          break;
+//                case(Qt::GlobalColor::white) : fout << "White" << endl;
+//                                          break;
+//                case(Qt::GlobalColor::magenta) : fout << "Magenta" << endl;
+//                                          break;
+//                case(Qt::GlobalColor::gray) : fout << "Gray" << endl;
+//                                          break;
+//            }
+
+//            fout << temp->pen.width();
+
+//            int PenStyle = temp->pen.style();
+
+//            switch(PenStyle)
+//            {
+//                case(Qt::PenStyle::NoPen) : fout << "NoPen" << endl;
+//                                              break;
+//                case(Qt::PenStyle::SolidLine) : fout << "SolidLine" << endl;
+//                                          break;
+//                case(Qt::PenStyle::DashLine) : fout << "DashLine" << endl;
+//                                          break;
+//                case(Qt::PenStyle::DotLine) : fout << "DotLine" << endl;
+//                                          break;
+//                case(Qt::PenStyle::DashDotLine) : fout << "DashDotLine" << endl;
+//                                          break;
+//                case(Qt::PenStyle::DashDotDotLine) : fout << "DashDotDotLine" << endl;
+//                                          break;
+//            }
+
+//            Qt::PenCapStyle PenCapStyle = temp->pen.capStyle();
+
+//            switch(PenCapStyle)
+//            {
+//                case(Qt::PenCapStyle::FlatCap) : fout << "FlatCap" << endl;
+//                                                    break;
+//                case(Qt::PenCapStyle::SquareCap) : fout << "SquareCap" << endl;
+//                                                    break;
+//                case(Qt::PenCapStyle::RoundCap) : fout << "RoundCap" << endl;
+//                                                    break;
+//            }
+
+//            Qt::PenJoinStyle PenJoinStyle = temp->pen.joinStyle();
+
+//            switch(PenJoinStyle)
+//            {
+//                case(Qt::PenJoinStyle::MiterJoin) : fout << "MiterJoin" << endl;
+//                                                    break;
+//                case(Qt::PenJoinStyle::BevelJoin) : fout << "BevelJoin" << endl;
+//                                                    break;
+//                case(Qt::PenJoinStyle::RoundJoin) : fout << "RoundJoin" << endl;
+//                                                    break;
+//            }
+
+//          }
+
+//        if(shape == 2 || shape == 3 ||shape == 3 || shape == 4 ||shape == 5 ||shape == 6)
+//        {
+
+//                QColor BrushColor = temp->brush.color();
+
+//                switch(BrushColor)
+//                {
+//                    case(Qt::GlobalColor::blue) : fout << "Blue" << endl;
+//                                                  break;
+//                    case(Qt::GlobalColor::green) : fout << "Green" << endl;
+//                                              break;
+//                    case(Qt::GlobalColor::cyan) : fout << "Cyan" << endl;
+//                                              break;
+//                    case(Qt::GlobalColor::red) : fout << "Red" << endl;
+//                                              break;
+//                    case(Qt::GlobalColor::black) : fout << "Red" << endl;
+//                                              break;
+//                    case(Qt::GlobalColor::white) : fout << "White" << endl;
+//                                              break;
+//                    case(Qt::GlobalColor::magenta) : fout << "Magenta" << endl;
+//                                              break;
+//                    case(Qt::GlobalColor::gray) : fout << "Gray" << endl;
+//                                              break;
+//                }
+
+//                Qt::BrushStyle BrushStyle = temp->brush.style();
+
+//                switch(BrushStyle)
+//                {
+//                    case(Qt::BrushStyle::SolidPattern) : fout << "SolidPattern" << endl;
+//                                                  break;
+//                    case(Qt::BrushStyle::HorPattern) : fout << "HorPattern" << endl;
+//                                              break;
+//                    case(Qt::BrushStyle::VerPattern) : fout << "VerPattern" << endl;
+//                                              break;
+//                    case(Qt::BrushStyle::NoBrush) : fout << "NoBrush" << endl;
+//                                              break;
+//                }
+//        }
+
+
+
+//        i++;
 //    }
 
-//    switch(PenColor)
-//    {
-//        case(Qt::GlobalColor::blue) : fout << "Blue" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::green) : fout << "Green" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::cyan) : fout << "Cyan" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::red) : fout << "Red" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::black) : fout << "Red" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::white) : fout << "White" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::magenta) : fout << "Magenta" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::gray) : fout << "Gray" << endl;
-//                                  break;
-//    }
 
-//    fout << penWidth;
 
-//    switch(PenStyle)
-//    {
-//        case(Qt::PenStyle::NoPen) : fout << "NoPen" << endl;
-//                                      break;
-//        case(Qt::PenStyle::SolidLine) : fout << "SolidLine" << endl;
-//                                  break;
-//        case(Qt::PenStyle::DashLine) : fout << "DashLine" << endl;
-//                                  break;
-//        case(Qt::PenStyle::DotLine) : fout << "DotLine" << endl;
-//                                  break;
-//        case(Qt::PenStyle::DashDotLine) : fout << "DashDotLine" << endl;
-//                                  break;
-//        case(Qt::PenStyle::DashDotDotLine) : fout << "DashDotDotLine" << endl;
-//                                  break;
-//    }
 
-//    switch(PenCapStyle)
-//    {
-//        case(Qt::PenCapStyle::FlatCap) : fout << "FlatCap" << endl;
-//                                            break;
-//        case(Qt::PenCapStyle::SquareCap) : fout << "SquareCap" << endl;
-//                                            break;
-//        case(Qt::PenCapStyle::RoundCap) : fout << "RoundCap" << endl;
-//                                            break;
-//    }
 
-//    switch(PenJoinStyle)
-//    {
-//        case(Qt::PenJoinStyle::MiterJoin) : fout << "MiterJoin" << endl;
-//                                            break;
-//        case(Qt::PenJoinStyle::BevelJoin) : fout << "BevelJoin" << endl;
-//                                            break;
-//        case(Qt::PenJoinStyle::RoundJoin) : fout << "RoundJoin" << endl;
-//                                            break;
-//    }
 
-//    switch(BrushColor)
-//    {
-//        case(Qt::GlobalColor::blue) : fout << "Blue" << endl;
-//                                      break;
-//        case(Qt::GlobalColor::green) : fout << "Green" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::cyan) : fout << "Cyan" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::red) : fout << "Red" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::black) : fout << "Red" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::white) : fout << "White" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::magenta) : fout << "Magenta" << endl;
-//                                  break;
-//        case(Qt::GlobalColor::gray) : fout << "Gray" << endl;
-//                                  break;
-//    }
 
-//    switch(BrushStyle)
-//    {
-//        case(Qt::BrushStyle::SolidPattern) : fout << "SolidPattern" << endl;
-//                                      break;
-//        case(Qt::BrushStyle::HorPattern) : fout << "HorPattern" << endl;
-//                                  break;
-//        case(Qt::BrushStyle::VerPattern) : fout << "VerPattern" << endl;
-//                                  break;
-//        case(Qt::BrushStyle::NoBrush) : fout << "NoBrush" << endl;
-//                                  break;
-//    }
+
+
+
+
+
+
 
 //    fout << textString;
 
