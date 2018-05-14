@@ -40,11 +40,19 @@ public:
     //  Adjusts currently selected shape to adjust menus for later
     void comboBoxBaseShape(int index, base &curShape);
 
+    //  Multi-functional color parser
     int parseColor(QColor color);
+
+    //  Pen & Brush
     int parsePenStyle(int counter);
     int parsePenCapStyle(int counter);
     int parsePenJoinStyle(int counter);
     int parseBrushStyle(int counter);
+
+    //  Text
+    int parseTextAlignment(int counter);
+    int parseTextFontFamily(QString family);
+    int parseTextFontStyle(int style);
 
 
     //=============== UPDATERS ==================//

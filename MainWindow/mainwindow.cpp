@@ -3,6 +3,8 @@
 #include "vector.h"
 #include "shape.h"
 #include "shape2d.h"
+#include "text.h"
+#include "shape1d.h"
 #include <QComboBox>
 #include <QAbstractItemView>
 #include <QDebug>
@@ -161,6 +163,33 @@ int MainWindow::parseBrushStyle(int counter){
     return 0;
 }
 
+int MainWindow::parseTextAlignment(int counter){
+    if(counter == Qt::AlignLeft)    return 0;   //  ALIGN LEFT
+    if(counter == Qt::AlignRight)   return 1;   //  ALIGN RIGHT
+    if(counter == Qt::AlignTop)     return 2;   //  ALIGN TOP
+    if(counter == Qt::AlignBottom)  return 3;   //  ALIGN BOTTOM
+    if(counter == Qt::AlignCenter)  return 4;   //  ALIGN CENTER
+    return 0;
+}
+
+//  Come back to check
+int MainWindow::parseTextFontFamily(QString family){
+    //  Comic Sans is not a default styleHint enum
+    if(family == "Comic Sans MS")     return 0;
+    if(family == "Courier")           return 1;
+    if(family == "Helvetica")         return 2;
+    if(family == "Times")             return 3;
+    return 0;
+}
+
+int MainWindow::parseTextFontStyle(int style){
+    if(style == QFont::StyleNormal)      return 0;
+    if(style == QFont::StyleItalic)      return 1;
+    if(style == QFont::StyleOblique)     return 2;
+    return 0;
+}
+
+
 
 //================== ADD TAB =======================//
 
@@ -264,9 +293,11 @@ void MainWindow::on_comboBox_mod_ID_currentIndexChanged(int index)
 
     //  ALL INTERNAL VALUE UPDATES
 
-    /*********** 2D Shape internal values ***************/
+    /*********** 2D Shape internal values ***************************/
     if(modCurShape == base2D){
-        Shape2D* temp = dynamic_cast<Shape2D*>((*pShapeVector)[index - 1]);
+
+        //  Casts shape to use Shape2D functions
+        Shape2D* temp = static_cast<Shape2D*>((*pShapeVector)[index - 1]);
 
         //  Parses pen color to the combobox
         int penColor_index = parseColor(temp->pen.color());
@@ -298,6 +329,37 @@ void MainWindow::on_comboBox_mod_ID_currentIndexChanged(int index)
         //  Provides value for the anchor box
         ui->spinBox_X_mod->setValue(temp->upperleft.x());
         ui->spinBox_Y_mod->setValue(temp->upperleft.y());
+    }
+
+    /************* Text Shape Internal Values ****************/
+    else if(modCurShape == baseText){
+
+        //  Casts Shape to Text to use text functions
+        Text* temp = static_cast<Text*>((*pShapeVector)[index - 1]);
+
+        //  Sets lineEdit box to match text's String var
+        ui->lineEdit_mod_textString->setText(temp->String);
+
+        //  Parses text color to the combobox
+        int textColor_index = parseColor(temp->Color);
+        ui->comboBox_mod_textColor->setCurrentIndex(textColor_index);
+
+        //  Parses text alignment to the combobox
+        int textAlignment_index = parseTextAlignment(temp->Alignment);
+        ui->comboBox_mod_textAlignment->setCurrentIndex(textAlignment_index);
+
+        //  Parses Font Size to the spinbox
+        ui->spinBox_mod_textPointSize->setValue(temp->FontSize);
+
+        //  Parses text font family to the combobox
+        int textFontFamily_index = parseTextFontFamily(temp->FontFamily);
+        ui->comboBox_mod_textFontFamily->setCurrentIndex(textFontFamily_index);
+
+        //  Parses text font style to the combobox
+        int textFontStyle_index = parseTextFontStyle(temp->FontStyle);
+        ui->comboBox_mod_textFontStyle->setCurrentIndex(textFontStyle_index);
+
+
     }
 
     //  Update menu displays
