@@ -351,14 +351,15 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
             }
 
             vector<QPoint> *newpts2 = new vector<QPoint>();
+
             QPoint qp2(dataDimensions[0],dataDimensions[1]);
-            newpts1->push_back(qp2);
+            newpts2->push_back(qp2);
             QPoint qp22(dataDimensions[2],dataDimensions[3]);
-            newpts1->push_back(qp22);
+            newpts2->push_back(qp22);
             QPoint qp23(dataDimensions[4],dataDimensions[5]);
-            newpts1->push_back(qp23);
+            newpts2->push_back(qp23);
             QPoint qp24(dataDimensions[6],dataDimensions[7]);
-            newpts1->push_back(qp24);
+            newpts2->push_back(qp24);
 
             getline(fin, penColor);
             QColor PenColor;
