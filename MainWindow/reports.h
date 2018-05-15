@@ -4,6 +4,7 @@
 #include "vector.h"
 #include "shape.h"
 #include <QWidget>
+#include <QTableWidget>
 
 using namespace nserkkvector;
 namespace Ui {
@@ -16,12 +17,18 @@ class reports : public QWidget
 
 public:
     explicit reports(QWidget *parent = 0, int sort = 0);
-
-    void mouseMoveEvent(QMouseEvent *event);
     void setSort(int val);
     void setVector(MyVector<Shape*> *temp);
     void show();
+    QString shapeToString(int shape);
     ~reports();
+
+protected:
+    //  Mouse events
+    QPoint mousePoint;
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 
 private slots:
     void on_pushButton_report_exit_clicked();
@@ -30,6 +37,7 @@ private slots:
 private:
     Ui::reports *ui;
     int sorter;
+    bool isMouseDown = false;
     MyVector<Shape*> *pShapeVector;
 };
 

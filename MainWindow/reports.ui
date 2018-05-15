@@ -103,7 +103,7 @@ font: 12pt &quot;Noto Sans&quot;;</string>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QTableWidget" name="tableWidget_report_ID">
@@ -119,26 +119,6 @@ font: 12pt &quot;Noto Sans&quot;;</string>
        <string notr="true">background-color: rgb(136, 138, 133);
 color: rgb(0, 0, 0);</string>
       </property>
-      <column>
-       <property name="text">
-        <string>ID Number</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Shape Type</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Area</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Perimeter</string>
-       </property>
-      </column>
      </widget>
     </widget>
     <widget class="QWidget" name="page_3">
@@ -155,26 +135,6 @@ color: rgb(0, 0, 0);</string>
        <string notr="true">background-color: rgb(136, 138, 133);
 color: rgb(0, 0, 0);</string>
       </property>
-      <column>
-       <property name="text">
-        <string>ID Number</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Shape Type</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Area</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Perimeter</string>
-       </property>
-      </column>
      </widget>
     </widget>
     <widget class="QWidget" name="page_2">
@@ -191,26 +151,6 @@ color: rgb(0, 0, 0);</string>
        <string notr="true">background-color: rgb(136, 138, 133);
 color: rgb(0, 0, 0);</string>
       </property>
-      <column>
-       <property name="text">
-        <string>ID Number</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Shape Type</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Area</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Perimeter</string>
-       </property>
-      </column>
      </widget>
     </widget>
    </widget>
