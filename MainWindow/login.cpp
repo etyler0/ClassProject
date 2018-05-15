@@ -83,6 +83,8 @@ int login::addUser(QString username, QString password, int accessLevel){
     QString homePath = QFileInfo(".").absolutePath();
     QString textPath = "/MainWindow/users.txt";
 
+    if(password.length() < 8) return 0;
+
     QFile file(homePath + textPath);
     if(!file.open(QFile::ReadOnly | QFile::Text)){
         QMessageBox::warning(this, "!!!", "Missing User Data");

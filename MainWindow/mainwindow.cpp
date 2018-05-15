@@ -60,6 +60,7 @@ void MainWindow::on_actionSort_by_ID_triggered()
     else{
         Reports->setSort(0);
     }
+    Reports->setVector(pShapeVector);
     Reports->show();
 }
 
@@ -71,6 +72,7 @@ void MainWindow::on_actionSort_by_perimeter_triggered()
     else{
         Reports->setSort(1);
     }
+    Reports->setVector(pShapeVector);
     Reports->show();
 }
 
@@ -82,6 +84,7 @@ void MainWindow::on_actionSort_by_area_triggered()
     else{
         Reports->setSort(2);
     }
+    Reports->setVector(pShapeVector);
     Reports->show();
 }
 
