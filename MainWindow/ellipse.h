@@ -1,3 +1,11 @@
+/*****************************************************
+ * Class Project
+ *
+ * Class: CS1C at 10am, T/TH
+ * Group: ERKK (Eugene, Richard, Kevin, Kole)
+ * Created on: 4/4/18
+ *****************************************************/
+
 #ifndef ELLIPSE_H
 #define ELLIPSE_H
 /*****************************************************
@@ -6,6 +14,8 @@
 // Standard directives
 #include <iostream>
 #include <math.h>
+#include "shape2d.h"
+
 using namespace std;
 
 // Qt libraries/directives that will be utilized
@@ -16,6 +26,9 @@ using namespace std;
 #include <QPainter>// This gives access to the QPainter class, which preforms the painting on widgets and other paint devices
 #include <QPoint>  // This gives access to the QPoint class, which defines points on a plane
 
+//! ellipse class derived from Shape2D
+//!
+//! \author edt (5/13/18)
 class Ellipse : public Shape2D
 {
 public:
@@ -36,75 +49,19 @@ public:
              int                xTopLeftX,
              int                xTopLeftY,
              int                xWidth,
-             int                xHeight)
-       : Shape2D(device, xId, shapeType::Ellipse,
-                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle,
-                      xBrushColor, xBrushStyle)
-    {
-        // object specific transform from points supplied to bounding points
-        QPoint ul(xTopLeftX,xTopLeftY);
-        upperleft = ul;
-        QPoint lr(xTopLeftX+xWidth, xTopLeftY+xHeight);
-        lowerright = lr;
-    }
+             int                xHeight);
     
     Ellipse() = delete;         // default constructor never used
     Ellipse& operator=(const Ellipse&) = delete;  // Disallow copying
     Ellipse(const Ellipse&) = delete;
-    ~Ellipse() {};
+    ~Ellipse();
 
-    std::ostream& print(std::ostream& os) const
-    {
-        return os << " Id:" << getId() << " P:" << calcPerimeter() << " A:" << calcArea();
-    };
+    std::ostream& print(std::ostream& os) const;
 
-    // draw() function from shape base class
-    void draw(QPaintDevice* device)
-    {
-        QRect rect1(upperleft, lowerright);
-        QPainter& paint = get_qPainter();
-        paint.begin(device);
-        paint.setPen(pen);
-        paint.setBrush(brush);
-        paint.drawEllipse(rect1);
-        paint.setPen(QPen());
-        paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
-        paint.end();
-    }
-
-    // move() function from shape base class
-    void move(QPoint &newUpperLeft)
-    {
-        int deltaX = (newUpperLeft.x() - upperleft.x());
-        int deltaY = (newUpperLeft.y() - upperleft.y());
-
-        upperleft = newUpperLeft;
-        lowerright.setX(lowerright.x() + deltaX);
-        lowerright.setY(lowerright.y() + deltaY);
-    }
-
-    void update(void)
-    {
-        draw((get_qPaintDevice()));
-        return;
-    }
-
-    // calcPerimeter() function from shape base class
-    double calcPerimeter() const
-    {
-        double len = ((lowerright.x()-upperleft.x()));
-        double ht = ((lowerright.y()-upperleft.y()));
-
-        // Ramanujan Forumla #1
-        return ( (M_PI) * (3*(len-ht) ) - 
-                  (sqrt( ((3*len)+ht) * (len+(3*ht)) ) ) );
-    }
-
-    // calcArea() function from shape base class
-    double calcArea() const
-    {
-        return ( ( (lowerright.x()-upperleft.x()) / 2) * ( (lowerright.y()-upperleft.y()) / 2) * M_PI);
-    }
-
+    void draw(QPaintDevice* device);
+    void move(QPoint &newUpperLeft);
+    void update(void);
+    double calcPerimeter() const;
+    double calcArea() const;
 };
 #endif // ELLIPSE_H

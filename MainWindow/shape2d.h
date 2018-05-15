@@ -1,3 +1,11 @@
+/*****************************************************
+ * Class Project
+ *
+ * Class: CS1C at 10am, T/TH
+ * Group: ERKK (Eugene, Richard, Kevin, Kole)
+ * Created on: 4/4/18
+ *****************************************************/
+
 #ifndef SHAPE2D_H
 #define SHAPE2D_H
 #include "shape.h"
@@ -13,18 +21,29 @@
 
 class Shape2D: public Shape
 {
-protected:
-  //  Shape2D() {} // Default constructor never used - all elements must be explictly set
-
 public:
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
     //       accessors and mutators adds no value.
-    QPen pen;
-    QBrush brush;
-    QPoint upperleft;
-    QPoint lowerright;
+    QPen pen;           ///< Pen used to draw shape outline
+    QBrush brush;       ///< Brush used to fill 2D object interior
+    QPoint upperleft;   ///< Lower right anchor for bounding rectangle               
+    QPoint lowerright;  ///< vector containing endpints and vertices of line objects 
 
+    //! Constructor - abstract class for 2D (circle, square, etc) objects
+    //!
+    //! \author edt (5/14/18)
+    //!
+    //! \param device - QPaintDevice
+    //! \param xId - shape ID
+    //! \param xType 
+    //! \param xPenColor 
+    //! \param xPenWidth 
+    //! \param xPenStyle 
+    //! \param xPenCapStyle 
+    //! \param xPenJoinStyle 
+    //! \param xBrushColor 
+    //! \param xBrushStyle 
     Shape2D(QPaintDevice* device,
                  int                xId,
                  shapeType          xType,
@@ -50,8 +69,19 @@ public:
     Shape2D() = delete;         // default constructor never used
     Shape2D& operator=(const Shape&) = delete;  // Disallow copying
     Shape2D(const Shape&) = delete;
+
+    //! Destructor - simply free the object space
+    //!
+    //! \author edt (5/13/18)
     virtual ~Shape2D() {}
 
+    //! print - print limited information about derived instance for debugging
+    //!
+    //! \author edt (5/13/18)
+    //!
+    //! \param os - output stream
+    //!
+    //! \return std::ostream&amp; 
     virtual std::ostream& print(std::ostream& os) const = 0;
 };
 

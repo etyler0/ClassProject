@@ -33,7 +33,15 @@ SOURCES += \
     login.cpp \
     parser.cpp \
     reports.cpp \
-    shape.cpp
+    shape.cpp \
+    circle.cpp \
+    ellipse.cpp \
+    line.cpp \
+    polygon.cpp \
+    polyline.cpp \
+    rectangle.cpp \
+    square.cpp \
+    text.cpp
 
 HEADERS += \
         mainwindow.h \

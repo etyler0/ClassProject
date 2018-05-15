@@ -1,3 +1,11 @@
+/*****************************************************
+ * Class Project
+ *
+ * Class: CS1C at 10am, T/TH
+ * Group: ERKK (Eugene, Richard, Kevin, Kole)
+ * Created on: 4/4/18
+ *****************************************************/
+
 #ifndef SHAPE1D_H
 #define SHAPE1D_H
 #include "shape.h"
@@ -17,11 +25,23 @@ public:
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
     //       accessors and mutators adds no value.
-    QPen pen;
-    QPoint upperleft;
-    QPoint lowerright;
-    std::vector<QPoint> points;
+    QPen pen;                   ///< Pen used to draw shape outline
+    QPoint upperleft;           ///< Upper left anchor of bounding rectangle    
+    QPoint lowerright;          ///< Lower right anchor for bounding rectangle 
+    std::vector<QPoint> points; ///< vector containing endpints and vertices of line objects
 
+    //! Constructor - abstract class for 1D (line) objects
+    //!
+    //! \author edt (5/14/18)
+    //!
+    //! \param device - QPaintDevice
+    //! \param xId - shape ID
+    //! \param xType 
+    //! \param xPenColor 
+    //! \param xPenWidth 
+    //! \param xPenStyle 
+    //! \param xPenCapStyle 
+    //! \param xPenJoinStyle 
     Shape1D(QPaintDevice* device,
                  int                xId,
                  shapeType          xType,
@@ -42,8 +62,19 @@ public:
     Shape1D() = delete;
     Shape1D& operator=(const Shape1D&) = delete;  // Disallow copying
     Shape1D(const Shape1D&) = delete;
+
+    //! Destructor - simply free the object space
+    //!
+    //! \author edt (5/13/18)
     virtual ~Shape1D() {}
 
+    //! print - print limited information about derived instance for debugging
+    //!
+    //! \author edt (5/13/18)
+    //!
+    //! \param os - output stream
+    //!
+    //! \return std::ostream&amp; 
     virtual std::ostream& print(std::ostream& os) const = 0;
 };
 

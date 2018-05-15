@@ -50,7 +50,5 @@ void selection_sort(iterator first, iterator last, LessCompare complessfunc)
 }
 
 }
-
-
 #endif // __SELECTION_SORT_H_INCL__
 

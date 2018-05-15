@@ -14,66 +14,71 @@
 using namespace std;
 //using namespace nserkk::shapes;
 
-
+//! getID - fetch shape ID
+//!
+//! \author edt (5/14/18)
+//!
+//! \return int 
 int Shape::getId() const
 {
     return shapeId;
 }
 
+//! getShapeType - fetch type as specified in enum shapeType 
+//!
+//! \author edt (5/14/18)
+//!
+//! \return Shape::shapeType 
 Shape::shapeType Shape::getShapeType() const
 {
     return typeShape;
 }
 
-double Shape::calcPerimeter(void) const
-{
-    return 0.0;   // default to zero for text and line
-};
-
-double Shape::calcArea(void) const
-{
-    return 0.0; // default to zero for text and line
-};  
-
+//! getQPainter - fetch QPainter rendering engine
+//!
+//! \author edt (5/14/18)
+//!
+//! \return QPainter&
 QPainter& Shape::get_qPainter() // Function that returns the shape painter
 {
     return painter;
 }
 
+//! get_qPaintDevice - fetch base class of paintable object
+//!
+//! \author edt (5/14/18)
+//!
+//! \param void 
+//!
+//! \return QPaintDevice* 
 QPaintDevice *Shape::get_qPaintDevice(void) const
 {
     return device;
 }
 
 // non-class members
+//! operator<< - overloaded operator to enable generic printing of shapes
+//!
+//! \author edt (5/14/18)
+//!
+//! \param os - output stream to append to
+//! \param s - reference to a shape or derived object
+//!
+//! \return std::ostream&amp; - output stream
 std::ostream& operator<<(std::ostream& os, const Shape& s)
 {
     return os << " Id:" << s.getId() << " P:" << s.calcPerimeter() << " A:" << s.calcArea();
 }
+
+//! operator<< - overloaded operator to enable generic printing of shapes
+//!
+//! \author edt (5/14/18)
+//!
+//! \param os - output stream to append to
+//! \param s - pointer to a shape or derived object 
+//!
+//! \return std::ostream&amp; - output stream
 std::ostream& operator<<(std::ostream& os, const Shape* s)
 {
     return s->print(os);
 }
-#if 0
-struct compare_shape_id {
-    bool operator()(const Shape* s1, const Shape* s2) const
-    {
-        return (s1->getId() < s2->getId()); // dereference pointer, compare ids
-    }
-};
-
-struct compare_shape_perimeter {
-    bool operator()(const Shape* s1, const Shape* s2) const
-    {
-        return (s1->calcPerimeter() < s2->calcPerimeter());
-    }
-};
-
-struct compare_shape_area {
-    bool operator()(const Shape* s1, const Shape* s2) const
-    {
-        return (s1->calcArea() < s2->calcArea());
-    }
-};
-#endif
-

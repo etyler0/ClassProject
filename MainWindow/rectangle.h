@@ -55,71 +55,19 @@ public:
              int                xTopLeftX,
              int                xTopLeftY,
              int                xWidth,
-             int                xHeight)
-       : Shape2D(device, xId, shapeType::Rectangle,
-                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle,
-                      xBrushColor, xBrushStyle)
-    {
-        // object specific transform from points supplied to bounding points
-        QPoint ul(xTopLeftX,xTopLeftY);
-        upperleft = ul;
-        QPoint lr(xTopLeftX+xWidth, xTopLeftY+xHeight);
-        lowerright = lr;
-    }
+             int                xHeight);
     
     Rectangle() = delete;
     Rectangle& operator=(const Rectangle&) = delete;  // Disallow copying
     Rectangle(const Rectangle&) = delete;
-    ~Rectangle() {};
+    ~Rectangle();
 
-    std::ostream& print(std::ostream& os) const
-    {
-        return os << " Id:" << getId() << " P:" << calcPerimeter() << " A:" << calcArea();
-    };
-
-    // draw() function from shape base class
-    void draw(QPaintDevice* device)
-    {
-        QRect rect1(upperleft, lowerright);
-        QPainter& paint = get_qPainter();
-        paint.begin(device);
-        paint.setPen(pen);
-        paint.setBrush(brush);
-        paint.drawRect(rect1);
-        paint.setPen(QPen());
-        paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
-        paint.end();
-    }
-
-    // move() function from shape base class
-    void move(QPoint &newUpperLeft)
-    {
-        int deltaX = (newUpperLeft.x() - upperleft.x());
-        int deltaY = (newUpperLeft.y() - upperleft.y());
-
-        upperleft = newUpperLeft;
-        lowerright.setX(lowerright.x() + deltaX);
-        lowerright.setY(lowerright.y() + deltaY);
-    }
-
-    void update(void)
-    {
-        draw((get_qPaintDevice()));
-        return;
-    }
-
-    // calcPerimeter() function from shape base class
-    double calcPerimeter() const
-    {
-        return ( ((lowerright.x()-upperleft.x()) * 2) + ((lowerright.y()-upperleft.y()) * 2));
-    }
-
-    // calcArea() function from shape base class
-    double calcArea() const
-    {
-        return ( (lowerright.x()-upperleft.x()) * (lowerright.y()-upperleft.y()));
-    }
-
+    std::ostream& print(std::ostream& os) const;
+    void draw(QPaintDevice* device);
+    void move(QPoint &newUpperLeft);
+    void update(void);
+    double calcPerimeter() const;
+    double calcArea() const;
 };
 
 #endif // RECTANGLE_H

@@ -7,6 +7,11 @@
 #include <QDir>
 #include <QDebug>
 
+//! contact constructor - requires a Qwidgit to draw on
+//!
+//! \author richard (5/13/18)
+//!
+//! \param parent 
 login::login(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::login)
@@ -14,16 +19,22 @@ login::login(QWidget *parent) :
     ui->setupUi(this);
 }
 
+//! login destructor - release allocated space
+//!
+//! \author richard (5/14/18)
 login::~login()
 {
     delete ui;
 }
 
-//  Helper Function "confirmUser"
-//      - Confirms if user and password is a matching pair in file
-//  Return 0: Invalid User
-//  Return 1: Guest User
-//  Return 2: Administrative User
+//! confirmUser - Confirms if user and password is a matching pair in file
+//!
+//! \author richard (5/14/18)
+//!
+//! \param username 
+//! \param password 
+//!
+//! \return int 0 = Invalid user; 1 = guest user; 2 = administrator
 int login::confirmUser(QString username, QString password){
 
     //  HomePath allows access to the current folder on any computer
@@ -57,13 +68,16 @@ int login::confirmUser(QString username, QString password){
     return 0;
 }
 
-
-//  Helper Function "addUser"
-//     - Checks if there are any duplicate usernames in file
-//     - Appends user information into the file
-//  Return 0: No file found
-//  Return 1: Duplicate username, have user re-enter
-//  Return 2: Pass or Valid
+//! addUser - Checks if there are any duplicate usernames in file
+//!         - Appends user information into the file
+//! 
+//! \author richard (5/14/18)
+//!
+//! \param username 
+//! \param password 
+//! \param accessLevel 
+//!
+//! \return int 0 = no file found; 1= duplicate information (reenter); 2 = Valid/OK
 int login::addUser(QString username, QString password, int accessLevel){
 
     QString homePath = QFileInfo(".").absolutePath();
@@ -104,6 +118,12 @@ int login::addUser(QString username, QString password, int accessLevel){
 //  Interface Function "pushButton_login_clicked"
 //      - Used to confirm if existing user inside users.txt
 //      - Passes privilege object auth to the primary class
+
+//! pushButton_login_clicked
+//!      - Used to confirm if existing user inside users.txt
+//!      - Passes privilege object auth to the primary class
+//!
+//! \author richard (5/14/18)
 void login::on_pushButton_login_clicked()
 {
     QString username = ui->lineEdit_username->text();
@@ -135,8 +155,9 @@ void login::on_pushButton_login_clicked()
     }
 }
 
-//  Interface Function "pushButton_addUser_clicked"
-//      - Used to confirm if username and password added
+//! pushButton_addUser_clicked - Used to confirm if username and password added
+//!
+//! \author richard (5/14/18)
 void login::on_pushButton_addUser_clicked()
 {
     QString username = ui->lineEdit_addUser->text();

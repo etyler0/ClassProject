@@ -1,3 +1,11 @@
+/*****************************************************
+ * Class Project
+ *
+ * Class: CS1C at 10am, T/TH
+ * Group: ERKK (Eugene, Richard, Kevin, Kole)
+ * Created on: 4/4/18
+ *****************************************************/
+
 #ifndef POLYLINE_H
 #define POLYLINE_H
 /*****************************************************
@@ -32,102 +40,18 @@ public:
              Qt::PenStyle       xPenStyle,
              Qt::PenCapStyle    xPenCapStyle,
              Qt::PenJoinStyle   xPenJoinStyle,
-             const std::vector<QPoint> &xPoints)
-       : Shape1D(device, xId, shapeType::Polyline,
-                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle)
-{
-       // object specific transform from points supplied to bounding points
-        qreal minX = 0.0;
-        qreal maxX = 0.0;
-        qreal minY = 0.0;
-        qreal maxY = 0.0;
-
-        points = xPoints;
-
-        for(std::vector<QPoint>::iterator i=points.begin();i!=points.end()-1;++i)
-        {
-            if (i->x() < minX)
-            {
-                minX = i->x();
-            }
-            if (i->x() > maxX)
-            {
-                maxX = i->x();
-            }
-
-            if (i->y() < minY)
-            {
-                minY = i->y();
-            }
-            if (i->y() > maxY)
-            {
-                maxY = i->y();
-            }
-        }
-
-        upperleft.setX(minX);
-        upperleft.setY(minY);
-        lowerright.setX(maxX);
-        lowerright.setY(maxY);
-    }
+             const std::vector<QPoint> &xPoints);
     
     PolyLine() = delete;
     PolyLine& operator=(const PolyLine&) = delete;  // Disallow copying
     PolyLine(const PolyLine&) = delete;
-    ~PolyLine() {};
+    ~PolyLine();
 
-    std::ostream& print(std::ostream& os) const
-    {
-        return os << " Id:" << getId() << " P:" << calcPerimeter() << " A:" << calcArea();
-    };
-
-    // draw() function from shape base class
-    void draw(QPaintDevice* device)
-    {
-        QPainter& paint = get_qPainter();
-        paint.begin(device);
-        paint.setPen(pen);
-        const QPoint *qpptr = &(*points.begin());
-        paint.drawPolyline(qpptr,points.size());
-        paint.setPen(QPen());
-        paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
-        paint.end();
-    }
-
-    // move() function from shape base class
-    void move(QPoint &newUpperLeft)
-    {
-        int deltaX = (newUpperLeft.x() - upperleft.x());
-        int deltaY = (newUpperLeft.y() - upperleft.y());
-
-        upperleft = newUpperLeft;
-        lowerright.setX(lowerright.x() + deltaX);
-        lowerright.setY(lowerright.y() + deltaY);
-
-        for(vector<QPoint>::iterator i=points.begin();i!=points.end()-1;++i)
-        {
-            i->setX(i->x() + deltaX);
-            i->setY(i->y() + deltaY);
-        }
-    }
-
-    void update(void)
-    {
-        draw((get_qPaintDevice()));
-        return;
-    }
-
-    // calcPerimeter() function from shape base class
-    double calcPerimeter() const
-    {
-        return 0;
-    }
-
-    // calcArea() function from shape base class
-    double calcArea() const
-    {
-        return 0;
-    }
-
+    std::ostream& print(std::ostream& os) const;
+    void draw(QPaintDevice* device);
+    void move(QPoint &newUpperLeft);
+    void update(void);
+    double calcPerimeter() const;
+    double calcArea() const;
 };
 #endif // POLYLINE_H

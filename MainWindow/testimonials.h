@@ -11,6 +11,9 @@ namespace Ui {
 class testimonials;
 }
 
+//! Testimonials Class - holds information for the testimonials dialog
+//!
+//! \author richard (5/14/18)
 class testimonials : public QWidget
 {
     Q_OBJECT

@@ -1,3 +1,11 @@
+/*****************************************************
+ * Class Project
+ *
+ * Class: CS1C at 10am, T/TH
+ * Group: ERKK (Eugene, Richard, Kevin, Kole)
+ * Created on: 4/4/18
+ *****************************************************/
+
 #ifndef CIRCLE_H
 #define CIRCLE_H
 /*****************************************************
@@ -17,6 +25,9 @@ using namespace std;
 #include <QPainter>// This gives access to the QPainter class, which preforms the painting on widgets and other paint devices
 #include <QPoint>  // This gives access to the QPoint class, which defines points on a plane
 
+//! Circle class - derived from Shape2D
+//!
+//! \author edt (5/13/18)
 class Circle : public Shape2D
 {
 public:
@@ -36,70 +47,19 @@ public:
              Qt::BrushStyle     xBrushStyle,
              int                xTopLeftX,
              int                xTopLeftY,
-             int                xDiameter)
-       : Shape2D(device, xId, shapeType::Circle,
-                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle,
-                      xBrushColor, xBrushStyle)
-    {
-        // object specific transform from points supplied to bounding points
-        QPoint ul(xTopLeftX,xTopLeftY);
-        upperleft = ul;
-        QPoint lr(xTopLeftX+xDiameter, xTopLeftY+xDiameter);
-        lowerright = lr;
-    }
+             int                xDiameter);
 
     Circle() = delete;         // default constructor never used
     Circle& operator=(const Circle&) = delete;  // Disallow copying
     Circle(const Circle&) = delete;
-    ~Circle() {};
+    ~Circle();
 
-    std::ostream& print(std::ostream& os) const
-    {
-        return os << " Id:" << getId() << " P:" << calcPerimeter() << " A:" << calcArea();
-    };
+    std::ostream& print(std::ostream& os) const;
 
-    // draw() function from shape base class
-    void draw(QPaintDevice* device)
-    {
-        QRect rect1(upperleft, lowerright);
-        QPainter& paint = get_qPainter();
-        paint.begin(device);
-        paint.setPen(pen);
-        paint.setBrush(brush);
-        paint.drawEllipse(rect1);
-        paint.setPen(QPen());
-        paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
-        paint.end();
-    }
-
-    // move() function from shape base class
-    void move(QPoint &newUpperLeft)
-    {
-        int deltaX = (newUpperLeft.x() - upperleft.x());
-        int deltaY = (newUpperLeft.y() - upperleft.y());
-
-        upperleft = newUpperLeft;
-        lowerright.setX(lowerright.x() + deltaX);
-        lowerright.setY(lowerright.y() + deltaY);
-    }
-
-    void update(void)
-    {
-        draw((get_qPaintDevice()));
-        return;
-    }
-
-    // calcPerimeter() function from shape base class
-    double calcPerimeter() const
-    {
-        return ( (M_PI) * (lowerright.x()-upperleft.x()) );
-    }
-
-    // calcArea() function from shape base class
-    double calcArea() const
-    {
-        return ( pow( ( (lowerright.x()-upperleft.x()) /2) ,2 ) * M_PI);
-    }
-
+    void draw(QPaintDevice* device) override;
+    void move(QPoint &newUpperLeft) override;
+    void update(void) override;
+    double calcPerimeter() const override;
+    double calcArea() const override;
 };
 #endif // CIRCLE_H
