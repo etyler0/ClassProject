@@ -5,6 +5,7 @@
 #include "shape2d.h"
 #include "text.h"
 #include "shape1d.h"
+#include "selection_sort.h"
 #include <QComboBox>
 #include <QAbstractItemView>
 #include <QDebug>
@@ -64,9 +65,11 @@ void MainWindow::showEvent(QShowEvent *event){
     QWidget::showEvent(event);
     findShapeType(ui->combobox_add_shapeType->currentIndex(), addCurShape);
     findShapeType(ui->combobox_mod_shapeType->currentIndex(), modCurShape);
+    findShapeType(ui->combobox_del_shapeType->currentIndex(), delCurShape);
     reloadVector();
     updateAddTab();
     updateModTab();
+    updateDelTab();
 }
 
 //  Set vector from main
@@ -76,11 +79,20 @@ void MainWindow::setVector(MyVector<Shape*> *temp){
 
 //  Reloads the vector into the combobox
 void MainWindow::reloadVector(){
-    for(MyVector<Shape *>::iterator i = pShapeVector->begin(); i < pShapeVector->end(); ++i){
+    nserkkselsort::selection_sort(pShapeVector->begin(), pShapeVector->end(), compare_shape_id());
+    for(MyVector<Shape *>::iterator i = pShapeVector->begin(); i != pShapeVector->end(); ++i){
         ui->comboBox_mod_ID->addItem(QString::number((*i)->getId()));
-        //ui->comboBox_del_ID->addItem(QString::number((*i)->getId()));
+        ui->comboBox_del_ID->addItem(QString::number((*i)->getId()));
         //ui->comboBox_draw_ID->addItem(QString::number((*i)->getId()));
     }
+}
+
+//  Resets the comboBoxes in the mainwindow
+//  Call after any deletions or additions
+void MainWindow::resetBoxes(){
+    ui->comboBox_mod_ID->clear();
+    ui->comboBox_del_ID->clear();
+    //ui->comboBox_draw_ID->clear();
 }
 
 //   Parses index to select shape for current tab
@@ -207,7 +219,52 @@ QString MainWindow::parseColorVector(int index){
     if(index == 6)      return "#ff00ff";       //  MAGENTA
     if(index == 7)      return "#ffff00";       //  YELLOW
     if(index == 8)      return "#808000";       //  GRAY
-    return 0;                                   //  DEFAULT IF NONE
+    return 0;                                   //  WHITE IF NONE
+}
+
+Qt::GlobalColor MainWindow::parseColorEnumVector(int index){
+    if(index == 0)      return Qt::white;       //  WHITE
+    if(index == 1)      return Qt::black;       //  BLACK
+    if(index == 2)      return Qt::red;         //  RED
+    if(index == 3)      return Qt::green;       //  GREEN
+    if(index == 4)      return Qt::blue;        //  BLUE
+    if(index == 5)      return Qt::cyan;        //  CYAN
+    if(index == 6)      return Qt::magenta;     //  MAGENTA
+    if(index == 7)      return Qt::yellow;      //  YELLOW
+    if(index == 8)      return Qt::gray;        //  GRAY
+    return Qt::white;                           //  WHITE IF NONE
+}
+
+Qt::PenStyle MainWindow::parsePenStyleVector(int index){
+    if(index == 0)      return Qt::NoPen;               //  NO PEN
+    if(index == 1)      return Qt::SolidLine;           //  SOLID LINE
+    if(index == 2)      return Qt::DashLine;            //  DASH LINE
+    if(index == 3)      return Qt::DotLine;             //  DOT LINE
+    if(index == 4)      return Qt::DashDotLine;         //  DASH DOT LINE
+    if(index == 5)      return Qt::DashDotDotLine;      //  DASH DOT DOT LINE
+    return Qt::NoPen;                                   //  NO PEN IF NONE
+}
+
+Qt::PenCapStyle MainWindow::parsePenCapStyleVector(int index){
+    if(index == 0)      return Qt::FlatCap;     //  FLATCAP
+    if(index == 1)      return Qt::SquareCap;   //  SQUARECAP
+    if(index == 2)      return Qt::RoundCap;    //  ROUNDCAP
+    return Qt::FlatCap;                         //  FLATCAP IF NONE
+}
+
+Qt::PenJoinStyle MainWindow::parsePenJoinStyleVector(int index){
+    if(index == 0)      return Qt::MiterJoin;   //  MITERJOIN
+    if(index == 1)      return Qt::BevelJoin;   //  BEVELJOIN
+    if(index == 2)      return Qt::RoundJoin;   //  ROUNDJOIN
+    return Qt::MiterJoin;                       //  MITERJOIN IF NONE
+}
+
+Qt::BrushStyle MainWindow::parseBrushStyleVector(int index){
+    if(index == 0)      return Qt::SolidPattern;    //  SOLID PATTERN
+    if(index == 1)      return Qt::HorPattern;      //  HORIZONTAL
+    if(index == 2)      return Qt::VerPattern;      //  VERTICAL
+    if(index == 3)      return Qt::NoBrush;         //  NO BRUSH
+    return Qt::SolidPattern;                        //  SOLID PATTERN IF NONE
 }
 
 Qt::AlignmentFlag MainWindow::parseTextAlignmentVector(int index){
@@ -216,9 +273,32 @@ Qt::AlignmentFlag MainWindow::parseTextAlignmentVector(int index){
     if(index == 2)      return Qt::AlignTop;    //  ALIGN TOP
     if(index == 3)      return Qt::AlignBottom; //  ALIGN BOTTOM
     if(index == 4)      return Qt::AlignCenter; //  ALIGN CENTER
-    return 0;                                   //  ALIGN LEFT IF NONE
+    return Qt::AlignLeft;                       //  ALIGN LEFT IF NONE
 }
 
+QString MainWindow::parseTextFontFamilyVector(int index){
+    if(index == 0)  return "Comic Sans MS";     //  COMIC SANS
+    if(index == 1)  return "Courier";           //  COURIER
+    if(index == 2)  return "Helvetica";         //  HELV
+    if(index == 3)  return "Times";             //  TIMES
+    return "Comic Sans MS";                     //  COMIC SANS IF NONE
+}
+
+QFont::Style MainWindow::parseTextFontStyleVector(int index){
+    if(index == 0)  return QFont::StyleNormal;  //  NORMAL
+    if(index == 1)  return QFont::StyleItalic;  //  ITALIC
+    if(index == 2)  return QFont::StyleOblique; //  OBLIQUE
+    return QFont::StyleNormal;                  //  NORMAL IF NONE
+
+}
+
+QFont::Weight MainWindow::parseTextFontWeightVector(int index){
+    if(index == 0)  return QFont::Thin;     //  THIN
+    if(index == 1)  return QFont::Light;    //  LIGHT
+    if(index == 2)  return QFont::Normal;   //  NORMAL
+    if(index == 3)  return QFont::Bold;     //  BOLD
+    return QFont::Thin;                     //  THIN IF NONE
+}
 
 
 
@@ -276,6 +356,7 @@ void MainWindow::updateModTab(){
         ui->combobox_mod_shapeType->hide();
         ui->label_mod_anchor->hide();
         ui->widget_mod_location->hide();
+        ui->pushButton_mod_submit->hide();
     }
 
     //  Display all interface
@@ -285,6 +366,7 @@ void MainWindow::updateModTab(){
         ui->combobox_mod_shapeType->show();
         ui->label_mod_anchor->show();
         ui->widget_mod_location->show();
+        ui->pushButton_mod_submit->show();
     }
 
     //  Show Pen
@@ -361,9 +443,8 @@ void MainWindow::on_comboBox_mod_ID_currentIndexChanged(int index)
             ui->spinBox_Y_mod->setValue(temp->upperleft.y());
         }
 
-        /*********** 2D & 1D Shape internal values ***************************/
+        /****************** 2D & 1D Shape internal values ******************/
         else{
-
             //  Casts shape to use Shape2D functions
             Shape2D* temp = static_cast<Shape2D*>((*pShapeVector)[index - 1]);
 
@@ -405,6 +486,7 @@ void MainWindow::on_comboBox_mod_ID_currentIndexChanged(int index)
 
     //  Handles non-selected ID
     else{
+
         //  Update shape type & menus
         findShapeType(val, modCurShape);
     }
@@ -416,11 +498,11 @@ void MainWindow::on_comboBox_mod_ID_currentIndexChanged(int index)
 //  Submit Mod Tab
 void MainWindow::on_pushButton_mod_submit_clicked()
 {
-
     //  Separate message for non-selection
     QMessageBox::information(this, "Update", "Shape is updated!");
     int index = ui->comboBox_mod_ID->currentIndex();
 
+    /************* Text internal vector values ***************/
     if(modCurShape == baseText){
 
         //  Casts Shape to Text to apply text modifications
@@ -429,20 +511,114 @@ void MainWindow::on_pushButton_mod_submit_clicked()
         //  Sets text string to match lineEdit
         temp->String = ui->lineEdit_mod_textString->text();
 
-        //  Changes current text color from combobox
+        //  Changes current text color in vector
         int textColor_index = ui->comboBox_mod_textColor->currentIndex();
-        QString textColor = parseColorVector(textColor_index);
-        temp->Color.setNamedColor(textColor);
+        Qt::GlobalColor textColor = parseColorEnumVector(textColor_index);
+        temp->Color = QColor(textColor);
 
-        //  Changes current text alignment from combobox
+        //  Changes current text alignment in vector
         int textAlignment_index = ui->comboBox_mod_textAlignment->currentIndex();
         Qt::AlignmentFlag textAlignment = parseTextAlignmentVector(textAlignment_index);
         temp->Alignment = textAlignment;
 
-        //  Changes current text
+        //  Changes current text point size in vector
+        int textFontSize = ui->spinBox_mod_textPointSize->value();
+        temp->FontSize = textFontSize;
 
+        //  Changes current text font family in vector
+        int textFontFamily_index = ui->comboBox_mod_textFontFamily->currentIndex();
+        QString textFontFamily = parseTextFontFamilyVector(textFontFamily_index);
+        temp->FontFamily = textFontFamily;
 
+        //  Changes current text font style in vector
+        int textFontStyle_index = ui->comboBox_mod_textFontStyle->currentIndex();
+        QFont::Style textFontStyle = parseTextFontStyleVector(textFontStyle_index);
+        temp->FontStyle = textFontStyle;
+
+        //  Changes current text font weight in vector
+        int textFontWeight_index = ui->comboBox_mod_textFontWeight->currentIndex();
+        QFont::Weight textFontWeight = parseTextFontWeightVector(textFontWeight_index);
+        temp->FontWeight = textFontWeight;
+
+        //  Changes current text anchor in vector
+        int x = ui->spinBox_X_mod->value();
+        int y = ui->spinBox_Y_mod->value();
+        QPoint newUpperLeft(x, y);
+        temp->move(newUpperLeft);
     }
 
+    /********* 2D and 1D Shape Internal Values ******************/
+    else if(modCurShape == base2D || modCurShape == baseLine){
 
+        //  Casts shape to base 2D
+        Shape2D* temp = static_cast<Shape2D*>((*pShapeVector)[index - 1]);
+
+        //  Changes current pen color in vector
+        int penColor_index = ui->comboBox_mod_penColor->currentIndex();
+        Qt::GlobalColor penColor = parseColorEnumVector(penColor_index);
+        temp->pen.setColor(penColor);
+
+        //  Changes pen width value in vector
+        int penWidth = ui->spinBox_mod_penWidth->value();
+        temp->pen.setWidth(penWidth);
+
+        //  Changes pen style in vector
+        int penStyle_index = ui->comboBox_mod_penStyle->currentIndex();
+        Qt::PenStyle penStyle = parsePenStyleVector(penStyle_index);
+        temp->pen.setStyle(penStyle);
+
+        //  Changes pen cap style in vector
+        int penCapStyle_index = ui->comboBox_mod_penCapStyle->currentIndex();
+        Qt::PenCapStyle penCapStyle = parsePenCapStyleVector(penCapStyle_index);
+        temp->pen.setCapStyle(penCapStyle);
+
+        //  Changes pen join style in vector
+        int penJoinStyle_index = ui->comboBox_mod_penJoinStyle->currentIndex();
+        Qt::PenJoinStyle penJoinStyle = parsePenJoinStyleVector(penJoinStyle_index);
+        temp->pen.setJoinStyle(penJoinStyle);
+
+        /********* Brush Exclusive to 2D shapes *************/
+        if(modCurShape == base2D){
+            //  Changes to brush color in vector
+            int brushColor_index = ui->comboBox_mod_brushColor->currentIndex();
+            Qt::GlobalColor brushColor = parseColorEnumVector(brushColor_index);
+            temp->brush.setColor(brushColor);
+
+            //  Changes brush style in vector
+            int brushStyle_index = ui->comboBox_mod_brushStyle->currentIndex();
+            Qt::BrushStyle brushStyle = parseBrushStyleVector(brushStyle_index);
+            temp->brush.setStyle(brushStyle);
+        }
+    }
+}
+
+//================ DEL TAB =========================//
+
+//  Update delete tab contents
+void MainWindow::updateDelTab(){
+    if(delCurShape == baseSelect){
+        ui->groupBox_del->hide();
+    }
+    else{
+        ui->groupBox_del->show();
+    }
+}
+
+//  Delete confirmation
+void MainWindow::on_pushButton_del_clicked()
+{
+    QMessageBox::information(this, "Deletion", "Shape is removed!");
+    int toDelete = ui->comboBox_del_ID->currentIndex();
+
+}
+
+void MainWindow::on_comboBox_del_ID_currentIndexChanged(int index)
+{
+    int val = 0;
+    if(index > 0){
+        val = (*pShapeVector)[index-1]->getShapeType();
+        ui->combobox_del_shapeType->setCurrentIndex(++val);
+    }
+    findShapeType(val, delCurShape);
+    updateDelTab();
 }

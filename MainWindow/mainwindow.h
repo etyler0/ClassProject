@@ -20,7 +20,7 @@ class MainWindow : public QMainWindow
 
 public:
     enum base{baseSelect, baseLine, base2D, baseText}
-             modCurShape, addCurShape;
+             modCurShape, addCurShape, delCurShape;
 
     explicit MainWindow(QWidget *parent = 0);
 
@@ -34,6 +34,9 @@ public:
 
     //  Reloads the vector into comboBoxes in the mainwindow
     void reloadVector();
+
+    //  Resets the comboBoxes in the mainwindow
+    void resetBoxes();
 
     //  Adjusts currently selected shape to adjust menus for later
     void findShapeType(int index, base &curShape);
@@ -59,10 +62,19 @@ public:
 
     //  Multi-functional color parser to vector
     QString parseColorVector(int index);
+    Qt::GlobalColor parseColorEnumVector(int index);
+
+    //  Pen & Brush
+    Qt::PenStyle parsePenStyleVector(int index);
+    Qt::PenCapStyle parsePenCapStyleVector(int index);
+    Qt::PenJoinStyle parsePenJoinStyleVector(int index);
+    Qt::BrushStyle parseBrushStyleVector(int index);
 
     //  Text
     Qt::AlignmentFlag parseTextAlignmentVector(int index);
-
+    QString parseTextFontFamilyVector(int index);
+    QFont::Style parseTextFontStyleVector(int index);
+    QFont::Weight parseTextFontWeightVector(int index);
 
     //=============== UPDATERS ==================//
     //  Recreate menus in ADD TAB
@@ -70,6 +82,9 @@ public:
 
     //  Recreate menus in MOD TAB
     void updateModTab();
+
+    //  Recreate elements in DEL TAB
+    void updateDelTab();
 
     ~MainWindow();
 
@@ -83,11 +98,16 @@ private slots:
 
     //============== TAB_SELECTIONS ==============//
 
-    //  Change current menus in ADD TAB
+    //  ADD TAB
     void on_combobox_add_shapeType_currentIndexChanged(int index);
-    void on_comboBox_mod_ID_currentIndexChanged(int index);
 
+    //  MOD TAB
+    void on_comboBox_mod_ID_currentIndexChanged(int index);
     void on_pushButton_mod_submit_clicked();
+
+    void on_pushButton_del_clicked();
+
+    void on_comboBox_del_ID_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;

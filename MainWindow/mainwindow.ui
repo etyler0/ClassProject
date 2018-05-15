@@ -54,7 +54,7 @@
       </rect>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="modifyTab">
       <attribute name="title">
@@ -70,7 +70,7 @@
         </rect>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="page_3">
         <widget class="QWidget" name="widget_add_pen_2" native="true">
@@ -818,18 +818,133 @@
       <attribute name="title">
        <string>Delete</string>
       </attribute>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QGroupBox" name="groupBox_del">
        <property name="geometry">
         <rect>
-         <x>260</x>
-         <y>10</y>
-         <width>80</width>
-         <height>22</height>
+         <x>90</x>
+         <y>160</y>
+         <width>231</width>
+         <height>161</height>
         </rect>
        </property>
-       <property name="text">
-        <string>Delete</string>
+       <property name="title">
+        <string/>
        </property>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>211</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_del_shapeType">
+           <property name="text">
+            <string>Shape Type</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combobox_del_shapeType">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <item>
+            <property name="text">
+             <string>-Empty-</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Line</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>PolyLine</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Polygon</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Rectangle</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Square</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Ellipse</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Circle</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Text</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="pushButton_del">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>100</y>
+          <width>181</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Delete</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>60</y>
+         <width>281</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_del_ID">
+          <property name="text">
+           <string>Select Shape by ID</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBox_del_ID">
+          <item>
+           <property name="text">
+            <string>-Empty-</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
      <widget class="QWidget" name="addTab">
