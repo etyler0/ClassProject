@@ -1,0 +1,125 @@
+\hypertarget{classlogin}{\section{login Class Reference}
+\label{classlogin}\index{login@{login}}
+}
+
+
+{\ttfamily \#include $<$login.\-h$>$}
+
+Inheritance diagram for login\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classlogin}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlogin_a4bea95f394a7f5709d79b13455881602}{login} (Q\-Widget $\ast$parent=0)
+\item 
+int \hyperlink{classlogin_a42f5740b1023557256c4877abbb6e30d}{confirm\-User} (Q\-String username, Q\-String password)
+\item 
+int \hyperlink{classlogin_a1a62aa506d3b5e64710a74fc5b9a4beb}{add\-User} (Q\-String username, Q\-String password, int access\-Level)
+\item 
+\hyperlink{classlogin_a4086fe44ad1e40447a0bebbc9b8b3c14}{$\sim$login} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Login Class -\/ holds information for the user login dialog
+
+\begin{DoxyAuthor}{Author}
+richard (5/14/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classlogin_a4bea95f394a7f5709d79b13455881602}{\index{login@{login}!login@{login}}
+\index{login@{login}!login@{login}}
+\subsubsection[{login}]{\setlength{\rightskip}{0pt plus 5cm}login\-::login (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classlogin_a4bea95f394a7f5709d79b13455881602}
+contact constructor -\/ requires a Qwidgit to draw on
+
+\begin{DoxyAuthor}{Author}
+richard (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classlogin_a4086fe44ad1e40447a0bebbc9b8b3c14}{\index{login@{login}!$\sim$login@{$\sim$login}}
+\index{$\sim$login@{$\sim$login}!login@{login}}
+\subsubsection[{$\sim$login}]{\setlength{\rightskip}{0pt plus 5cm}login\-::$\sim$login (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classlogin_a4086fe44ad1e40447a0bebbc9b8b3c14}
+login destructor -\/ release allocated space
+
+\begin{DoxyAuthor}{Author}
+richard (5/14/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classlogin_a1a62aa506d3b5e64710a74fc5b9a4beb}{\index{login@{login}!add\-User@{add\-User}}
+\index{add\-User@{add\-User}!login@{login}}
+\subsubsection[{add\-User}]{\setlength{\rightskip}{0pt plus 5cm}int login\-::add\-User (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{username, }
+\item[{Q\-String}]{password, }
+\item[{int}]{access\-Level}
+\end{DoxyParamCaption}
+)}}\label{classlogin_a1a62aa506d3b5e64710a74fc5b9a4beb}
+add\-User -\/ Checks if there are any duplicate usernames in file
+\begin{DoxyItemize}
+\item Appends user information into the file
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+richard (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+{\em password} & \\
+\hline
+{\em access\-Level} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 = no file found; 1= duplicate information (reenter); 2 = Valid/\-O\-K 
+\end{DoxyReturn}
+\hypertarget{classlogin_a42f5740b1023557256c4877abbb6e30d}{\index{login@{login}!confirm\-User@{confirm\-User}}
+\index{confirm\-User@{confirm\-User}!login@{login}}
+\subsubsection[{confirm\-User}]{\setlength{\rightskip}{0pt plus 5cm}int login\-::confirm\-User (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{username, }
+\item[{Q\-String}]{password}
+\end{DoxyParamCaption}
+)}}\label{classlogin_a42f5740b1023557256c4877abbb6e30d}
+confirm\-User -\/ Confirms if user and password is a matching pair in file
+
+\begin{DoxyAuthor}{Author}
+richard (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+{\em password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 = Invalid user; 1 = guest user; 2 = administrator 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/login.\-h\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/login.\-cpp\end{DoxyCompactItemize}

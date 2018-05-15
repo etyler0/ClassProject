@@ -1,0 +1,237 @@
+\hypertarget{classRectangle}{\section{Rectangle Class Reference}
+\label{classRectangle}\index{Rectangle@{Rectangle}}
+}
+Inheritance diagram for Rectangle\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classRectangle}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRectangle_a6e0872acf1be9c941846e9b2548e04af}{Rectangle} (Q\-Paint\-Device $\ast$device, int x\-Id, Q\-Color x\-Pen\-Color, qreal x\-Pen\-Width, Qt\-::\-Pen\-Style x\-Pen\-Style, Qt\-::\-Pen\-Cap\-Style x\-Pen\-Cap\-Style, Qt\-::\-Pen\-Join\-Style x\-Pen\-Join\-Style, Q\-Color x\-Brush\-Color, Qt\-::\-Brush\-Style x\-Brush\-Style, int x\-Top\-Left\-X, int x\-Top\-Left\-Y, int x\-Width, int x\-Height)
+\item 
+\hypertarget{classRectangle_a493870acad785dd377201c06c28003e4}{\hyperlink{classRectangle}{Rectangle} \& {\bfseries operator=} (const \hyperlink{classRectangle}{Rectangle} \&)=delete}\label{classRectangle_a493870acad785dd377201c06c28003e4}
+
+\item 
+\hypertarget{classRectangle_aee647897178612d4e18b9496bed0b58d}{{\bfseries Rectangle} (const \hyperlink{classRectangle}{Rectangle} \&)=delete}\label{classRectangle_aee647897178612d4e18b9496bed0b58d}
+
+\item 
+\hyperlink{classRectangle_a494c076b13aadf26efdce07d23c61ddd}{$\sim$\-Rectangle} ()
+\item 
+std\-::ostream \& \hyperlink{classRectangle_a06528cd92243f56f5eca551c5d637657}{print} (std\-::ostream \&os) const 
+\item 
+void \hyperlink{classRectangle_acd4e738aca00c23c0f1b15d77fec5dd8}{draw} (Q\-Paint\-Device $\ast$device)
+\item 
+void \hyperlink{classRectangle_a1fbeb44ec8b9400a5bfa7c0124fb29ee}{move} (Q\-Point \&new\-Upper\-Left)
+\item 
+void \hyperlink{classRectangle_a1679d95f9c3f0794a9fc54ca26509b6f}{update} (void)
+\item 
+double \hyperlink{classRectangle_af839a919dea3752e1d3dfad0282d19a1}{calc\-Perimeter} () const 
+\item 
+double \hyperlink{classRectangle_afa0bed5922c9517f5f771ed821f8623b}{calc\-Area} () const 
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classRectangle_a6e0872acf1be9c941846e9b2548e04af}{\index{Rectangle@{Rectangle}!Rectangle@{Rectangle}}
+\index{Rectangle@{Rectangle}!Rectangle@{Rectangle}}
+\subsubsection[{Rectangle}]{\setlength{\rightskip}{0pt plus 5cm}Rectangle\-::\-Rectangle (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device, }
+\item[{int}]{x\-Id, }
+\item[{Q\-Color}]{x\-Pen\-Color, }
+\item[{qreal}]{x\-Pen\-Width, }
+\item[{Qt\-::\-Pen\-Style}]{x\-Pen\-Style, }
+\item[{Qt\-::\-Pen\-Cap\-Style}]{x\-Pen\-Cap\-Style, }
+\item[{Qt\-::\-Pen\-Join\-Style}]{x\-Pen\-Join\-Style, }
+\item[{Q\-Color}]{x\-Brush\-Color, }
+\item[{Qt\-::\-Brush\-Style}]{x\-Brush\-Style, }
+\item[{int}]{x\-Top\-Left\-X, }
+\item[{int}]{x\-Top\-Left\-Y, }
+\item[{int}]{x\-Width, }
+\item[{int}]{x\-Height}
+\end{DoxyParamCaption}
+)}}\label{classRectangle_a6e0872acf1be9c941846e9b2548e04af}
+Constructor -\/ create a Q\-T drawable rectangle 2\-D
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & -\/ Q\-Paint\-Device \\
+\hline
+{\em x\-Id} & -\/ shape I\-D \\
+\hline
+{\em x\-Pen\-Color} & \\
+\hline
+{\em x\-Pen\-Width} & \\
+\hline
+{\em x\-Pen\-Style} & \\
+\hline
+{\em x\-Pen\-Cap\-Style} & \\
+\hline
+{\em x\-Pen\-Join\-Style} & \\
+\hline
+{\em x\-Brush\-Color} & \\
+\hline
+{\em x\-Brush\-Style} & \\
+\hline
+{\em x\-Top\-Left\-X} & \\
+\hline
+{\em x\-Top\-Left\-Y} & \\
+\hline
+{\em x\-Width} & \\
+\hline
+{\em x\-Height} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classRectangle_a494c076b13aadf26efdce07d23c61ddd}{\index{Rectangle@{Rectangle}!$\sim$\-Rectangle@{$\sim$\-Rectangle}}
+\index{$\sim$\-Rectangle@{$\sim$\-Rectangle}!Rectangle@{Rectangle}}
+\subsubsection[{$\sim$\-Rectangle}]{\setlength{\rightskip}{0pt plus 5cm}Rectangle\-::$\sim$\-Rectangle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classRectangle_a494c076b13aadf26efdce07d23c61ddd}
+Destructor -\/ simply free the object space
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classRectangle_afa0bed5922c9517f5f771ed821f8623b}{\index{Rectangle@{Rectangle}!calc\-Area@{calc\-Area}}
+\index{calc\-Area@{calc\-Area}!Rectangle@{Rectangle}}
+\subsubsection[{calc\-Area}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-::calc\-Area (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classRectangle_afa0bed5922c9517f5f771ed821f8623b}
+calc\-Area -\/ determine area enclosed by object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classRectangle_af839a919dea3752e1d3dfad0282d19a1}{\index{Rectangle@{Rectangle}!calc\-Perimeter@{calc\-Perimeter}}
+\index{calc\-Perimeter@{calc\-Perimeter}!Rectangle@{Rectangle}}
+\subsubsection[{calc\-Perimeter}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-::calc\-Perimeter (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classRectangle_af839a919dea3752e1d3dfad0282d19a1}
+calc\-Perimeter -\/ determine object outline length
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classRectangle_acd4e738aca00c23c0f1b15d77fec5dd8}{\index{Rectangle@{Rectangle}!draw@{draw}}
+\index{draw@{draw}!Rectangle@{Rectangle}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-::draw (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classRectangle_acd4e738aca00c23c0f1b15d77fec5dd8}
+draw -\/ output object onto Q\-T canvas using Q\-Paint\-Device
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classRectangle_a1fbeb44ec8b9400a5bfa7c0124fb29ee}{\index{Rectangle@{Rectangle}!move@{move}}
+\index{move@{move}!Rectangle@{Rectangle}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-::move (
+\begin{DoxyParamCaption}
+\item[{Q\-Point \&}]{new\-Upper\-Left}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classRectangle_a1fbeb44ec8b9400a5bfa7c0124fb29ee}
+move -\/ relocate rectangle to new upper left coordinate
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em new\-Upper\-Left} & -\/ new location of upper left of enclosing rectangle \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classRectangle_a06528cd92243f56f5eca551c5d637657}{\index{Rectangle@{Rectangle}!print@{print}}
+\index{print@{print}!Rectangle@{Rectangle}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream \& Rectangle\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classRectangle_a06528cd92243f56f5eca551c5d637657}
+print -\/ print limited information about derived instance for debugging
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & -\/ output stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\-::ostream\& 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape2D_a6faf0b7950ea77a2ec6f29a31d65a624}{Shape2\-D}.
+
+\hypertarget{classRectangle_a1679d95f9c3f0794a9fc54ca26509b6f}{\index{Rectangle@{Rectangle}!update@{update}}
+\index{update@{update}!Rectangle@{Rectangle}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-::update (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classRectangle_a1679d95f9c3f0794a9fc54ca26509b6f}
+update -\/ force redraw of object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/rectangle.\-h\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/rectangle.\-cpp\end{DoxyCompactItemize}

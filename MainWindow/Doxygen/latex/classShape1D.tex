@@ -1,0 +1,129 @@
+\hypertarget{classShape1D}{\section{Shape1\-D Class Reference}
+\label{classShape1D}\index{Shape1\-D@{Shape1\-D}}
+}
+Inheritance diagram for Shape1\-D\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classShape1D}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classShape1D_a2dd4df43f1a9c8530e5346465f638011}{Shape1\-D} (Q\-Paint\-Device $\ast$device, int x\-Id, \hyperlink{classShape_aaac58aa2f6760d0f06ec1710d5123e9b}{shape\-Type} x\-Type, Q\-Color x\-Pen\-Color, qreal x\-Pen\-Width, Qt\-::\-Pen\-Style x\-Pen\-Style, Qt\-::\-Pen\-Cap\-Style x\-Pen\-Cap\-Style, Qt\-::\-Pen\-Join\-Style x\-Pen\-Join\-Style)
+\item 
+\hypertarget{classShape1D_a58711e617f2cbc92b5732586f0ff96b8}{\hyperlink{classShape1D}{Shape1\-D} \& {\bfseries operator=} (const \hyperlink{classShape1D}{Shape1\-D} \&)=delete}\label{classShape1D_a58711e617f2cbc92b5732586f0ff96b8}
+
+\item 
+\hypertarget{classShape1D_ad0be726f3444d3d76484ce9afa3c8214}{{\bfseries Shape1\-D} (const \hyperlink{classShape1D}{Shape1\-D} \&)=delete}\label{classShape1D_ad0be726f3444d3d76484ce9afa3c8214}
+
+\item 
+virtual \hyperlink{classShape1D_aef223c181450f2dd0f304072e2fa0382}{$\sim$\-Shape1\-D} ()
+\item 
+virtual std\-::ostream \& \hyperlink{classShape1D_a20b9358df369b7b0fc4a1cdae5070836}{print} (std\-::ostream \&os) const =0
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classShape1D_add0a527e431b0d5a216b600a2c60903a}{Q\-Pen \hyperlink{classShape1D_add0a527e431b0d5a216b600a2c60903a}{pen}}\label{classShape1D_add0a527e431b0d5a216b600a2c60903a}
+
+\begin{DoxyCompactList}\small\item\em Pen used to draw shape outline. \end{DoxyCompactList}\item 
+\hypertarget{classShape1D_a2a00297b7ebd6dcd64beb0474e6cd42d}{Q\-Point \hyperlink{classShape1D_a2a00297b7ebd6dcd64beb0474e6cd42d}{upperleft}}\label{classShape1D_a2a00297b7ebd6dcd64beb0474e6cd42d}
+
+\begin{DoxyCompactList}\small\item\em Upper left anchor of bounding rectangle. \end{DoxyCompactList}\item 
+\hypertarget{classShape1D_a5783a298129c1797b89c38fba3ab1888}{Q\-Point \hyperlink{classShape1D_a5783a298129c1797b89c38fba3ab1888}{lowerright}}\label{classShape1D_a5783a298129c1797b89c38fba3ab1888}
+
+\begin{DoxyCompactList}\small\item\em Lower right anchor for bounding rectangle. \end{DoxyCompactList}\item 
+\hypertarget{classShape1D_a5cafd442acdfe031e4fd9db08a119e23}{std\-::vector$<$ Q\-Point $>$ \hyperlink{classShape1D_a5cafd442acdfe031e4fd9db08a119e23}{points}}\label{classShape1D_a5cafd442acdfe031e4fd9db08a119e23}
+
+\begin{DoxyCompactList}\small\item\em vector containing endpints and vertices of line objects \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classShape1D_a2dd4df43f1a9c8530e5346465f638011}{\index{Shape1\-D@{Shape1\-D}!Shape1\-D@{Shape1\-D}}
+\index{Shape1\-D@{Shape1\-D}!Shape1D@{Shape1\-D}}
+\subsubsection[{Shape1\-D}]{\setlength{\rightskip}{0pt plus 5cm}Shape1\-D\-::\-Shape1\-D (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device, }
+\item[{int}]{x\-Id, }
+\item[{{\bf shape\-Type}}]{x\-Type, }
+\item[{Q\-Color}]{x\-Pen\-Color, }
+\item[{qreal}]{x\-Pen\-Width, }
+\item[{Qt\-::\-Pen\-Style}]{x\-Pen\-Style, }
+\item[{Qt\-::\-Pen\-Cap\-Style}]{x\-Pen\-Cap\-Style, }
+\item[{Qt\-::\-Pen\-Join\-Style}]{x\-Pen\-Join\-Style}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classShape1D_a2dd4df43f1a9c8530e5346465f638011}
+Constructor -\/ abstract class for 1\-D (line) objects
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & -\/ Q\-Paint\-Device \\
+\hline
+{\em x\-Id} & -\/ shape I\-D \\
+\hline
+{\em x\-Type} & \\
+\hline
+{\em x\-Pen\-Color} & \\
+\hline
+{\em x\-Pen\-Width} & \\
+\hline
+{\em x\-Pen\-Style} & \\
+\hline
+{\em x\-Pen\-Cap\-Style} & \\
+\hline
+{\em x\-Pen\-Join\-Style} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classShape1D_aef223c181450f2dd0f304072e2fa0382}{\index{Shape1\-D@{Shape1\-D}!$\sim$\-Shape1\-D@{$\sim$\-Shape1\-D}}
+\index{$\sim$\-Shape1\-D@{$\sim$\-Shape1\-D}!Shape1D@{Shape1\-D}}
+\subsubsection[{$\sim$\-Shape1\-D}]{\setlength{\rightskip}{0pt plus 5cm}virtual Shape1\-D\-::$\sim$\-Shape1\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classShape1D_aef223c181450f2dd0f304072e2fa0382}
+Destructor -\/ simply free the object space
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classShape1D_a20b9358df369b7b0fc4a1cdae5070836}{\index{Shape1\-D@{Shape1\-D}!print@{print}}
+\index{print@{print}!Shape1D@{Shape1\-D}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\-::ostream\& Shape1\-D\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classShape1D_a20b9358df369b7b0fc4a1cdae5070836}
+print -\/ print limited information about derived instance for debugging
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & -\/ output stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\-::ostream\& 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+
+
+Implemented in \hyperlink{classLine_a9535dc5fe2c3e66e548add6622e4b0ea}{Line}, and \hyperlink{classPolyLine_a716cc39a1e35f7538013760b0828aee6}{Poly\-Line}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/shape1d.\-h\end{DoxyCompactItemize}

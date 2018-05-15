@@ -1,0 +1,150 @@
+\hypertarget{classShape}{\section{Shape Class Reference}
+\label{classShape}\index{Shape@{Shape}}
+}
+Inheritance diagram for Shape\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classShape}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classShape_aaac58aa2f6760d0f06ec1710d5123e9b}{shape\-Type} \{ \\*
+{\bfseries Line}, 
+{\bfseries Polyline}, 
+{\bfseries Polygon}, 
+{\bfseries Rectangle}, 
+\\*
+{\bfseries Square}, 
+{\bfseries Ellipse}, 
+{\bfseries Circle}, 
+{\bfseries Text}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classShape_a299b81fd56576b079f942a6a2c2f64e7}{{\bfseries Shape} (Q\-Paint\-Device $\ast$p\-Device, int x\-Id, \hyperlink{classShape_aaac58aa2f6760d0f06ec1710d5123e9b}{shape\-Type} s)}\label{classShape_a299b81fd56576b079f942a6a2c2f64e7}
+
+\item 
+\hypertarget{classShape_a9b9942917d6e6c359a8751156ed52423}{\hyperlink{classShape}{Shape} \& {\bfseries operator=} (const \hyperlink{classShape}{Shape} \&)=delete}\label{classShape_a9b9942917d6e6c359a8751156ed52423}
+
+\item 
+\hypertarget{classShape_a44d91c7621d4d7af60fe3320a2e07279}{{\bfseries Shape} (const \hyperlink{classShape}{Shape} \&)=delete}\label{classShape_a44d91c7621d4d7af60fe3320a2e07279}
+
+\item 
+int \hyperlink{classShape_a8783318515d368f9ba7b8f73a343e59b}{get\-Id} () const 
+\item 
+\hyperlink{classShape_aaac58aa2f6760d0f06ec1710d5123e9b}{shape\-Type} \hyperlink{classShape_a76eade96838eac557423a4ca8c0d9aef}{get\-Shape\-Type} () const 
+\item 
+\hypertarget{classShape_a0605dd98087b8566090acd67dc71eaa9}{virtual void {\bfseries draw} (Q\-Paint\-Device $\ast$p\-Device)=0}\label{classShape_a0605dd98087b8566090acd67dc71eaa9}
+
+\item 
+\hypertarget{classShape_a7314802497e54a2e3394eb5c9eacf06c}{virtual void {\bfseries move} (Q\-Point \&new\-Upper\-Left)=0}\label{classShape_a7314802497e54a2e3394eb5c9eacf06c}
+
+\item 
+\hypertarget{classShape_ad17bd222fddba504d2b995dede3ce1ba}{virtual void {\bfseries update} (void)=0}\label{classShape_ad17bd222fddba504d2b995dede3ce1ba}
+
+\item 
+\hypertarget{classShape_a3167ca12d1199e9f3a0d768c203658e8}{virtual std\-::ostream \& {\bfseries print} (std\-::ostream \&os) const =0}\label{classShape_a3167ca12d1199e9f3a0d768c203658e8}
+
+\item 
+\hypertarget{classShape_a7d01998091abdfeb3f0caa225abae8a1}{virtual double {\bfseries calc\-Perimeter} (void) const =0}\label{classShape_a7d01998091abdfeb3f0caa225abae8a1}
+
+\item 
+\hypertarget{classShape_a0cd5eee63d3be3431412bdb3929d9d5d}{virtual double {\bfseries calc\-Area} (void) const =0}\label{classShape_a0cd5eee63d3be3431412bdb3929d9d5d}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Q\-Painter \& \hyperlink{classShape_a517f7b1e67d2a3aeac8a093a873d5674}{get\-\_\-q\-Painter} ()
+\item 
+Q\-Paint\-Device $\ast$ \hyperlink{classShape_a7c3eb344a269d95e48ecd102cd46938e}{get\-\_\-q\-Paint\-Device} (void) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classShape_aaac58aa2f6760d0f06ec1710d5123e9b}{\index{Shape@{Shape}!shape\-Type@{shape\-Type}}
+\index{shape\-Type@{shape\-Type}!Shape@{Shape}}
+\subsubsection[{shape\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Shape\-::shape\-Type}}}\label{classShape_aaac58aa2f6760d0f06ec1710d5123e9b}
+shape\-Type -\/ enumeration of all support shape types
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classShape_a7c3eb344a269d95e48ecd102cd46938e}{\index{Shape@{Shape}!get\-\_\-q\-Paint\-Device@{get\-\_\-q\-Paint\-Device}}
+\index{get\-\_\-q\-Paint\-Device@{get\-\_\-q\-Paint\-Device}!Shape@{Shape}}
+\subsubsection[{get\-\_\-q\-Paint\-Device}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Paint\-Device $\ast$ Shape\-::get\-\_\-q\-Paint\-Device (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [protected]}}}\label{classShape_a7c3eb344a269d95e48ecd102cd46938e}
+get\-\_\-q\-Paint\-Device -\/ fetch base class of paintable object
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\-Paint\-Device$\ast$ 
+\end{DoxyReturn}
+\hypertarget{classShape_a517f7b1e67d2a3aeac8a093a873d5674}{\index{Shape@{Shape}!get\-\_\-q\-Painter@{get\-\_\-q\-Painter}}
+\index{get\-\_\-q\-Painter@{get\-\_\-q\-Painter}!Shape@{Shape}}
+\subsubsection[{get\-\_\-q\-Painter}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Painter \& Shape\-::get\-\_\-q\-Painter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classShape_a517f7b1e67d2a3aeac8a093a873d5674}
+get\-Q\-Painter -\/ fetch Q\-Painter rendering engine
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+Q\-Painter\& 
+\end{DoxyReturn}
+\hypertarget{classShape_a8783318515d368f9ba7b8f73a343e59b}{\index{Shape@{Shape}!get\-Id@{get\-Id}}
+\index{get\-Id@{get\-Id}!Shape@{Shape}}
+\subsubsection[{get\-Id}]{\setlength{\rightskip}{0pt plus 5cm}int Shape\-::get\-Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classShape_a8783318515d368f9ba7b8f73a343e59b}
+get\-I\-D -\/ fetch shape I\-D
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\hypertarget{classShape_a76eade96838eac557423a4ca8c0d9aef}{\index{Shape@{Shape}!get\-Shape\-Type@{get\-Shape\-Type}}
+\index{get\-Shape\-Type@{get\-Shape\-Type}!Shape@{Shape}}
+\subsubsection[{get\-Shape\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Shape\-::shape\-Type} Shape\-::get\-Shape\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classShape_a76eade96838eac557423a4ca8c0d9aef}
+get\-Shape\-Type -\/ fetch type as specified in enum shape\-Type
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classShape_aaac58aa2f6760d0f06ec1710d5123e9b}{Shape\-::shape\-Type} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/shape.\-h\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/shape.\-cpp\end{DoxyCompactItemize}

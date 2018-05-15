@@ -1,0 +1,135 @@
+\hypertarget{classShape2D}{\section{Shape2\-D Class Reference}
+\label{classShape2D}\index{Shape2\-D@{Shape2\-D}}
+}
+Inheritance diagram for Shape2\-D\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classShape2D}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classShape2D_ac890aa93495c70461761925145232d11}{Shape2\-D} (Q\-Paint\-Device $\ast$device, int x\-Id, \hyperlink{classShape_aaac58aa2f6760d0f06ec1710d5123e9b}{shape\-Type} x\-Type, Q\-Color x\-Pen\-Color, qreal x\-Pen\-Width, Qt\-::\-Pen\-Style x\-Pen\-Style, Qt\-::\-Pen\-Cap\-Style x\-Pen\-Cap\-Style, Qt\-::\-Pen\-Join\-Style x\-Pen\-Join\-Style, Q\-Color x\-Brush\-Color, Qt\-::\-Brush\-Style x\-Brush\-Style)
+\item 
+\hypertarget{classShape2D_a54dbc4873b59a4521937add746c2153e}{\hyperlink{classShape2D}{Shape2\-D} \& {\bfseries operator=} (const \hyperlink{classShape}{Shape} \&)=delete}\label{classShape2D_a54dbc4873b59a4521937add746c2153e}
+
+\item 
+\hypertarget{classShape2D_ae8b380001f180357fa4e80196eb3d20b}{{\bfseries Shape2\-D} (const \hyperlink{classShape}{Shape} \&)=delete}\label{classShape2D_ae8b380001f180357fa4e80196eb3d20b}
+
+\item 
+virtual \hyperlink{classShape2D_ad151443d27b1861c3de7b6b7147c1019}{$\sim$\-Shape2\-D} ()
+\item 
+virtual std\-::ostream \& \hyperlink{classShape2D_a6faf0b7950ea77a2ec6f29a31d65a624}{print} (std\-::ostream \&os) const =0
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classShape2D_a703b6a05045fdfdd01a362fe80c6db73}{Q\-Pen \hyperlink{classShape2D_a703b6a05045fdfdd01a362fe80c6db73}{pen}}\label{classShape2D_a703b6a05045fdfdd01a362fe80c6db73}
+
+\begin{DoxyCompactList}\small\item\em Pen used to draw shape outline. \end{DoxyCompactList}\item 
+\hypertarget{classShape2D_ad2a39e54a4cce0f95547225ad6282f54}{Q\-Brush \hyperlink{classShape2D_ad2a39e54a4cce0f95547225ad6282f54}{brush}}\label{classShape2D_ad2a39e54a4cce0f95547225ad6282f54}
+
+\begin{DoxyCompactList}\small\item\em Brush used to fill 2\-D object interior. \end{DoxyCompactList}\item 
+\hypertarget{classShape2D_a04ff6cd950715ef89ecea1d4004e2cab}{Q\-Point \hyperlink{classShape2D_a04ff6cd950715ef89ecea1d4004e2cab}{upperleft}}\label{classShape2D_a04ff6cd950715ef89ecea1d4004e2cab}
+
+\begin{DoxyCompactList}\small\item\em Lower right anchor for bounding rectangle. \end{DoxyCompactList}\item 
+\hypertarget{classShape2D_ac09b295b11d1668f6c696ac8480e9466}{Q\-Point \hyperlink{classShape2D_ac09b295b11d1668f6c696ac8480e9466}{lowerright}}\label{classShape2D_ac09b295b11d1668f6c696ac8480e9466}
+
+\begin{DoxyCompactList}\small\item\em vector containing endpints and vertices of line objects \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classShape2D_ac890aa93495c70461761925145232d11}{\index{Shape2\-D@{Shape2\-D}!Shape2\-D@{Shape2\-D}}
+\index{Shape2\-D@{Shape2\-D}!Shape2D@{Shape2\-D}}
+\subsubsection[{Shape2\-D}]{\setlength{\rightskip}{0pt plus 5cm}Shape2\-D\-::\-Shape2\-D (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device, }
+\item[{int}]{x\-Id, }
+\item[{{\bf shape\-Type}}]{x\-Type, }
+\item[{Q\-Color}]{x\-Pen\-Color, }
+\item[{qreal}]{x\-Pen\-Width, }
+\item[{Qt\-::\-Pen\-Style}]{x\-Pen\-Style, }
+\item[{Qt\-::\-Pen\-Cap\-Style}]{x\-Pen\-Cap\-Style, }
+\item[{Qt\-::\-Pen\-Join\-Style}]{x\-Pen\-Join\-Style, }
+\item[{Q\-Color}]{x\-Brush\-Color, }
+\item[{Qt\-::\-Brush\-Style}]{x\-Brush\-Style}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classShape2D_ac890aa93495c70461761925145232d11}
+Constructor -\/ abstract class for 2\-D (circle, square, etc) objects
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & -\/ Q\-Paint\-Device \\
+\hline
+{\em x\-Id} & -\/ shape I\-D \\
+\hline
+{\em x\-Type} & \\
+\hline
+{\em x\-Pen\-Color} & \\
+\hline
+{\em x\-Pen\-Width} & \\
+\hline
+{\em x\-Pen\-Style} & \\
+\hline
+{\em x\-Pen\-Cap\-Style} & \\
+\hline
+{\em x\-Pen\-Join\-Style} & \\
+\hline
+{\em x\-Brush\-Color} & \\
+\hline
+{\em x\-Brush\-Style} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classShape2D_ad151443d27b1861c3de7b6b7147c1019}{\index{Shape2\-D@{Shape2\-D}!$\sim$\-Shape2\-D@{$\sim$\-Shape2\-D}}
+\index{$\sim$\-Shape2\-D@{$\sim$\-Shape2\-D}!Shape2D@{Shape2\-D}}
+\subsubsection[{$\sim$\-Shape2\-D}]{\setlength{\rightskip}{0pt plus 5cm}virtual Shape2\-D\-::$\sim$\-Shape2\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classShape2D_ad151443d27b1861c3de7b6b7147c1019}
+Destructor -\/ simply free the object space
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classShape2D_a6faf0b7950ea77a2ec6f29a31d65a624}{\index{Shape2\-D@{Shape2\-D}!print@{print}}
+\index{print@{print}!Shape2D@{Shape2\-D}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\-::ostream\& Shape2\-D\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classShape2D_a6faf0b7950ea77a2ec6f29a31d65a624}
+print -\/ print limited information about derived instance for debugging
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & -\/ output stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\-::ostream\& 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+
+
+Implemented in \hyperlink{classRectangle_a06528cd92243f56f5eca551c5d637657}{Rectangle}, \hyperlink{classEllipse_a6cd8da652c6e66f465fb23253deab458}{Ellipse}, \hyperlink{classCircle_a8afb61e2e5b24c95d0d4514da1d45bb2}{Circle}, \hyperlink{classPolygon_ae1d7135748131313fac844463013931e}{Polygon}, and \hyperlink{classSquare_af2b00ed5022d4eefcbafe31cc77535f6}{Square}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/shape2d.\-h\end{DoxyCompactItemize}

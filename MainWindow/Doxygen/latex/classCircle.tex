@@ -1,0 +1,246 @@
+\hypertarget{classCircle}{\section{Circle Class Reference}
+\label{classCircle}\index{Circle@{Circle}}
+}
+
+
+{\ttfamily \#include $<$circle.\-h$>$}
+
+Inheritance diagram for Circle\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classCircle}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCircle_af4337aa5f28b63e6e3f4fba0766e4b2f}{Circle} (Q\-Paint\-Device $\ast$device, int x\-Id, Q\-Color x\-Pen\-Color, qreal x\-Pen\-Width, Qt\-::\-Pen\-Style x\-Pen\-Style, Qt\-::\-Pen\-Cap\-Style x\-Pen\-Cap\-Style, Qt\-::\-Pen\-Join\-Style x\-Pen\-Join\-Style, Q\-Color x\-Brush\-Color, Qt\-::\-Brush\-Style x\-Brush\-Style, int x\-Top\-Left\-X, int x\-Top\-Left\-Y, int x\-Diameter)
+\item 
+\hypertarget{classCircle_a2067c595933e8313ea1baf8ee19545f4}{\hyperlink{classCircle}{Circle} \& {\bfseries operator=} (const \hyperlink{classCircle}{Circle} \&)=delete}\label{classCircle_a2067c595933e8313ea1baf8ee19545f4}
+
+\item 
+\hypertarget{classCircle_a36efc1546de87eef6ff11c61c0d4ff34}{{\bfseries Circle} (const \hyperlink{classCircle}{Circle} \&)=delete}\label{classCircle_a36efc1546de87eef6ff11c61c0d4ff34}
+
+\item 
+\hyperlink{classCircle_ae3f30436e645d73e368e8ee55f8d1650}{$\sim$\-Circle} ()
+\item 
+std\-::ostream \& \hyperlink{classCircle_a8afb61e2e5b24c95d0d4514da1d45bb2}{print} (std\-::ostream \&os) const 
+\item 
+void \hyperlink{classCircle_ae4d43ef78c3a06cb913bbd6a7dd94783}{draw} (Q\-Paint\-Device $\ast$device) override
+\item 
+void \hyperlink{classCircle_a48641bff5fb13da4bceb319862fd16c1}{move} (Q\-Point \&new\-Upper\-Left) override
+\item 
+void \hyperlink{classCircle_ae9c239fb51beadf9d6be4861473949f5}{update} (void) override
+\item 
+double \hyperlink{classCircle_ad6e363f95b6a42109527071724d8ea76}{calc\-Perimeter} () const override
+\item 
+double \hyperlink{classCircle_a2ebf184f1aed664e3858b65ce17fa798}{calc\-Area} () const override
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{classCircle}{Circle} class -\/ derived from \hyperlink{classShape2D}{Shape2\-D}
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCircle_af4337aa5f28b63e6e3f4fba0766e4b2f}{\index{Circle@{Circle}!Circle@{Circle}}
+\index{Circle@{Circle}!Circle@{Circle}}
+\subsubsection[{Circle}]{\setlength{\rightskip}{0pt plus 5cm}Circle\-::\-Circle (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device, }
+\item[{int}]{x\-Id, }
+\item[{Q\-Color}]{x\-Pen\-Color, }
+\item[{qreal}]{x\-Pen\-Width, }
+\item[{Qt\-::\-Pen\-Style}]{x\-Pen\-Style, }
+\item[{Qt\-::\-Pen\-Cap\-Style}]{x\-Pen\-Cap\-Style, }
+\item[{Qt\-::\-Pen\-Join\-Style}]{x\-Pen\-Join\-Style, }
+\item[{Q\-Color}]{x\-Brush\-Color, }
+\item[{Qt\-::\-Brush\-Style}]{x\-Brush\-Style, }
+\item[{int}]{x\-Top\-Left\-X, }
+\item[{int}]{x\-Top\-Left\-Y, }
+\item[{int}]{x\-Diameter}
+\end{DoxyParamCaption}
+)}}\label{classCircle_af4337aa5f28b63e6e3f4fba0766e4b2f}
+Constructor -\/ create a Q\-T drawable circle 2\-D
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & -\/ Q\-Paint\-Device \\
+\hline
+{\em x\-Id} & -\/ shape I\-D \\
+\hline
+{\em x\-Pen\-Color} & \\
+\hline
+{\em x\-Pen\-Width} & \\
+\hline
+{\em x\-Pen\-Style} & \\
+\hline
+{\em x\-Pen\-Cap\-Style} & \\
+\hline
+{\em x\-Pen\-Join\-Style} & \\
+\hline
+{\em x\-Brush\-Color} & \\
+\hline
+{\em x\-Brush\-Style} & \\
+\hline
+{\em x\-Top\-Left\-X} & \\
+\hline
+{\em x\-Top\-Left\-Y} & \\
+\hline
+{\em x\-Diameter} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classCircle_ae3f30436e645d73e368e8ee55f8d1650}{\index{Circle@{Circle}!$\sim$\-Circle@{$\sim$\-Circle}}
+\index{$\sim$\-Circle@{$\sim$\-Circle}!Circle@{Circle}}
+\subsubsection[{$\sim$\-Circle}]{\setlength{\rightskip}{0pt plus 5cm}Circle\-::$\sim$\-Circle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classCircle_ae3f30436e645d73e368e8ee55f8d1650}
+Destructor -\/ simply free the object space
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCircle_a2ebf184f1aed664e3858b65ce17fa798}{\index{Circle@{Circle}!calc\-Area@{calc\-Area}}
+\index{calc\-Area@{calc\-Area}!Circle@{Circle}}
+\subsubsection[{calc\-Area}]{\setlength{\rightskip}{0pt plus 5cm}double Circle\-::calc\-Area (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classCircle_a2ebf184f1aed664e3858b65ce17fa798}
+calc\-Area -\/ determine area enclosed by object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classCircle_ad6e363f95b6a42109527071724d8ea76}{\index{Circle@{Circle}!calc\-Perimeter@{calc\-Perimeter}}
+\index{calc\-Perimeter@{calc\-Perimeter}!Circle@{Circle}}
+\subsubsection[{calc\-Perimeter}]{\setlength{\rightskip}{0pt plus 5cm}double Circle\-::calc\-Perimeter (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classCircle_ad6e363f95b6a42109527071724d8ea76}
+calc\-Perimeter -\/ determine object outline length
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classCircle_ae4d43ef78c3a06cb913bbd6a7dd94783}{\index{Circle@{Circle}!draw@{draw}}
+\index{draw@{draw}!Circle@{Circle}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Circle\-::draw (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classCircle_ae4d43ef78c3a06cb913bbd6a7dd94783}
+draw -\/ output object onto Q\-T canvas using Q\-Paint\-Device
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classCircle_a48641bff5fb13da4bceb319862fd16c1}{\index{Circle@{Circle}!move@{move}}
+\index{move@{move}!Circle@{Circle}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Circle\-::move (
+\begin{DoxyParamCaption}
+\item[{Q\-Point \&}]{new\-Upper\-Left}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classCircle_a48641bff5fb13da4bceb319862fd16c1}
+move -\/ relocate circle to new upper left coordinate
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em new\-Upper\-Left} & -\/ new location of upper left of enclosing rectangle \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classCircle_a8afb61e2e5b24c95d0d4514da1d45bb2}{\index{Circle@{Circle}!print@{print}}
+\index{print@{print}!Circle@{Circle}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream \& Circle\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classCircle_a8afb61e2e5b24c95d0d4514da1d45bb2}
+print -\/ print limited information about derived instance for debugging
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & -\/ output stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\-::ostream\& 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape2D_a6faf0b7950ea77a2ec6f29a31d65a624}{Shape2\-D}.
+
+\hypertarget{classCircle_ae9c239fb51beadf9d6be4861473949f5}{\index{Circle@{Circle}!update@{update}}
+\index{update@{update}!Circle@{Circle}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Circle\-::update (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classCircle_ae9c239fb51beadf9d6be4861473949f5}
+update -\/ force redraw of object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/circle.\-h\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/circle.\-cpp\end{DoxyCompactItemize}

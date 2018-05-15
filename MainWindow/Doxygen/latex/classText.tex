@@ -1,0 +1,262 @@
+\hypertarget{classText}{\section{Text Class Reference}
+\label{classText}\index{Text@{Text}}
+}
+Inheritance diagram for Text\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classText}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classText_a33b6e89d37f8d0db9abaa02a82a5d7ed}{Text} (Q\-Paint\-Device $\ast$device, int x\-Id, Q\-String x\-String, Q\-Color x\-Color, Qt\-::\-Alignment\-Flag x\-Alignment, int x\-Font\-Size, Q\-String x\-Font\-Family, Q\-Font\-::\-Style x\-Font\-Style, Q\-Font\-::\-Weight x\-Font\-Weight, int x\-Top\-Left\-X, int x\-Top\-Left\-Y, int x\-Width, int x\-Height)
+\item 
+\hypertarget{classText_ae3709f44652cc1623ba2e12fd01aa983}{\hyperlink{classText}{Text} \& {\bfseries operator=} (const \hyperlink{classText}{Text} \&)=delete}\label{classText_ae3709f44652cc1623ba2e12fd01aa983}
+
+\item 
+\hypertarget{classText_afc7da0fb8a91ece6da90c6876e9d9539}{{\bfseries Text} (const \hyperlink{classText}{Text} \&)=delete}\label{classText_afc7da0fb8a91ece6da90c6876e9d9539}
+
+\item 
+\hyperlink{classText_a2d49e5c280e205125b149f7777ae30c7}{$\sim$\-Text} ()
+\item 
+std\-::ostream \& \hyperlink{classText_a8ae9525e9734ed2b9e00aa53fb472f67}{print} (std\-::ostream \&os) const 
+\item 
+void \hyperlink{classText_ad6dfd5f6e6f1aa974c0ab433abbb5509}{draw} (Q\-Paint\-Device $\ast$device)
+\item 
+void \hyperlink{classText_a5586919a299988fdcdfd68e77915625d}{move} (Q\-Point \&new\-Upper\-Left)
+\item 
+void \hyperlink{classText_a04fa355437faa0911800bbf110bf8f0e}{update} (void)
+\item 
+double \hyperlink{classText_afa52da1ba9611cb0ae79f7a93b89388d}{calc\-Perimeter} () const 
+\item 
+double \hyperlink{classText_aa64572ee7df26460030d9bf116ad52c8}{calc\-Area} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classText_aedb55d46b763e08f05098533acfbe22a}{Q\-String \hyperlink{classText_aedb55d46b763e08f05098533acfbe22a}{String}}\label{classText_aedb55d46b763e08f05098533acfbe22a}
+
+\begin{DoxyCompactList}\small\item\em string to display \end{DoxyCompactList}\item 
+\hypertarget{classText_a7080675fdb6da03a3d9fc141c3f9ee48}{Q\-Color \hyperlink{classText_a7080675fdb6da03a3d9fc141c3f9ee48}{Color}}\label{classText_a7080675fdb6da03a3d9fc141c3f9ee48}
+
+\begin{DoxyCompactList}\small\item\em color of string text \end{DoxyCompactList}\item 
+\hypertarget{classText_ac2f10e06ac4a483c431f7a0f5e589e0c}{Qt\-::\-Alignment\-Flag \hyperlink{classText_ac2f10e06ac4a483c431f7a0f5e589e0c}{Alignment}}\label{classText_ac2f10e06ac4a483c431f7a0f5e589e0c}
+
+\begin{DoxyCompactList}\small\item\em alignment of string in bounding rectangle \end{DoxyCompactList}\item 
+\hypertarget{classText_ada5a7bd7fd75b0c00b6343603690b40b}{int \hyperlink{classText_ada5a7bd7fd75b0c00b6343603690b40b}{Font\-Size}}\label{classText_ada5a7bd7fd75b0c00b6343603690b40b}
+
+\begin{DoxyCompactList}\small\item\em font size of string \end{DoxyCompactList}\item 
+\hypertarget{classText_a41605f83ceba0843f91b4cbbb62c16e2}{Q\-String \hyperlink{classText_a41605f83ceba0843f91b4cbbb62c16e2}{Font\-Family}}\label{classText_a41605f83ceba0843f91b4cbbb62c16e2}
+
+\begin{DoxyCompactList}\small\item\em font family to use in rendering string \end{DoxyCompactList}\item 
+\hypertarget{classText_aad61fa14cba6aa54be1a373fa052ddb2}{Q\-Font\-::\-Style {\bfseries Font\-Style}}\label{classText_aad61fa14cba6aa54be1a373fa052ddb2}
+
+\item 
+\hypertarget{classText_a557271ec04c6fdc5348bd2b7190744db}{Q\-Font\-::\-Weight {\bfseries Font\-Weight}}\label{classText_a557271ec04c6fdc5348bd2b7190744db}
+
+\item 
+\hypertarget{classText_a32e176ed2a90d7267df882653a135d97}{Q\-Point \hyperlink{classText_a32e176ed2a90d7267df882653a135d97}{upperleft}}\label{classText_a32e176ed2a90d7267df882653a135d97}
+
+\begin{DoxyCompactList}\small\item\em Upper left anchor of bounding rectangle. \end{DoxyCompactList}\item 
+\hypertarget{classText_a0f21d563e534b5faf41ba11f5ae9316c}{Q\-Point \hyperlink{classText_a0f21d563e534b5faf41ba11f5ae9316c}{lowerright}}\label{classText_a0f21d563e534b5faf41ba11f5ae9316c}
+
+\begin{DoxyCompactList}\small\item\em Lower right anchor for bounding rectangle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classText_a33b6e89d37f8d0db9abaa02a82a5d7ed}{\index{Text@{Text}!Text@{Text}}
+\index{Text@{Text}!Text@{Text}}
+\subsubsection[{Text}]{\setlength{\rightskip}{0pt plus 5cm}Text\-::\-Text (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device, }
+\item[{int}]{x\-Id, }
+\item[{Q\-String}]{x\-String, }
+\item[{Q\-Color}]{x\-Color, }
+\item[{Qt\-::\-Alignment\-Flag}]{x\-Alignment, }
+\item[{int}]{x\-Font\-Size, }
+\item[{Q\-String}]{x\-Font\-Family, }
+\item[{Q\-Font\-::\-Style}]{x\-Font\-Style, }
+\item[{Q\-Font\-::\-Weight}]{x\-Font\-Weight, }
+\item[{int}]{x\-Top\-Left\-X, }
+\item[{int}]{x\-Top\-Left\-Y, }
+\item[{int}]{x\-Width, }
+\item[{int}]{x\-Height}
+\end{DoxyParamCaption}
+)}}\label{classText_a33b6e89d37f8d0db9abaa02a82a5d7ed}
+create a Q\-T drawable text area -\/ derives directly from \hyperlink{classShape}{Shape}
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+{\em x\-Id} & \\
+\hline
+{\em x\-String} & \\
+\hline
+{\em x\-Color} & \\
+\hline
+{\em x\-Alignment} & \\
+\hline
+{\em x\-Font\-Size} & \\
+\hline
+{\em x\-Font\-Family} & \\
+\hline
+{\em x\-Font\-Style} & \\
+\hline
+{\em x\-Font\-Weight} & \\
+\hline
+{\em x\-Top\-Left\-X} & \\
+\hline
+{\em x\-Top\-Left\-Y} & \\
+\hline
+{\em x\-Width} & \\
+\hline
+{\em x\-Height} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classText_a2d49e5c280e205125b149f7777ae30c7}{\index{Text@{Text}!$\sim$\-Text@{$\sim$\-Text}}
+\index{$\sim$\-Text@{$\sim$\-Text}!Text@{Text}}
+\subsubsection[{$\sim$\-Text}]{\setlength{\rightskip}{0pt plus 5cm}Text\-::$\sim$\-Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classText_a2d49e5c280e205125b149f7777ae30c7}
+Destructor -\/ simply free the object space
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classText_aa64572ee7df26460030d9bf116ad52c8}{\index{Text@{Text}!calc\-Area@{calc\-Area}}
+\index{calc\-Area@{calc\-Area}!Text@{Text}}
+\subsubsection[{calc\-Area}]{\setlength{\rightskip}{0pt plus 5cm}double Text\-::calc\-Area (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classText_aa64572ee7df26460030d9bf116ad52c8}
+calc\-Area -\/ determine area enclosed by object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classText_afa52da1ba9611cb0ae79f7a93b89388d}{\index{Text@{Text}!calc\-Perimeter@{calc\-Perimeter}}
+\index{calc\-Perimeter@{calc\-Perimeter}!Text@{Text}}
+\subsubsection[{calc\-Perimeter}]{\setlength{\rightskip}{0pt plus 5cm}double Text\-::calc\-Perimeter (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classText_afa52da1ba9611cb0ae79f7a93b89388d}
+calc\-Perimeter -\/ determine object outline length
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classText_ad6dfd5f6e6f1aa974c0ab433abbb5509}{\index{Text@{Text}!draw@{draw}}
+\index{draw@{draw}!Text@{Text}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Text\-::draw (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classText_ad6dfd5f6e6f1aa974c0ab433abbb5509}
+draw -\/ output object onto Q\-T canvas using Q\-Paint\-Device
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classText_a5586919a299988fdcdfd68e77915625d}{\index{Text@{Text}!move@{move}}
+\index{move@{move}!Text@{Text}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Text\-::move (
+\begin{DoxyParamCaption}
+\item[{Q\-Point \&}]{new\-Upper\-Left}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classText_a5586919a299988fdcdfd68e77915625d}
+move -\/ relocate text to new upper left coordinate
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em new\-Upper\-Left} & -\/ new location of upper left of enclosing rectangle \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classText_a8ae9525e9734ed2b9e00aa53fb472f67}{\index{Text@{Text}!print@{print}}
+\index{print@{print}!Text@{Text}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream \& Text\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classText_a8ae9525e9734ed2b9e00aa53fb472f67}
+print -\/ print limited information about derived instance for debugging
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & -\/ output stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\-::ostream\& 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classText_a04fa355437faa0911800bbf110bf8f0e}{\index{Text@{Text}!update@{update}}
+\index{update@{update}!Text@{Text}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Text\-::update (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classText_a04fa355437faa0911800bbf110bf8f0e}
+update -\/ force redraw of object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/text.\-h\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/text.\-cpp\end{DoxyCompactItemize}
