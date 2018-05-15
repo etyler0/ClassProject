@@ -1,0 +1,249 @@
+\hypertarget{classEllipse}{\section{Ellipse Class Reference}
+\label{classEllipse}\index{Ellipse@{Ellipse}}
+}
+
+
+{\ttfamily \#include $<$ellipse.\-h$>$}
+
+Inheritance diagram for Ellipse\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classEllipse}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classEllipse_acec99b1c3bac3534d5c1c9ded420e29f}{Ellipse} (Q\-Paint\-Device $\ast$device, int x\-Id, Q\-Color x\-Pen\-Color, qreal x\-Pen\-Width, Qt\-::\-Pen\-Style x\-Pen\-Style, Qt\-::\-Pen\-Cap\-Style x\-Pen\-Cap\-Style, Qt\-::\-Pen\-Join\-Style x\-Pen\-Join\-Style, Q\-Color x\-Brush\-Color, Qt\-::\-Brush\-Style x\-Brush\-Style, int x\-Top\-Left\-X, int x\-Top\-Left\-Y, int x\-Width, int x\-Height)
+\item 
+\hypertarget{classEllipse_ad9a01ff7963a3bb34becaa0849510f5f}{\hyperlink{classEllipse}{Ellipse} \& {\bfseries operator=} (const \hyperlink{classEllipse}{Ellipse} \&)=delete}\label{classEllipse_ad9a01ff7963a3bb34becaa0849510f5f}
+
+\item 
+\hypertarget{classEllipse_ae9069aaff10df80436665806fa3fd441}{{\bfseries Ellipse} (const \hyperlink{classEllipse}{Ellipse} \&)=delete}\label{classEllipse_ae9069aaff10df80436665806fa3fd441}
+
+\item 
+\hyperlink{classEllipse_a94271a8a2b16101a52491b7e81e28547}{$\sim$\-Ellipse} ()
+\item 
+std\-::ostream \& \hyperlink{classEllipse_a6cd8da652c6e66f465fb23253deab458}{print} (std\-::ostream \&os) const 
+\item 
+void \hyperlink{classEllipse_a15ee15d60a77d8b0bb1711d96b5dd062}{draw} (Q\-Paint\-Device $\ast$device)
+\item 
+void \hyperlink{classEllipse_a29e9857d31cd33aa127c7ab171575c88}{move} (Q\-Point \&new\-Upper\-Left)
+\item 
+void \hyperlink{classEllipse_a49d149cb6210f1b2fb58b10fbd8bed18}{update} (void)
+\item 
+double \hyperlink{classEllipse_a70f7a8edec42201d11c6fae43714c4c2}{calc\-Perimeter} () const 
+\item 
+double \hyperlink{classEllipse_a955141666e258fc582889a5f9298d798}{calc\-Area} () const 
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+ellipse class derived from \hyperlink{classShape2D}{Shape2\-D}
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classEllipse_acec99b1c3bac3534d5c1c9ded420e29f}{\index{Ellipse@{Ellipse}!Ellipse@{Ellipse}}
+\index{Ellipse@{Ellipse}!Ellipse@{Ellipse}}
+\subsubsection[{Ellipse}]{\setlength{\rightskip}{0pt plus 5cm}Ellipse\-::\-Ellipse (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device, }
+\item[{int}]{x\-Id, }
+\item[{Q\-Color}]{x\-Pen\-Color, }
+\item[{qreal}]{x\-Pen\-Width, }
+\item[{Qt\-::\-Pen\-Style}]{x\-Pen\-Style, }
+\item[{Qt\-::\-Pen\-Cap\-Style}]{x\-Pen\-Cap\-Style, }
+\item[{Qt\-::\-Pen\-Join\-Style}]{x\-Pen\-Join\-Style, }
+\item[{Q\-Color}]{x\-Brush\-Color, }
+\item[{Qt\-::\-Brush\-Style}]{x\-Brush\-Style, }
+\item[{int}]{x\-Top\-Left\-X, }
+\item[{int}]{x\-Top\-Left\-Y, }
+\item[{int}]{x\-Width, }
+\item[{int}]{x\-Height}
+\end{DoxyParamCaption}
+)}}\label{classEllipse_acec99b1c3bac3534d5c1c9ded420e29f}
+ellipse constructor -\/ create Q\-T drawable object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & -\/ Q\-Paint\-Device \\
+\hline
+{\em x\-Id} & -\/ shape I\-D \\
+\hline
+{\em x\-Pen\-Color} & \\
+\hline
+{\em x\-Pen\-Width} & \\
+\hline
+{\em x\-Pen\-Style} & \\
+\hline
+{\em x\-Pen\-Cap\-Style} & \\
+\hline
+{\em x\-Pen\-Join\-Style} & \\
+\hline
+{\em x\-Brush\-Color} & \\
+\hline
+{\em x\-Brush\-Style} & \\
+\hline
+{\em x\-Top\-Left\-X} & \\
+\hline
+{\em x\-Top\-Left\-Y} & \\
+\hline
+{\em x\-Width} & \\
+\hline
+{\em x\-Height} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classEllipse_a94271a8a2b16101a52491b7e81e28547}{\index{Ellipse@{Ellipse}!$\sim$\-Ellipse@{$\sim$\-Ellipse}}
+\index{$\sim$\-Ellipse@{$\sim$\-Ellipse}!Ellipse@{Ellipse}}
+\subsubsection[{$\sim$\-Ellipse}]{\setlength{\rightskip}{0pt plus 5cm}Ellipse\-::$\sim$\-Ellipse (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classEllipse_a94271a8a2b16101a52491b7e81e28547}
+Destructor -\/ simply free the object space
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classEllipse_a955141666e258fc582889a5f9298d798}{\index{Ellipse@{Ellipse}!calc\-Area@{calc\-Area}}
+\index{calc\-Area@{calc\-Area}!Ellipse@{Ellipse}}
+\subsubsection[{calc\-Area}]{\setlength{\rightskip}{0pt plus 5cm}double Ellipse\-::calc\-Area (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classEllipse_a955141666e258fc582889a5f9298d798}
+calc\-Area -\/ determine area enclosed by object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classEllipse_a70f7a8edec42201d11c6fae43714c4c2}{\index{Ellipse@{Ellipse}!calc\-Perimeter@{calc\-Perimeter}}
+\index{calc\-Perimeter@{calc\-Perimeter}!Ellipse@{Ellipse}}
+\subsubsection[{calc\-Perimeter}]{\setlength{\rightskip}{0pt plus 5cm}double Ellipse\-::calc\-Perimeter (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classEllipse_a70f7a8edec42201d11c6fae43714c4c2}
+calc\-Perimeter -\/ determine object outline length using Ramanujan Forumla \#1
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classEllipse_a15ee15d60a77d8b0bb1711d96b5dd062}{\index{Ellipse@{Ellipse}!draw@{draw}}
+\index{draw@{draw}!Ellipse@{Ellipse}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Ellipse\-::draw (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classEllipse_a15ee15d60a77d8b0bb1711d96b5dd062}
+draw -\/ output object onto Q\-T canvas using Q\-Paint\-Device
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classEllipse_a29e9857d31cd33aa127c7ab171575c88}{\index{Ellipse@{Ellipse}!move@{move}}
+\index{move@{move}!Ellipse@{Ellipse}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Ellipse\-::move (
+\begin{DoxyParamCaption}
+\item[{Q\-Point \&}]{new\-Upper\-Left}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classEllipse_a29e9857d31cd33aa127c7ab171575c88}
+move -\/ relocate circle to new upper left coordinate
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em new\-Upper\-Left} & -\/ new location of upper left of enclosing rectangle \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classEllipse_a6cd8da652c6e66f465fb23253deab458}{\index{Ellipse@{Ellipse}!print@{print}}
+\index{print@{print}!Ellipse@{Ellipse}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream \& Ellipse\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classEllipse_a6cd8da652c6e66f465fb23253deab458}
+print -\/ print limited information about derived instance for debugging
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & -\/ output stream pointer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\-::ostream\& 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape2D_a6faf0b7950ea77a2ec6f29a31d65a624}{Shape2\-D}.
+
+\hypertarget{classEllipse_a49d149cb6210f1b2fb58b10fbd8bed18}{\index{Ellipse@{Ellipse}!update@{update}}
+\index{update@{update}!Ellipse@{Ellipse}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Ellipse\-::update (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classEllipse_a49d149cb6210f1b2fb58b10fbd8bed18}
+update -\/ force redraw of object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/ellipse.\-h\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/ellipse.\-cpp\end{DoxyCompactItemize}

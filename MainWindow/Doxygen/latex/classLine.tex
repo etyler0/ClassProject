@@ -1,0 +1,243 @@
+\hypertarget{classLine}{\section{Line Class Reference}
+\label{classLine}\index{Line@{Line}}
+}
+
+
+{\ttfamily \#include $<$line.\-h$>$}
+
+Inheritance diagram for Line\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classLine}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLine_a93d8a59e89500066516ca68a77a33d48}{Line} (Q\-Paint\-Device $\ast$device, int x\-Id, Q\-Color x\-Pen\-Color, qreal x\-Pen\-Width, Qt\-::\-Pen\-Style x\-Pen\-Style, Qt\-::\-Pen\-Cap\-Style x\-Pen\-Cap\-Style, Qt\-::\-Pen\-Join\-Style x\-Pen\-Join\-Style, int x\-Top\-Left\-X, int x\-Top\-Left\-Y, int x\-Bot\-Right\-X, int x\-Bot\-Right\-Y)
+\item 
+\hypertarget{classLine_a870c3c74ac53e7ce16586345b2181ad7}{\hyperlink{classLine}{Line} \& {\bfseries operator=} (const \hyperlink{classLine}{Line} \&)=delete}\label{classLine_a870c3c74ac53e7ce16586345b2181ad7}
+
+\item 
+\hypertarget{classLine_a39f1d91cfb4c01a8580d149af73c89b2}{{\bfseries Line} (const \hyperlink{classLine}{Line} \&)=delete}\label{classLine_a39f1d91cfb4c01a8580d149af73c89b2}
+
+\item 
+\hyperlink{classLine_aabe85f48d22d92b62257091f48174fac}{$\sim$\-Line} ()
+\item 
+std\-::ostream \& \hyperlink{classLine_a9535dc5fe2c3e66e548add6622e4b0ea}{print} (std\-::ostream \&os) const 
+\item 
+void \hyperlink{classLine_a5bb42c21fb963bbdca7c928f055376d5}{draw} (Q\-Paint\-Device $\ast$device)
+\item 
+void \hyperlink{classLine_acb2ae2fa8e058adbeea14c3966199090}{move} (Q\-Point \&new\-Upper\-Left)
+\item 
+void \hyperlink{classLine_a2338aa100616356ad580303478c102c2}{update} (void)
+\item 
+double \hyperlink{classLine_a804e2a31c02b0b5cfefe2e063e7fc52f}{calc\-Perimeter} () const 
+\item 
+double \hyperlink{classLine_ad4ab9f8147bd69fe385fcf5c14c5f46e}{calc\-Area} () const 
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{classLine}{Line} class -\/ derived from shape1\-D
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLine_a93d8a59e89500066516ca68a77a33d48}{\index{Line@{Line}!Line@{Line}}
+\index{Line@{Line}!Line@{Line}}
+\subsubsection[{Line}]{\setlength{\rightskip}{0pt plus 5cm}Line\-::\-Line (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device, }
+\item[{int}]{x\-Id, }
+\item[{Q\-Color}]{x\-Pen\-Color, }
+\item[{qreal}]{x\-Pen\-Width, }
+\item[{Qt\-::\-Pen\-Style}]{x\-Pen\-Style, }
+\item[{Qt\-::\-Pen\-Cap\-Style}]{x\-Pen\-Cap\-Style, }
+\item[{Qt\-::\-Pen\-Join\-Style}]{x\-Pen\-Join\-Style, }
+\item[{int}]{x\-Top\-Left\-X, }
+\item[{int}]{x\-Top\-Left\-Y, }
+\item[{int}]{x\-Bot\-Right\-X, }
+\item[{int}]{x\-Bot\-Right\-Y}
+\end{DoxyParamCaption}
+)}}\label{classLine_a93d8a59e89500066516ca68a77a33d48}
+line constructor -\/ create Q\-T drawable object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & -\/ Q\-Paint\-Device \\
+\hline
+{\em x\-Id} & -\/ shape I\-D \\
+\hline
+{\em x\-Pen\-Color} & \\
+\hline
+{\em x\-Pen\-Width} & \\
+\hline
+{\em x\-Pen\-Style} & \\
+\hline
+{\em x\-Pen\-Cap\-Style} & \\
+\hline
+{\em x\-Pen\-Join\-Style} & \\
+\hline
+{\em x\-Top\-Left\-X} & \\
+\hline
+{\em x\-Top\-Left\-Y} & \\
+\hline
+{\em x\-Bot\-Right\-X} & \\
+\hline
+{\em x\-Bot\-Right\-Y} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classLine_aabe85f48d22d92b62257091f48174fac}{\index{Line@{Line}!$\sim$\-Line@{$\sim$\-Line}}
+\index{$\sim$\-Line@{$\sim$\-Line}!Line@{Line}}
+\subsubsection[{$\sim$\-Line}]{\setlength{\rightskip}{0pt plus 5cm}Line\-::$\sim$\-Line (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLine_aabe85f48d22d92b62257091f48174fac}
+Destructor -\/ simply free the object space
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classLine_ad4ab9f8147bd69fe385fcf5c14c5f46e}{\index{Line@{Line}!calc\-Area@{calc\-Area}}
+\index{calc\-Area@{calc\-Area}!Line@{Line}}
+\subsubsection[{calc\-Area}]{\setlength{\rightskip}{0pt plus 5cm}double Line\-::calc\-Area (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLine_ad4ab9f8147bd69fe385fcf5c14c5f46e}
+calc\-Area -\/ determine area enclosed by object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classLine_a804e2a31c02b0b5cfefe2e063e7fc52f}{\index{Line@{Line}!calc\-Perimeter@{calc\-Perimeter}}
+\index{calc\-Perimeter@{calc\-Perimeter}!Line@{Line}}
+\subsubsection[{calc\-Perimeter}]{\setlength{\rightskip}{0pt plus 5cm}double Line\-::calc\-Perimeter (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLine_a804e2a31c02b0b5cfefe2e063e7fc52f}
+calc\-Perimeter -\/ determine object outline length
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classLine_a5bb42c21fb963bbdca7c928f055376d5}{\index{Line@{Line}!draw@{draw}}
+\index{draw@{draw}!Line@{Line}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-::draw (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLine_a5bb42c21fb963bbdca7c928f055376d5}
+draw -\/ output object onto Q\-T canvas using Q\-Paint\-Device
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classLine_acb2ae2fa8e058adbeea14c3966199090}{\index{Line@{Line}!move@{move}}
+\index{move@{move}!Line@{Line}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-::move (
+\begin{DoxyParamCaption}
+\item[{Q\-Point \&}]{new\-Upper\-Left}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLine_acb2ae2fa8e058adbeea14c3966199090}
+move -\/ relocate circle to new upper left coordinate
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em new\-Upper\-Left} & -\/ new location of upper left of enclosing rectangle \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classLine_a9535dc5fe2c3e66e548add6622e4b0ea}{\index{Line@{Line}!print@{print}}
+\index{print@{print}!Line@{Line}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream \& Line\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLine_a9535dc5fe2c3e66e548add6622e4b0ea}
+print -\/ print limited information about derived instance for debugging
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & -\/ output stream pointer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\-::ostream\& 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape1D_a20b9358df369b7b0fc4a1cdae5070836}{Shape1\-D}.
+
+\hypertarget{classLine_a2338aa100616356ad580303478c102c2}{\index{Line@{Line}!update@{update}}
+\index{update@{update}!Line@{Line}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-::update (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classLine_a2338aa100616356ad580303478c102c2}
+update -\/ force redraw of object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/line.\-h\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/line.\-cpp\end{DoxyCompactItemize}

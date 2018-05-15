@@ -1,0 +1,231 @@
+\hypertarget{classPolygon}{\section{Polygon Class Reference}
+\label{classPolygon}\index{Polygon@{Polygon}}
+}
+Inheritance diagram for Polygon\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPolygon}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPolygon_a0a64a72fe34ecf25776b1bf0b33af9c9}{Polygon} (Q\-Paint\-Device $\ast$device, int x\-Id, Q\-Color x\-Pen\-Color, qreal x\-Pen\-Width, Qt\-::\-Pen\-Style x\-Pen\-Style, Qt\-::\-Pen\-Cap\-Style x\-Pen\-Cap\-Style, Qt\-::\-Pen\-Join\-Style x\-Pen\-Join\-Style, Q\-Color x\-Brush\-Color, Qt\-::\-Brush\-Style x\-Brush\-Style, const std\-::vector$<$ Q\-Point $>$ \&x\-Points)
+\item 
+\hypertarget{classPolygon_af39b679040579defec4a84276303c8f3}{\hyperlink{classPolygon}{Polygon} \& {\bfseries operator=} (const \hyperlink{classPolygon}{Polygon} \&)=delete}\label{classPolygon_af39b679040579defec4a84276303c8f3}
+
+\item 
+\hypertarget{classPolygon_a34540c02f39c27d1f140f47a92f58afb}{{\bfseries Polygon} (const \hyperlink{classPolygon}{Polygon} \&)=delete}\label{classPolygon_a34540c02f39c27d1f140f47a92f58afb}
+
+\item 
+\hyperlink{classPolygon_ace39c67107966db12e13a183f496c3b0}{$\sim$\-Polygon} ()
+\item 
+std\-::ostream \& \hyperlink{classPolygon_ae1d7135748131313fac844463013931e}{print} (std\-::ostream \&os) const 
+\item 
+void \hyperlink{classPolygon_a7161b79ad403b975423f73e0cd073343}{draw} (Q\-Paint\-Device $\ast$device)
+\item 
+void \hyperlink{classPolygon_a8972edcc7d98e79ac828905c4a52a272}{move} (Q\-Point \&new\-Upper\-Left)
+\item 
+void \hyperlink{classPolygon_a723d9ffbebe8964da953dcd52aafeec2}{update} (void)
+\item 
+double \hyperlink{classPolygon_a6756ed58b8fabebf1f02c89ea821fe78}{calc\-Perimeter} () const 
+\item 
+double \hyperlink{classPolygon_ac325f8f1af8622d7314b887b31603ba1}{calc\-Area} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ Q\-Point $>$ \hyperlink{classPolygon_a2b9f4ab753cc0a4e8e844fac8c3d05a2}{points}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPolygon_a0a64a72fe34ecf25776b1bf0b33af9c9}{\index{Polygon@{Polygon}!Polygon@{Polygon}}
+\index{Polygon@{Polygon}!Polygon@{Polygon}}
+\subsubsection[{Polygon}]{\setlength{\rightskip}{0pt plus 5cm}Polygon\-::\-Polygon (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device, }
+\item[{int}]{x\-Id, }
+\item[{Q\-Color}]{x\-Pen\-Color, }
+\item[{qreal}]{x\-Pen\-Width, }
+\item[{Qt\-::\-Pen\-Style}]{x\-Pen\-Style, }
+\item[{Qt\-::\-Pen\-Cap\-Style}]{x\-Pen\-Cap\-Style, }
+\item[{Qt\-::\-Pen\-Join\-Style}]{x\-Pen\-Join\-Style, }
+\item[{Q\-Color}]{x\-Brush\-Color, }
+\item[{Qt\-::\-Brush\-Style}]{x\-Brush\-Style, }
+\item[{const std\-::vector$<$ Q\-Point $>$ \&}]{x\-Points}
+\end{DoxyParamCaption}
+)}}\label{classPolygon_a0a64a72fe34ecf25776b1bf0b33af9c9}
+constructor -\/ create a Q\-T drawable polygon 2\-D
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+{\em x\-Id} & \\
+\hline
+{\em x\-Pen\-Color} & \\
+\hline
+{\em x\-Pen\-Width} & \\
+\hline
+{\em x\-Pen\-Style} & \\
+\hline
+{\em x\-Pen\-Cap\-Style} & \\
+\hline
+{\em x\-Pen\-Join\-Style} & \\
+\hline
+{\em x\-Brush\-Color} & \\
+\hline
+{\em x\-Brush\-Style} & \\
+\hline
+{\em x\-Points} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPolygon_ace39c67107966db12e13a183f496c3b0}{\index{Polygon@{Polygon}!$\sim$\-Polygon@{$\sim$\-Polygon}}
+\index{$\sim$\-Polygon@{$\sim$\-Polygon}!Polygon@{Polygon}}
+\subsubsection[{$\sim$\-Polygon}]{\setlength{\rightskip}{0pt plus 5cm}Polygon\-::$\sim$\-Polygon (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classPolygon_ace39c67107966db12e13a183f496c3b0}
+Destructor -\/ simply free the object space
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPolygon_ac325f8f1af8622d7314b887b31603ba1}{\index{Polygon@{Polygon}!calc\-Area@{calc\-Area}}
+\index{calc\-Area@{calc\-Area}!Polygon@{Polygon}}
+\subsubsection[{calc\-Area}]{\setlength{\rightskip}{0pt plus 5cm}double Polygon\-::calc\-Area (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolygon_ac325f8f1af8622d7314b887b31603ba1}
+calc\-Area -\/ determine area enclosed by object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classPolygon_a6756ed58b8fabebf1f02c89ea821fe78}{\index{Polygon@{Polygon}!calc\-Perimeter@{calc\-Perimeter}}
+\index{calc\-Perimeter@{calc\-Perimeter}!Polygon@{Polygon}}
+\subsubsection[{calc\-Perimeter}]{\setlength{\rightskip}{0pt plus 5cm}double Polygon\-::calc\-Perimeter (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolygon_a6756ed58b8fabebf1f02c89ea821fe78}
+calc\-Perimeter -\/ determine object outline length
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classPolygon_a7161b79ad403b975423f73e0cd073343}{\index{Polygon@{Polygon}!draw@{draw}}
+\index{draw@{draw}!Polygon@{Polygon}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Polygon\-::draw (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolygon_a7161b79ad403b975423f73e0cd073343}
+draw -\/ output object onto Q\-T canvas using Q\-Paint\-Device
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classPolygon_a8972edcc7d98e79ac828905c4a52a272}{\index{Polygon@{Polygon}!move@{move}}
+\index{move@{move}!Polygon@{Polygon}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Polygon\-::move (
+\begin{DoxyParamCaption}
+\item[{Q\-Point \&}]{new\-Upper\-Left}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolygon_a8972edcc7d98e79ac828905c4a52a272}
+move -\/ relocate polygon to new upper left coordinate
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em new\-Upper\-Left} & -\/ new location of upper left of enclosing rectangle \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classPolygon_ae1d7135748131313fac844463013931e}{\index{Polygon@{Polygon}!print@{print}}
+\index{print@{print}!Polygon@{Polygon}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream \& Polygon\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolygon_ae1d7135748131313fac844463013931e}
+print -\/ print limited information about derived instance for debugging
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+Implements \hyperlink{classShape2D_a6faf0b7950ea77a2ec6f29a31d65a624}{Shape2\-D}.
+
+\hypertarget{classPolygon_a723d9ffbebe8964da953dcd52aafeec2}{\index{Polygon@{Polygon}!update@{update}}
+\index{update@{update}!Polygon@{Polygon}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Polygon\-::update (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolygon_a723d9ffbebe8964da953dcd52aafeec2}
+update -\/ force redraw of object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classPolygon_a2b9f4ab753cc0a4e8e844fac8c3d05a2}{\index{Polygon@{Polygon}!points@{points}}
+\index{points@{points}!Polygon@{Polygon}}
+\subsubsection[{points}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$Q\-Point$>$ Polygon\-::points}}\label{classPolygon_a2b9f4ab753cc0a4e8e844fac8c3d05a2}
+points -\/ vector containing 3 or more points describing the vertices of the polygon 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/polygon.\-h\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/polygon.\-cpp\end{DoxyCompactItemize}

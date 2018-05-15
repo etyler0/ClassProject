@@ -1,0 +1,403 @@
+\hypertarget{classnserkkvector_1_1MyVector}{\section{nserkkvector\-:\-:My\-Vector$<$ T $>$ Class Template Reference}
+\label{classnserkkvector_1_1MyVector}\index{nserkkvector\-::\-My\-Vector$<$ T $>$@{nserkkvector\-::\-My\-Vector$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$vector.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classnserkkvector_1_1MyVector_af2532d112ac2aba9021f39363b0bcc85}{using {\bfseries iterator} = T $\ast$}\label{classnserkkvector_1_1MyVector_af2532d112ac2aba9021f39363b0bcc85}
+
+\item 
+\hypertarget{classnserkkvector_1_1MyVector_a86745c2740ee00848df38e9c38d9d1d2}{using {\bfseries const\-\_\-iterator} = const T $\ast$}\label{classnserkkvector_1_1MyVector_a86745c2740ee00848df38e9c38d9d1d2}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnserkkvector_1_1MyVector_a08c4f3b0452a7b948575be6e314fb1e5}{My\-Vector} ()
+\item 
+\hyperlink{classnserkkvector_1_1MyVector_a28304d57842aa7d53c82f1dc1609571a}{My\-Vector} (int alloc\-\_\-size, T \&fill\-Elem=T())
+\item 
+\hyperlink{classnserkkvector_1_1MyVector_a3a6a68ac048925dd90787c4ef7394d9d}{My\-Vector} (const \hyperlink{classnserkkvector_1_1MyVector}{My\-Vector}$<$ T $>$ \&src)
+\item 
+\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector} \& \hyperlink{classnserkkvector_1_1MyVector_a2fb5d92fbe96180a02000e26b74e2322}{operator=} (const \hyperlink{classnserkkvector_1_1MyVector}{My\-Vector} \&rhs)
+\item 
+\hyperlink{classnserkkvector_1_1MyVector_ad9756f4689fe2b67b7b90ae54352d537}{$\sim$\-My\-Vector} ()
+\item 
+iterator \hyperlink{classnserkkvector_1_1MyVector_acbc69c4ebe8b558f2501288defc408f3}{begin} ()
+\item 
+const\-\_\-iterator \hyperlink{classnserkkvector_1_1MyVector_a75db7328d5f9b832ddefc5b150400b31}{begin} () const 
+\item 
+iterator \hyperlink{classnserkkvector_1_1MyVector_a7d9303b06eef419159d069a04b14aa62}{end} ()
+\item 
+const\-\_\-iterator \hyperlink{classnserkkvector_1_1MyVector_a02b21caae0eb09bb743da7a0377332a7}{end} () const 
+\item 
+void \hyperlink{classnserkkvector_1_1MyVector_adcd5abe3736336323650ac82177a735b}{reserve} (int alloc\-\_\-size)
+\item 
+iterator \hyperlink{classnserkkvector_1_1MyVector_af4dabeb13a9f939dbac185e8612a9c97}{insert} (iterator position, const T \&newval)
+\item 
+iterator \hyperlink{classnserkkvector_1_1MyVector_a1277bd066bb9d1c4710de998c8c1794a}{erase} (iterator position)
+\item 
+T \hyperlink{classnserkkvector_1_1MyVector_a701323e9da33aba5e3177e9a5bfe9d8c}{operator\mbox{[}$\,$\mbox{]}} (int n)
+\item 
+const T \& \hyperlink{classnserkkvector_1_1MyVector_a541e75a1fe77de2ec8e4d3b01e71a8de}{operator\mbox{[}$\,$\mbox{]}} (int n) const 
+\item 
+int \hyperlink{classnserkkvector_1_1MyVector_ad13ecb704153390b12149a5fb620bec6}{size} () const 
+\item 
+int \hyperlink{classnserkkvector_1_1MyVector_adf37bc0a5ec865e90a26653fce8168fc}{capacity} () const 
+\item 
+void \hyperlink{classnserkkvector_1_1MyVector_a1ba1aa4622327c812e5fe82babdae347}{resize} (int alloc\-\_\-size)
+\item 
+void \hyperlink{classnserkkvector_1_1MyVector_ade60c7713d1fd226e64ee208e00a0f53}{push\-\_\-back} (const T \&new\-\_\-elem)
+\item 
+void \hyperlink{classnserkkvector_1_1MyVector_a5a329025df9d93fba598208961e2b9c6}{print\-As\-Debug} (bool printeol, bool printcontent) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$class nserkkvector\-::\-My\-Vector$<$ T $>$}
+
+\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector} -\/ minimal vector class -\/ partial implementation of S\-T\-L vector
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classnserkkvector_1_1MyVector_a08c4f3b0452a7b948575be6e314fb1e5}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!My\-Vector@{My\-Vector}}
+\index{My\-Vector@{My\-Vector}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{My\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::{\bf My\-Vector} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_a08c4f3b0452a7b948575be6e314fb1e5}
+\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector} default constructor -\/ create an empty vector
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18) 
+\end{DoxyAuthor}
+\hypertarget{classnserkkvector_1_1MyVector_a28304d57842aa7d53c82f1dc1609571a}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!My\-Vector@{My\-Vector}}
+\index{My\-Vector@{My\-Vector}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{My\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::{\bf My\-Vector} (
+\begin{DoxyParamCaption}
+\item[{int}]{alloc\-\_\-size, }
+\item[{T \&}]{fill\-Elem = {\ttfamily T()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{classnserkkvector_1_1MyVector_a28304d57842aa7d53c82f1dc1609571a}
+\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector} constructor -\/ create a vector of specified size
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em size} & -\/ number of elements -\/1 that vector may contain \\
+\hline
+{\em fill\-Elem} & -\/ sample element to put in each entry in vector \\
+\hline
+\end{DoxyParams}
+\hypertarget{classnserkkvector_1_1MyVector_a3a6a68ac048925dd90787c4ef7394d9d}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!My\-Vector@{My\-Vector}}
+\index{My\-Vector@{My\-Vector}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{My\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::{\bf My\-Vector} (
+\begin{DoxyParamCaption}
+\item[{const {\bf My\-Vector}$<$ T $>$ \&}]{src}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_a3a6a68ac048925dd90787c4ef7394d9d}
+\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector} copy constructor
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em src\&amp;} & -\/ vector to copy elements from \\
+\hline
+\end{DoxyParams}
+\hypertarget{classnserkkvector_1_1MyVector_ad9756f4689fe2b67b7b90ae54352d537}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!$\sim$\-My\-Vector@{$\sim$\-My\-Vector}}
+\index{$\sim$\-My\-Vector@{$\sim$\-My\-Vector}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{$\sim$\-My\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::$\sim${\bf My\-Vector} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_ad9756f4689fe2b67b7b90ae54352d537}
+Destructor -\/ simply free the object space and array of elements
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classnserkkvector_1_1MyVector_acbc69c4ebe8b558f2501288defc408f3}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!begin@{begin}}
+\index{begin@{begin}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ iterator {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_acbc69c4ebe8b558f2501288defc408f3}
+\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector} iterator -\/ get first element address
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+pointer to first element 
+\end{DoxyReturn}
+\hypertarget{classnserkkvector_1_1MyVector_a75db7328d5f9b832ddefc5b150400b31}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!begin@{begin}}
+\index{begin@{begin}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const\-\_\-iterator {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_a75db7328d5f9b832ddefc5b150400b31}
+\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector} iterator -\/ get first element address -\/ const
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+pointer to const first element 
+\end{DoxyReturn}
+\hypertarget{classnserkkvector_1_1MyVector_adf37bc0a5ec865e90a26653fce8168fc}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!capacity@{capacity}}
+\index{capacity@{capacity}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{capacity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_adf37bc0a5ec865e90a26653fce8168fc}
+capacity -\/ return number of possible elements in the vector + 1
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\hypertarget{classnserkkvector_1_1MyVector_a7d9303b06eef419159d069a04b14aa62}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!end@{end}}
+\index{end@{end}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ iterator {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_a7d9303b06eef419159d069a04b14aa62}
+\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector} iterator -\/ get last element address
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+pointer to last element 
+\end{DoxyReturn}
+\hypertarget{classnserkkvector_1_1MyVector_a02b21caae0eb09bb743da7a0377332a7}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!end@{end}}
+\index{end@{end}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const\-\_\-iterator {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_a02b21caae0eb09bb743da7a0377332a7}
+\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector} iterator -\/ get last element address -\/ const
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+pointer to const lst element 
+\end{DoxyReturn}
+\hypertarget{classnserkkvector_1_1MyVector_a1277bd066bb9d1c4710de998c8c1794a}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!erase@{erase}}
+\index{erase@{erase}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{erase}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ iterator {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::erase (
+\begin{DoxyParamCaption}
+\item[{iterator}]{position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_a1277bd066bb9d1c4710de998c8c1794a}
+erase -\/ remove element specifieed
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em position} & -\/ location of element to delete\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+iterator\& -\/ location of element now at specified location 
+\end{DoxyReturn}
+\hypertarget{classnserkkvector_1_1MyVector_af4dabeb13a9f939dbac185e8612a9c97}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!insert@{insert}}
+\index{insert@{insert}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ iterator {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::insert (
+\begin{DoxyParamCaption}
+\item[{iterator}]{position, }
+\item[{const T \&}]{newval}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_af4dabeb13a9f939dbac185e8612a9c97}
+insert -\/ place new element into vector before element specified by iterator
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em position} & -\/ location before which to insert new element \\
+\hline
+{\em newval} & -\/ element to insert\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+iterator\& -\/ location of new element 
+\end{DoxyReturn}
+\hypertarget{classnserkkvector_1_1MyVector_a2fb5d92fbe96180a02000e26b74e2322}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!operator=@{operator=}}
+\index{operator=@{operator=}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf My\-Vector}\& {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf My\-Vector}$<$ T $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_a2fb5d92fbe96180a02000e26b74e2322}
+\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector} copy constructor
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em rhs\&amp;} & -\/ vector to copy elements from\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector}\& 
+\end{DoxyReturn}
+\hypertarget{classnserkkvector_1_1MyVector_a701323e9da33aba5e3177e9a5bfe9d8c}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_a701323e9da33aba5e3177e9a5bfe9d8c}
+operator\mbox{[}\mbox{]} -\/ return pointer to specified element
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em n} & -\/ element number (0 based) to return\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+iterator\& -\/ location of element at specified location 
+\end{DoxyReturn}
+\hypertarget{classnserkkvector_1_1MyVector_a541e75a1fe77de2ec8e4d3b01e71a8de}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const T\& {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_a541e75a1fe77de2ec8e4d3b01e71a8de}
+operator\mbox{[}\mbox{]} -\/ return pointer to specified element -\/ pointer to const
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em n} & -\/ element number (0 based) to return\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+iterator\& -\/ location of element at specified location 
+\end{DoxyReturn}
+\hypertarget{classnserkkvector_1_1MyVector_a5a329025df9d93fba598208961e2b9c6}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!print\-As\-Debug@{print\-As\-Debug}}
+\index{print\-As\-Debug@{print\-As\-Debug}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{print\-As\-Debug}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::print\-As\-Debug (
+\begin{DoxyParamCaption}
+\item[{bool}]{printeol, }
+\item[{bool}]{printcontent}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_a5a329025df9d93fba598208961e2b9c6}
+print\-As\-Debug -\/ print control structures and elements, if desired for debugging
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em printeol} & -\/ print end of line after each feild/element being printed \\
+\hline
+{\em printcontent} & -\/ print information about elements in the vector \\
+\hline
+\end{DoxyParams}
+\hypertarget{classnserkkvector_1_1MyVector_ade60c7713d1fd226e64ee208e00a0f53}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!push\-\_\-back@{push\-\_\-back}}
+\index{push\-\_\-back@{push\-\_\-back}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{push\-\_\-back}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::push\-\_\-back (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{new\-\_\-elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_ade60c7713d1fd226e64ee208e00a0f53}
+push\-\_\-back -\/ add element to end of vector -\/ resize if needed
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em alloc\-\_\-size} & -\/ number of elements desired -\/1 \\
+\hline
+\end{DoxyParams}
+\hypertarget{classnserkkvector_1_1MyVector_adcd5abe3736336323650ac82177a735b}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!reserve@{reserve}}
+\index{reserve@{reserve}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{reserve}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::reserve (
+\begin{DoxyParamCaption}
+\item[{int}]{alloc\-\_\-size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_adcd5abe3736336323650ac82177a735b}
+reserve -\/ allocate more space to vector
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em alloc\-\_\-size} & -\/ number of elements -\/1 that can be contained \\
+\hline
+\end{DoxyParams}
+\hypertarget{classnserkkvector_1_1MyVector_a1ba1aa4622327c812e5fe82babdae347}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!resize@{resize}}
+\index{resize@{resize}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{resize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::resize (
+\begin{DoxyParamCaption}
+\item[{int}]{alloc\-\_\-size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_a1ba1aa4622327c812e5fe82babdae347}
+resize -\/ add storage to contain specified number of elements -\/ 1
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em alloc\-\_\-size} & -\/ number of elements desired -\/1 \\
+\hline
+\end{DoxyParams}
+\hypertarget{classnserkkvector_1_1MyVector_ad13ecb704153390b12149a5fb620bec6}{\index{nserkkvector\-::\-My\-Vector@{nserkkvector\-::\-My\-Vector}!size@{size}}
+\index{size@{size}!nserkkvector::MyVector@{nserkkvector\-::\-My\-Vector}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf nserkkvector\-::\-My\-Vector}$<$ T $>$\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnserkkvector_1_1MyVector_ad13ecb704153390b12149a5fb620bec6}
+size -\/ return number of elements in the vector
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/vector.\-h\end{DoxyCompactItemize}

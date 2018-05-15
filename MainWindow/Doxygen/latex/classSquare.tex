@@ -1,0 +1,229 @@
+\hypertarget{classSquare}{\section{Square Class Reference}
+\label{classSquare}\index{Square@{Square}}
+}
+Inheritance diagram for Square\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSquare}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSquare_aa8ee6128744d0bf3bc697c035acf4441}{Square} (Q\-Paint\-Device $\ast$device, int x\-Id, Q\-Color x\-Pen\-Color, qreal x\-Pen\-Width, Qt\-::\-Pen\-Style x\-Pen\-Style, Qt\-::\-Pen\-Cap\-Style x\-Pen\-Cap\-Style, Qt\-::\-Pen\-Join\-Style x\-Pen\-Join\-Style, Q\-Color x\-Brush\-Color, Qt\-::\-Brush\-Style x\-Brush\-Style, int x\-Top\-Left\-X, int x\-Top\-Left\-Y, int x\-Side)
+\item 
+\hypertarget{classSquare_abea50130b033d31a45d1ec4fa2c3aab6}{\hyperlink{classSquare}{Square} \& {\bfseries operator=} (const \hyperlink{classSquare}{Square} \&)=delete}\label{classSquare_abea50130b033d31a45d1ec4fa2c3aab6}
+
+\item 
+\hypertarget{classSquare_a0b76cd4153675ea610cd495a2eabbd65}{{\bfseries Square} (const \hyperlink{classSquare}{Square} \&)=delete}\label{classSquare_a0b76cd4153675ea610cd495a2eabbd65}
+
+\item 
+\hyperlink{classSquare_a90af7ce1060cff7b717ceddb333846b8}{$\sim$\-Square} ()
+\item 
+std\-::ostream \& \hyperlink{classSquare_af2b00ed5022d4eefcbafe31cc77535f6}{print} (std\-::ostream \&os) const 
+\item 
+void \hyperlink{classSquare_aa7119d995068a665c84712f1673cf413}{draw} (Q\-Paint\-Device $\ast$device)
+\item 
+void \hyperlink{classSquare_a90610398a48ef62bb9d948c37d2ec7cc}{move} (Q\-Point \&new\-Upper\-Left)
+\item 
+void \hyperlink{classSquare_acfd8a9b71e6cf950c34eb022cbe3ae11}{update} (void)
+\item 
+double \hyperlink{classSquare_adc4486c61e47855be176c4c38db7e2df}{calc\-Perimeter} () const 
+\item 
+double \hyperlink{classSquare_a203f54d90c5c3282579725ca8354d882}{calc\-Area} () const 
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSquare_aa8ee6128744d0bf3bc697c035acf4441}{\index{Square@{Square}!Square@{Square}}
+\index{Square@{Square}!Square@{Square}}
+\subsubsection[{Square}]{\setlength{\rightskip}{0pt plus 5cm}Square\-::\-Square (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device, }
+\item[{int}]{x\-Id, }
+\item[{Q\-Color}]{x\-Pen\-Color, }
+\item[{qreal}]{x\-Pen\-Width, }
+\item[{Qt\-::\-Pen\-Style}]{x\-Pen\-Style, }
+\item[{Qt\-::\-Pen\-Cap\-Style}]{x\-Pen\-Cap\-Style, }
+\item[{Qt\-::\-Pen\-Join\-Style}]{x\-Pen\-Join\-Style, }
+\item[{Q\-Color}]{x\-Brush\-Color, }
+\item[{Qt\-::\-Brush\-Style}]{x\-Brush\-Style, }
+\item[{int}]{x\-Top\-Left\-X, }
+\item[{int}]{x\-Top\-Left\-Y, }
+\item[{int}]{x\-Side}
+\end{DoxyParamCaption}
+)}}\label{classSquare_aa8ee6128744d0bf3bc697c035acf4441}
+Constructor -\/ create a Q\-T drawable square 2\-D
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & -\/ Q\-Paint\-Device \\
+\hline
+{\em x\-Id} & -\/ shape I\-D \\
+\hline
+{\em x\-Pen\-Color} & \\
+\hline
+{\em x\-Pen\-Width} & \\
+\hline
+{\em x\-Pen\-Style} & \\
+\hline
+{\em x\-Pen\-Cap\-Style} & \\
+\hline
+{\em x\-Pen\-Join\-Style} & \\
+\hline
+{\em x\-Brush\-Color} & \\
+\hline
+{\em x\-Brush\-Style} & \\
+\hline
+{\em x\-Top\-Left\-X} & \\
+\hline
+{\em x\-Top\-Left\-Y} & \\
+\hline
+{\em x\-Side} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSquare_a90af7ce1060cff7b717ceddb333846b8}{\index{Square@{Square}!$\sim$\-Square@{$\sim$\-Square}}
+\index{$\sim$\-Square@{$\sim$\-Square}!Square@{Square}}
+\subsubsection[{$\sim$\-Square}]{\setlength{\rightskip}{0pt plus 5cm}Square\-::$\sim$\-Square (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSquare_a90af7ce1060cff7b717ceddb333846b8}
+Destructor -\/ simply free the object space
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSquare_a203f54d90c5c3282579725ca8354d882}{\index{Square@{Square}!calc\-Area@{calc\-Area}}
+\index{calc\-Area@{calc\-Area}!Square@{Square}}
+\subsubsection[{calc\-Area}]{\setlength{\rightskip}{0pt plus 5cm}double Square\-::calc\-Area (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSquare_a203f54d90c5c3282579725ca8354d882}
+calc\-Area -\/ determine area enclosed by object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classSquare_adc4486c61e47855be176c4c38db7e2df}{\index{Square@{Square}!calc\-Perimeter@{calc\-Perimeter}}
+\index{calc\-Perimeter@{calc\-Perimeter}!Square@{Square}}
+\subsubsection[{calc\-Perimeter}]{\setlength{\rightskip}{0pt plus 5cm}double Square\-::calc\-Perimeter (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSquare_adc4486c61e47855be176c4c38db7e2df}
+calc\-Perimeter -\/ determine object outline length
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classSquare_aa7119d995068a665c84712f1673cf413}{\index{Square@{Square}!draw@{draw}}
+\index{draw@{draw}!Square@{Square}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Square\-::draw (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSquare_aa7119d995068a665c84712f1673cf413}
+draw -\/ output object onto Q\-T canvas using Q\-Paint\-Device
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classSquare_a90610398a48ef62bb9d948c37d2ec7cc}{\index{Square@{Square}!move@{move}}
+\index{move@{move}!Square@{Square}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Square\-::move (
+\begin{DoxyParamCaption}
+\item[{Q\-Point \&}]{new\-Upper\-Left}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSquare_a90610398a48ef62bb9d948c37d2ec7cc}
+move -\/ relocate square to new upper left coordinate
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em new\-Upper\-Left} & -\/ new location of upper left of enclosing rectangle \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classSquare_af2b00ed5022d4eefcbafe31cc77535f6}{\index{Square@{Square}!print@{print}}
+\index{print@{print}!Square@{Square}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream \& Square\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSquare_af2b00ed5022d4eefcbafe31cc77535f6}
+print -\/ print limited information about derived instance for debugging
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & -\/ output stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\-::ostream\& 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape2D_a6faf0b7950ea77a2ec6f29a31d65a624}{Shape2\-D}.
+
+\hypertarget{classSquare_acfd8a9b71e6cf950c34eb022cbe3ae11}{\index{Square@{Square}!update@{update}}
+\index{update@{update}!Square@{Square}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Square\-::update (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classSquare_acfd8a9b71e6cf950c34eb022cbe3ae11}
+update -\/ force redraw of object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/square.\-h\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/square.\-cpp\end{DoxyCompactItemize}

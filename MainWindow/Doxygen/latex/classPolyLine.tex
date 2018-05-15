@@ -1,0 +1,222 @@
+\hypertarget{classPolyLine}{\section{Poly\-Line Class Reference}
+\label{classPolyLine}\index{Poly\-Line@{Poly\-Line}}
+}
+Inheritance diagram for Poly\-Line\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPolyLine}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPolyLine_a091b5af5ecbbfa2197a1b4b65274f00c}{Poly\-Line} (Q\-Paint\-Device $\ast$device, int x\-Id, Q\-Color x\-Pen\-Color, qreal x\-Pen\-Width, Qt\-::\-Pen\-Style x\-Pen\-Style, Qt\-::\-Pen\-Cap\-Style x\-Pen\-Cap\-Style, Qt\-::\-Pen\-Join\-Style x\-Pen\-Join\-Style, const std\-::vector$<$ Q\-Point $>$ \&x\-Points)
+\item 
+\hypertarget{classPolyLine_add038be40a45202389ee90e0d5eeb0fc}{\hyperlink{classPolyLine}{Poly\-Line} \& {\bfseries operator=} (const \hyperlink{classPolyLine}{Poly\-Line} \&)=delete}\label{classPolyLine_add038be40a45202389ee90e0d5eeb0fc}
+
+\item 
+\hypertarget{classPolyLine_a57f841f3dc099765f2d25aa07e577534}{{\bfseries Poly\-Line} (const \hyperlink{classPolyLine}{Poly\-Line} \&)=delete}\label{classPolyLine_a57f841f3dc099765f2d25aa07e577534}
+
+\item 
+\hyperlink{classPolyLine_ab086c534233b8b8c5eae909eb7a1c2dd}{$\sim$\-Poly\-Line} ()
+\item 
+std\-::ostream \& \hyperlink{classPolyLine_a716cc39a1e35f7538013760b0828aee6}{print} (std\-::ostream \&os) const 
+\item 
+void \hyperlink{classPolyLine_a6c4483740c346378276fbd70f007c3f5}{draw} (Q\-Paint\-Device $\ast$device)
+\item 
+void \hyperlink{classPolyLine_a6f9e35f1f05b2d50c741d09f4f653c4e}{move} (Q\-Point \&new\-Upper\-Left)
+\item 
+void \hyperlink{classPolyLine_a4d48598e631ad4e94a232e026f458555}{update} (void)
+\item 
+double \hyperlink{classPolyLine_add3cad6138ab4ccb76330360f208ab80}{calc\-Perimeter} () const 
+\item 
+double \hyperlink{classPolyLine_abed0b5ce3bab312119d7726c697f2fba}{calc\-Area} () const 
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPolyLine_a091b5af5ecbbfa2197a1b4b65274f00c}{\index{Poly\-Line@{Poly\-Line}!Poly\-Line@{Poly\-Line}}
+\index{Poly\-Line@{Poly\-Line}!PolyLine@{Poly\-Line}}
+\subsubsection[{Poly\-Line}]{\setlength{\rightskip}{0pt plus 5cm}Poly\-Line\-::\-Poly\-Line (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device, }
+\item[{int}]{x\-Id, }
+\item[{Q\-Color}]{x\-Pen\-Color, }
+\item[{qreal}]{x\-Pen\-Width, }
+\item[{Qt\-::\-Pen\-Style}]{x\-Pen\-Style, }
+\item[{Qt\-::\-Pen\-Cap\-Style}]{x\-Pen\-Cap\-Style, }
+\item[{Qt\-::\-Pen\-Join\-Style}]{x\-Pen\-Join\-Style, }
+\item[{const std\-::vector$<$ Q\-Point $>$ \&}]{x\-Points}
+\end{DoxyParamCaption}
+)}}\label{classPolyLine_a091b5af5ecbbfa2197a1b4b65274f00c}
+constructor -\/ create a Q\-T drawable line 1\-D
+
+\begin{DoxyAuthor}{Author}
+edt (5/14/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & -\/ Q\-Paint\-Device \\
+\hline
+{\em x\-Id} & -\/ shape I\-D \\
+\hline
+{\em x\-Pen\-Color} & \\
+\hline
+{\em x\-Pen\-Width} & \\
+\hline
+{\em x\-Pen\-Style} & \\
+\hline
+{\em x\-Pen\-Cap\-Style} & \\
+\hline
+{\em x\-Pen\-Join\-Style} & \\
+\hline
+{\em x\-Points} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPolyLine_ab086c534233b8b8c5eae909eb7a1c2dd}{\index{Poly\-Line@{Poly\-Line}!$\sim$\-Poly\-Line@{$\sim$\-Poly\-Line}}
+\index{$\sim$\-Poly\-Line@{$\sim$\-Poly\-Line}!PolyLine@{Poly\-Line}}
+\subsubsection[{$\sim$\-Poly\-Line}]{\setlength{\rightskip}{0pt plus 5cm}Poly\-Line\-::$\sim$\-Poly\-Line (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classPolyLine_ab086c534233b8b8c5eae909eb7a1c2dd}
+Destructor -\/ simply free the object space
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPolyLine_abed0b5ce3bab312119d7726c697f2fba}{\index{Poly\-Line@{Poly\-Line}!calc\-Area@{calc\-Area}}
+\index{calc\-Area@{calc\-Area}!PolyLine@{Poly\-Line}}
+\subsubsection[{calc\-Area}]{\setlength{\rightskip}{0pt plus 5cm}double Poly\-Line\-::calc\-Area (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolyLine_abed0b5ce3bab312119d7726c697f2fba}
+calc\-Area -\/ determine area enclosed by object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classPolyLine_add3cad6138ab4ccb76330360f208ab80}{\index{Poly\-Line@{Poly\-Line}!calc\-Perimeter@{calc\-Perimeter}}
+\index{calc\-Perimeter@{calc\-Perimeter}!PolyLine@{Poly\-Line}}
+\subsubsection[{calc\-Perimeter}]{\setlength{\rightskip}{0pt plus 5cm}double Poly\-Line\-::calc\-Perimeter (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolyLine_add3cad6138ab4ccb76330360f208ab80}
+calc\-Perimeter -\/ determine object outline length
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classPolyLine_a6c4483740c346378276fbd70f007c3f5}{\index{Poly\-Line@{Poly\-Line}!draw@{draw}}
+\index{draw@{draw}!PolyLine@{Poly\-Line}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Poly\-Line\-::draw (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Device $\ast$}]{device}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolyLine_a6c4483740c346378276fbd70f007c3f5}
+draw -\/ output object onto Q\-T canvas using Q\-Paint\-Device
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em device} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classPolyLine_a6f9e35f1f05b2d50c741d09f4f653c4e}{\index{Poly\-Line@{Poly\-Line}!move@{move}}
+\index{move@{move}!PolyLine@{Poly\-Line}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Poly\-Line\-::move (
+\begin{DoxyParamCaption}
+\item[{Q\-Point \&}]{new\-Upper\-Left}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolyLine_a6f9e35f1f05b2d50c741d09f4f653c4e}
+move -\/ relocate line to new upper left coordinate
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em new\-Upper\-Left} & -\/ new location of upper left of enclosing rectangle \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+\hypertarget{classPolyLine_a716cc39a1e35f7538013760b0828aee6}{\index{Poly\-Line@{Poly\-Line}!print@{print}}
+\index{print@{print}!PolyLine@{Poly\-Line}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream \& Poly\-Line\-::print (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{os}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolyLine_a716cc39a1e35f7538013760b0828aee6}
+print -\/ print limited information about derived instance for debugging
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & -\/ output stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\-::ostream\& 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classShape1D_a20b9358df369b7b0fc4a1cdae5070836}{Shape1\-D}.
+
+\hypertarget{classPolyLine_a4d48598e631ad4e94a232e026f458555}{\index{Poly\-Line@{Poly\-Line}!update@{update}}
+\index{update@{update}!PolyLine@{Poly\-Line}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void Poly\-Line\-::update (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classPolyLine_a4d48598e631ad4e94a232e026f458555}
+update -\/ force redraw of object
+
+\begin{DoxyAuthor}{Author}
+edt (5/13/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classShape}{Shape}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/polyline.\-h\item 
+/home/edt/\-C\-S1\-C/\-Class\-Project/\-Main\-Window/polyline.\-cpp\end{DoxyCompactItemize}
