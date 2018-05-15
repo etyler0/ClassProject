@@ -26,33 +26,42 @@ public:
 
     //========== IMPORTANT FUNCTIONS ==========/
 
+    //  Overloaded showEvent to load the window with menu prereqs
+    void showEvent(QShowEvent *event);
+
     //  Passes vector from main into here
     void setVector(MyVector<Shape*> *temp);
 
     //  Reloads the vector into comboBoxes in the mainwindow
     void reloadVector();
 
-    //  Overloaded showEvent to load the window with menu prereqs
-    void showEvent(QShowEvent *event);
-
-    //============ PARSERS =======================//
-
     //  Adjusts currently selected shape to adjust menus for later
-    void comboBoxBaseShape(int index, base &curShape);
+    void findShapeType(int index, base &curShape);
+
+    //============ PARSE TO UI =======================//
 
     //  Multi-functional color parser
-    int parseColor(QColor color);
+    int parseColorUI(QColor color);
 
     //  Pen & Brush
-    int parsePenStyle(int counter);
-    int parsePenCapStyle(int counter);
-    int parsePenJoinStyle(int counter);
-    int parseBrushStyle(int counter);
+    int parsePenStyleUI(int line);
+    int parsePenCapStyleUI(int cap);
+    int parsePenJoinStyleUI(int join);
+    int parseBrushStyleUI(int brush);
 
     //  Text
-    int parseTextAlignment(int counter);
-    int parseTextFontFamily(QString family);
-    int parseTextFontStyle(int style);
+    int parseTextAlignmentUI(int align);
+    int parseTextFontFamilyUI(QString family);
+    int parseTextFontStyleUI(int style);
+    int parseTextFontWeightUI(int weight);
+
+    //============== PARSE TO VECTOR ================//
+
+    //  Multi-functional color parser to vector
+    QString parseColorVector(int index);
+
+    //  Text
+    Qt::AlignmentFlag parseTextAlignmentVector(int index);
 
 
     //=============== UPDATERS ==================//
@@ -77,6 +86,8 @@ private slots:
     //  Change current menus in ADD TAB
     void on_combobox_add_shapeType_currentIndexChanged(int index);
     void on_comboBox_mod_ID_currentIndexChanged(int index);
+
+    void on_pushButton_mod_submit_clicked();
 
 private:
     Ui::MainWindow *ui;
