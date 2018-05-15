@@ -54,7 +54,37 @@ void MainWindow::on_actionContact_Us_triggered()
 
 void MainWindow::on_actionSort_by_ID_triggered()
 {
-    if(!Reports)    Reports = new reports(this);
+    if(!Reports){
+        Reports = new reports(this, 0);
+    }
+    else{
+        Reports->setSort(0);
+    }
+    Reports->setVector(pShapeVector);
+    Reports->show();
+}
+
+void MainWindow::on_actionSort_by_perimeter_triggered()
+{
+    if(!Reports){
+        Reports = new reports(this, 1);
+    }
+    else{
+        Reports->setSort(1);
+    }
+    Reports->setVector(pShapeVector);
+    Reports->show();
+}
+
+void MainWindow::on_actionSort_by_area_triggered()
+{
+    if(!Reports){
+        Reports = new reports(this, 2);
+    }
+    else{
+        Reports->setSort(2);
+    }
+    Reports->setVector(pShapeVector);
     Reports->show();
 }
 
@@ -623,6 +653,7 @@ void MainWindow::on_pushButton_del_clicked()
 
 }
 
+//  Change index
 void MainWindow::on_comboBox_del_ID_currentIndexChanged(int index)
 {
     int val = 0;
@@ -633,3 +664,5 @@ void MainWindow::on_comboBox_del_ID_currentIndexChanged(int index)
     findShapeType(val, delCurShape);
     updateDelTab();
 }
+
+//================ RENDER TAB ========================//

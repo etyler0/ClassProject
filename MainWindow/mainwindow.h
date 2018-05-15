@@ -109,6 +109,10 @@ private slots:
 
     void on_comboBox_del_ID_currentIndexChanged(int index);
 
+    void on_actionSort_by_perimeter_triggered();
+
+    void on_actionSort_by_area_triggered();
+
 private:
     Ui::MainWindow *ui;
     testimonials *Testimonials;

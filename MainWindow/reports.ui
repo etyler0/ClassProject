@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>716</width>
-    <height>578</height>
+    <width>758</width>
+    <height>631</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,8 +21,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>701</width>
-     <height>561</height>
+     <width>711</width>
+     <height>611</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -48,36 +48,7 @@ font: 16pt &quot;Noto Sans&quot;;</string>
      <string>Reports</string>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tableWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>671</width>
-      <height>471</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(136, 138, 133);
-color: rgb(0, 0, 0);</string>
-    </property>
-    <column>
-     <property name="text">
-      <string>Type</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>ID Number</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Area</string>
-     </property>
-    </column>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="comboBox_report_sort">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -120,6 +91,140 @@ font: 12pt &quot;Noto Sans&quot;;</string>
     </property>
     <property name="text">
      <string>Sort by: </string>
+    </property>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>671</width>
+      <height>501</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page">
+     <widget class="QTableWidget" name="tableWidget_report_ID">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>621</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(136, 138, 133);
+color: rgb(0, 0, 0);</string>
+      </property>
+      <column>
+       <property name="text">
+        <string>ID Number</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Shape Type</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Area</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Perimeter</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_3">
+     <widget class="QTableWidget" name="tableWidget_report_perimeter">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>621</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(136, 138, 133);
+color: rgb(0, 0, 0);</string>
+      </property>
+      <column>
+       <property name="text">
+        <string>ID Number</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Shape Type</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Area</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Perimeter</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2">
+     <widget class="QTableWidget" name="tableWidget_report_area">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>621</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(136, 138, 133);
+color: rgb(0, 0, 0);</string>
+      </property>
+      <column>
+       <property name="text">
+        <string>ID Number</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Shape Type</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Area</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Perimeter</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_report_exit">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>20</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>x</string>
     </property>
    </widget>
   </widget>
