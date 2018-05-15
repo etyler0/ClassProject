@@ -10,6 +10,9 @@ namespace Ui {
 class login;
 }
 
+//! Login Class - holds information for the user login dialog
+//!
+//! \author richard (5/14/18)
 class login : public QDialog
 {
     Q_OBJECT

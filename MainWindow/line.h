@@ -1,3 +1,11 @@
+/*****************************************************
+ * Class Project
+ *
+ * Class: CS1C at 10am, T/TH
+ * Group: ERKK (Eugene, Richard, Kevin, Kole)
+ * Created on: 4/4/18
+ *****************************************************/
+
 #ifndef LINE_H
 #define LINE_H
 /*****************************************************
@@ -17,9 +25,11 @@ using namespace std;
 #include <QPainter>// This gives access to the QPainter class, which preforms the painting on widgets and other paint devices
 #include <QPoint>  // This gives access to the QPoint class, which defines points on a plane
 
-
 // Line class, derived form the shape base class
 
+//! Line class - derived from shape1D
+//!
+//! \author edt (5/13/18)
 class Line : public Shape1D
 {
 public:
@@ -38,69 +48,18 @@ public:
              int                xTopLeftX,
              int                xTopLeftY,
              int                xBotRightX,
-             int                xBotRightY)
-       : Shape1D(device, xId, shapeType::Line,
-                      xPenColor, xPenWidth, xPenStyle, xPenCapStyle, xPenJoinStyle)
-    {
-        // object specific transform from points supplied to bounding points
-        QPoint ul(xTopLeftX,xTopLeftY);
-        upperleft = ul;
-        points.push_back(ul);
-        QPoint lr(xBotRightX, xBotRightY);
-        lowerright = lr;
-        points.push_back(lr);
-    }
+             int                xBotRightY);
     
     Line() = delete;
     Line& operator=(const Line&) = delete;  // Disallow copying
     Line(const Line&) = delete;
-    ~Line() {};
+    ~Line();
 
-    std::ostream& print(std::ostream& os) const
-    {
-        return os << " Id:" << getId() << " P:" << calcPerimeter() << " A:" << calcArea();
-    };
-
-    // draw() function from shape base class
-    void draw(QPaintDevice* device)
-    {
-        QPainter& paint = get_qPainter();
-        paint.begin(device);
-        paint.setPen(pen);
-        paint.drawLine(upperleft, lowerright);
-        paint.setPen(QPen());
-        paint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
-        paint.end();
-    }
-
-    // move() function from shape base class
-    void move(QPoint &newUpperLeft)
-    {
-        int deltaX = (newUpperLeft.x() - upperleft.x());
-        int deltaY = (newUpperLeft.y() - upperleft.y());
-
-        upperleft = newUpperLeft;
-        lowerright.setX(lowerright.x() + deltaX);
-        lowerright.setY(lowerright.y() + deltaY);
-    }
-
-    void update(void)
-    {
-        draw((get_qPaintDevice()));
-        return;
-    }
-
-    // calcPerimeter() function from shape base class
-    double calcPerimeter() const
-    {
-        return 0;
-    }
-
-    // calcArea() function from shape base class
-    double calcArea() const
-    {
-        return 0;
-    }
-
+    std::ostream& print(std::ostream& os) const;
+    void draw(QPaintDevice* device);
+    void move(QPoint &newUpperLeft);
+    void update(void);
+    double calcPerimeter() const;
+    double calcArea() const;
 };
 #endif // LINE_H

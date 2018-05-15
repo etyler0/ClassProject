@@ -12,6 +12,11 @@
 #include <QDir>         // Gives access to QDir, allows generic directory access across different computers
 #include <QDebug>       // Gives access to QDebug, allows for debugging on the application output
 
+//! testimonials constructor - requires a QWidget to draw on
+//!
+//! \author richard (5/14/18)
+//!
+//! \param parent 
 testimonials::testimonials(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::testimonials)
@@ -19,22 +24,28 @@ testimonials::testimonials(QWidget *parent) :
     ui->setupUi(this);
 }
 
+//! testimonials destructor - release allocated space
+//!
+//! \author richard (5/14/18)
 testimonials::~testimonials()
 {
     delete ui;
 }
 
-
-//  Overloaded QWidget Function "showEvent"
-//      - Calls previous showEvent, and ALSO updateTestimonies
-//      - Used to make immediate changes to window as soon as it executes
+//! showEvent - make changes to window visible immediately - Overlaods QWidgit
+//! //!       - Calls previous showEvent, and ALSO updateTestimonie
+//!
+//! \author richard (5/14/18)
+//!
+//! \param event 
 void testimonials::showEvent(QShowEvent *event){
     QWidget::showEvent(event);
     updateTestimonies();
 }
 
-//  Helper Function "updateTestimonies"
-//      - Reads input from file and parses it to display as testimonial
+//! updateTestimonies - Reads input from file and parses it to display as testimonial
+//!
+//! \author richard (5/14/18)
 void testimonials::updateTestimonies(){
     QString homePath = QFileInfo(".").absolutePath();
     QString textPath = "/MainWindow/testimonials.txt";
@@ -78,6 +89,12 @@ void testimonials::updateTestimonies(){
 //      - Used to submit info to a text file
 //      - Checks if there is input in all fields
 //      - Adds a divider into the text file in case of multiline testimonies
+
+//! on_submit_button_clicked - adds user entered data to a text file
+//!                  - Checks if there is input in all fields
+//!                  - Adds a divider into the text file in case of multiline testimonies
+//!
+//! \author richard (5/14/18)
 void testimonials::on_submit_button_clicked()
 {
     QString homePath = QFileInfo(".").absolutePath();
@@ -114,16 +131,17 @@ void testimonials::on_submit_button_clicked()
     file.close();
 }
 
-//  Interface Function "pushButton_exit"
-//      - Exits testimonials
+//! on_pushButton_exit_clicked - exits testimonials window
+//!
+//! \author richard (5/14/18)
 void testimonials::on_pushButton_exit_clicked()
 {
     this->close();
 }
 
-
-//  Interface Function "pushButton_exit2"
-//      - Exits testimonials
+//! on_pushButton_exit_2_clicked - exits testimonials window
+//!
+//! \author richard (5/14/18)
 void testimonials::on_pushButton_exit_2_clicked()
 {
     this->close();

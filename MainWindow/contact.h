@@ -7,6 +7,9 @@ namespace Ui {
 class contact;
 }
 
+//! Contact class - holds information for "Contact Us" dialog
+//!
+//! \author richard (5/13/18)
 class contact : public QDialog
 {
     Q_OBJECT

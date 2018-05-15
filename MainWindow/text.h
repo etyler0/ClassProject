@@ -1,3 +1,11 @@
+/*****************************************************
+ * Class Project
+ *
+ * Class: CS1C at 10am, T/TH
+ * Group: ERKK (Eugene, Richard, Kevin, Kole)
+ * Created on: 4/4/18
+ *****************************************************/
+
 #ifndef TEXT_H
 #define TEXT_H
 /*****************************************************
@@ -6,6 +14,7 @@
 // Standard directives
 #include <iostream>
 #include <math.h>
+#include "shape.h"
 using namespace std;
 
 // Qt libraries/directives that will be utilized
@@ -16,26 +25,24 @@ using namespace std;
 #include <QPainter>// This gives access to the QPainter class, which preforms the painting on widgets and other paint devices
 #include <QPoint>  // This gives access to the QPoint class, which defines points on a plane
 
-
 class Text : public Shape
 {
 public:
     // Note: the data members are public, because we need non class memebers to 
     //       access and modify them without restrictions and so creating 
     //       accessors and mutators adds no value.
-    QString            String;
-    QColor             Color;
-    Qt::AlignmentFlag  Alignment;
-    int                FontSize;
-    QString            FontFamily;
+    QString            String;      ///< string to display
+    QColor             Color;       ///< color of string text
+    Qt::AlignmentFlag  Alignment;   ///< alignment of string in bounding rectangle
+    int                FontSize;    ///< font size of string
+    QString            FontFamily;  ///< font family to use in rendering string
     QFont::Style       FontStyle;
     QFont::Weight      FontWeight;
-    QPoint             upperleft;
-    QPoint             lowerright;
+    QPoint             upperleft;   ///< Upper left anchor of bounding rectangle
+    QPoint             lowerright;  ///< Lower right anchor for bounding rectangle
 
     Text(QPaintDevice* device,
          int                xId,
-         //const char        *xString,
          QString            xString,
          QColor             xColor,
          Qt::AlignmentFlag  xAlignment,
@@ -46,70 +53,19 @@ public:
          int                xTopLeftX,
          int                xTopLeftY,
          int                xWidth,
-         int                xHeight)
-        : Shape(device, xId, shapeType::Text), String{xString}, Color{xColor}, Alignment{xAlignment},
-          FontSize{xFontSize}, FontFamily{xFontFamily}, FontStyle{xFontStyle},
-          FontWeight{xFontWeight}
-    {
-        // object specific transform from points supplied to bounding points
-        QPoint ul(xTopLeftX,xTopLeftY);
-        upperleft = ul;
-        QPoint lr(xTopLeftX+xWidth, xTopLeftY+xHeight);
-        lowerright = lr;
-    }
+         int                xHeight);
+
     Text() = delete;
     Text& operator=(const Text&) = delete;  // Disallow copying
     Text(const Text&) = delete;
-    ~Text() {};               vector<QPoint> v;
+    ~Text();
 
-    std::ostream& print(std::ostream& os) const
-    {
-        return os << " Id:" << getId() << " P:" << calcPerimeter() << " A:" << calcArea();
-    };
-
-    void draw(QPaintDevice* device)
-    {
-        QPainter& tPaint = get_qPainter();
-        QFont tFont(FontFamily, FontSize);
-        QPen tPen(Color);
-        QRect tRect(upperleft, lowerright);
-        tFont.setStyle(FontStyle);
-        tFont.setWeight(FontWeight);
-        tPaint.begin(device);
-        tPaint.setFont(tFont);
-        tPaint.setPen(tPen);
-        tPaint.drawText(tRect, Alignment, String);
-        tPaint.setPen(QPen());
-        tPaint.drawText((upperleft.x()) - 5, (upperleft.y()) - 5, QString::number(this->getId()));
-        tPaint.end();
-    }
-
-    void move(QPoint &newUpperLeft)
-    {
-        int deltaX = (newUpperLeft.x() - upperleft.x());
-        int deltaY = (newUpperLeft.y() - upperleft.y());
-
-        upperleft = newUpperLeft;
-        lowerright.setX(lowerright.x() + deltaX);
-        lowerright.setY(lowerright.y() + deltaY);
-    }
-
-    void update(void)
-    {
-        draw((get_qPaintDevice()));
-        return;
-    }
-
-
-    double calcArea() const
-    {
-        return 0;
-    }
-
-    double calcPerimeter() const
-    {
-        return 0;
-    }
+    std::ostream& print(std::ostream& os) const;
+   void draw(QPaintDevice* device);
+    void move(QPoint &newUpperLeft);
+    void update(void);
+    double calcPerimeter() const;
+    double calcArea() const;
 };
 
 #endif // TEXT_H

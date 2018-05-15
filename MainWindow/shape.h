@@ -40,6 +40,10 @@ class Shape
 {
 public:
     // Enum with all different shape types
+
+    //! shapeType - enumeration of all support shape types
+    //!
+    //! \author edt (5/14/18)
     enum shapeType {Line, Polyline, Polygon, Rectangle, Square, Ellipse, Circle, Text};
     // Shape Constructor - using BMI list
     Shape(QPaintDevice *pDevice,
@@ -59,14 +63,14 @@ public:
     // Normal functions
     int getId() const;
     shapeType getShapeType() const;
-    virtual double calcPerimeter(void) const;
-    virtual double calcArea(void) const;
 
     // Pure Virtual functions
     virtual void draw(QPaintDevice* pDevice) = 0;
     virtual void move(QPoint &newUpperLeft) = 0;
     virtual void update(void) = 0;
     virtual std::ostream& print(std::ostream& os) const = 0;
+    virtual double calcPerimeter(void) const = 0;
+    virtual double calcArea(void) const = 0;
 
 protected:
 
@@ -75,39 +79,69 @@ protected:
     QPaintDevice *get_qPaintDevice(void) const;
 
 private:
-    QPaintDevice *device;    // QPainter variable - responsible for the drawing of the shapes in the viewing area
-    int shapeId;         // A unique id number that will be attached to a shape
-    shapeType typeShape; // The specific type of shape, from the enum shapeType
-    QPainter painter;
+    QPaintDevice *device;  ///< QPainter variable - responsible for the drawing of the shapes in the viewing area
+    int shapeId;           ///< A unique id number that will be attached to a shape
+    shapeType typeShape;   ///< The specific type of shape, from the enum shapeType
+    QPainter painter;      ///< Qpianter renderer
 };
 
 std::ostream& operator<<(std::ostream& os, const Shape& s);
 std::ostream& operator<<(std::ostream& os, const Shape* s);
-struct compare_shape_id;
-struct compare_shape_perimeter;
-struct compare_shape_area;
 
+//! compare_shape_id - function object to facilitate sorting by shape ID
+//!
+//! \author edt (5/14/18)
 struct compare_shape_id {
+    //! operator() - function to compare two shape IDs 
+    //!
+    //! \author edt (5/14/18)
+    //!
+    //! \param s1 - first shape to compare
+    //! \param s2 - second shape to compare
+    //!
+    //! \return bool - true if first Shape's ID less than second Shape
     bool operator()(const Shape* s1, const Shape* s2) const
     {
         return (s1->getId() < s2->getId()); // dereference pointer, compare ids
     }
 };
 
-struct compare_shape_perimeter {
+//! compare_shape_perimeter - function object to facilitate sorting by shape perimeter
+//!
+//! \author edt (5/14/18)
+struct compare_shape_perimeter {    //! operator() - function to compare two shape perimeters 
+    //!
+    //! \author edt (5/14/18)
+    //!
+    //! \param s1 - first shape to compare
+    //! \param s2 - second shape to compare
+    //!
+    //! \return bool - true if first Shape's perimeter less than second Shape
+
     bool operator()(const Shape* s1, const Shape* s2) const
     {
         return (s1->calcPerimeter() < s2->calcPerimeter());
     }
 };
 
+//! compare_shape_perimeter - function object to facilitate sorting by shape area
+//!
+//! \author edt (5/14/18)
 struct compare_shape_area {
+    //! operator() - function to compare two shape areas 
+    //!
+    //! \author edt (5/14/18)
+    //!
+    //! \param s1 - first shape to compare
+    //! \param s2 - second shape to compare
+    //!
+    //! \return bool - true if first Shape's area less than second Shape
+
     bool operator()(const Shape* s1, const Shape* s2) const
     {
         return (s1->calcArea() < s2->calcArea());
     }
 };
-
 
 //}
 #endif
