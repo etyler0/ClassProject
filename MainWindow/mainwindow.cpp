@@ -92,6 +92,8 @@ void MainWindow::reloadVector(){
 void MainWindow::resetBoxes(){
     ui->comboBox_mod_ID->clear();
     ui->comboBox_del_ID->clear();
+    ui->comboBox_mod_ID->addItem("-Empty-");
+    ui->comboBox_del_ID->addItem("-Empty-");
     //ui->comboBox_draw_ID->clear();
 }
 
@@ -609,6 +611,15 @@ void MainWindow::on_pushButton_del_clicked()
 {
     QMessageBox::information(this, "Deletion", "Shape is removed!");
     int toDelete = ui->comboBox_del_ID->currentIndex();
+    MyVector<Shape*>::iterator i;
+
+    for(i = pShapeVector->begin(); toDelete > 1; --toDelete){
+        ++i;
+    }
+    pShapeVector->erase(i);
+
+    resetBoxes();
+    reloadVector();
 
 }
 

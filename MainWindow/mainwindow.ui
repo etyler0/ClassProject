@@ -736,7 +736,7 @@
            <widget class="QComboBox" name="comboBox_mod_ID">
             <item>
              <property name="text">
-              <string>Empty</string>
+              <string>-Empty-</string>
              </property>
             </item>
            </widget>
