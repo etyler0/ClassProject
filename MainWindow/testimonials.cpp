@@ -129,6 +129,8 @@ void testimonials::on_submit_button_clicked()
         out << name << endl << text << endl << divider << endl;
     }
     file.close();
+
+    updateTestimonies();
 }
 
 //! on_pushButton_exit_clicked - exits testimonials window
