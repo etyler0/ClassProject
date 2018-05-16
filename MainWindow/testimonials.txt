@@ -30,3 +30,7 @@ NOOOOOOOOO
 Enter name...
 fdsa
 *@791728$@(!*@492!@*42
+Dale
+Test line 1
+line 2
+*@791728$@(!*@492!@*42
