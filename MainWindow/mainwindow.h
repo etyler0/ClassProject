@@ -4,11 +4,14 @@
 #include <QMainWindow>
 #include "vector.h"
 #include "testimonials.h"
+#include "privilege.h"
 #include "about.h"
 #include "contact.h"
 #include "reports.h"
 #include "shape.h"
 using namespace nserkkvector;
+
+extern privilege auth;
 
 namespace Ui {
 class MainWindow;

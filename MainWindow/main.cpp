@@ -86,8 +86,9 @@ int main(int argc, char *argv[])
 
     Text *pText1 = new Text((QPaintDevice*)&w, 8, "Class Project 2- 2D Graphics Modeler", Qt::GlobalColor::blue, Qt::AlignmentFlag::AlignCenter, 10, "Comic Sans MS", QFont::Style::StyleNormal, QFont::Weight::Normal, 250, 425, 500, 50);
     pShapeVector->push_back(pText1);
-#endif
 
+#endif
+    //readFile((QPaintDevice*)&w, pShapeVector);
     cout << "By ID==============" << endl;
     nserkkselsort::selection_sort(pShapeVector->begin(), pShapeVector->end(), compare_shape_id());
     pShapeVector->printAsDebug(false,true);
