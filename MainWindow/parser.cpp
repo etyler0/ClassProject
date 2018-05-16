@@ -187,15 +187,6 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
         {
             shapesVec.push_back(shapeName); //Puts name of shape into Vector
 
-//            vector<string> dataDimensions;
-//            int lineToplx,lineToply,lineBotrx,lineBotry;
-
-
-//            string dimensions;
-//            string token;
-
-            fin.open("shapes.txt");
-
             dimensions.erase(0);
             getline(fin, dimensions);
 
@@ -502,6 +493,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
                                    PenCapStyle, PenJoinStyle,*newpts2); //Add Dimensions
                 pShapeVector->push_back((Shape *)&polyline1);
             }
+            cout << pShapeVector;
 
         }
         else if(shapeName == "Polygon" || shapeName == "Rectangle"
@@ -1274,7 +1266,7 @@ void writeFile(MyVector<Shape *> *pShapeVector)
         }
         else if(shape == 7)
         {
-//            fout << tempText->String;
+            fout << tempText->String.toStdString();
 
             QColor textColor = tempText->Color;
             if(textColor == Qt::GlobalColor::blue)
@@ -1334,7 +1326,7 @@ void writeFile(MyVector<Shape *> *pShapeVector)
 
             fout << tempText->FontSize;
 
-//            fout << tempText->FontFamily;
+            cout << tempText->FontFamily.toStdString();
 
             QFont::Style fontStyle = tempText->FontStyle;
 
