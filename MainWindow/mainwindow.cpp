@@ -120,7 +120,7 @@ void MainWindow::reloadVector(){
     for(MyVector<Shape *>::iterator i = pShapeVector->begin(); i != pShapeVector->end(); ++i){
         ui->comboBox_mod_ID->addItem(QString::number((*i)->getId()));
         ui->comboBox_del_ID->addItem(QString::number((*i)->getId()));
-        //ui->comboBox_draw_ID->addItem(QString::number((*i)->getId()));
+        ui->comboBox_draw_ID->addItem(QString::number((*i)->getId()));
     }
 }
 
@@ -132,10 +132,12 @@ void MainWindow::resetBoxes(){
     ui->comboBox_mod_ID->clear();
     ui->comboBox_del_ID->clear();
     ui->comboBox_add_ID->clear();
+    ui->comboBox_draw_ID->clear();
+
     ui->comboBox_mod_ID->addItem("-Empty-");
     ui->comboBox_del_ID->addItem("-Empty-");
     ui->comboBox_add_ID->addItem(QString::number(lastItem));
-    //ui->comboBox_draw_ID->clear();
+    ui->comboBox_draw_ID->addItem("-Empty-");
 }
 
 //   Parses index to select shape for current tab
@@ -341,220 +343,6 @@ QFont::Weight MainWindow::parseTextFontWeightVector(int index){
     if(index == 2)  return QFont::Normal;   //  NORMAL
     if(index == 3)  return QFont::Bold;     //  BOLD
     return QFont::Thin;                     //  THIN IF NONE
-}
-
-
-
-//================== ADD TAB =======================//
-
-//  Update tab
-void MainWindow::updateAddTab(int index){
-
-    if(index > 0){
-        int curShape = (*pShapeVector)[index - 1]->getShapeType();
-    }
-
-    //  Hide All
-    if(addCurShape == baseSelect){
-        ui->stackedWidget_add_interface->hide();
-        ui->label_add_anchor->hide();
-        ui->widget_add_location->hide();
-        ui->button_add_confirm->hide();
-    }
-
-    //  Display all interface
-    else{
-        ui->stackedWidget_add_interface->show();
-        ui->label_add_anchor->show();
-        ui->widget_add_location->show();
-        ui->button_add_confirm->show();
-    }
-
-    //  Show Pen
-    if(addCurShape == baseLine || addCurShape == base2D){
-        ui->stackedWidget_add_interface->setCurrentIndex(0);
-    }
-
-    //  Show Text
-    else{
-        ui->stackedWidget_add_interface->setCurrentIndex(1);
-    }
-
-    //  Brush
-    if(addCurShape == base2D){
-        ui->widget_add_brush->show();
-    }
-
-    //  No Brush
-    else{
-        ui->widget_add_brush->hide();
-    }
-}
-
-//  Change index
-void MainWindow::on_combobox_add_shapeType_currentIndexChanged(int index)
-{
-    findShapeType(index, addCurShape);
-    updateAddTab(index);
-}
-
-//  Confirm adding user
-void MainWindow::on_button_add_confirm_clicked()
-{
-    QMessageBox::information(this, "Add", "Shape is successfully added!");
-
-    //  SHAPE temp variables
-    Shape* temp = nullptr;
-    int typeShape = ui->combobox_add_shapeType->currentIndex();
-    int id = (*pShapeVector)[pShapeVector->size() - 1]->getId() + 1;
-
-    //  PEN
-    QColor penColor;
-    qreal penWidth;
-    Qt::PenStyle penStyle;
-    Qt::PenCapStyle penCapStyle;
-    Qt::PenJoinStyle penJoinStyle;
-
-    //  BRUSH
-    QColor brushColor;
-    Qt::BrushStyle brushStyle;
-
-    //  TEXT
-    QString textString;
-    QColor textColor;
-    Qt::AlignmentFlag textAlignment;
-    int fontSize;
-    QString fontFamily;
-    QFont::Style fontStyle;
-    QFont::Weight fontWeight;
-
-    //  ANCHOR
-    int topLeftX;
-    int topLeftY;
-
-    //  OTHER POINTS
-    vector<QPoint> points;
-
-    switch(typeShape){
-
-    //  Line
-    case 1:
-        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
-        penWidth = ui->spinBox_add_penWidth->value();
-        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
-        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
-        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
-        topLeftX = ui->spinBox_X_add->value();
-        topLeftY = ui->spinBox_Y_add->value();
-        temp = new Line(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, topLeftX, topLeftY, 300, 500);
-        break;
-
-    //  Poly Line
-    case 2:
-        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
-        penWidth = ui->spinBox_add_penWidth->value();
-        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
-        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
-        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
-        topLeftX = ui->spinBox_X_add->value();
-        topLeftY = ui->spinBox_Y_add->value();
-        points.push_back(QPoint(topLeftX, topLeftY));
-        points.push_back(QPoint(200, 100));
-        points.push_back(QPoint(400, 150));
-        points.push_back(QPoint(230, 40));
-        temp = new PolyLine(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, points);
-        break;
-
-     // Polygon
-    case 3:
-        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
-        penWidth = ui->spinBox_add_penWidth->value();
-        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
-        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
-        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
-        brushColor = parseColorVector(ui->comboBox_add_brushColor->currentIndex());
-        brushStyle = parseBrushStyleVector(ui->comboBox_add_brushStyle->currentIndex());
-        topLeftX = ui->spinBox_X_add->value();
-        topLeftY = ui->spinBox_Y_add->value();
-        points.push_back(QPoint(100, 100));
-        points.push_back(QPoint(250, 200));
-        temp = new Polygon(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle, points);
-        break;
-
-    //  Rectangle
-    case 4:
-        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
-        penWidth = ui->spinBox_add_penWidth->value();
-        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
-        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
-        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
-        brushColor = parseColorVector(ui->comboBox_add_brushColor->currentIndex());
-        brushStyle = parseBrushStyleVector(ui->comboBox_add_brushStyle->currentIndex());
-        topLeftX = ui->spinBox_X_add->value();
-        topLeftY = ui->spinBox_Y_add->value();
-        temp = new Rectangle(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle, topLeftX, topLeftY, 100, 200);
-
-    //  Square
-    case 5:
-        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
-        penWidth = ui->spinBox_add_penWidth->value();
-        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
-        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
-        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
-        brushColor = parseColorVector(ui->comboBox_add_brushColor->currentIndex());
-        brushStyle = parseBrushStyleVector(ui->comboBox_add_brushStyle->currentIndex());
-        topLeftX = ui->spinBox_X_add->value();
-        topLeftY = ui->spinBox_Y_add->value();
-        temp = new Square(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle, topLeftX, topLeftY, 100);
-
-    //  Ellipse
-    case 6:
-        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
-        penWidth = ui->spinBox_add_penWidth->value();
-        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
-        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
-        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
-        brushColor = parseColorVector(ui->comboBox_add_brushColor->currentIndex());
-        brushStyle = parseBrushStyleVector(ui->comboBox_add_brushStyle->currentIndex());
-        topLeftX = ui->spinBox_X_add->value();
-        topLeftY = ui->spinBox_Y_add->value();
-        temp = new Ellipse(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle, topLeftX, topLeftY, 50, 100);
-
-    //  Circle
-    case 7:
-        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
-        penWidth = ui->spinBox_add_penWidth->value();
-        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
-        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
-        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
-        brushColor = parseColorVector(ui->comboBox_add_brushColor->currentIndex());
-        brushStyle = parseBrushStyleVector(ui->comboBox_add_brushStyle->currentIndex());
-        topLeftX = ui->spinBox_X_add->value();
-        topLeftY = ui->spinBox_Y_add->value();
-        temp = new Circle(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle, topLeftX, topLeftY, 60);
-
-    //  Text
-    case 8:
-        textString = ui->lineEdit_add_textString->text();
-        textColor = parseColorVector(ui->comboBox_add_textColor->currentIndex());
-        textAlignment = parseTextAlignmentVector(ui->comboBox_add_textAlignment->currentIndex());
-        fontSize = ui->spinBox_add_textPointSize->value();
-        fontFamily = parseTextFontFamilyVector(ui->comboBox_add_textFontFamily->currentIndex());
-        fontStyle = parseTextFontStyleVector(ui->comboBox_add_textFontStyle->currentIndex());
-        fontWeight = parseTextFontWeightVector(ui->comboBox_add_textFontWeight->currentIndex());
-        topLeftX = ui->spinBox_X_add->value();
-        topLeftY = ui->spinBox_Y_add->value();
-        temp = new Text(this, id, textString, textColor, textAlignment, fontSize, fontFamily, fontStyle, fontWeight, topLeftX, topLeftY, 200, 50);
-        break;
-    default:
-        break;
-    }
-
-    if(temp){
-        pShapeVector->push_back(temp);
-        resetBoxes();
-        reloadVector();
-    }
 }
 
 //=================== MOD TAB ========================//
@@ -839,7 +627,7 @@ void MainWindow::on_pushButton_del_clicked()
     reloadVector();
 }
 
-//  Change index
+//  Change ID index
 void MainWindow::on_comboBox_del_ID_currentIndexChanged(int index)
 {
     int val = 0;
@@ -851,4 +639,240 @@ void MainWindow::on_comboBox_del_ID_currentIndexChanged(int index)
     updateDelTab();
 }
 
+
+//================== ADD TAB =======================//
+
+//  Update tab
+void MainWindow::updateAddTab(int index){
+
+    if(index > 0){
+        int curShape = (*pShapeVector)[index - 1]->getShapeType();
+    }
+
+    //  Hide All
+    if(addCurShape == baseSelect){
+        ui->stackedWidget_add_interface->hide();
+        ui->label_add_anchor->hide();
+        ui->widget_add_location->hide();
+        ui->button_add_confirm->hide();
+    }
+
+    //  Display all interface
+    else{
+        ui->stackedWidget_add_interface->show();
+        ui->label_add_anchor->show();
+        ui->widget_add_location->show();
+        ui->button_add_confirm->show();
+    }
+
+    //  Show Pen
+    if(addCurShape == baseLine || addCurShape == base2D){
+        ui->stackedWidget_add_interface->setCurrentIndex(0);
+    }
+
+    //  Show Text
+    else{
+        ui->stackedWidget_add_interface->setCurrentIndex(1);
+    }
+
+    //  Brush
+    if(addCurShape == base2D){
+        ui->widget_add_brush->show();
+    }
+
+    //  No Brush
+    else{
+        ui->widget_add_brush->hide();
+    }
+}
+
+//  Change index
+void MainWindow::on_combobox_add_shapeType_currentIndexChanged(int index)
+{
+    findShapeType(index, addCurShape);
+    updateAddTab(index);
+}
+
+//  Confirm adding shape
+void MainWindow::on_button_add_confirm_clicked()
+{
+    QMessageBox::information(this, "Add", "Shape is successfully added!");
+
+    //  SHAPE temp variables
+    Shape* temp = nullptr;
+    int typeShape = ui->combobox_add_shapeType->currentIndex();
+    int id = (*pShapeVector)[pShapeVector->size() - 1]->getId() + 1;
+
+    //  PEN
+    QColor penColor;
+    qreal penWidth;
+    Qt::PenStyle penStyle;
+    Qt::PenCapStyle penCapStyle;
+    Qt::PenJoinStyle penJoinStyle;
+
+    //  BRUSH
+    QColor brushColor;
+    Qt::BrushStyle brushStyle;
+
+    //  TEXT
+    QString textString;
+    QColor textColor;
+    Qt::AlignmentFlag textAlignment;
+    int fontSize;
+    QString fontFamily;
+    QFont::Style fontStyle;
+    QFont::Weight fontWeight;
+
+    //  ANCHOR
+    int topLeftX;
+    int topLeftY;
+
+    //  OTHER POINTS
+    vector<QPoint> points;
+
+    switch(typeShape){
+
+    //  Line
+    case 1:
+        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
+        penWidth = ui->spinBox_add_penWidth->value();
+        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
+        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
+        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
+        topLeftX = ui->spinBox_X_add->value();
+        topLeftY = ui->spinBox_Y_add->value();
+        temp = new Line(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, topLeftX, topLeftY, 300, 500);
+        break;
+
+    //  Poly Line
+    case 2:
+        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
+        penWidth = ui->spinBox_add_penWidth->value();
+        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
+        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
+        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
+        topLeftX = ui->spinBox_X_add->value();
+        topLeftY = ui->spinBox_Y_add->value();
+        points.push_back(QPoint(topLeftX, topLeftY));
+        points.push_back(QPoint(200, 100));
+        points.push_back(QPoint(400, 150));
+        points.push_back(QPoint(230, 40));
+        temp = new PolyLine(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, points);
+        break;
+
+     // Polygon
+    case 3:
+        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
+        penWidth = ui->spinBox_add_penWidth->value();
+        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
+        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
+        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
+        brushColor = parseColorVector(ui->comboBox_add_brushColor->currentIndex());
+        brushStyle = parseBrushStyleVector(ui->comboBox_add_brushStyle->currentIndex());
+        topLeftX = ui->spinBox_X_add->value();
+        topLeftY = ui->spinBox_Y_add->value();
+        points.push_back(QPoint(100, 100));
+        points.push_back(QPoint(250, 200));
+        temp = new Polygon(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle, points);
+        break;
+
+    //  Rectangle
+    case 4:
+        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
+        penWidth = ui->spinBox_add_penWidth->value();
+        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
+        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
+        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
+        brushColor = parseColorVector(ui->comboBox_add_brushColor->currentIndex());
+        brushStyle = parseBrushStyleVector(ui->comboBox_add_brushStyle->currentIndex());
+        topLeftX = ui->spinBox_X_add->value();
+        topLeftY = ui->spinBox_Y_add->value();
+        temp = new Rectangle(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle, topLeftX, topLeftY, 100, 200);
+
+    //  Square
+    case 5:
+        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
+        penWidth = ui->spinBox_add_penWidth->value();
+        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
+        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
+        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
+        brushColor = parseColorVector(ui->comboBox_add_brushColor->currentIndex());
+        brushStyle = parseBrushStyleVector(ui->comboBox_add_brushStyle->currentIndex());
+        topLeftX = ui->spinBox_X_add->value();
+        topLeftY = ui->spinBox_Y_add->value();
+        temp = new Square(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle, topLeftX, topLeftY, 100);
+
+    //  Ellipse
+    case 6:
+        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
+        penWidth = ui->spinBox_add_penWidth->value();
+        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
+        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
+        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
+        brushColor = parseColorVector(ui->comboBox_add_brushColor->currentIndex());
+        brushStyle = parseBrushStyleVector(ui->comboBox_add_brushStyle->currentIndex());
+        topLeftX = ui->spinBox_X_add->value();
+        topLeftY = ui->spinBox_Y_add->value();
+        temp = new Ellipse(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle, topLeftX, topLeftY, 50, 100);
+
+    //  Circle
+    case 7:
+        penColor = parseColorVector(ui->comboBox_add_penColor->currentIndex());
+        penWidth = ui->spinBox_add_penWidth->value();
+        penStyle = parsePenStyleVector(ui->comboBox_add_penStyle->currentIndex());
+        penCapStyle = parsePenCapStyleVector(ui->comboBox_add_penCapStyle->currentIndex());
+        penJoinStyle = parsePenJoinStyleVector(ui->comboBox_add_penJoinStyle->currentIndex());
+        brushColor = parseColorVector(ui->comboBox_add_brushColor->currentIndex());
+        brushStyle = parseBrushStyleVector(ui->comboBox_add_brushStyle->currentIndex());
+        topLeftX = ui->spinBox_X_add->value();
+        topLeftY = ui->spinBox_Y_add->value();
+        temp = new Circle(this, id, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle, topLeftX, topLeftY, 60);
+
+    //  Text
+    case 8:
+        textString = ui->lineEdit_add_textString->text();
+        textColor = parseColorVector(ui->comboBox_add_textColor->currentIndex());
+        textAlignment = parseTextAlignmentVector(ui->comboBox_add_textAlignment->currentIndex());
+        fontSize = ui->spinBox_add_textPointSize->value();
+        fontFamily = parseTextFontFamilyVector(ui->comboBox_add_textFontFamily->currentIndex());
+        fontStyle = parseTextFontStyleVector(ui->comboBox_add_textFontStyle->currentIndex());
+        fontWeight = parseTextFontWeightVector(ui->comboBox_add_textFontWeight->currentIndex());
+        topLeftX = ui->spinBox_X_add->value();
+        topLeftY = ui->spinBox_Y_add->value();
+        temp = new Text(this, id, textString, textColor, textAlignment, fontSize, fontFamily, fontStyle, fontWeight, topLeftX, topLeftY, 200, 50);
+        break;
+    default:
+        break;
+    }
+
+    if(temp){
+        pShapeVector->push_back(temp);
+        resetBoxes();
+        reloadVector();
+    }
+}
+
 //================ RENDER TAB ========================//
+
+//  Draw selected shape
+void MainWindow::on_pushButton_draw_single_clicked()
+{
+    int drawMe = ui->comboBox_draw_ID->currentIndex() - 1;
+    if(drawMe != -1){
+        (*pShapeVector)[drawMe]->draw(this);
+    }
+}
+
+//  Draw all shapes
+void MainWindow::on_pushButton_draw_all_clicked()
+{
+    for(MyVector<Shape*>::iterator i = pShapeVector->begin(); i != pShapeVector->end(); ++i){
+        (*i)->draw(this);
+    }
+}
+
+//  Clear rendering area
+void MainWindow::on_pushButton_clear_all_clicked()
+{
+    //  Code to clear the rendering area to a blank canvas (widget->clear());
+}

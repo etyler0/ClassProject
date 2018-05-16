@@ -115,6 +115,12 @@ private slots:
     void on_actionSort_by_area_triggered();
     void on_button_add_confirm_clicked();
 
+    void on_pushButton_draw_single_clicked();
+
+    void on_pushButton_draw_all_clicked();
+
+    void on_pushButton_clear_all_clicked();
+
 private:
     Ui::MainWindow *ui;
     testimonials *Testimonials;
