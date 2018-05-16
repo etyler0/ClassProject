@@ -1274,7 +1274,97 @@ void writeFile(MyVector<Shape *> *pShapeVector)
         }
         else if(shape == 7)
         {
-//            fout << temp->
+//            fout << tempText->String;
+
+            QColor textColor = tempText->Color;
+            if(textColor == Qt::GlobalColor::blue)
+            {
+                fout << "Blue" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::green)
+            {
+                fout << "Green" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::cyan)
+            {
+                fout << "Cyan" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::red)
+            {
+                fout << "Red" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::black)
+            {
+                fout << "Black" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::white)
+            {
+                fout << "White" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::magenta)
+            {
+                fout << "Magenta" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::gray)
+            {
+                fout << "Gray" << endl;
+            }
+
+            Qt::AlignmentFlag textAlign = tempText->Alignment;
+            if(textAlign == Qt::AlignmentFlag::AlignCenter)
+            {
+                fout << "AlignCenter" << endl;
+            }
+            else if(textAlign == Qt::AlignmentFlag::AlignLeft)
+            {
+                fout << "AlignLeft" << endl;
+            }
+            else if(textAlign == Qt::AlignmentFlag::AlignRight)
+            {
+                fout << "AlignRight" << endl;
+            }
+            else if(textAlign == Qt::AlignmentFlag::AlignTop)
+            {
+                fout << "AlignTop" << endl;
+            }
+            else if(textAlign == Qt::AlignmentFlag::AlignBottom)
+            {
+                fout << "AlignBottom" << endl;
+            }
+
+            fout << tempText->FontSize;
+
+//            fout << tempText->FontFamily;
+
+            QFont::Style fontStyle = tempText->FontStyle;
+
+            if(fontStyle == QFont::Style::StyleNormal)
+            {
+                fout << "StyleNormal" << endl;
+            }
+            else if(fontStyle == QFont::Style::StyleItalic)
+            {
+                fout << "StyleItalic" << endl;
+            }
+            else if(fontStyle == QFont::Style::StyleOblique)
+            {
+                fout << "StyleOblique" << endl;
+            }
+
+            QFont::Weight fontWeight = tempText ->FontWeight;
+
+            switch(fontWeight)
+            {
+                case QFont::Weight::Thin : fout << "Thin" << endl;
+                                           break;
+                case QFont::Weight::Light : fout << "Light" << endl;
+                                           break;
+                case QFont::Weight::Normal : fout << "Normal" << endl;
+                                           break;
+                case QFont::Weight::Bold : fout << "Bold" << endl;
+                                           break;
+            }
+
         }
 
 
