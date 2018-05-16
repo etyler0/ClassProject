@@ -95,6 +95,7 @@ int main(int argc, char *argv[])
 #endif
 
 #if 0
+    //readFile((QPaintDevice*)&w, pShapeVector);
     cout << "By ID==============" << endl;
     nserkkselsort::selection_sort(pShapeVector->begin(), pShapeVector->end(), compare_shape_id());
     pShapeVector->printAsDebug(false,true);
