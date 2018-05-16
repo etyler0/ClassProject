@@ -9,12 +9,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>448</width>
-    <height>409</height>
+    <width>452</width>
+    <height>394</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Login Page</string>
   </property>
   <widget class="QToolBox" name="toolBox">
    <property name="geometry">
