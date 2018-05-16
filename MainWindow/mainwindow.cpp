@@ -97,7 +97,7 @@ void MainWindow::showEvent(QShowEvent *event){
     findShapeType(ui->combobox_mod_shapeType->currentIndex(), modCurShape);
     findShapeType(ui->combobox_del_shapeType->currentIndex(), delCurShape);
     reloadVector();
-    updateAddTab();
+    updateAddTab(ui->combobox_add_shapeType->currentIndex());
     updateModTab();
     updateDelTab();
 }
@@ -122,8 +122,10 @@ void MainWindow::reloadVector(){
 void MainWindow::resetBoxes(){
     ui->comboBox_mod_ID->clear();
     ui->comboBox_del_ID->clear();
+    ui->comboBox_add_ID->clear();
     ui->comboBox_mod_ID->addItem("-Empty-");
     ui->comboBox_del_ID->addItem("-Empty-");
+    ui->comboBox_add_ID->addItem(QString::number(pShapeVector->size() + 1));
     //ui->comboBox_draw_ID->clear();
 }
 
@@ -337,16 +339,26 @@ QFont::Weight MainWindow::parseTextFontWeightVector(int index){
 //================== ADD TAB =======================//
 
 //  Update tab
-void MainWindow::updateAddTab(){
+void MainWindow::updateAddTab(int index){
+
+    if(index > 0){
+        int curShape = (*pShapeVector)[index - 1]->getShapeType();
+    }
 
     //  Hide All
     if(addCurShape == baseSelect){
         ui->stackedWidget_add_interface->hide();
+        ui->label_add_anchor->hide();
+        ui->widget_add_location->hide();
+        ui->button_add_confirm->hide();
     }
 
     //  Display all interface
     else{
         ui->stackedWidget_add_interface->show();
+        ui->label_add_anchor->show();
+        ui->widget_add_location->show();
+        ui->button_add_confirm->show();
     }
 
     //  Show Pen
@@ -374,13 +386,18 @@ void MainWindow::updateAddTab(){
 void MainWindow::on_combobox_add_shapeType_currentIndexChanged(int index)
 {
     findShapeType(index, addCurShape);
-    updateAddTab();
+    updateAddTab(index);
 }
 
 //=================== MOD TAB ========================//
 
 //  Update Mod Tab
 void MainWindow::updateModTab(){
+
+    //  Sets current index
+    ui->comboBox_add_ID->clear();
+    ui->comboBox_add_ID->addItem(QString::number(pShapeVector->size() + 1));
+
     //  Hide All
     if(modCurShape == baseSelect){
         ui->stackedWidget_mod_interface->hide();
@@ -650,7 +667,6 @@ void MainWindow::on_pushButton_del_clicked()
 
     resetBoxes();
     reloadVector();
-
 }
 
 //  Change index

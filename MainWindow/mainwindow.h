@@ -78,7 +78,7 @@ public:
 
     //=============== UPDATERS ==================//
     //  Recreate menus in ADD TAB
-    void updateAddTab();
+    void updateAddTab(int index);
 
     //  Recreate menus in MOD TAB
     void updateModTab();

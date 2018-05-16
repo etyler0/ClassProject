@@ -821,9 +821,9 @@
       <widget class="QGroupBox" name="groupBox_del">
        <property name="geometry">
         <rect>
-         <x>90</x>
-         <y>160</y>
-         <width>231</width>
+         <x>30</x>
+         <y>40</y>
+         <width>301</width>
          <height>161</height>
         </rect>
        </property>
@@ -835,7 +835,7 @@
          <rect>
           <x>10</x>
           <y>30</y>
-          <width>211</width>
+          <width>281</width>
           <height>51</height>
          </rect>
         </property>
@@ -907,7 +907,7 @@
        <widget class="QPushButton" name="pushButton_del">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>60</x>
           <y>100</y>
           <width>181</width>
           <height>31</height>
@@ -921,8 +921,8 @@
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>70</x>
-         <y>60</y>
+         <x>40</x>
+         <y>20</y>
          <width>281</width>
          <height>24</height>
         </rect>
@@ -951,82 +951,11 @@
       <attribute name="title">
        <string>Add</string>
       </attribute>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>10</y>
-         <width>271</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_8">
-        <item>
-         <widget class="QLabel" name="label_add_shapeType">
-          <property name="text">
-           <string>Shape Type</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="combobox_add_shapeType">
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <item>
-           <property name="text">
-            <string>Select Shape</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Line</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>PolyLine</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Polygon</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Rectangle</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Square</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Ellipse</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Circle</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Text</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-       </layout>
-      </widget>
       <widget class="Line" name="line_4">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>40</y>
+         <x>-10</x>
+         <y>70</y>
          <width>461</width>
          <height>16</height>
         </rect>
@@ -1038,21 +967,21 @@
       <widget class="QStackedWidget" name="stackedWidget_add_interface">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>50</y>
-         <width>401</width>
+         <x>10</x>
+         <y>80</y>
+         <width>411</width>
          <height>261</height>
         </rect>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="page">
         <widget class="QWidget" name="widget_add_pen" native="true">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>10</y>
+           <x>0</x>
+           <y>0</y>
            <width>271</width>
            <height>171</height>
           </rect>
@@ -1136,19 +1065,132 @@
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <item>
-             <widget class="QComboBox" name="comboBox_add_penColor"/>
+             <widget class="QComboBox" name="comboBox_add_penColor">
+              <item>
+               <property name="text">
+                <string>White</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Black</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Red</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Green</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Blue</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Cyan</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Magenta</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Yellow</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Gray</string>
+               </property>
+              </item>
+             </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_add_penWidth"/>
+             <widget class="QSpinBox" name="spinBox_add_penWidth">
+              <property name="maximum">
+               <number>20</number>
+              </property>
+             </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_add_penStyle"/>
+             <widget class="QComboBox" name="comboBox_add_penStyle">
+              <item>
+               <property name="text">
+                <string>No Pen</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Solid Line</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Dash Line</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Dot Line</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Dash Dot Line</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Dash Dot Dot Line</string>
+               </property>
+              </item>
+             </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_add_penCapStyle"/>
+             <widget class="QComboBox" name="comboBox_add_penCapStyle">
+              <item>
+               <property name="text">
+                <string>Flat Cap</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Square Cap</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Round Cap</string>
+               </property>
+              </item>
+             </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_add_penJoinStyle"/>
+             <widget class="QComboBox" name="comboBox_add_penJoinStyle">
+              <item>
+               <property name="text">
+                <string>Miter Join</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Bevel Join</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Round Join</string>
+               </property>
+              </item>
+             </widget>
             </item>
            </layout>
           </item>
@@ -1157,8 +1199,8 @@
         <widget class="QWidget" name="widget_add_brush" native="true">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>190</y>
+           <x>0</x>
+           <y>180</y>
            <width>271</width>
            <height>71</height>
           </rect>
@@ -1197,10 +1239,77 @@
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_10">
             <item>
-             <widget class="QComboBox" name="comboBox_add_brushColor"/>
+             <widget class="QComboBox" name="comboBox_add_brushColor">
+              <item>
+               <property name="text">
+                <string>White</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Black</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Red</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Green</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Blue</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Cyan</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Magenta</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Yellow</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Gray</string>
+               </property>
+              </item>
+             </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_add_brushStyle"/>
+             <widget class="QComboBox" name="comboBox_add_brushStyle">
+              <item>
+               <property name="text">
+                <string>Solid Pattern</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Horizontal Pattern</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Vertical Pattern</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>No Brush</string>
+               </property>
+              </item>
+             </widget>
             </item>
            </layout>
           </item>
@@ -1211,7 +1320,7 @@
         <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
-           <x>10</x>
+           <x>0</x>
            <y>10</y>
            <width>339</width>
            <height>251</height>
@@ -1277,22 +1386,152 @@
              <widget class="QLineEdit" name="lineEdit_add_textString"/>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_add_textColor"/>
+             <widget class="QComboBox" name="comboBox_add_textColor">
+              <item>
+               <property name="text">
+                <string>White</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Black</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Red</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Green</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Blue</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Cyan</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Magenta</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Yellow</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Gray</string>
+               </property>
+              </item>
+             </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_add_textAlignment"/>
+             <widget class="QComboBox" name="comboBox_add_textAlignment">
+              <item>
+               <property name="text">
+                <string>Align Left</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Align Right</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Align Top</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Align Bottom</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Align Center</string>
+               </property>
+              </item>
+             </widget>
             </item>
             <item>
              <widget class="QSpinBox" name="spinBox_add_textPointSize"/>
             </item>
             <item>
-             <widget class="QFontComboBox" name="fontComboBox_add_textFontFamily"/>
+             <widget class="QComboBox" name="comboBox_add_textFontFamily">
+              <item>
+               <property name="text">
+                <string>Comic Sans MS</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Courier</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Helvetica</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Times</string>
+               </property>
+              </item>
+             </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_add_textFontStyle"/>
+             <widget class="QComboBox" name="comboBox_add_textFontStyle">
+              <item>
+               <property name="text">
+                <string>Style Normal</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Style Italic</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Style Oblique</string>
+               </property>
+              </item>
+             </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_add_textFontWeight"/>
+             <widget class="QComboBox" name="comboBox_add_textFontWeight">
+              <item>
+               <property name="text">
+                <string>Thin</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Light</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Normal</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Bold</string>
+               </property>
+              </item>
+             </widget>
             </item>
            </layout>
           </item>
@@ -1300,31 +1539,175 @@
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QPushButton" name="button_add_confirm">
        <property name="geometry">
         <rect>
-         <x>350</x>
-         <y>410</y>
-         <width>82</width>
-         <height>73</height>
+         <x>340</x>
+         <y>40</y>
+         <width>80</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Add Shape</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>291</width>
+         <height>54</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_add_shapeType">
+            <property name="text">
+             <string>Shape Type</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_add_shapeID">
+            <property name="text">
+             <string>Shape ID</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QComboBox" name="combobox_add_shapeType">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <item>
+             <property name="text">
+              <string>Select Shape</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Line</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>PolyLine</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Polygon</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Rectangle</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Square</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Ellipse</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Circle</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Text</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_add_ID">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>380</y>
+         <width>165</width>
+         <height>92</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QLabel" name="label_add_shapeID">
+         <widget class="QLabel" name="label_add_anchor">
           <property name="text">
-           <string>Shape ID</string>
+           <string>Anchor</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLCDNumber" name="lcdNumber_showID"/>
-        </item>
-        <item>
-         <widget class="QPushButton" name="button_add_confirm">
-          <property name="text">
-           <string>Add Shape</string>
-          </property>
+         <widget class="QWidget" name="widget_add_location" native="true">
+          <layout class="QHBoxLayout" name="horizontalLayout_14">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_26">
+             <item>
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>X coordinate</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>Y coordinate</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_27">
+             <item>
+              <widget class="QSpinBox" name="spinBox_X_add">
+               <property name="minimum">
+                <number>-1</number>
+               </property>
+               <property name="maximum">
+                <number>1000</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox_Y_add">
+               <property name="minimum">
+                <number>-1</number>
+               </property>
+               <property name="maximum">
+                <number>500</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -1566,6 +1949,19 @@
      </property>
      <property name="text">
       <string>1000 x 500</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_mod_submit_2">
+     <property name="geometry">
+      <rect>
+       <x>489</x>
+       <y>510</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Accept Changes</string>
      </property>
     </widget>
    </widget>
