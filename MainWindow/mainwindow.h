@@ -105,13 +105,15 @@ private slots:
     void on_comboBox_mod_ID_currentIndexChanged(int index);
     void on_pushButton_mod_submit_clicked();
 
+    //  DEL TAB
     void on_pushButton_del_clicked();
 
     void on_comboBox_del_ID_currentIndexChanged(int index);
 
+    //  REPORTS
     void on_actionSort_by_perimeter_triggered();
-
     void on_actionSort_by_area_triggered();
+    void on_button_add_confirm_clicked();
 
 private:
     Ui::MainWindow *ui;
