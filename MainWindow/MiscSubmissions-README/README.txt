@@ -2,7 +2,57 @@ CS1C - Team ERKK
 Revisied 05/10/18
 First submission - 05/10/18 at 11:55 p.m. git tag c3e7a6b
 
+Application Requirements
+------------------------
+
+1. Provide satisfied customer testimonials (solicit for additional
+testimonials). Guest users may enter testimonials. The testimonials
+should be persistent between executions.  --DONE--
+
+2. Provide “contact us” method with team name and logo --DONE--
+
+3. Display all graphic objects (i.e. shapes including text) in rendering
+window. The shape id will be displayed above each shape identifying
+it. The rendering area to display shapes must have minimum
+dimensions of 1000 pixels (horizontal) by 500 pixels (vertical). The
+coordinate system is defined such that the top left corner of the
+rendering area is located at point (0,0), the bottom right corner at
+point (1000,500). --RENDERING NOT WORKING (coded by broken)--
+
+4. Your program should read from a shape file that keeps track of all
+shapes currently being rendered by the 2D modeler. Shapes are
+identified by their type: line, polyline, polygon, rectangle, ellipse,
+text. Shapes have properties: shape dimensions, pen color, pen
+width, pen style, pen cap style, pen join style, brush color, brush
+shape. Text has properties: shape dimensions, text string, text
+color, text alignment, text point size, text font family, text font
+style, text font weight. All shapes must also have a unique ID. --NOT WORKING (bug)--
+
+5. Your program should be able to move shapes, including text, being
+rendered. This is accomplished via a move shape form. All changes
+are visible in the rendering area. – administrator only --RENDERING NOT WORKING--
+
+6. Your program should be able to add and remove shapes, including
+text, being rendered. This is accomplished via an add/remove shape
+form. All changes are visible in the rendering area. – administrator
+only --DONE, not visible--
+
+7. Produce a shape listing report sorted by shape id (at any time). All
+shape properties should be included in the report. --DONE--
+
+8. Produce a shape listing report of ONLY shapes with an area sorted
+by area (at any time). The shape type, id and area should be
+included in the report. --DONE--
+
+9. Produce a shape listing report of ONLY shapes with a perimeter
+sorted by perimeter (at any time). The shape type, id and perimeter
+should be included in the report.  --DONE--
+
+10. Save all changes between executions -- NOT WORKING (bug)--
+
+
 Submission List
+---------------
 
 1) URL to GitHub repository.  Please add JKATHSADDLEBACKEDU as a 
 contributor to the repository.  
@@ -47,7 +97,7 @@ requirement has been removed, assignment not due)
 
 9) hwgp03: UML class diagram, at least three use cases and at least three 
 state diagrams 
---- UNL diagream in UML directy - not yet attached
+--- UNL diagrams in UML directory
 
 10) valgrind memory leak check
 --- Valgrind output - VectorUnitTest directory - see .txt file

@@ -33,9 +33,12 @@ int main(int argc, char *argv[])
     login q;
 
 #undef READ_SHAPES_FROM_FILE
+//#define READ_SHAPES_FROM_FILE 1
 #ifdef READ_SHAPES_FROM_FILE
     // File Parser call goes here - pass a pointer to pShapeVector - allocate Shapes with new
     readFile((QPaintDevice*)&w, pShapeVector);
+    cout << "vector from file" << endl;
+    pShapeVector->printAsDebug(false,true);
 #else
 
     // temporary code to construct simple shapes for testing only
@@ -86,8 +89,12 @@ int main(int argc, char *argv[])
 
     Text *pText1 = new Text((QPaintDevice*)&w, 8, "Class Project 2- 2D Graphics Modeler", Qt::GlobalColor::blue, Qt::AlignmentFlag::AlignCenter, 10, "Comic Sans MS", QFont::Style::StyleNormal, QFont::Weight::Normal, 250, 425, 500, 50);
     pShapeVector->push_back(pText1);
+    cout << "Vector from consts" << endl;
+    pShapeVector->printAsDebug(false,true);
+    cout << endl;
 #endif
 
+#if 0
     cout << "By ID==============" << endl;
     nserkkselsort::selection_sort(pShapeVector->begin(), pShapeVector->end(), compare_shape_id());
     pShapeVector->printAsDebug(false,true);
@@ -98,6 +105,7 @@ int main(int argc, char *argv[])
     nserkkselsort::selection_sort(pShapeVector->begin(), pShapeVector->end(), compare_shape_area());
     pShapeVector->printAsDebug(false,true);
     cout << endl;
+#endif
     w.setVector(pShapeVector);
     w.show();
     q.exec();
