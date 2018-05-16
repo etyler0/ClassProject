@@ -14,23 +14,41 @@ namespace Ui {
 class MainWindow;
 }
 
+//! mainwindow - canvas area for application
+//!
+//! \author kevin (5/15/18)
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
     enum base{baseSelect, baseLine, base2D, baseText}
-             modCurShape, addCurShape, delCurShape;
+             modCurShape, addCurShape, delCurShape; ///> types of objects to render
 
+    //! constructor - create an area to render application objects
+    //!
+    //! \author kevin (5/15/18)
+    //!
+    //! \param parent 
     explicit MainWindow(QWidget *parent = 0);
 
     //========== IMPORTANT FUNCTIONS ==========/
 
-    //  Overloaded showEvent to load the window with menu prereqs
+    //! showEvent - load the window with menu prereqs
+    //!
+    //! \author kevin (5/15/18)
+    //!
+    //! \param event - QShowEvent *
     void showEvent(QShowEvent *event);
 
     //  Passes vector from main into here
-    void setVector(MyVector<Shape*> *temp);
+
+    //! setVector - set internal pointer to appwide MyVector<Shape>*
+    //!
+    //! \author kevin (5/15/18)
+    //!
+    //! \param temp MyVector<Shape>*
+    void setVector(MyVector<Shape *> *temp);
 
     //  Reloads the vector into comboBoxes in the mainwindow
     void reloadVector();

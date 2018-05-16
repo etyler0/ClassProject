@@ -11,7 +11,7 @@ namespace Ui {
 class reports;
 }
 
-//! reports - dialog area for reports
+//! reports - canvas area for reports
 //!
 //! \author richard (5/15/18)
 class reports : public QWidget
