@@ -18,6 +18,9 @@ public:
     explicit contact(QWidget *parent = 0);
     ~contact();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::contact *ui;
 };

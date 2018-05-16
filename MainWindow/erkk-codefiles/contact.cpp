@@ -1,5 +1,6 @@
 #include "contact.h"
 #include "ui_contact.h"
+#include <QMessageBox>
 
 //! contact constructor - requires a Qwidgit to draw on
 //!
@@ -19,4 +20,9 @@ contact::contact(QWidget *parent) :
 contact::~contact()
 {
     delete ui;
+}
+
+void contact::on_pushButton_clicked()
+{
+    QMessageBox::information(this, "Saved", "We will carefully go over your submission, Thanks!");
 }

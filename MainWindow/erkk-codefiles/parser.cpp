@@ -187,15 +187,6 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
         {
             shapesVec.push_back(shapeName); //Puts name of shape into Vector
 
-//            vector<string> dataDimensions;
-//            int lineToplx,lineToply,lineBotrx,lineBotry;
-
-
-//            string dimensions;
-//            string token;
-
-            fin.open("shapes.txt");
-
             dimensions.erase(0);
             getline(fin, dimensions);
 
@@ -502,6 +493,7 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
                                    PenCapStyle, PenJoinStyle,*newpts2); //Add Dimensions
                 pShapeVector->push_back((Shape *)&polyline1);
             }
+            cout << pShapeVector;
 
         }
         else if(shapeName == "Polygon" || shapeName == "Rectangle"
@@ -1098,156 +1090,282 @@ void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector)
     fin.close();
 }
 
-//void writeFile(MyVector<Shape *> *pShapeVector)
-//{
-//    ofstream fout;
-//    int shape;
-//    int index = 1;
-//    Shape2D* temp = dynamic_cast<Shape2D*>((*pShapeVector)[index - 1]);
-//    fout.open("./shapes.txt");
-//    MyVector<Shape *>::iterator i = pShapeVector->begin();
-//    while(i != pShapeVector->end())
-//    {
-//        shape = (*i)->getShapeType();
+void writeFile(MyVector<Shape *> *pShapeVector)
+{
+    ofstream fout;
+    int shape;
+    int index = 1;
+    Shape2D* temp = dynamic_cast<Shape2D*>((*pShapeVector)[index - 1]);
+    Text* tempText = dynamic_cast<Text*>((*pShapeVector)[index - 1]);
 
-//        if(shape == 0 || shape == 1 || shape == 2 || shape == 3 ||
-//           shape == 3 || shape == 4 ||shape == 5 ||shape == 6)
-//        {
-//            switch(shape)
-//            {
-//                case 0 : fout << "Line" << endl;
-//                         break;
-//                case 1 : fout << "Polyline" << endl;
-//                         break;
-//                case 2 : fout << "Polygon" << endl;
-//                         break;
-//                case 3 : fout << "Rectangle" << endl;
-//                         break;
-//                case 4 : fout << "Square" << endl;
-//                         break;
-//                case 5 : fout << "Ellipse" << endl;
-//                         break;
-//                case 6 : fout << "Circle" << endl;
-//                         break;
-//            }
+    fout.open("./shapes.txt");
+    MyVector<Shape *>::iterator i = pShapeVector->begin();
+    while(i != pShapeVector->end())
+    {
+        shape = (*i)->getShapeType();
 
-//            fout << (*i)->getId();
+        if(shape == 0 || shape == 1 || shape == 2 || shape == 3 ||
+           shape == 3 || shape == 4 ||shape == 5 ||shape == 6)
+        {
+            switch(shape)
+            {
+                case 0 : fout << "Line" << endl;
+                         break;
+                case 1 : fout << "Polyline" << endl;
+                         break;
+                case 2 : fout << "Polygon" << endl;
+                         break;
+                case 3 : fout << "Rectangle" << endl;
+                         break;
+                case 4 : fout << "Square" << endl;
+                         break;
+                case 5 : fout << "Ellipse" << endl;
+                         break;
+                case 6 : fout << "Circle" << endl;
+                         break;
+            }
 
-//            //Dimensions
+            fout << (*i)->getId();
 
-//            QColor PenColor = temp->pen.color();
+            //Dimensions
 
-
-//            switch(PenColor)
-//            {
-//                case(Qt::GlobalColor::blue) : fout << "Blue" << endl;
-//                                          break;
-//                case(Qt::GlobalColor::green) : fout << "Green" << endl;
-//                                          break;
-//                case(Qt::GlobalColor::cyan) : fout << "Cyan" << endl;
-//                                          break;
-//                case(Qt::GlobalColor::red) : fout << "Red" << endl;
-//                                          break;
-//                case(Qt::GlobalColor::black) : fout << "Red" << endl;
-//                                          break;
-//                case(Qt::GlobalColor::white) : fout << "White" << endl;
-//                                          break;
-//                case(Qt::GlobalColor::magenta) : fout << "Magenta" << endl;
-//                                          break;
-//                case(Qt::GlobalColor::gray) : fout << "Gray" << endl;
-//                                          break;
-//            }
-
-//            fout << temp->pen.width();
-
-//            int PenStyle = temp->pen.style();
-
-//            switch(PenStyle)
-//            {
-//                case(Qt::PenStyle::NoPen) : fout << "NoPen" << endl;
-//                                              break;
-//                case(Qt::PenStyle::SolidLine) : fout << "SolidLine" << endl;
-//                                          break;
-//                case(Qt::PenStyle::DashLine) : fout << "DashLine" << endl;
-//                                          break;
-//                case(Qt::PenStyle::DotLine) : fout << "DotLine" << endl;
-//                                          break;
-//                case(Qt::PenStyle::DashDotLine) : fout << "DashDotLine" << endl;
-//                                          break;
-//                case(Qt::PenStyle::DashDotDotLine) : fout << "DashDotDotLine" << endl;
-//                                          break;
-//            }
-
-//            Qt::PenCapStyle PenCapStyle = temp->pen.capStyle();
-
-//            switch(PenCapStyle)
-//            {
-//                case(Qt::PenCapStyle::FlatCap) : fout << "FlatCap" << endl;
-//                                                    break;
-//                case(Qt::PenCapStyle::SquareCap) : fout << "SquareCap" << endl;
-//                                                    break;
-//                case(Qt::PenCapStyle::RoundCap) : fout << "RoundCap" << endl;
-//                                                    break;
-//            }
-
-//            Qt::PenJoinStyle PenJoinStyle = temp->pen.joinStyle();
-
-//            switch(PenJoinStyle)
-//            {
-//                case(Qt::PenJoinStyle::MiterJoin) : fout << "MiterJoin" << endl;
-//                                                    break;
-//                case(Qt::PenJoinStyle::BevelJoin) : fout << "BevelJoin" << endl;
-//                                                    break;
-//                case(Qt::PenJoinStyle::RoundJoin) : fout << "RoundJoin" << endl;
-//                                                    break;
-//            }
-
-//          }
-
-//        if(shape == 2 || shape == 3 ||shape == 3 || shape == 4 ||shape == 5 ||shape == 6)
-//        {
-
-//                QColor BrushColor = temp->brush.color();
-
-//                switch(BrushColor)
-//                {
-//                    case(Qt::GlobalColor::blue) : fout << "Blue" << endl;
-//                                                  break;
-//                    case(Qt::GlobalColor::green) : fout << "Green" << endl;
-//                                              break;
-//                    case(Qt::GlobalColor::cyan) : fout << "Cyan" << endl;
-//                                              break;
-//                    case(Qt::GlobalColor::red) : fout << "Red" << endl;
-//                                              break;
-//                    case(Qt::GlobalColor::black) : fout << "Red" << endl;
-//                                              break;
-//                    case(Qt::GlobalColor::white) : fout << "White" << endl;
-//                                              break;
-//                    case(Qt::GlobalColor::magenta) : fout << "Magenta" << endl;
-//                                              break;
-//                    case(Qt::GlobalColor::gray) : fout << "Gray" << endl;
-//                                              break;
-//                }
-
-//                Qt::BrushStyle BrushStyle = temp->brush.style();
-
-//                switch(BrushStyle)
-//                {
-//                    case(Qt::BrushStyle::SolidPattern) : fout << "SolidPattern" << endl;
-//                                                  break;
-//                    case(Qt::BrushStyle::HorPattern) : fout << "HorPattern" << endl;
-//                                              break;
-//                    case(Qt::BrushStyle::VerPattern) : fout << "VerPattern" << endl;
-//                                              break;
-//                    case(Qt::BrushStyle::NoBrush) : fout << "NoBrush" << endl;
-//                                              break;
-//                }
-//        }
+            QColor PenColor = temp->pen.color();
 
 
+            if(PenColor == Qt::GlobalColor::blue)
+            {
+                fout << "Blue" << endl;
+            }
+            else if(PenColor == Qt::GlobalColor::green)
+            {
+                fout << "Green" << endl;
+            }
+            else if(PenColor == Qt::GlobalColor::cyan)
+            {
+                fout << "Cyan" << endl;
+            }
+            else if(PenColor == Qt::GlobalColor::red)
+            {
+                fout << "Red" << endl;
+            }
+            else if(PenColor == Qt::GlobalColor::black)
+            {
+                fout << "Black" << endl;
+            }
+            else if(PenColor == Qt::GlobalColor::white)
+            {
+                fout << "White" << endl;
+            }
+            else if(PenColor == Qt::GlobalColor::magenta)
+            {
+                fout << "Magenta" << endl;
+            }
+            else if(PenColor == Qt::GlobalColor::gray)
+            {
+                fout << "Gray" << endl;
+            }
 
-//        i++;
-//    }
+            fout << temp->pen.width();
+
+            int PenStyle = temp->pen.style();
+
+            switch(PenStyle)
+            {
+                case(Qt::PenStyle::NoPen) : fout << "NoPen" << endl;
+                                              break;
+                case(Qt::PenStyle::SolidLine) : fout << "SolidLine" << endl;
+                                          break;
+                case(Qt::PenStyle::DashLine) : fout << "DashLine" << endl;
+                                          break;
+                case(Qt::PenStyle::DotLine) : fout << "DotLine" << endl;
+                                          break;
+                case(Qt::PenStyle::DashDotLine) : fout << "DashDotLine" << endl;
+                                          break;
+                case(Qt::PenStyle::DashDotDotLine) : fout << "DashDotDotLine" << endl;
+                                          break;
+            }
+
+            Qt::PenCapStyle PenCapStyle = temp->pen.capStyle();
+
+            switch(PenCapStyle)
+            {
+                case(Qt::PenCapStyle::FlatCap) : fout << "FlatCap" << endl;
+                                                    break;
+                case(Qt::PenCapStyle::SquareCap) : fout << "SquareCap" << endl;
+                                                    break;
+                case(Qt::PenCapStyle::RoundCap) : fout << "RoundCap" << endl;
+                                                    break;
+            }
+
+            Qt::PenJoinStyle PenJoinStyle = temp->pen.joinStyle();
+
+            switch(PenJoinStyle)
+            {
+                case(Qt::PenJoinStyle::MiterJoin) : fout << "MiterJoin" << endl;
+                                                    break;
+                case(Qt::PenJoinStyle::BevelJoin) : fout << "BevelJoin" << endl;
+                                                    break;
+                case(Qt::PenJoinStyle::RoundJoin) : fout << "RoundJoin" << endl;
+                                                    break;
+            }
+
+          }
+
+        if(shape == 2 || shape == 3 ||shape == 3 || shape == 4 ||shape == 5 ||shape == 6)
+        {
+
+                QColor BrushColor = temp->brush.color();
+
+                if(BrushColor == Qt::GlobalColor::blue)
+                {
+                    fout << "Blue" << endl;
+                }
+                else if(BrushColor == Qt::GlobalColor::green)
+                {
+                    fout << "Green" << endl;
+                }
+                else if(BrushColor == Qt::GlobalColor::cyan)
+                {
+                    fout << "Cyan" << endl;
+                }
+                else if(BrushColor == Qt::GlobalColor::red)
+                {
+                    fout << "Red" << endl;
+                }
+                else if(BrushColor == Qt::GlobalColor::black)
+                {
+                    fout << "Black" << endl;
+                }
+                else if(BrushColor == Qt::GlobalColor::white)
+                {
+                    fout << "White" << endl;
+                }
+                else if(BrushColor == Qt::GlobalColor::magenta)
+                {
+                    fout << "Magenta" << endl;
+                }
+                else if(BrushColor == Qt::GlobalColor::gray)
+                {
+                    fout << "Gray" << endl;
+                }
+
+
+                Qt::BrushStyle BrushStyle = temp->brush.style();
+
+                switch(BrushStyle)
+                {
+                    case(Qt::BrushStyle::SolidPattern) : fout << "SolidPattern" << endl;
+                                                  break;
+                    case(Qt::BrushStyle::HorPattern) : fout << "HorPattern" << endl;
+                                              break;
+                    case(Qt::BrushStyle::VerPattern) : fout << "VerPattern" << endl;
+                                              break;
+                    case(Qt::BrushStyle::NoBrush) : fout << "NoBrush" << endl;
+                                              break;
+                }
+        }
+        else if(shape == 7)
+        {
+            fout << tempText->String.toStdString();
+
+            QColor textColor = tempText->Color;
+            if(textColor == Qt::GlobalColor::blue)
+            {
+                fout << "Blue" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::green)
+            {
+                fout << "Green" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::cyan)
+            {
+                fout << "Cyan" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::red)
+            {
+                fout << "Red" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::black)
+            {
+                fout << "Black" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::white)
+            {
+                fout << "White" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::magenta)
+            {
+                fout << "Magenta" << endl;
+            }
+            else if(textColor == Qt::GlobalColor::gray)
+            {
+                fout << "Gray" << endl;
+            }
+
+            Qt::AlignmentFlag textAlign = tempText->Alignment;
+            if(textAlign == Qt::AlignmentFlag::AlignCenter)
+            {
+                fout << "AlignCenter" << endl;
+            }
+            else if(textAlign == Qt::AlignmentFlag::AlignLeft)
+            {
+                fout << "AlignLeft" << endl;
+            }
+            else if(textAlign == Qt::AlignmentFlag::AlignRight)
+            {
+                fout << "AlignRight" << endl;
+            }
+            else if(textAlign == Qt::AlignmentFlag::AlignTop)
+            {
+                fout << "AlignTop" << endl;
+            }
+            else if(textAlign == Qt::AlignmentFlag::AlignBottom)
+            {
+                fout << "AlignBottom" << endl;
+            }
+
+            fout << tempText->FontSize;
+
+            cout << tempText->FontFamily.toStdString();
+
+            QFont::Style fontStyle = tempText->FontStyle;
+
+            if(fontStyle == QFont::Style::StyleNormal)
+            {
+                fout << "StyleNormal" << endl;
+            }
+            else if(fontStyle == QFont::Style::StyleItalic)
+            {
+                fout << "StyleItalic" << endl;
+            }
+            else if(fontStyle == QFont::Style::StyleOblique)
+            {
+                fout << "StyleOblique" << endl;
+            }
+
+            QFont::Weight fontWeight = tempText ->FontWeight;
+
+            switch(fontWeight)
+            {
+                case QFont::Weight::Thin : fout << "Thin" << endl;
+                                           break;
+                case QFont::Weight::Light : fout << "Light" << endl;
+                                           break;
+                case QFont::Weight::Normal : fout << "Normal" << endl;
+                                           break;
+                case QFont::Weight::Bold : fout << "Bold" << endl;
+                                           break;
+            }
+
+        }
+
+
+
+
+        i++;
+        index++;
+    }
+}
 
 
 

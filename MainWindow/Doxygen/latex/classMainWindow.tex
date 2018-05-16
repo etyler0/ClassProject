@@ -1,6 +1,10 @@
 \hypertarget{classMainWindow}{\section{Main\-Window Class Reference}
 \label{classMainWindow}\index{Main\-Window@{Main\-Window}}
 }
+
+
+{\ttfamily \#include $<$mainwindow.\-h$>$}
+
 Inheritance diagram for Main\-Window\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -19,31 +23,87 @@ enum {\bfseries base} \{ {\bfseries base\-Select},
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classMainWindow_a8b244be8b7b7db1b08de2a2acb9409db}{{\bfseries Main\-Window} (Q\-Widget $\ast$parent=0)}\label{classMainWindow_a8b244be8b7b7db1b08de2a2acb9409db}
-
+\hyperlink{classMainWindow_a8b244be8b7b7db1b08de2a2acb9409db}{Main\-Window} (Q\-Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em \begin{quotation}
+types of objects to render \end{quotation}
+\end{DoxyCompactList}\item 
+void \hyperlink{classMainWindow_a3dfe834b2836b316908ace3f38c06db2}{show\-Event} (Q\-Show\-Event $\ast$event)
 \item 
-\hypertarget{classMainWindow_a5fb4bbae0c6be3fcc88900c8956173db}{void {\bfseries set\-Vector} (\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector}$<$ \hyperlink{classShape}{Shape} $\ast$ $>$ $\ast$temp)}\label{classMainWindow_a5fb4bbae0c6be3fcc88900c8956173db}
-
+void \hyperlink{classMainWindow_a5fb4bbae0c6be3fcc88900c8956173db}{set\-Vector} (\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector}$<$ \hyperlink{classShape}{Shape} $\ast$ $>$ $\ast$temp)
 \item 
 \hypertarget{classMainWindow_a4205e879c75cff5f992f0f9c9accffc7}{void {\bfseries reload\-Vector} ()}\label{classMainWindow_a4205e879c75cff5f992f0f9c9accffc7}
 
 \item 
-\hypertarget{classMainWindow_a3dfe834b2836b316908ace3f38c06db2}{void {\bfseries show\-Event} (Q\-Show\-Event $\ast$event)}\label{classMainWindow_a3dfe834b2836b316908ace3f38c06db2}
+\hypertarget{classMainWindow_ad092112c7cfcf4f3474b8b5d75e258e5}{void {\bfseries reset\-Boxes} ()}\label{classMainWindow_ad092112c7cfcf4f3474b8b5d75e258e5}
 
 \item 
-\hypertarget{classMainWindow_afb9c74c4702c602f4b60e669b76cf339}{void {\bfseries combo\-Box\-Base\-Shape} (int index, base \&cur\-Shape)}\label{classMainWindow_afb9c74c4702c602f4b60e669b76cf339}
+\hypertarget{classMainWindow_a5727c016b39aa3ad3dbc51d2440a9692}{void {\bfseries find\-Shape\-Type} (int index, base \&cur\-Shape)}\label{classMainWindow_a5727c016b39aa3ad3dbc51d2440a9692}
 
 \item 
-\hypertarget{classMainWindow_af54a660c334cabf6add34d5e8c048cc1}{int {\bfseries parse\-Pen\-Color} (Q\-Color color)}\label{classMainWindow_af54a660c334cabf6add34d5e8c048cc1}
+\hypertarget{classMainWindow_a2435d4d8d9eb0daff64af2e866c65a10}{int {\bfseries parse\-Color\-U\-I} (Q\-Color color)}\label{classMainWindow_a2435d4d8d9eb0daff64af2e866c65a10}
 
 \item 
-\hypertarget{classMainWindow_a82e285c2886a18a76aa0ed47c45ab566}{int {\bfseries parse\-Pen\-Style} (int counter)}\label{classMainWindow_a82e285c2886a18a76aa0ed47c45ab566}
+\hypertarget{classMainWindow_a1e59ba22fd6f5b285dd7f0f4354f5595}{int {\bfseries parse\-Pen\-Style\-U\-I} (int line)}\label{classMainWindow_a1e59ba22fd6f5b285dd7f0f4354f5595}
 
 \item 
-\hypertarget{classMainWindow_a24fc2fa76e0d386c0562947b55786129}{void {\bfseries update\-Add\-Tab} ()}\label{classMainWindow_a24fc2fa76e0d386c0562947b55786129}
+\hypertarget{classMainWindow_ae73b1516484e6df359012bb4921a94d3}{int {\bfseries parse\-Pen\-Cap\-Style\-U\-I} (int cap)}\label{classMainWindow_ae73b1516484e6df359012bb4921a94d3}
+
+\item 
+\hypertarget{classMainWindow_a27444b31b06ddeae8a5b472424e59dc7}{int {\bfseries parse\-Pen\-Join\-Style\-U\-I} (int join)}\label{classMainWindow_a27444b31b06ddeae8a5b472424e59dc7}
+
+\item 
+\hypertarget{classMainWindow_aa69b2b972c2658c310a8b47f9fd6635a}{int {\bfseries parse\-Brush\-Style\-U\-I} (int brush)}\label{classMainWindow_aa69b2b972c2658c310a8b47f9fd6635a}
+
+\item 
+\hypertarget{classMainWindow_a6eede817865dc9a7369e7720b6cff57e}{int {\bfseries parse\-Text\-Alignment\-U\-I} (int align)}\label{classMainWindow_a6eede817865dc9a7369e7720b6cff57e}
+
+\item 
+\hypertarget{classMainWindow_a52edca2086fe0c10b13694310b100d19}{int {\bfseries parse\-Text\-Font\-Family\-U\-I} (Q\-String family)}\label{classMainWindow_a52edca2086fe0c10b13694310b100d19}
+
+\item 
+\hypertarget{classMainWindow_a05de1cbcef8468aa63dddf0db30ae923}{int {\bfseries parse\-Text\-Font\-Style\-U\-I} (int style)}\label{classMainWindow_a05de1cbcef8468aa63dddf0db30ae923}
+
+\item 
+\hypertarget{classMainWindow_ad213c2853bcd6f565550755ac3f96076}{int {\bfseries parse\-Text\-Font\-Weight\-U\-I} (int weight)}\label{classMainWindow_ad213c2853bcd6f565550755ac3f96076}
+
+\item 
+\hypertarget{classMainWindow_a256028663ce4b779f8157dd776a01ca1}{Q\-String {\bfseries parse\-Color\-Vector} (int index)}\label{classMainWindow_a256028663ce4b779f8157dd776a01ca1}
+
+\item 
+\hypertarget{classMainWindow_a4ca5d652e16019c67a1c0d3f9f66cae0}{Qt\-::\-Global\-Color {\bfseries parse\-Color\-Enum\-Vector} (int index)}\label{classMainWindow_a4ca5d652e16019c67a1c0d3f9f66cae0}
+
+\item 
+\hypertarget{classMainWindow_ade23bd14a9ed0e4b8df36a5d7611764f}{Qt\-::\-Pen\-Style {\bfseries parse\-Pen\-Style\-Vector} (int index)}\label{classMainWindow_ade23bd14a9ed0e4b8df36a5d7611764f}
+
+\item 
+\hypertarget{classMainWindow_a189864a460a6cf0201f6788dcaa9d2ce}{Qt\-::\-Pen\-Cap\-Style {\bfseries parse\-Pen\-Cap\-Style\-Vector} (int index)}\label{classMainWindow_a189864a460a6cf0201f6788dcaa9d2ce}
+
+\item 
+\hypertarget{classMainWindow_a38917b3486064454ab944cd32ad9e66b}{Qt\-::\-Pen\-Join\-Style {\bfseries parse\-Pen\-Join\-Style\-Vector} (int index)}\label{classMainWindow_a38917b3486064454ab944cd32ad9e66b}
+
+\item 
+\hypertarget{classMainWindow_ac8e0cd00950e7163b76524b6f9a3143c}{Qt\-::\-Brush\-Style {\bfseries parse\-Brush\-Style\-Vector} (int index)}\label{classMainWindow_ac8e0cd00950e7163b76524b6f9a3143c}
+
+\item 
+\hypertarget{classMainWindow_a5db345978cde3e105ae8616d0eff3c63}{Qt\-::\-Alignment\-Flag {\bfseries parse\-Text\-Alignment\-Vector} (int index)}\label{classMainWindow_a5db345978cde3e105ae8616d0eff3c63}
+
+\item 
+\hypertarget{classMainWindow_a3d46a06b02546f2a84af06d98300e294}{Q\-String {\bfseries parse\-Text\-Font\-Family\-Vector} (int index)}\label{classMainWindow_a3d46a06b02546f2a84af06d98300e294}
+
+\item 
+\hypertarget{classMainWindow_a10dc30740db2bae9a78d72bcf4d92819}{Q\-Font\-::\-Style {\bfseries parse\-Text\-Font\-Style\-Vector} (int index)}\label{classMainWindow_a10dc30740db2bae9a78d72bcf4d92819}
+
+\item 
+\hypertarget{classMainWindow_a028a2c6adfb0f19a08cd082f15011c1b}{Q\-Font\-::\-Weight {\bfseries parse\-Text\-Font\-Weight\-Vector} (int index)}\label{classMainWindow_a028a2c6adfb0f19a08cd082f15011c1b}
+
+\item 
+\hypertarget{classMainWindow_a0f084030bc51307168626d47144cefc7}{void {\bfseries update\-Add\-Tab} (int index)}\label{classMainWindow_a0f084030bc51307168626d47144cefc7}
 
 \item 
 \hypertarget{classMainWindow_a9c5df82c43a4ef712a17e8f8503f2cc8}{void {\bfseries update\-Mod\-Tab} ()}\label{classMainWindow_a9c5df82c43a4ef712a17e8f8503f2cc8}
+
+\item 
+\hypertarget{classMainWindow_a3f7123f8adedad568d3c2fa77a7b9998}{void {\bfseries update\-Del\-Tab} ()}\label{classMainWindow_a3f7123f8adedad568d3c2fa77a7b9998}
 
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
@@ -54,7 +114,81 @@ enum {\bfseries base} \{ {\bfseries base\-Select},
 \item 
 \hypertarget{classMainWindow_afb1baef08726f6699edc677c29418560}{enum Main\-Window\-::base {\bfseries add\-Cur\-Shape}}\label{classMainWindow_afb1baef08726f6699edc677c29418560}
 
+\item 
+\hypertarget{classMainWindow_aae5275d9d5cfc4ee98754455002d580e}{enum Main\-Window\-::base {\bfseries del\-Cur\-Shape}}\label{classMainWindow_aae5275d9d5cfc4ee98754455002d580e}
+
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+mainwindow -\/ canvas area for application
+
+\begin{DoxyAuthor}{Author}
+kevin (5/15/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classMainWindow_a8b244be8b7b7db1b08de2a2acb9409db}{\index{Main\-Window@{Main\-Window}!Main\-Window@{Main\-Window}}
+\index{Main\-Window@{Main\-Window}!MainWindow@{Main\-Window}}
+\subsubsection[{Main\-Window}]{\setlength{\rightskip}{0pt plus 5cm}Main\-Window\-::\-Main\-Window (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classMainWindow_a8b244be8b7b7db1b08de2a2acb9409db}
+
+
+\begin{quotation}
+types of objects to render \end{quotation}
+
+
+constructor -\/ create an area to render application objects
+
+\begin{DoxyAuthor}{Author}
+kevin (5/15/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classMainWindow_a5fb4bbae0c6be3fcc88900c8956173db}{\index{Main\-Window@{Main\-Window}!set\-Vector@{set\-Vector}}
+\index{set\-Vector@{set\-Vector}!MainWindow@{Main\-Window}}
+\subsubsection[{set\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}void Main\-Window\-::set\-Vector (
+\begin{DoxyParamCaption}
+\item[{{\bf My\-Vector}$<$ {\bf Shape} $\ast$ $>$ $\ast$}]{temp}
+\end{DoxyParamCaption}
+)}}\label{classMainWindow_a5fb4bbae0c6be3fcc88900c8956173db}
+set\-Vector -\/ set internal pointer to appwide My\-Vector$<$\-Shape$>$$\ast$
+
+\begin{DoxyAuthor}{Author}
+kevin (5/15/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & My\-Vector$<$\-Shape$>$$\ast$ \\
+\hline
+\end{DoxyParams}
+\hypertarget{classMainWindow_a3dfe834b2836b316908ace3f38c06db2}{\index{Main\-Window@{Main\-Window}!show\-Event@{show\-Event}}
+\index{show\-Event@{show\-Event}!MainWindow@{Main\-Window}}
+\subsubsection[{show\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Main\-Window\-::show\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Show\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classMainWindow_a3dfe834b2836b316908ace3f38c06db2}
+show\-Event -\/ load the window with menu prereqs
+
+\begin{DoxyAuthor}{Author}
+kevin (5/15/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em event} & -\/ Q\-Show\-Event $\ast$ \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}

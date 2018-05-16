@@ -10,6 +10,7 @@ var searchData=
   ['_7epolygon',['~Polygon',['../classPolygon.html#ace39c67107966db12e13a183f496c3b0',1,'Polygon']]],
   ['_7epolyline',['~PolyLine',['../classPolyLine.html#ab086c534233b8b8c5eae909eb7a1c2dd',1,'PolyLine']]],
   ['_7erectangle',['~Rectangle',['../classRectangle.html#a494c076b13aadf26efdce07d23c61ddd',1,'Rectangle']]],
+  ['_7ereports',['~reports',['../classreports.html#a374c8e1243559fc489fc9a1a6fc0d2a9',1,'reports']]],
   ['_7eshape1d',['~Shape1D',['../classShape1D.html#aef223c181450f2dd0f304072e2fa0382',1,'Shape1D']]],
   ['_7eshape2d',['~Shape2D',['../classShape2D.html#ad151443d27b1861c3de7b6b7147c1019',1,'Shape2D']]],
   ['_7esquare',['~Square',['../classSquare.html#a90af7ce1060cff7b717ceddb333846b8',1,'Square']]],

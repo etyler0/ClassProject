@@ -1,6 +1,10 @@
 \hypertarget{classreports}{\section{reports Class Reference}
 \label{classreports}\index{reports@{reports}}
 }
+
+
+{\ttfamily \#include $<$reports.\-h$>$}
+
 Inheritance diagram for reports\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,9 +14,196 @@ Inheritance diagram for reports\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classreports_aa1efd01d6a2a715cad88423fac7380f6}{{\bfseries reports} (Q\-Widget $\ast$parent=0)}\label{classreports_aa1efd01d6a2a715cad88423fac7380f6}
-
+\hyperlink{classreports_af072c228ae3065ef7566630d3f6b131c}{reports} (Q\-Widget $\ast$parent=0, int sort=0)
+\item 
+void \hyperlink{classreports_af5a4ac35dfcd66f70bfabfe2e038133d}{set\-Sort} (int val)
+\item 
+void \hyperlink{classreports_ac69783107c2b5021c60cf2042f0e7fe4}{set\-Vector} (\hyperlink{classnserkkvector_1_1MyVector}{My\-Vector}$<$ \hyperlink{classShape}{Shape} $\ast$ $>$ $\ast$temp)
+\item 
+void \hyperlink{classreports_a73ab95a284ad50c376a0c15b38fb87f7}{show} ()
+\item 
+Q\-String \hyperlink{classreports_aadc1cddcb81c3012386f185ba652cd88}{shape\-To\-String} (int shape)
+\item 
+\hyperlink{classreports_a374c8e1243559fc489fc9a1a6fc0d2a9}{$\sim$reports} ()
 \end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classreports_a3a6d1c382d266c47ffacf677b932e50c}{mouse\-Press\-Event} (Q\-Mouse\-Event $\ast$event)
+\item 
+void \hyperlink{classreports_a0db47ff16b3d9f115f1449903ef710b5}{mouse\-Release\-Event} (Q\-Mouse\-Event $\ast$event)
+\item 
+void \hyperlink{classreports_a39bef31a4874710db18191796a640e27}{mouse\-Move\-Event} (Q\-Mouse\-Event $\ast$event)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classreports_a6812f2bade4d4f548447a47580167c7a}{Q\-Point \hyperlink{classreports_a6812f2bade4d4f548447a47580167c7a}{mouse\-Point}}\label{classreports_a6812f2bade4d4f548447a47580167c7a}
+
+\begin{DoxyCompactList}\small\item\em current mouse location \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+reports -\/ canvas area for reports
+
+\begin{DoxyAuthor}{Author}
+richard (5/15/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classreports_af072c228ae3065ef7566630d3f6b131c}{\index{reports@{reports}!reports@{reports}}
+\index{reports@{reports}!reports@{reports}}
+\subsubsection[{reports}]{\setlength{\rightskip}{0pt plus 5cm}reports\-::reports (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent = {\ttfamily 0}, }
+\item[{int}]{sort = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classreports_af072c228ae3065ef7566630d3f6b131c}
+constructor -\/ craete an area to render the reports
+
+\begin{DoxyAuthor}{Author}
+richard (5/15/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+{\em sort} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classreports_a374c8e1243559fc489fc9a1a6fc0d2a9}{\index{reports@{reports}!$\sim$reports@{$\sim$reports}}
+\index{$\sim$reports@{$\sim$reports}!reports@{reports}}
+\subsubsection[{$\sim$reports}]{\setlength{\rightskip}{0pt plus 5cm}reports\-::$\sim$reports (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classreports_a374c8e1243559fc489fc9a1a6fc0d2a9}
+Destuctor -\/ deallocate local members
+
+\begin{DoxyAuthor}{Author}
+edt (5/15/18) 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classreports_a39bef31a4874710db18191796a640e27}{\index{reports@{reports}!mouse\-Move\-Event@{mouse\-Move\-Event}}
+\index{mouse\-Move\-Event@{mouse\-Move\-Event}!reports@{reports}}
+\subsubsection[{mouse\-Move\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void reports\-::mouse\-Move\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Mouse\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classreports_a39bef31a4874710db18191796a640e27}
+mouse\-Press\-Event -\/ process a mouse move event
+
+\begin{DoxyAuthor}{Author}
+edt (5/15/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classreports_a3a6d1c382d266c47ffacf677b932e50c}{\index{reports@{reports}!mouse\-Press\-Event@{mouse\-Press\-Event}}
+\index{mouse\-Press\-Event@{mouse\-Press\-Event}!reports@{reports}}
+\subsubsection[{mouse\-Press\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void reports\-::mouse\-Press\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Mouse\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classreports_a3a6d1c382d266c47ffacf677b932e50c}
+mouse\-Press\-Event -\/ process a mouse click down event
+
+\begin{DoxyAuthor}{Author}
+richard (5/15/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classreports_a0db47ff16b3d9f115f1449903ef710b5}{\index{reports@{reports}!mouse\-Release\-Event@{mouse\-Release\-Event}}
+\index{mouse\-Release\-Event@{mouse\-Release\-Event}!reports@{reports}}
+\subsubsection[{mouse\-Release\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void reports\-::mouse\-Release\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Mouse\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classreports_a0db47ff16b3d9f115f1449903ef710b5}
+mouse\-Release\-Event -\/ process a mouse click release event
+
+\begin{DoxyAuthor}{Author}
+richard (5/15/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classreports_af5a4ac35dfcd66f70bfabfe2e038133d}{\index{reports@{reports}!set\-Sort@{set\-Sort}}
+\index{set\-Sort@{set\-Sort}!reports@{reports}}
+\subsubsection[{set\-Sort}]{\setlength{\rightskip}{0pt plus 5cm}void reports\-::set\-Sort (
+\begin{DoxyParamCaption}
+\item[{int}]{val}
+\end{DoxyParamCaption}
+)}}\label{classreports_af5a4ac35dfcd66f70bfabfe2e038133d}
+set\-Sort -\/ set internal sorter member
+
+\begin{DoxyAuthor}{Author}
+richard (5/15/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ sorter value \\
+\hline
+\end{DoxyParams}
+\hypertarget{classreports_ac69783107c2b5021c60cf2042f0e7fe4}{\index{reports@{reports}!set\-Vector@{set\-Vector}}
+\index{set\-Vector@{set\-Vector}!reports@{reports}}
+\subsubsection[{set\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}void reports\-::set\-Vector (
+\begin{DoxyParamCaption}
+\item[{{\bf My\-Vector}$<$ {\bf Shape} $\ast$ $>$ $\ast$}]{temp}
+\end{DoxyParamCaption}
+)}}\label{classreports_ac69783107c2b5021c60cf2042f0e7fe4}
+set\-Vector -\/ set internal pointer to appwide My\-Vector$<$\-Shape$>$$\ast$
+
+\begin{DoxyAuthor}{Author}
+richard (5/15/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em temp} & -\/ My\-Vector$<$\-Shape$>$$\ast$ \\
+\hline
+\end{DoxyParams}
+\hypertarget{classreports_aadc1cddcb81c3012386f185ba652cd88}{\index{reports@{reports}!shape\-To\-String@{shape\-To\-String}}
+\index{shape\-To\-String@{shape\-To\-String}!reports@{reports}}
+\subsubsection[{shape\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String reports\-::shape\-To\-String (
+\begin{DoxyParamCaption}
+\item[{int}]{shape}
+\end{DoxyParamCaption}
+)}}\label{classreports_aadc1cddcb81c3012386f185ba652cd88}
+shape\-To\-String -\/ convert shape\-Type enum to string describing shape
+
+\begin{DoxyAuthor}{Author}
+richard (5/15/18)
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & -\/ shape I\-D\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\-String 
+\end{DoxyReturn}
+\hypertarget{classreports_a73ab95a284ad50c376a0c15b38fb87f7}{\index{reports@{reports}!show@{show}}
+\index{show@{show}!reports@{reports}}
+\subsubsection[{show}]{\setlength{\rightskip}{0pt plus 5cm}void reports\-::show (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classreports_a73ab95a284ad50c376a0c15b38fb87f7}
+show -\/ draw on canvas
+
+\begin{DoxyAuthor}{Author}
+richard (5/15/18) 
+\end{DoxyAuthor}
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
