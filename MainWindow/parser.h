@@ -6,5 +6,6 @@
 using namespace nserkkvector;
 
 void readFile(QPaintDevice *device, MyVector<Shape *> *pShapeVector);
+void writeFile(MyVector<Shape *> *pShapeVector);
 
 #endif // PARSER_H
