@@ -1,6 +1,7 @@
 CS1C - Team ERKK
 Revisied 05/10/18
 First submission - 05/10/18 at 11:55 p.m. git tag c3e7a6b
+Final submission - 05/15/18 at 11:50 p.m. git tag a6b5b5f
 
 Application Requirements
 ------------------------
